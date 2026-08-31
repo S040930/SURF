@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+.eggs/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+.vite/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# AI workspace artifacts
+.trae/
+.zcode/
+.codebuddy/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Large files — except the r23 experiment results dump
+*.dump
+*.sql
+!outputs/r23_experiment_results.dump
+
+# Cache
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build
+dist/
+build/
+*.egg
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+*.env
+.local

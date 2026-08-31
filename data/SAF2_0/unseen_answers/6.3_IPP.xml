@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="6.3_IPP">
+  <questionText>What is the “Dynamic Host Configuration Protocol (DHCP)”? What is it used for? </questionText>
+  <referenceAnswers>
+    <referenceAnswer id="6.3_IPP.a1">The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used in Internet Protocol (IP) networks, whereby a DHCP server dynamically assigns an IP address and other network configuration parameters to each device on the network. Further, DHCP has largely replaced RARP (and BOOTP)
+	 Uses of DHCP are: Simplifies installation and configuration of end systems. Allows for manual and automatic IP address assignment. May provide additional configuration information  (DNS server, netmask, default router, etc.)</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="6.3_IPP.1">
+      <response>DHCP extends the functionality of RARP. It is used for automatic IP address assignment.</response>
+      <response_feedback>The response only states the definition/description of DHCP correctly. The usage is missing in the response.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.4">
+      <response>The Dynamic Host Configuration Protocol (DHCP) is a protocol designed as a replacement for the RARP and BOOTP protocols, with some additional functionality.
+As such, it is is a protocol used for managing client IP addresses in a LAN.  
+When a client first joins a network, it sends out a so-called 'DHCP Discover packet', which is a way for the client to tell the DHCP server (usually the local router) that it needs a valid IP address.  
+The DHCP server then responds, assigning an IP address and optionally some additional addresses (like the default netmask or router) to this host. The assigned address will be valid only for a certain duration specified by the host in the response.  
+The client now has to renew its IP address (by sending out yet another DHCP Discover packet) before the assigned address expires.
+
+As long as the address hasn't expired, it is safe for the client to assume that his current address is still valid, even after being disconnected from the network for some time.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.44">
+      <response>The DHCP protocol is used to simplify the configuration of ip adresses of end systems. It is used to dynamically assign ip adresses to the participants of a network, while still enabling administrators to configure ip adresses manually. Every end system is able to configure itself with the help of the dhcp-server. The end system sends a dhcp discovery broadcast, the dhcp identifies itself and afterwards they negotiate the ip adress, as well as other parameters like time server, name server, domain name and subnet mask.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.51">
+      <response>The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used on Internet Protocol networks whereby a DHCP server dynamically assigns an IP address and other network configuration parameters to each device on a network so they can communicate with other IP networks. A DHCP server enables computers to request IP addresses and networking parameters automatically from the Internet service provider (ISP), reducing the need for a network administrator or a user to manually assign IP addresses to all network devices.
+
+DHCP is used for:
+Simplifies installation and configuration of end systems
+Allows for manual and automatic IP address assignment
+May provide additional configuration information (DNS server, netmask, default router, etc.)</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.78">
+      <response>The DHCP is used to add clients into a network by giving them the required information/addresses.</response>
+      <response_feedback>The response partially describes DHCP as it lacks specifics, like what information is shared, to be considered complete and precise.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.91">
+      <response>DHCP is a protocol to centrally manage the distribution of ip addresses in a network.
+The DHCP simplifies the installation and configuration of end systems. Moreover, it allows for manual and automatic IP address assignment and may provide additional configuration information such as DNS server, netmask, default router, etc.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.92">
+      <response>The dhcp protocol is a protocol to configure systems that join a network.
+It is used to assign ip addresses to systems within the network. 
+If a system joins the network it can ask the dhcp server for network configuration and an ip address that it should use in the future.</response>
+      <response_feedback>The response is partially correct because it lacks a DHCP usage.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.98">
+      <response>The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used on
+Internet Protocol networks whereby a DHCP server dynamically assigns an IP address and other
+network configuration parameters to each device on a network.
+
+
+DHCP simplifies installation and configuration of end systems, and allows for manual and
+automatic IP address assignment.
+
+End systems can broadcast DHCP DISCOVER packets to retrieve their IP from the DHCP server.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.101">
+      <response>DHCP has replaced RARP (and BOOTP) as it has Extended functionality. Its uses are: 1.Simplifies installation and configuration of end systems 2.Allows for manual and automatic IP address assignment 3.May provide additional configuration information like DNS server, netmask, default router, etc.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.107">
+      <response>DHCP is a network management protocol which extends the functionality of RARP and BOOTP. DHCP simplifies installation and cofiguration of end systems. It also allows for manual and automatic IP address assignment.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.151">
+      <response>The Dynamic Host Configuration Protocol (DHCP) is Internet Protocol based on the special server that uses for manually or automatically IP addresses assignment and other network configuration parameters, such as subnet masks and default gateways, to each device on a network so they can communicate with other IP networks.
+This server need not be on the same LAN as the requesting host. Since the DHCP server may not be reachable by broadcasting, a DHCP relay agent is needed on each LAN.</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.161">
+      <response>It is used to assignIP addresses to hosts in a network.</response>
+      <response_feedback>The response does not give a definition and does not specify how DHCP assigns the IP addresses, i.e. dynamically or automatically.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.162">
+      <response>DHCP is a protocol that provides quick, automatic, and central management for the distribution of IP addresses within a network. It simplifies installation and configuration of end systems, also allowing for manual and automatic IP address assignment.
+
+It is used for providing configuration information such as DNS server, netmask, default router, etc)</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.172">
+      <response>DHCP is a network management protocol which configures end devices on IP Networks (mostly LANs) by assigning them an IP address and other network configuration parameters.</response>
+      <response_feedback>The response only states the definition/description of DHCP correctly. The precise usage is missing in the response.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.185">
+      <response>It’s a network protocol used on IP networks to dynamically assign an IP address and other information to any device (host) on a network so they can communicate using IP.</response>
+      <response_feedback>The response only states the definition/description of DHCP correctly. The precise usage is missing in the response.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.219">
+      <response>The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used on Internet Protocol networks whereby a DHCP server dynamically assigns an IP address and other network configuration parameters to each device on a network so they can communicate with other IP networks. It is used for simplified installation and configuration of end systems into network. Allows for manual or automatic assignment of IP addresses. May also provide additional configuration information like DNS server, netmask, default router, etc</response>
+      <response_feedback>The response answers the definition and the usage of DHCP correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="6.3_IPP.245">
+      <response>DHCP is used to manually/automatically assign IP addresses to physical devices inside of a network with the help of a DHCP server. A client with no IP address sends a broadcast DHCP discover packet to everyone on the network. The Server will respond with a DHCP offer, where he offers an IP address to the client. The Client will then respond with a DHCP request (telling the server he wants the IP address). The Server will assign the IP address to the Client for a certain time period (DHCP ACK). After this leasing time, the client has to renew the leasing of the IP address otherwise the DHCP Server will remove the IP address of the client again.</response>
+      <response_feedback>The response is partially correct because the DHCP definition part is missing in the answer. There is an explanation about how DHCP works but that is not part of the question requirement.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

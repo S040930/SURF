@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-marking-backend"
+version = "0.1.0"
+description = "AI 作业批改系统后端 (SURF-2026-0031)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi==0.138.2",
+    "uvicorn[standard]==0.49.0",
+    "sqlalchemy==2.0.51",
+    "alembic==1.18.5",
+    "psycopg2-binary==2.9.12",
+    "pydantic==2.13.4",
+    "pydantic-settings==2.14.2",
+    "python-dotenv==1.2.2",
+    "mcp==2.0.0",
+    "tiktoken==0.13.0",
+    "numpy==2.4.6",
+    "pandas==2.3.3",
+    "scipy==1.17.1",
+    "statsmodels==0.14.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.15.20",
+    "black==26.5.1",
+    "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
+    "pytest-cov==7.1.0",
+    "pip-tools==7.5.2",
+    "httpx==0.28.1",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+omit = ["app/experiment/gateway.py", "app/experiment/secrets.py"]

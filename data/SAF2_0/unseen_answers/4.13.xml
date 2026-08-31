@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="4.13">
+  <questionText>Consider the following network topology from the lecture:With routing, we want to find the best path for our packets. For this, we first need to define a metric to evaluate the quality of a path. One possible choice could be the current load (i.e. the current utilization in terms of sent packets/bytes) on this path. Assume that A wants to send data to G, could this routing strategy cause any problems at the receiver end? Please explain your answer in 1-2 sentences.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="4.13.a1">Yes, using the current load to find the best path can lead to fluctuations/oscillations when there is more than one path between any pair of end systems in the network (here: CF and EI). This can cause packet reorderings at the receiving side.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="4.13.82">
+      <response>Yes. When low utilization makes it more likely that the corresponding path is used, the load on this path rises and a state might occur where the routing path starts oscillating. This will lead to inconsistency of the routing table of sender and receiver.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.128">
+      <response>During the transmission of the data, the most favorable path could change, causing the second part of the data to take a different path.
+
+If the second part of the data arrives at the destination first, the receiver must wait for the second part and arrange the two parts correctly again.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.140">
+      <response>Ja, da es zu sogenanntem Oszillierendem Verhalten kommen kann wenn die aktuelle Auslastung einer Leitung als Metrik benutzt wird, wodurch permanent die Route gewechselt wird. Dies passiert dadurch das ein Packet über Route X zu G geschickt wird, wodurch die Auslastung dieser Route steigt, was wiederum A dazu animiert eine andere Route zu wählen -&gt; usw.</response>
+      <response_feedback>But why is oscillating a problem?</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.160">
+      <response>One problem can be that the selected path utilized so that it will have to take another path. This path will be longer and will need more traffic.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.186">
+      <response>it certainly could, firstly, evaluating currend load without taking path transfer capacity into consideration could lead to misjudges.
+Secondly, avoiding certain busy path could lead to more hops, for example, a packet may take the path A-B-D-E-C-F-I-J-H-G, the packet may have avoid a few busy pathway but the total routing time could be longer.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.192">
+      <response>Nein, denn dies führt zu Schwankungen, wenn es mehr als einen Pfad zwischen einem beliebigen Paar  von Endsystemen im Netzwerk gibt. Das bedeutet, dass das Routing instabil ist und es gibt uneffiziente Paketumlagerungen.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.202">
+      <response>I think the network topology is perfect. Because there so many paths between A and G, A-B-C-F-G, A-E-I-F-G etc. If some paths is fail, the data could through another path to send. But the problem is the right part is a little simple. It's not reliable and steady. It will be better, if there are more connection between G and the other nodes in right part, for example G-I, or G-j.</response>
+      <response_feedback>The question is not about the network topology but about the routing strategy!</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.210">
+      <response>When there are multiple transmiisions, with load may lead to an oscillation of the load, i.e., if A wants to send a message to H under the condition that CF is overload and EI is avaliable, it will choose EI to transmit message, when CF is avaliable, it will choose CF. Hence, routing tables may oscillate frequently.</response>
+      <response_feedback>But why is oscillating a problem?</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.233">
+      <response>A könnte viele packets in einer kurzen Zeit senden und damit G (oder einen der Zwischenknoten) überlasten. Flow control muss also beachtet werden.</response>
+      <response_feedback>But this is not a problem specific for the routing strategy</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.258">
+      <response>It could be a problem that the packets are oscillating. So the packets will never arrive to G.</response>
+      <response_feedback>Oscillating does not mean, that packets are never arriving in G!</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.273">
+      <response>Using metrics like load or utilization can lead to 'oscillations' - which means that every time the load or utilization changes, the path taken will change, and the load and utilization will change while packets are being routed.</response>
+      <response_feedback>But why is oscillating a problem?</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.284">
+      <response>Yes, because the path load is then reduced for the chosen path and if 
+the receiver needs a certain path on which throughput is critical (e.g. G
+ to F), it can not use it properly, because the load is higher at the time of receiving. For example F to G is on the path 
+from A to G, then the load on F to G is reduced at the time of 
+receiving. If at the time of receiving the receiver G wants to send 
+critical data fast to F, it cannot use the path G to F properly and 
+needs maybe to elude to path G to H to F.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.13.361">
+      <response>Yes this strategy could lead to problems as it could lead to oscillations. If there are two possible path (i.e link CF or link EI) the choice of which path to take could flip around as choosing one path increases the load on that path and in return making the other path more favorable increasing the load on this other path, so the decision on which path to take could swap around repeatedly.</response>
+      <response_feedback>But why is oscillating a problem?</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="4.2_LM_v1.0">
+  <questionText>What is "frame bursting"? Also, give 1 advantage and disadvantage compared to the carrier extension.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="4.2_LM_v1.0.a1">Frame bursting reduces the overhead for transmitting small frames by concatenating a sequence of multiple frames in one single transmission, without ever releasing control of the channel.
+Advantage :it is more efficient than carrier extension as single frames not filled up with garbage.
+Disadvantage :need frames waiting for transmission or buffering and delay of frames</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="4.2_LM_v1.0.26">
+      <response>Frame bursting artificially increases the length of sent frames without adding meaningless padding by concatenating multiple frames, which are then sent together. Using frame bursting higher network speeds can be realized while maintaining the collision domain diameter that leads to better efficiency. 
+On the downside the latency for the frames is increased since they must wait for the next burst.</response>
+      <response_feedback>The response answers all three parts of the question correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.39">
+      <response>Frame bursting is a transmission technique used at the data link layer of the OSI model, It can be effectively deployed in Gigabit Ethernets to increase network throughput. This is achieved by allowing a sender to transmit concatenated sequences of multiple frames in a single transmission.
+Advantage: better efficiency than the carrier extension since multiple frames are sent in a single transmission. But carrier extension wastes bandwidth by sending a single frame at a time.
+Disadvantage: the end to end delay is increased because frames need to wait until the buffer is full or a timeout occurs and transmission happens. In contrast, carrier extension each frame would be transmitted alone without waiting for other frames.</response>
+      <response_feedback>The response gives a correct definition of frame bursting, including its benefits and drawbacks.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.75">
+      <response>Frame bursting is concatenated sequence of multiple frames sent in single transmission. Advantage: When many frames are waiting at sender, it can be efficient. Disadvantage: When there are too less frames at sender, the sender keeps waiting too much before sending or at timeout adds too much padding data to send to receiver (inefficient).</response>
+      <response_feedback>The response answers all the three parts of the question correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.108">
+      <response>Frame bursting is a feature of the shared broadcast mode. It allows the sender to transmit concatenated sequences of multiple frames in a single transmission. For example, we have eight packets and a buffer. We have to wait for all these eight packets to come and put them together on the line. If something is wrong, all of the eight packets have to be repeated.
+
+Disadvantage: If we only have to send one or two packets, we have to wait for eight packets to arrive, it takes a long time. So we artificially increase the end to end delay.
+Advantage: It allows us to "burst" a sequence of packets resulting in higher throughput without abandoning the transmission medium.
+
+There is a trade-off between efficiency and the end to end delay we are going to send. If we introduce end to end delay at the lower layer, the upper layer cannot do anything about it; it cannot speed it up anymore even if desired. So, thus, this is possible but not entirely ideal.</response>
+      <response_feedback>The response correctly states the definition of frame bursting, including its pros and cons.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.158">
+      <response>Frame bursting is  a Transmission technique which is used to increase the Transmission rate of data Frames in the data link layer.
+Advantage:the number of collision chances is reduced.
+Disadvantage:Frame Bursting does not address the primary goal of reducing the header Overhead.</response>
+      <response_feedback>The response answer is incorrect as frame bursting is used to concatenate and transmit multiple frames in one single transmission to reduce the overhead of small frame transmission. Frame bursting offers higher efficiency in comparison to the carrier extension, but it increases end to end delay as the receiver may have to wait for frames.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.179">
+      <response>Frame bursting is a feature that allows for a higher throughput and efficiency. This works by allowing the sender to transmit a series of frames in succession in a single transmission without giving up control on the transmission medium. An advantage compared to carrier extension is that it has better efficency while a disadvantage is that it needs multiple frames waiting for transmission.</response>
+      <response_feedback>The response answers the correct definition of frame bursting, its advantage and disadvantage.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.180">
+      <response>Frame bursting is one of IEEE 802.3z features of shared broadcast mode.It allows a sender to put several buffered frames together and transmit those concatenated frames in a single transmission to the receiver, without giving up the control over the transmission medium.
+The advantage of frame bursting is the increased efficiency resulting from a higher throughput of individual data packets due to concatenation of single frames.
+The disadvantage is, that this method can increase the waiting time of other senders (that are currently not sending) and the end-to-end delay.</response>
+      <response_feedback>The response answers all three parts of the question correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.213">
+      <response>Frame bursting allows the sender to transmit concatenated sequence of multiple frames in single transmission , this is a solution to the problem of the improvement of the speed and its consequences to the length of the cable.
+Advantage: It is more efficient than the carrier extension.
+Disadvantage: with this you artificially increase the end to end delay, which can be a problem when the frame is critical.</response>
+      <response_feedback>The response correctly answers all three parts of the question.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.257">
+      <response>The Frame bursting is one of the features of Shared Broadcast Mode. It consists in, on the sender's side, to concatenate a sequence of multiple frames in one single transmission. 
+
+Comparing to the carrier extension (the other feature of Shared Broadcast Mode), it needs frames to wait for transmission (disadvantage) but it has a better efficiency (advantage)
+
+This will lead to higher among of collision or we should decrease the LAN size.</response>
+      <response_feedback>The response is correct as it states the frame bursting definition, including its advantage and disadvantage.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.298">
+      <response>To be able to transmit data over lager distances at higher speed and still avoiding collisions you send bigger sequences by collecting several packets and sending them all together.
+
+Advantage: You have a higher efficiency compared to carrier extension. You have a minimum of 70 percent (frame size 64 byte and user data 46 byte) user data compared to a minimum 9 percent of.
+
+Disadvantage: You have a delay in time while waiting for other packets until you have collected enough to send.</response>
+      <response_feedback>The response is answering all three parts of the question correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.331">
+      <response>Frame bursting allows the sender to concat frames in a single transmission to increase CSMA-CD distance.
+It has a higher efficiency than Carrier extension (extending min. frame length),but frames are needed to wait for transmission. Also, carrier extension has a higher overhead.</response>
+      <response_feedback>The response correctly answers all the parts of the question.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.332">
+      <response>Frame bursting allows the sender to send many frames concatenated.
+If the station has several frames buffered and it has already sent a frame on the carrier, it can send the next frame directly after getting the acknowledgement from the receiver, without a dedicated time between frames.
+
+Advantages:
+"Frame bursting": Higher speed, due to less waiting time between sending frames.
+"Carrier extension": Simple to implement
+
+Disadvantages:
+"Frame bursting": Requires many frames to be sent simultaneously
+"Carrier extension": Low efficiency</response>
+      <response_feedback>The response is correct. However, to substitute carrier extension, frame bursting with frame aggregation has to be used. In this case, frames are directly concatenated without waiting for acknowledgments in between.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.351">
+      <response>The sender buffers a number of frames and concatenates them, so they can be sent in a single transmission.
+The disadvantage is, that the end-to-end delay is increased, because the sender buffers the frames instead of sending them out as soon as they are created.
+The advantage is that no "rubbish" data has to be sent, like with carrier extension, so the data efficiency is much higher.</response>
+      <response_feedback>The response correctly answers all three parts, the frame bursting definition, its advantage and disadvantage.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.2_LM_v1.0.359">
+      <response>Frame Bursting allows sender to transmit concentrated Sequence of multiple Frames in single transmission.
+
+Advantage:
+The rate of efficiency is increasing in Transmission
+
+Disadvantage:
+Frames needs to wait for Transmission.</response>
+      <response_feedback>The response gives a correct definition of frame bursting, its advantage and disadvantage.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

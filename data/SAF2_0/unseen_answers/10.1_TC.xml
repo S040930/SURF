@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="10.1_TC">
+  <questionText>State at least 4 of the differences shown in the lecture between the UDP and TCP headers.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="10.1_TC.a1">Possible Differences :
+The UPD header (8 bytes) is much shorter than the TCP header (20-60 bytes)
+The UDP header has a fixed length while the TCP header has a variable length
+Fields contained in the TCP header and not the UDP header :
+-Sequence number
+-Acknowledgment number
+-Reserved
+-Flags/Control bits
+-Advertised window
+-Urgent Pointer
+-Options + Padding if the options are
+UDP includes the packet length (data + header) while TCP has the header length/data offset (just header) field instead
+The sender port field is optional in UDP, while the source port in TCP is necessary to establish the connection</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="10.1_TC.35">
+      <response>In TCP there is a Sequence Number field to identify packets individually for reliability. There is no Sequence Number in UDP. The UDP header does not have an options field, while the TCP header does. In TCP there is an Advertised Window field for the Sliding Window Protocol for Flow Control. There is no Flow Control and therefore no Advertised Window field in UDP. In TCP there there is only a Data Offset field that specifies the header length. In UDP the whole Packet Length is transmitted.</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.62">
+      <response>TCP has a Error Control. So the users can be sure, that all packages have been transmitted in the right order.
+TCP has an included flow control, to assure, that the two clients don't get an overflow of packages.
+Mulitplexing: In UDP you only have on port at the receiver, where to send the data. For TCP you have to, one at each side.
+Connections are established and torn down in TCP, with the three-way-handshake. For UDP there is no guarantee the connection is established or closed.</response>
+      <response_feedback>The response states general differences between UDP and TCP while the question requirement is to identify TCP and UDP header differences.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.85">
+      <response>In TCP the ports are at both ends.
+In TCP it has error control, flow control, congestion avoidance while in UDP has only checksum.</response>
+      <response_feedback>The question requirement is to identify the difference between UDP and TCP headers while the response states general differences between UDP and TCP.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.93">
+      <response>TCP-Header has the following information in his header that UDP not have: 
+Sequence Number (to identify the lost segments and maintain the sequencing in transmission), 
+Acknowledgment Number (to send a verification of received segments and to ask for the next seg-ments), 
+Urgent (Used to point any urgent data in segment), Flags, Window size (Used to set the number of segments that can be sent before waiting for a confirmation from the destination), Options</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers. However, there is a slight correction of Urgent Pointer instead of Urgent.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.97">
+      <response>A UDP header has a length of 8 bytes whereas a TCP header has a length of 20 bytes. A UDP header has a field for the packet length, unlike a TCP header. A UDP header doesn’t contain a sequence number, while a TCP header does. A UDP header neither contains an acknowledgement number but a TCP header has an extra field for that.</response>
+      <response_feedback>The response correctly identifies and states the four differences between TCP and UDP headers except that the TCP header can be between 20 and 60 bytes long.</response_feedback>
+      <score>0.875</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.147">
+      <response>The UDP header is a short header (only contains Receiver Port, Packet Length and optional Sender Port, Checksum). 
+The header of the TCP is more complicated. Additionally to Sender Port, Receiver Port and Checksum, it has a sequence number (to identify the segment or the starting sequence number). It also has an acknowledgement number (which is needed i.a. for the connection setup). In the TCP header you can also set flags (like FIN for the disconnection). You can also add further information in the options field.</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers. Also, note that the ACK field is not just limited to connection setup.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.165">
+      <response>Some additional features which are present in the TCP header are: sequence number, acknowledgement number, options, urgent pointer and flags (the TCP header contains possible additional information and has protocol specific services). The UDP header has a size of 8 bytes, while the size of the TCP header is at least 20 bytes.</response>
+      <response_feedback>The response correctly states four differences between TCP and UDP headers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.267">
+      <response>The UDP header includes the packet length (header + data) whereas the TCP header only includes the header length. The TCP header includes an acknowledgement number, advertised window and a sequence number which you do not find in the UDP header. The acknowledgement number states the sender which packets have arrived yet. The advertised window field gives the sender a feedback about how many more bytes the receiver will accept using the sliding window protocol. And the sequence number is necessary to be able to compute the packets in order.</response>
+      <response_feedback>All the stated differences between a TCP header and a UDP header are correct.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.269">
+      <response>UDP: sender and receiver port, packet length, checksum, data
+TCP Headers are much longer than UDP Headers. There are some fields in the TCP header, which an UDP header doesn't contain:
+- Sequence Number
+- Acknowledge Number
+- Flags
+- Advertised window size
+- Options</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.307">
+      <response>UDP-headers include:
+- source port
+- destination port
+- packet length
+- (optional to use) checksum
+Each of the fields is 16 Bit long (in sum 8 Bytes). UDP does not need much header-informations, since its a fast, connectionless protocol.
+
+TCP-headers also include a checksum, source and destination port, but also much more information, like:
+- a sequence number
+- an acknowledgement number
+- different control flags
+- the data offset
+- the window size
+- an urgent pointer
+The much larger (min. 20 Byte) header is needed since TCP is a connection-oriented protocol, which sets more on reliability than speed.</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.308">
+      <response>UDP: Header consists of three mandatory and one optional header.
+Source-port, destination-port, packet length are mandatory, checksum is optional and just calculated for the header
+
+TCP: The checksum is calculated over header and user data, to ensure correct transmission.
+To ensure reliablity, the TCP-Header has additionally fields for a sequence number, the acknowledgement number and certain flags to reduce/avoid congestion and enable flow control.
+
+The TCP header is more complex but ensures reliable transmission at the cost of speed and use of bandwidth.
+The UDP header just contains necessary information, is very fast but unreliable.</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.1_TC.340">
+      <response>UDP headers do not include the followings: 1. sequence number 2. acknowledgement number 3. HL/RESV/Flags 4. advertised window 5. urgent pointer</response>
+      <response_feedback>The response correctly identifies four differences between TCP and UDP headers. However, the terms HL and Resv should be properly named.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

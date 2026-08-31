@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="4.3">
+  <questionText>Write-down all addresses in Class A networks that are reserved.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="4.3.a1">126 Class A nets can be addressed in classful IP addressing (1.xx.yy.zz - 126.xx.yy.zz) 127.xx.yy.zz is reserved for loopback testing 0.xx.yy.zz can be accepted if stated accordingly (definitions defer whether this is in Class A)</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="4.3.2">
+      <response>xxx.xxx.xxx.0
+
+xxx.xxx.xxx.255</response>
+      <response_feedback>Missing: LoopbackNetwork and Broadcast are x.0.0.0 and x.255.255.255 with x between 0 and 127</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.3">
+      <response>0.x.x.x -&gt; network address
+127.x.x.x -&gt; Loopback
+(x.0.0.0 -&gt; Gateway in all Types of network)
+(x.255.255.255 -&gt; Broadcast in all Types of network)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.9">
+      <response>Class A contains all IP addresses with first octet from 0 to 127 (IP address format is octet1.octet2.octet3.octet4)
+
+According to slide 45 of Internet Protocols:
+Addresses in range 127.0.0.0 to 127.255.255.255 are reserved, because they are used for loopback testing.
+Addresses in range 0.0.0.0 to 0.255.255.255 are reserved, because they refer to hosts of the current network.
+
+(So, excluding these 2 groups, each network with starting octet X, 0&lt;X&lt;127 of Class A has address X.0.0.0 for the network, X.255.255.255 for broadcasting and the rest addresses between these 2 for hosts).</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.45">
+      <response>(0.0.0.0/8 Depends if 0 is countes as a class A network): Current Network
+10.0.0.0/8: Private networks
+127.0.0.0/8: Loopback
+
+Quelle: RFC 5735</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.50">
+      <response>0.0.0.0 to 0.255.255.255
+10.0.0.0 to 10.255.255.255
+127.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.54">
+      <response>0.0.0.0/8: current network adresses
+127.0.0.0/8: loopback adresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.67">
+      <response>10.0.0.0 - 10.255.255.255172.16.0.0 - 172.31.255.255127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>172.x.y.z is not in Class A anymore</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.86">
+      <response>0.0.0.0 to 0.255.255.255: current network
+127.0.0.0 to 127.255.255.255: loopback adresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.88">
+      <response>127.255.255.255 (Broadcast)
+1.0.0.0 to 126.0.0.0 (Network ID)</response>
+      <response_feedback>Please watch your notation: 1.0.0.0 - 126.0.0.0 does not mean, only addresses with .0.0.0, but every address in this range, for example 13.8.255.4, tooBroadcast is x.255.255.255 with x between 0 and 127Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.117">
+      <response>127.X.X.X (127.0.0.0～127.255.255.255)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.133">
+      <response>10.0.0.0 bis 10.255.255.255 private netze</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.139">
+      <response>Network Addresses:    [0-127].0.0.0
+Broadcast Addresses: [0-127].255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.145">
+      <response>Just to note: originally I understood the task to mean reserved addresses within the network (i.e. concerning the host part), but then there was an official statement in the forum that the network part was meant. If it is indeed the host part, then *.0.0.0 and *.255.255.255 would be reserved within each Class A network.
+Reserved addresses in Class A networks:
+0.0.0.0 - 0.255.255.255 (host at this network)10.0.0.0 - 10.255.255.255 (Class A private network range)127.0.0.0 - 127.255.255.255 (local host)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.176">
+      <response>from 0.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Not all addresses in Class A are reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.254">
+      <response>IP : 0.0.0.0
+IP Range: 127.0.0.1 to 127.255.255.255 are network testing addresses (also referred to as loop-back addresses)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.263">
+      <response>IP Ranges:
+0.0.0.0 - 0.255.255.255
+127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.264">
+      <response>127.0.0.0~127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.292">
+      <response>0.0.0.0-0.255.255.255
+10.0.0.0-10.255.255.255,
+100.64.0.0-100.127.255.255
+127.0.0.0-127.255.255.255,</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.295">
+      <response>All 0 -&gt; 0-127.0.0.0:  Network Address (or excluding 0.0.0.0 and 127.0.0.0 in respect to reserved addresses according the IETF Special-Purpose IP Address Registries from RFC 6890)
+All 1 -&gt; 0-127.255.255.255: Broadcast Address (or excluding 0.255.255.255 and 127.255.255.255 in respect to reserved addresses according the IETF Special-Purpose IP Address Registries from RFC 6890)
+Additionally the following Class A Network (Parts) are reserved according to RFC 6890 https://datatracker.ietf.org/doc/html/rfc6890#section-2.2.2
+127.0.0.0/8 loopback adresses
+10.0.0.0/8 Private-Use
+0.0.0.0/8   "This host on this network"
+100.64.0.0/10 Shared Address Space</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.370">
+      <response>For each of the 2^7 = 128 networks the first and the last address are reserved.
+- Network address (all zeros)
+- Broadcast address (all ones)</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

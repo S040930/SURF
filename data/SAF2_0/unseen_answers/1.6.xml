@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="1.6">
+  <questionText>Assume you have a local network with 3 users that are all interconnected and have perfect clocks. Typically the network is often congested as all users generate more traffic than the link’s capacities. Which of the encoding techniques introduced in the lecture should be used in this network to encode bitstreams? Give two reasons for your answer in 2-4 sentences.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="1.6.a1">Binary Encoding, as it is the most efficient in terms of bandwidth since you get a full bit per baud instead of only 0.5. Additionally, you do not have to deal with clock drift and various ticking rates as all clocks are perfect. Therefore, self-clocking / clock recovery is not as necessary. Simple and cheap is also acceptable as one of the reasons.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="1.6.5">
+      <response>Binary encoding should be used in this network because all three end systems have perfect clocks wherefore a self-clock feature isn't necessary. It also provides better utilization of the bandwidth than Manchester encoding or differential Manchester encoding.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.19">
+      <response>They should use "Binary Encoding" because of the perfekt timed clocks and furtermore this mechanism has the best transfer rate (1 bit per Baud).</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.38">
+      <response>Bianry Encoding, since it has good utilization of bandwidth which could solve the traffic problem. On the other hand, the 3 users have already perfect clocks, the no "self-clocking" feature of binary coding could be neglected.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.43">
+      <response>I would use Binary Encoding. It is efficient since it uses 1 bit per baud. It has no self-clocking feature but that is not needed since all user have perfect clocks.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.53">
+      <response>Binary encoding can be used. It has the highest bandwidth (1 bit per Baud) and is simple and cheap. The 'self-clocking' feature of the more complex manchester encoding and differential manchester encodings is not necessary since the users have perfect clocks.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.68">
+      <response>I would use the binary encoding in this network. The "self-clocking" feature of the Manchester Encoding isn't an advantage in this scenario since all users have perfect clocks. Therefore the perfect clocks can even out the Binary Encoding's disadvantage of not having a "self-clocking" feature and only the advantages of being cheap, simple and the good utilization of the bandwidth remain.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.72">
+      <response>Because all users have a perfect clock, the binary encoding is best to be used. It is simple, cheap and the bandwith is with 1 bit/Baud well utilized. (The Manchester encodings in comparison have only 0.5 bit/Baud.)</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.100">
+      <response>Binary Encoding als Non-return to zero-level (NRZ-L) wäre zu empfehlen, da es hierbei eine gute Ausnutzung der Bandbreite (1 Bit pro Baud) bereitgestellt werden kann. Des Weiteren erfordert diese Kodierung eine sehr akurate Zeitmessung der Teilnehmer, da kein self-clocking stattinden kann (bei einer Abfolge gleicher Werte verändert sich die Kurve nicht), dies ist aber gegeben.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.125">
+      <response>I would suggest to use binary encoding, because they are all interconnected and have perfect clocks, that is why they do not need a self-clocking encoding and it is simple and cheap, so it has a good utilization of the bandwidth ( 1 bit per Baud), what helps against congestion.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.224">
+      <response>Binary Encoding. Because the Binary Encoding uses the least bandwidth among these three techniques. And the local network with 3 users is tolerant of frequency errors happened in Binary Encoding.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.225">
+      <response>We can use Bit encoding - it has a good utilization of the bandwidth, and it can work because the users have perfect clocks. 
+another technique we can use is Manchester encoding - is it not sensitive to  מoise on the line and therefore can deal with more users using the line.</response>
+      <response_feedback>Manchester encoding is not correct as we do not require self-clocking, also bandwidth utilization is less. (Note: as per the notification in the quiz slide, an additional  incorrect answer will also be counted while providing grading )</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.244">
+      <response>Since we want to transmit with as high of a baud rate as possible we first look at binary encoding. For binary encoding we need perfectly synchronous clocks. Since all our users have perfect clocks, binary encoding is better, since the baud rate is twice as high.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.265">
+      <response>I would use binary encoding, since the premise is that all users have perfect clocks. This makes the "self-clocking" feature of the other two encoding methods not necessary. Binary encoding also makes good utilization of the bandwidth (1bit per baud) which is good, since the 3 users generate lots of traffic.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.275">
+      <response>In this local network with 3 users, the encoding technique Binary Encoding should be used.
+This technique is simple, cheap, and has a good utilization of the bandwidth. The disadvantage of the no "self-clocking" feature is compensated through the fact that the users have perfect clocks.
+In contrast, the Manchester and Differential Manchester Encoding have a worse utilization of the bandwidth  (0.5 bit/baud) than Binary Encoding (1 Bit/Baud) and the "self-clocking" feature is unnecessary in this case.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.301">
+      <response>A binary encoding would be most beneficial. Since all clients have perfect clocks, it doesn't need a self clocking feature as used by Manchester encoding and differential Manchester Encoding. It also can transmit a double of the data, effectively increasing the channels capacity</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.313">
+      <response>Binary encoding should be used. 
+Perfeclty clocked users do not need any self-clocking encoding such as Manchester.
+More traffic would benefit from more efficient encoding technique.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.314">
+      <response>Baudot time multiplex system.
+3 users have perfect clocks, so all channels can be processed in a fixed grid within a certain time. Each channel is assigned a fixed time window (time slot).The time windows can be synchronized and of the same length or asynchronous and depending on requirements. This is Time Division Multiplex.</response>
+      <response_feedback>The question asks for the type of encoding rather the channel access type.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.320">
+      <response>Because the network has a perfect clock, we don't need an encoding technique with the self-clocking feature.
+Because the network is often congested we need a good utilization of the bandwidth (1 bit per Baud).</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.322">
+      <response>The network should use binary encoding:
+- Because of the perfect clocks there is no need for a self-clocking encoding
+- Binary encoding has better bandwith utilization than Manchester/differential Manchester encoding which is important because this network is often congested</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.329">
+      <response>Recommended encoding technique: Binary Encoding (NRTZ).
+Reasons:
+1. Of all the encoding techniques presented in the lecture, binary encoding offers the best use of bandwidth (1 bit per baud versus 0.5 bits per baud for (differential) Manchester encoding) for the scenario described (heavy link utilization).
+2. Since all participants have perfect clocks, there is no risk of clock drift/deviation.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.343">
+      <response>Binary encoding.
+1.All users have perfect clocks, so good "self-clocking" feature is not necessary.
+2.It is mentioned that all users generate more traffic than the link’s capacities. But the utilization of the bandwidth of Manchester Encoding or Differential Manchester Encoding is 0.5 bit/Baud, only half of the utilization of Binary encoding.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.347">
+      <response>Binary Encoding as it is simple to implement and uses the bandwidth well. It's also easily doable as all parties have a perfect clock and therefore there is no problem receiving and differentiating multiple bits of the same type after another.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.366">
+      <response>In this scenario, the simple Binary Encoding technique should be used. That is, because it has the best utilization of the bandwidth among the presented techniques, which is important to use such a congested network as efficiently as possible. Furthermore, the downside of the technique not having a self-clocking feature is not a problem here since all users are interconnected and have perfect clocks.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.6.367">
+      <response>Character oriented encoding is used.</response>
+      <response_feedback>The response is not related to the theme of the encoding types.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

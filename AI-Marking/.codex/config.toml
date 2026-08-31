@@ -1,0 +1,8 @@
+[mcp_servers.ai_marking_r21]
+command = "./start.mcp.sh"
+required = true
+startup_timeout_sec = 60
+tool_timeout_sec = 1800
+
+[mcp_servers.ai_marking_r21.tool_approval]
+default_tools_approval_mode = "writes"

@@ -1,0 +1,914 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="2.4">
+  <questionText>A company is planning to set up a new LAN at one of their locations and is looking for an appropriate medium access procedure. However, the funding is tight so they expect the channel load to be high compared to the hardware they can provide. Currently, they would like to have 20 systems sharing the channel, but it should be expandable later on. Which of the MAC procedures introduced in the lecture (Polling, TDMA with or without Reservation, Token Ring, Pure or Slotted ALOHA, 1-persistent CSMA, p-persistent CSMA, non-persistent CSMA or CSMA/CD) would you recommend?Give 2 reasons for your decision and 1 potential weakness of your recommendation in 2-6 sentences.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="2.4.a1">0.5 P for a sensible choice out of: Token Ring, p-persistent or non-persistent CSMA, CSMA/CD or TDMA with reservation 1P for the drawback and 1P for an advantage.The following properties may be considered: Scalability, waiting time, extendability, cost effectiveness, constraints, hardware requirements, compatibility, throughput, overhead, complexity and prioritization capabilities</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="2.4.20">
+      <response>I recommend to take a CSMA/CD, because it can handle a high channel load by using a connection period and as soon as it detects a collision it interrupts the transmission and this saves time and bandwidth. A second reason is that the company plans to expand at later point and this MAC gives easily the possibility to do so by just plugin a new computer, which supports the protocol. 
+A problem is that it has to check during process of sending an own frame, that no collision does appear.</response>
+      <response_feedback>Why exactly is this a disadvantage?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.42">
+      <response>Token Ring. The first reason for using this approach is that only the system having the token can send. This reduces the channel load. The second reason is that this approach is collision free and doesn't require central coordination. A potential weakness is the possible loss of the token. When the system which has the token at the moment disconnects or crashes no system can send anymore.</response>
+      <response_feedback>Actually, the token ring need central monitoring, see slide 73 in the LAN slide set</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.48">
+      <response>In my opinion, Token Ring or CSMA/CD are appropriate choices. Depending on which requirements are more important, it's a tradeoff between cost, throughput and adding new users.  
+Ultimately, for the present case, I would choose the non-persistent CSMA/CD. Non-persistent because it improves overall throughput (efficiency). 
+CSMA/CD has lower costs compared to Token Ring (cost efficient), which is important to the company as funding is tight. Also, with CSMA/CD it is easier to add new users/stations (connect stations without shutting down the network). (I think, one could also choose p-persistent CSMA with small p, since the performances of p-persistent with small p and non-persistent are very similar at high load (slide 29) and p-persistent is a compromise between delay and throughput.)
+However, the disadvantage of CSMA/CD is that the number of collisions increases as the utilization increases, and there is poor throughput during high utilization periods. One disadvantage of non-persistent is that there are longer delays for single stations. For me, the cost and the simplicity of adding a new user were the main factors in favor of CSMA/CD, since Token Ring is much more expensive and it is more complex to add a new user.</response>
+      <response_feedback>This is correct, Mr. Flipper</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.50">
+      <response>I recommend Token Ring.
+Token Ring can have good throughput under the condition of the high utilization(which means high load).
+And Token Ring sturcture is good at expending the scale of the stations. The length of the frame is changeable.
+However, other choices like Aloha or CSMA have poorer performance when the load or connected stations increase.
+
+The potential weakness is that the token ring is vulnerable when meeting invalidation. One failed station leads to the whole ring fail.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws!</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.60">
+      <response>I would go for a Token Ring procedure because it offers good throughput at high channel loads compared to the alternatives and because the network can be easily expanded because Token Ring does not have hardware requirements (since it's a digital technology), leaving the field open for any kind of system that is yet to be connected to the network in the future. A weakness is that systems might be delayed by the need to wait for (the) token(s).</response>
+      <response_feedback>You probably referred with "digital technology" to slide 73 in the LAN slide set. "Digital technology" there refers to the digital (instead of analog) bit coding (so there is no need for analog components for the collision detection) and not to the system as a whole. This does not lead to easier expandability, because we still need to interrupt (and therefore pause/turn off) the ring to insert new systems.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.71">
+      <response>Because channel load is expected to be high compared to the provided hardware a technology with high through put should be chosen, such as TDMA with reservation:
+
+normally I would recommend a token ring, but because we already have an opperating channel where some systems should be added we cant rewire the current network, because the cost would be too high. Also there is no informatiom if CSMA would be techniacally possible, so TDMA can provide a satisfieing throughput. TDMA with reservation is easy to operate and new systems can be added easily. Reservation frames cost time and data cant be send immidiatley, which is a weakness.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.74">
+      <response>I will recommend the CSMA/CD.
+Reason:
+1. CSMA/CD is a Mac procedure for Ethernet, which is widely used. It can offer a relativ cheap solution and hence is suitable for project with tight funding. 
+2. It offers a gut solution to deal with collision, so it can use the bandwidth efficient and when more employees add in the LAN in future, there will not be a big problem. 
+Weakness:
+No prioritizing. All the systems are equally important. So LAN can not support the function like sending the frame from some specific systems first.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.96">
+      <response>Non-persistent CSMA bietet sich dafür an, da es einen hohen Durchsatz bietet und einen geringeren Overhead. Aber es hat dafür längere Wartezeiten für die einzelnen Stationen, sollte das LAN für zeitkritische Anwendungen benutzt werden, könnte es so zu Problemen kommen.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.106">
+      <response>I would recommend Token Ring as the preferred MAC procedure for the given situation. Firstly, Token Ring has a good throughput even during high channel load, opposed to other MAC procedures. Secondly, as we have currently 20 systems sharing the same channel, it is unlikely that each of them sents a frame with the same length, especially if the network is supposed to expand later with more systems. In Token Ring Procedure, the length of the frames can be of variable size and is therefore good for a network with many systems, that send different sizes of frames.
+
+However, due to the aim of expanding the network with multiple systems, we will suffer from delays because each system has to wait for the token until it can send a frame.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.116">
+      <response>I would use a Token ring because it performs good under high load with good throughtput. It has an uppor bound of time a member has to wait before she can send again, which is good. One drawback of this solution is that it needs a central monitor to check the network.</response>
+      <response_feedback>But why is a central monitor a disadvantage?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.125">
+      <response>&lt;p&gt;I would suggest non-persistent CSMA.&lt;br&gt;The first reason is a very high throughput per frame compared to other procedures. This allows the network to be operated cost-efficiently as required.&lt;br&gt;Another reason is that the network can be easily expanded (compared to token ring, for example).&lt;br&gt;A possible weakness could be a higher number of attempts per packet, which causes a certain delay until the data is transmitted.&lt;/p&gt;</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.140">
+      <response>In this case, non-persistent CSMA is recommended. Contention free schemes such as Polling is not suitable in this case due to their extensibility. For example, if more systems are added, we will have to allocate additional stations later on, whereas random access schemes with contention will not require such work. From those, non-persistent CSMA is overall better for highly loaded channels because it has improved overall throughput. The only potential weakness is that it will cause longer delays for single stations.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.157">
+      <response>I would recommend the Token Ring. In contrast to the random access procedures, collisions cannot occur even with a high workload. It is also very easy to add another system and expand the Token Ring. One disadvantage could be that it could take a while for a system to take its turn.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws and it is not easy to add new systems!</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.166">
+      <response>I would recommend CSMA/CD. A reason is that because of the high channel load the channel needs a contention period so that everybody can use the channel and has the possibility to fight for a reservation slot. Another point is that it saves time and bandwith. There are less collisions because of the carrier sense and it's easy to expand. A weakness is that the station has to realize during the sending of a frame if a collision occurred.</response>
+      <response_feedback>Why does by high channel load the channel need a contention period? Without contention, everybody gets the possibility to use the channel, too.</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.186">
+      <response>I would recommend the company to set up their LAN using CSMA/CD. I see this medium access procedure as the most suitable for this scenario because it is cost efficient, which is great if the funding is tight, and also it is possible to connect new stations in the future without any downtime. A weakness of this procedure however is that the more the system is used, the more collisions occur and therefore, the throughput decreases. Accordingly, in addition to my recommendation I would tell the company to monitor the throughput as more stations join the system. In the future, they should consider changing to Token Ring at some point as the throughput with this method performs better with more stations.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.197">
+      <response>I would recommend the CSMA procedure, because it is cost efficient and expandable without shutting down the network.
+The downside or potential weakness is the poor throughput during high utilization of the network. To compensate this the systen could be built larger as exactly needed and because of the cost efficiency it wouldnt be more expensive than using other procedures.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.226">
+      <response>&lt;p&gt;I would recommend using the token ring procedure, because it has a good throughput at high utilization (which is needed) and it has a maximum waiting time, which is good when many stations want to send. But on the other hand it is more cost intensive than the other procedures.&lt;/p&gt;</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.258">
+      <response>I would recommend CSMA p-persistent because it would the most efficient for large amounts of transmissions while also preventing collisions. It is more efficient than non-persistent (for example) due to the way it checks the channel for activity, rather than waiting a random amount of time to check back, the p-persistent procedure checks back continuously and then based on some probability p, starts transmitting. Although it only checks for collision after transmission, it has a much lower rate of transmitting when others are also transmitting due to the random nature at which begins its transmission. This prevents all 20 systems from immediately transmitting at once as soon as the channel is free. Despite the obvious downside that it does not check for collisions during transmission, I find this to be an efficient procedure for sharing channels.</response>
+      <response_feedback>What is your 2nd reason? Why would a check for transmissions be useful?</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.260">
+      <response>I would recommend TDMA with reservation, since the throughput is especially good in the contention-free period after sending the reservation requests because the data can be sent continuously without collisions and the channel is fully used. 
+
+Furthermore because of the reservation concept the provisioning of the line is highly adjustable because only stations with a reservation request use the channel which is extremely good for a network which should be expandable. 
+
+A potential weakness is that the stations need synchronized clocks which leads to an overhead.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.261">
+      <response>Using Token ring would be a good solution, as it is easy to implement (in terms of hardware) and it provides fairly distributed medium access even in high load situations. A weakness is the ring topology that requires a newly added system to be connected to two other systems.</response>
+      <response_feedback>Well, there are other solutions, that would be easier to implement then token ring (Aloha for example)</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.293">
+      <response>CSMA p-persistent would be a good choice, because the channel is checked before sending, to avoid sending if the channel is too busy. Furthermore only with a certain probability is sent when the channel is available, to avoid that multiple stations send at the same time, unlike non-persistent and 1 persistent CSMA, where immediately is sent. Additionally it is waited a random time after detecting a collision, to let the channel "cool off". A potential weakness is that it is waited a random time before sending, which could be an unnecessary delay if the channel is available and not used by other stations.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.297">
+      <response>Recommendation: p-persistent CSMA
+
+1. The company can adjust p to get the best compromise of delay and throughput.
+2. They can adjust p according to the number of users, making it scalable.
+Potential weakness: The delay is going to become worse the more systems share the channel and they adjust p accordingly.</response>
+      <response_feedback>What is the difference between reason 1 and 2, both are that p is adjustable? And why is your weakness a weakness if you have a quick solution for it?</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.309">
+      <response>As the company is expecting a high load for the channel I would recommend CSMA/CD. It has better throughput properties (less collisions) compared to the other CSMA and ALOHA protocols and does not suffer from poor utilization if one or more clients are temporarily absent. TDMA and Polling are too inflexible if one or more of the systems are currently not sending anything, as slots would be wasted. One weakness if CSMA/CD is the poor thoughput with high utilization compared to a Token Ring, but that would be more expensive and since the funding is thight it is not viable.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.339">
+      <response>In my opinion I would recommend a Token Ring, as it provides the possibility of high utilization as it is expected by the company. It shouldn't matter if the amount of systems would increase, it would even allow to set priorities in sending data which would likely support the work as more devices mean more data to handle. But building one would be expensive in comparison to other structures and it is to be planned with delays during sending due to need to wait for tokens.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.392">
+      <response>I would use Token Ring, because it has good throughput even during high utilisation, which is to be expected at 20 systems and it can be expanded later, as it supports a maximum of 250 stations. But you need a central monitor.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws! Why is a central monitor a disadvantage?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.395">
+      <response>CSMA / CD ist die beste Alternative.  Bei einer hohen Auslastung des System ist der Durchsatz an Daten recht hoch. Außerdem ist es recht günstig. Das Hinzufügen von weiteren Nutzern ist einfacher als bei anderen Methoden. Jedoch kann die Überprüfung des Mediums bei langen Strecken und bei eimem zu kurzen Frame, Fehler hervorrufen.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.396">
+      <response>I recommend CSMA/CD. due to 
+1.cost efficient
+2.practically no waiting time during low utilization
+
+potential weakness :if all 20  systems try to sending，the utilization will be lower.  And as  the number of systems increases, the performance will get worse.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.399">
+      <response>I would choose a Token Ring MAC due to its great throughput during high net utilization and deterministic maximal waiting times. However, delays may occur while waiting for a token and it being a bit more expensive than CSMA.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.400">
+      <response>I would recommend using non-persistent CSMA assuming we use a single channel.
+It offers a high medium throughput especially in comparison to 1-persistent CSMA at higher loads.
+It also has a lower overhead as the logic behind it isn't overly complex( thereby reducing the cost of complex systems for example).
+
+A portential weakness would be that it has a high delay which could be detrimental to time critical applications.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.405">
+      <response>I would recommend CSMA/CD because it saves time and bandwith and its the most frequently used</response>
+      <response_feedback>What is a possible weakness?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.408">
+      <response>For this scenario I would recommend TDMA with reservation, since it can provide a high throughput in the contention-free period while offering a more flexible provisioning with the reservation.
+Due to the use of slot reservation, this MAC can also provide good service in an expending network.
+TDMA needs synchronized clocks on all systems for the time slots to work.
+Even though the reservation window is contention based possibly leading to collisions, this section makes up only a small fraction of the transmission process.
+However, if in the reservation phase to much collisions happen, the slots will stay unused meaning a low utilization.
+In this case a p-persistent CSMA (/CD) would be a better fit, while p depends on the current load and number of stations and whether Collision Detection should be used, depends on the cable length.
+
+Reasons against the other protocols:
+Polling would need a centralized controller.
+TDMA without reservation possibly wastes slots for systems, that don't have anything to transmit, and isn't as flexible to an increasing network size.
+A token ring is expensive and only provides low throughput.
+ALOHA in both forms doesn't provide good throughput in a high load network, since many collisions will happen.
+In CSMA networks with high load have also a poor throughput due to collisions.</response>
+      <response_feedback>Then why do you not choose p-persistent if it is better? Correct though</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.421">
+      <response>In this scenario it's challenging to decide which one is the perfect solution but we can surely choose the more practical one. Token Ring is would be my first choice thanks to the fact that it doesn't necessarily have collisions ( not always ) unlike the other procedures there. 
+Furthermore, the Token Ring provide good "throughput" even at high channel load which likely is going to be the case.
+A potential weakness of my recommendation could be the lack of flexibility when it comes to expanding the users number later on ( adding a new users ).</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.431">
+      <response>I would recommend using CSMA/CD. Carrier Sense is useful when the channel has a high load since the necessary overhead gets really small in comparison to the amount of prevented collisions. CD is also useful since it reduces the wasted time after a collision which is important since high load means more collisions. The weakness of the procedure is that it scales badly with range because the maximum range is dependend on the frame size and vice versa.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.436">
+      <response>CSMA-CD should be used. It has high throughput, so it can handle heavy loads, and not a lot of overhead. Saves time and bandwidth, because same bandwidth is used and the system sends continuously until a collision is detected.
+
+The main potential weakness is that because the sending station has to listen while sending, short frames may cause unsolvable collisions, so a minimum frame length is required.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.466">
+      <response>I would like to recommend p-persistent CSMA for this company.
+
+Reason 1: It may cause waste channel (i.e. low utilization of channel) if the contention free method like polling TDMA and token ring is used, because some users in this network may don't send data often.
+Reason 2:  Due to the high load of channel, the probability of collisions is high. P-persistent CSMA is a better way to balance length of waiting time to send data and probability of collisions in ALOHA and CSMA.
+
+Potential weakness: The value of p is not easy to determine, because too small value of p may causes low utilization of channel and too large value may causes high collision rate.</response>
+      <response_feedback>But CSMA p-persistent might cause waste channel, too. When sending only with probability p, it could happen that nobody sends even though the channel is free</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.474">
+      <response>CSMA (CD) only becomes problematic when there is a large amount of data traffic; with 20 systems it should not be a problem. Token Ring is also good because every system has a fixed time window in which it can send out data, provided that all stations want to send approximately the same amount of data. With the small network I would prefer the CSMA (CD) procedure, as the efficiency should then not pose a problem. If the network should be extended I would rather choose the token ring procedure, with the weakness of having to wait for the next token.</response>
+      <response_feedback>So which one do you recommend? And yes, in the text it says: "it should be expandable". Extendability might be a strong suit for token ring but it has its flaws. Please note: CSMA/CD is much easier to extend.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.508">
+      <response>I would recommend the Token Ring procedure. While it isn't the cheapest solution and can only be expandable up to a certain point, the amount of systems is low enough that this procedure allows for good throughput even during high utilization, which is needed based off the given situation, and also allows for nice options as setting priorities or allowing random frame lengths.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.517">
+      <response>I would recommend non-persistent CSMA.
+
+Reason 1: Achieves high throughput per frame under load (close to 1.0) compared to other MAC schemes
+Reason 2: No central coordination needed, less expensive hardware compared to Token Ring is sufficient
+Potential weakness: Non-persistent CSMA can't guarantee a given latency or QoS unlike other schemes like TDMA or Token Ring</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.525">
+      <response>I would recommend a token ring. The channel load is very high, so it can be efficiently used, since there is no collision, provided there is no greedy station which doesnt give up control over the token. Furthermore, new stations can be attached by halting the token on a station and attaching a new one. This is on the other hand a weakness of this approach, since the channel is unused in the case of the attachment of a new station.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws (as you have realized)</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.540">
+      <response>I would recommend using either the non-persistent CSMA or the p-persistent CSMA with a low value for p (e.g. 0.1 or 0.05). First of all both are cost efficient (budget is tight) and using these specific CSMA procedures also guarantees a good throughput during high channel load. In addition to that adding new systems to the network is no problem since the network does not have to be shut down to connect additional stations to it. 
+One downside of this procedure would be the higher delay for the single stations.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.570">
+      <response>My suggestion for the presented scenario is CSMA/CA as it is simple, cheap and also distributed. 
+*The method avoids collision by interframe spacing, contention window and ACKs
+
+Potential drawback
+QoS and fairness among the nodes cannot be guaranteed when the number of contending nodes increases.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.600">
+      <response>As funding is tight, I would suggest an Ethernet solution, like CSMA. As they are expecting high channel load, I would suggest CSMA/CD to handle collisions effectively. A weakness of CSMA/CD is setting the collision window between two max. distant senders.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.651">
+      <response>I would recommend to use  CSMA/CD procedure
+
+firstly it is cost efficient than any other procedure especially token ring and the company has tight funding. 
+
+secondly the  CSMA/CD procedure able to connect the station without  shutting down the networks so it would be  expandable.
+
+ potential weakness:  collision increase as we expand the LAN</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.665">
+      <response>I would reccomend CSMA/CD, because it offers an efficent utilization of the communication channel - even in case of an detected collision. There is no need for a master, that polls the clients or regenerates potentially lost tokens.
+A potential weakness is the lack of real time capabilities (synchronous transfers), because especially with the descripted high load it could need a long time until a station sends successful. (Stochastisch gesehen kann eine Station früher oder später senden, es ist jedoch kein Zeitfenster garantiert.)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.680">
+      <response>Meine Empfehlung wäre CSMA/CD, da hierbei mehrere Stationen (20&lt;) auf ein gemeinsames Medium zugreifen können. Bei diesem MAC Verfahren ist es von Vorteil das jede Station prüft und nur dann sendet sobald das Übertragungsmedium frei ist, gleichzeitig erkennt es bei gleichzeitigen Senden mehrer Stationen Kollisionen. Weiterer Vorteil ist, dass hierbei Zeit und Bandbreite eingespart werden kann.
+
+Zum Problem werden könnte, wenn sich zu viele Stationen im LAN befinden, dass dadurch vermehrt Kollisionen auftreten.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.703">
+      <response>CSMA/CD.
+Reasons:
+1. 20 systems share the channel and it should be expandable, so CSMA/CD and Token Ring are more appropriate.
+2.It is said that the funding is tight and the load of the channel should be high enough.CSMA/CD is better because Token Ring cost much more.
+
+potential weakness:In CSMA/CD, if two or more stations send frames at the same time, there would be collisions. If utilization increases, collisions also  increase.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.722">
+      <response>I'd recommend nonpersistent CSMA-CD. Nonpersistent because according to the diagram on slide 29 it offers the best throughput for this scenario. CD because it minimizes the channel capacity wasted on collisions. A weakness of this recommendation might be that I assumed that nonpersistent is better than p-persistent, because the final number of systems is unknown. If the number is known, one could choose a suitable value for p and might have better performance than nonpersistent.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.751">
+      <response>I would recommend using a Token Ring, because it can guarantee a high troughput in case of high channel load and token with different priorities can be generated. One potential weakness is the fact that delay times for the individual systems will increased with increasing number of systems.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.768">
+      <response>I woudl recommend p-Persistent CSMA .
+Reason 1: Because 20 systems share the channel. When the channel is busy ,it will be re-checked continuously, which could relieve the hardware.
+Reason 2: This procedure has compromise between delay and throughout ,which has less collisions at higher load.
+potential weakness : Being defined by parameter p makes it  more complex.</response>
+      <response_feedback>Why should continuously checking the channel relieve the hardware? What hardware exactly?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.794">
+      <response>I would recomend to use a non-persistent CSMA. It has great throughput even under high load at the cost of delay for the sending station. The sender is not using the next available slot but rather waits a random time before checking the channel again so it might not be good if the data is very time critical.
+It is also expandable so more systems can be attached in the future.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.802">
+      <response>I will use Token Ring, because it has random frame lengths and good throughput. That's why Token Ring is expandable.
+But there is delay because of waiting for token.</response>
+      <response_feedback>Random frame length and good throughput do not lead to extendability! Extendability might be a strong suit but it has its flaws!</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.813">
+      <response>I would recommend the Token Ring, because in comparison to the other procedures there (usually) are no collisions. And also can the Token Ring provide good throughput even at high channel load which likely is going to be the case.
+A potentional weakness of the Token Ring is that it's not that flexible in expanding later on.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.846">
+      <response>I would recommend CSMA/CD. Collisions will be detected very quickly, therefore the time during which the channel is occupied with colliding transmissions is minimized. The throughput will be the highest and most efficient of the listed procedures. 
+One drawback is the inability to assign priority to certain nodes (e.g. the CEO), which would be possible with polling-style protocols.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.850">
+      <response>p-persistent CSMA with collision detection. It's rather cost efficient and allows to expand the network without shutting down the network.
+
+A disadvantage is that at higher channel load (which is the case here), the chance for collisions is higher and throughput might suffer. 
+To reduce this problem, the p value would have to be relatively low (e.g. 0.01 persistent).</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.876">
+      <response>p-persistent CSMA
+1. when the channel is busy, it will wait continuously until the channel or slot available
+2. It sends frame with probability p waits with probability 1-p, which can effectively solve the collision and improve the efficiency.
+
+weakness:
+But because of the probability and time slot, it requires complex consideration for the parameter p.</response>
+      <response_feedback>These are the properties of the procedure, but why is this suitable for the situation?</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.889">
+      <response>personally i would recommend token ring
+pro:
+1. the token ring can guarantee a good throughput during high utilization.
+2. even all stations wants to send at the same time, the maximal waiting time is fixed.
+contra:
+1.it required a central moniter to avoid lost token, and costs more when adding new stations.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.910">
+      <response>CSMA/CD is recommended.
+
+Reasons
+1. Mainstream adoption (802.3, Ethernet)
+2. Good bandwidth utilization (hence efficient for high load)
+
+Weakness
+1. Limits imposed on minimum frame size and maximum distance to station</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.930">
+      <response>I would recommend non-persistent CSMA because it is expected that multiple stations want to send at the same time (high channel load) and it provides good throughput even during high utilization. One weakness of this MAC procedure is, that they are long delays for single stations.</response>
+      <response_feedback>What is another reason? You only gave 1</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.965">
+      <response>I would choose non-persistent CSMA with Collision Detection (CD).
+The first reason is that CSMA procedure is costly efficient, so that would help the company, since the funding is tight.
+Secondly, CSMA procedure allows the LAN to have new stations and the addition does not require the shut down of the rest of the stations. This way, the expansion would be easier.
+On the downside, CSMA results into many collisions, since two or more channels may want to send data the same time. For this reason, we choose non-persistent CSMA with Collision Detection, because firstly, non-persistent CSMA works better with LANs with high transmission load (by waiting for random times) and secondly, CD will save some time from sending an already destroyed frame. The problem of the collisions will still exist, but it will not be so huge (instead of other CSMA methods).</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.974">
+      <response>I would recommend using a Token Ring because of the good behaviour during high channel load and the prioritising system, which allows the company to transfer important data faster despite high channel load.
+A potential weakness of the system are the limited expandation options (about 250 systems).</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.998">
+      <response>I'd recommend CSMA Variation p-Persistent. This procedure works well with high load systems and is scalable. Probability p can be adjusted to suit the needs of the system. The only downside is, due to the randomness of sending the data, delay of a station is increased.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1017">
+      <response>Token-Ring
+The first reason is that only a station with a token can send so there will no be high traffic. An other reason is that there will no be collison because only the station with a token can send. 
+A potential weakness is that the token can be lost and it can not be forward to the other station so that the other can send their packet.</response>
+      <response_feedback>Why is high traffic something to be avoided, in other words: why is no high traffic an advantage?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1061">
+      <response>CSMA/CD saves time and bandwidth. Furthermore CSMA/CD is used for ethernet so it is really compatible to a lot of products. The usage of CSMA/CD with p-persistent CSMA would be nearly perfect, so the channel usage would be very high. A problem could be the maximum distance to a station.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1073">
+      <response>Ich würde non-persistent CSMA empfehlen.
+CSMA basiert auf dem ALOHA-Verfahren, jedoch findet vor dem Versand von Daten ein Check des Kanals statt, ob dieser frei ist. Bei non-persistent CSMA werden Daten bei freiem Kanal direkt gesendet. Dies ermöglicht hohen troughput bei guter Skalierbarkeit.
+
+Ein Nachteil ist jedoch der höhere Delay für die einzelnen Systeme, da der Kanal immer nur zufällig gechecked und nicht durchgehend "abgehört" wird.</response>
+      <response_feedback>What is your second reason?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1075">
+      <response>I recommend non-persistent CSMA, because it provides decent throughput. At the same time no extra central control HW is needed. It is also expandable without much further effort.
+A downside is the possibility that one station that occupies the medium frequently, it might happen that other stall since they sense the medium before sending hence the utilization of medium might not be fair.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1100">
+      <response>I recommend the token ring because it guarantees that every station gets the chance to send. Also it is easily expandable later. However, the more stations there are or the more data there is to be sent from one station, the longer it takes to wait for the others.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws and it is not easy at all to expand!</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1114">
+      <response>I would recommend a Token Ring approach: 
+1) It can provide very high throughput, depending on how big the overhead of changing the token to the amount of packets sent is. 
+2) As long as the token management works out (no loss / double tokens), there should never be collisions.
+
+A potential weakness would either be if the systems only want to send a very low amount of packets at a time, the overhead of token transfer may become proportionally bigger. With a lot of systems, there may also be a huge delay before transmission can start.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1120">
+      <response>I would recommend Token Ring 
+The first reason is that Token Ring  has higher channel usage compare to pure / slotted ALOHA. Both of them have amount of collisions. On the contrary, there are no collsions in Token Ring. 
+The second resson is that Token Ring has good throughput during high utilization. 
+
+Con:
+- Token Ring inevitably has delays due to need to wait for tokens.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1121">
+      <response>I would recommend Token Ring, because it offers good throughput during high utlization and is expandable for multiple devices. One potential weakness could be delays due to wait for the token.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws!</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1154">
+      <response>CSMA based precedures are better because they are cheaper to implement compare to Token ring and better channel throughput compare to ALOHA, Polling, TDMA.  non-persistent CSMA or 0.01 persistent CSMA are best choices because their channel throughput are stable with increasing load (expandable). However non-persistent wil have long delays for single stations</response>
+      <response_feedback>And which one is your recommendation?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1174">
+      <response>Since the funding is tight, I'd suggest using CSMA/CD. It's cost efficient and since the company only has 20 systems (in the beginning) there is most likely no waiting period. Depending on how large the company is going to grow, maybe CSMA/CD is not the best choice though. It doesn't perform good if there's a high work load.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1201">
+      <response>Constraints: 
+- should be cheap
+- high utilization
+- not many hosts
+- expandable
+
+Based on the expected high utilzation of the network any method prone to have many collsions would not be ideal. So the ALOHA protocols and the high-p CSMA are out of consideration. Polling is also not a good idea becaus of the same reason. 
+So the best options would be a CSMA with a low p or maybe a nonpersistent approach, or a Token 
+Ring procedure. I would personally suggest in this case the Token Ring based approach, as it performes very good under high utilzation and is best used in an environment with just a few host in the system so that the latency is kept low. However the cost of installing such a system is higher then when using the regular 802.3 Ethernet, so using a CSMA would be the second best alterantive if the budget is this thight.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1202">
+      <response>p-persistent CSMA because ithe throughput is better compared to the other procedures. But the p should be choosen well. This varition is a compromise between delay and throughput compared to 1-persistent and non-persistent CSMA.</response>
+      <response_feedback>What is your 2nd reason/advantage of p-persistent CSMA?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1222">
+      <response>I would recommend p-persistent CSMA MAC procedure for this company. 
+First reason: since we dont know how much users will use the system later, we need a versatile system. we can change the variable p, that dictates the chance of sending, according to how many people are using the network, and adjust the load on the the ether that way. when more users will join, p can be dialed down to allow for less collisions.
+Second reason: as we saw on the lecture, the p-persistent can reach high throughput, and when there will be a lot of users using the system, this can be a useful property.
+
+A potential weakness of the system is that the delay might be high. A message can be tried to be sent many times until it is sent in the end.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1225">
+      <response>CSMA/CD
+recommand reason:
+1. the CSMA/CD can reach high speed to transfer the medium.
+2. CSMA/CD can deal with collision
+
+potential weakness:
+can not avoid collision and need to listen the link while transferring the medium.</response>
+      <response_feedback>Why is dealing with collisions an advantage? And why is listening to the link a disadvantage?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1235">
+      <response>It does not suffer from collision under higher loads and does not need additional equipment for timing or scheduling. It does not have problems with adding new participants as long as the list of computers gets updated on change.
+Problem: It may take long till a particular participant is allowed to send again, so there must be a good parameter calculated, that defines the maximum send-size so that there is a good  distribution between utilization and wait time.</response>
+      <response_feedback>What procedure are you describing? Token ring? If so: Extendability might be a strong suit but it has its flaws (pausing the ring, ...)</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1268">
+      <response>TDMA without reservation is better than the other protocol. 
+TDMA would be better according to the assumption that " they expect the channel load to be high", therefore the chance of having a collision is higher. in this case, if the network is congested, TDMA is a better solution to avoid collisions. no extra configuration is required in case of expanding the number of systems. 
+However,  there is poor channel capacity usage at stations with low transmission load due to the fact that some senders have no data to send and therefore do not use their time slots.</response>
+      <response_feedback>TDMA without reservation is great to avoid collisions, this is true. However, if the network for example consists out of 20 systems, each systems has to wait 19 slots before it can send its data. Therefore, the minimum latency is very high or the time slots have to be very small</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1288">
+      <response>CSMA  with CD:
+
+Pros:
+Low overhead which is beneficial since funding is tight
+Saves time and maximises bandwidth
+
+Con:
+When load increases, collisions also increase.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1336">
+      <response>I would recommend the TDMA with reservation, because it has a high throughput at high channel loads. It's also cheap and easy to expand. One potential weakness is that at stations with lower transmission loads have a poor channel usage. The other MAC procedures are to expensive or have bad throughput at higher loads, thats also why i choosed TDMA.</response>
+      <response_feedback>Why does TDMA with reservation with stations with lower transmission loads has poor channel usage? This is why there is the reservation -&gt; to have a better channel usage 
+Rest is correct</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1358">
+      <response>CSMA/CD:
+- Attached Systems, that are not sending for a long time, don't slow down the network. So the heavy load can be handled well, if only few systems at a time need a high transfer speed.
+- New systems can easily be added without altering the procedure of the router, like in Polling or Token Ring. 
+
+Con: 
+- If the systems need to have some real time requirements, the procedure can't ensure it. In this case you could implement a TDMA with reservation every given time only for this kind of data transfer.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1360">
+      <response>I would recommend non-persistent CSMA.
+The reasons for that are that (1) the overall throughput (efficiency) is very good compared to other mechanisms and that (2) it is quite easy to implement it with regards to choosing correct parameters (e.g. with p-persistent CSMA, choosing the correct p can be quite difficult).
+
+A potential weakness is, that using p-persistent CSMA with the correct p might be more efficient than non-persistent CSMA.</response>
+      <response_feedback>But why not choose p-persistent CSMA then?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1362">
+      <response>CSMA/CD</response>
+      <response_feedback>Advantages and disadvantages?</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1370">
+      <response>p-persistent CSMA.
+Because it make full use of the channel's free time, it can relieve the pressure of the hardware. On the other hand, it has less collisions at high load.
+The weakness is, it is difficult to set the p-parameter.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1403">
+      <response>Tokenring wouldn't be impaired by the high channel load and can be easily expanded. Depending on the traffic and number of computers connected time between sends may be long though.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws and it is not easy to expand!</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1430">
+      <response>In this case I would recommend to use p-persistent CSMA with active Collision Detection feature. Compared to a token ring technology, CSMA is comperativeley cheap and easy scalable. A disadvantage may be the lower throughput caused by possible collisons compared to token ring, but for this CSMA provides better (lower) latency. With the collision detection the bandwith usage can be increased by quick collison recognition. P-persistent CSMA is defined by the p parameter, so it can also be adjusted to the specific needs and size of the company. Furthermore this technology provides a good compromise between throughput and delay (latency) which may both important parameters to look at for the company.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1437">
+      <response>Time Division Multiple Access with reservation:
+
+For the given scenario I recommend TDMA with Reservation, since it provides a high throughput when TDMA is used with reservations.
+It is also flexible and expandable as a new user can easily be added to the reservation system.
+On the other hand, a synchronized clock and exact timing is required.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1440">
+      <response>Due to the expected channel load being high, there is not necessarily the bandwidth available to coordinate access to the channel. Thus a medium access procedure based on random access should be chosen. With random access and a high channel load also the problem for collision arises and handling of collision detection becomes necessary.
+I would recommend using CSMA/CD as it has (1) a low overhead and (2) utilizes the bandwith to its fullest when possible. One weakness of CSMA/CD is the edge case of possible long waiting times when short frames are transmitted of very long distances which renders the built-in collision detection essentially useless.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1475">
+      <response>I would recommend CSMA/CD. Reasons:
+1. Relative good throughput due to best collision handling in comparision to the other given options for the cheaper price in comparison to token ring.
+2. The number of stations they may want to add in the future is not limited and it is easily expandable.
+
+The downside of CSMA/CD is that the throughput is lower than it could be when used under high utilization. If wanted, this can be circumvent to some degree by buying better hardware for the extra cost a collision free system  would have.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1502">
+      <response>I would personally say that Token ring is the best option. One reason would be that more workstations can be added to the network later on when necessary. Also, Token ring allows for good throughput during high utilization. 
+One potential weakness would be that is more expensive than other options.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws!</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1516">
+      <response>My choice would be CSMA/CD since it enables the ability to add up stations easily and also has almost no waiting time in times of low utilization. 
+One downside of CSMA/CD is, for increasing distances, the efficiency is deacreasing.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1531">
+      <response>Token Ring- recommended, because it has good throughput even during increased utilization and you can expand it. Downside: it is expensive
+
+non-persistent CSMA - recommend, the throughput is good/better than 1-persistent CSMA, chance of collision are less than 1-persistent but more than p-persistent, downside: delay on high load is longer than 1-persistent because station checks randomly when channel is busy.</response>
+      <response_feedback>Token Ring: Extendability might be a strong suit but it has its flaws!
+non-persistent CSMA: if p-persistent has less collisions, why did you not choose p-persistent?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1562">
+      <response>Slotted ALOHA is hier recommended due to the reasons:
+1-Any station can transmit the data at the beginning of any time slot .
+2-It reduces the number of collisions to half and doubles the efficiency of pure ALOHA .
+The potential weakness: Clock synchronisation can not be achieved.</response>
+      <response_feedback>Reason 1 and 2 do not really explain, why you chose slotted ALOHA and not for example CSMA/CD because those two things are also applicable with CSMA/CD. Also, why can Clock synchronization not be achieved?</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1576">
+      <response>CSMA P-Persistent would be ideal, since a compromise between delay and througput can be made changing the probability p. 
+- A sweetspot can be selected. For example, when adding more stations to the channel, a good balance can be found changing the probalility p, thus improving channel utilization.
+-It reduces the number of collisions better than 1-persistent CSMA
+
+One weakness is that with lower probability p, the channel utilization gets lower.</response>
+      <response_feedback>You can choose your p freely, so you will probably not choose a low p. Then why should this be a disadvantage if you will not choose a low p?
+Please also note, that the channel utilization does not have to get lower with a low p, especially if there are a lot of stations trying to send. In this situation, it might even be reasonable to choose a low p.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1579">
+      <response>CSMA/CD
+The solution with CSMA/CD would be not that expensive corresponding to the tight budget. Furthermore it includes a Collision detection providing more safety. The down side is the lack of a maximum waiting period because its not deterministic.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1606">
+      <response>I would choose die CSMA CD (collision detection) procedure. The reason is that the sending station interrupts the transmission as soon as it detects a collision. A collision can occur if 2 or more participants try to send data packets at the same time and interfere with each other. So CSMA CD is a good option, especially if they want to expend the amount of systems from 20 to a few more. This procedure also is used frequently and saves time and bandwidth.
+
+One potential weakness is that it has a short frame.</response>
+      <response_feedback>Why is the short frame a disadvantage?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1613">
+      <response>MAC procedure: non-persistent CSMA
+
+Reasons: As expected the channel load will be high all the time and therefore collissions will occur frequently and we want to avoid them as they waste bandwidth. Additionally the random time interval will minimize the chance that two stations send in parallel.
+
+Weakness: Delays for individual stations increase as they re-check the channel status after a random time.</response>
+      <response_feedback>What is your second reason? Because if 2 stations send in parallel, there will be a collusion, and this is avoided (see your first sentence)</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1622">
+      <response>We would recommend usind CSMA/CD because it would be very cost efficient, while allowing to add users while the network is online.
+One potential weakness of CSMA/CD would be it's poor throughput in high utilization periods.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1633">
+      <response>We know that there are two prerequisites that we need to consider. On the one hand the MAC should be affordable and also able to deal with higher load, on the other hand it should be expandable for further use. In my opinion I would recommend to use CSMA/CD. Not only because it is most widely spread but also costs efficient which fits one of our prerequisites. Furthermore, CSMA/CD is also easier to expand in comparison with e.g. Token Ring. This fulfills our needs as well. One potential issue using CSMA/CD is that collision increases if utilization increases, this will lead to poor throughput during high utilization periods.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1645">
+      <response>Ich empfehle CSMA p-persistent, da dies bei einer hohen Anzahl von Teilnehmern gute Ergebnisse liefert
+Es ist besser geeignet als ein System mit Coordinated Access, da keine Zentrale Stelle benötigt wird(Verteilung, synchronisation). Und auch ein Token- System bei vielen Teilnehmern unklar ist, an wen der Token weitergegeben werden soll. (Gerät im Stand-by, gerade nicht benötigt)
+
+Nachteil ist, dass gerade bei wenigen Teilnehmern Zeit verschwendet wird, weil das System zufällig die Nachricht nicht sendet, obwohl es frei wäre</response>
+      <response_feedback>What exactly do you mean by "gute Ergebnisse liefert" -&gt; was sind gute Ergebnisse?</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1658">
+      <response>Token Ring
+Reasons:1. Good throughput - even during increased utilization 
+2. Deterministic behavior (max. waiting time),you will know after which time, you get the axis again to the data.You are really real-time.
+
+
+potential weakness: This company should be expandable later on. But Token Ring has maximum number of stations. They can not expand more than the maximum number.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1694">
+      <response>Token Ring will be better 
++ It is easy to extend afterwards
++ Good throughput even the utilization increase
+- High delay due to waiting for token</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws and it is not easy to extend at all!</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1743">
+      <response>i would recommend 802.3 CSMA/CD because first, we can add more stations in the feature without shuting down the network. Second, we have a high troughput if the channel is not busy (in the beginning we have also a low amount of stations).
+
+The disadvantages of this system is, that we get more collsions if the amount of stations and the throughput of the network increase.
+
+
+Given to the tight funding, i would recommend CSMA/CD.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1748">
+      <response>non-persistent CSMA should be used. Reason 1: It is good for the Networks with a high load medium. Reason 2: it offers a good throughput. Weakness: The delays are longer for each single station.</response>
+      <response_feedback>What is the difference between reason 1 and reason 2?</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1762">
+      <response>I recommend using the p-persistent CSMA procedure. As the channel load will be high, the company would profit from the high efficiency in terms of the overall throughput of this procedure. With a low p-value, the p-persistent CSMA could even reach perfect throughput efficiency. Also, adding additional systems to the network is simple, as the single participants in this procedure do not need to be aware of each other and it the procedure works completely decentralized. This increases the extendability and maintainability with extending scale. However, one drawback of this approach is that it introduces the p-value as an additional fine-tuning parameter that needs to be adjusted to fit the application scenario at hand, which introduces additional complexity.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1781">
+      <response>I would choose CSMA/CD. You can easily add up Stations, it is cost efficient and has practically no waiting time during low utilization. On the Downside, if distance increases, efficiency of CSMA decreases.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1798">
+      <response>A token ring is more suitable for this situation: It is expected that the channel load will be high and in the token ring, this is not an issue like it is for some other procedures given that it provides a good throughput during high utilization. Furthermore, we've seen that a token ring can handle up to 250 stations, so the 20 systems today and the expansion of it, later on, will still work correctly and handle the augmentation in the load. One potential weakness is that it is somehow expensive and complex.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws!</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1832">
+      <response>I would recommed Token ring. It has really great utilization even under high load which is great, if the budgets are tight. Furthermore, there can be added more systems without problems, as the central manager can compensate any breaks in the ring. The main problem is the somewhat higher cost, but you need to spend moneey somewhere, if the Network should work smoothly.</response>
+      <response_feedback>Extendability might be a strong suit but it has its flaws, adding new systems to the token ring can be quite difficult because you have to pause/stop the ring for some time.</response_feedback>
+      <score>3.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.1983">
+      <response>I would suggest using the non-persistent CSMA procedure. First of all, a procedure with contention should be used to provide the fastest data transmission for the possibly high amount of devices in the future even with a high channel load.
+
+With the non-persistent CSMA, the hardware of the sender does not have to recheck the network continuously, which is good in order to reduce the load of the not-so-powerful device(according to the given info).
+Second, the performance of the throughput is the second-highest even for a large number of attempts per packet, which is good for a highly loaded channel.
+
+Problem: There may occur longer delays for the single devices than necessary. In Example: the network was congested, the random timer is started and awaited, even though the network was free again immediately after the timer was started.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2063">
+      <response>In this situation, I believe that CSMA/CD is the best option for the company. First of all, CSMA/CD procedure has cost advantage. It is more cost efficient compare to the other procedures. Also, it doesn't have waiting time during low utilization. However, when the workload is getting bigger, the throughput is getting lower.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2077">
+      <response>Token Ring, because it has a good throughput during high utilization and a maximal waiting time. 
+A potential weakness are possible delays because of the waiting time for tokens</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2095">
+      <response>I would recommend the Token Ring MAC procedure. It enables good throughput even in higher congested scenarios, which makes it applicable especially in this scenario, where increased utilization can be expected mostly all of the time. Also it is beneficial to have wiring centers, where a cable interrupt can be recognized and repaired automatically. A major drawback of this procedure is the occuring delay due to waiting for the token.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2103">
+      <response>CSMA/CD
+The big advantage is, that sending station interrupts transmission as soon as it detects a collision.
+That saves time and bandwidth.
+Every Station can randomly send frames if the channel is free, their is no need for reservation or waiting for token or something else to send and this method is cheap, effective and well used in LANs.
+
+One potential weakness is that station has to realize during the sending of a frame if a collision is occurred. That means with higher data rates but the same max. distance between the stations the minimum frame size must be larger to guarantee collision detection.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2119">
+      <response>I would recommend p-persistent CSMA as it's well suited to maximize throughput by adjusting the probability parameter p depending on the load. This also allows for easy future expansion in both systems using the channel and the channel bandwidth. A potential weakness would be setting up the parameter p in a unfavourable way, e.g. setting it close to 0 to avoid collisions but because of that leaving more bandwidth unused.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.4.2126">
+      <response>Ich würde TDMA mit Reservierung vorschlagen,da die Auslastung bei dem konkreten Beispiel hoch ist und es weniger Kollisionen gibt, was insgesamt für einen höheren Durchsatz sorgt. Außerdem soll, wenn mehr Systeme dazukommen, die Wartzeit einzelner Systeme durch ungenutzte Slots nicht zu hoch sein. Daher ist es von Vorteil den TDMA mit Reservierung zu benutzen. Ein Nachteil von TDMA mit Reservierung ist, dass durch die steigende Anzahl an Geräten die Anzahl der Contention Slots steigt, was zur Folge hat, dass das mehr Netzwerkkapazität den Contention Slots zufällt.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>3.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

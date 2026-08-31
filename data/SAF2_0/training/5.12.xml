@@ -1,0 +1,1280 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="5.12">
+  <questionText>Discuss 3 methods (each with at least one advantage and disadvantage) that address the problem of duplicate packets on the transport layer in a connection-oriented service.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="5.12.a1">1. to use temporarily valid TSAPs -method: -TSAP valid for one connection only -generate always new TSAPs -evaluation -in general not always applicable:-process server addressing method not possible, because -server is reached via　a designated/known TSAP - some TSAPs always exist as "well-known" 2. to identify connections individually -method: -each individual connection is assigned a new SeqNo and -endsystems remember already assigned SeqNo -evaluation -endsystems must be capable of storing this information -prerequisite: -connection oriented system (what if connection-less?) -endsystems, however, will be switched off and it is necessary that the information is reliably available whenever needed 3. to identify PDUs individually: individual sequential numbers for each PDU -method: -SeqNo basically never gets reset -e.g. 48 bit at 1000 msg/sec: reiteration after 8000 years -evaluation -higher usage of bandwidth and memory -sensible choice of the sequential number range depends on -the packet rate -a packet's probable "lifetime" within the network</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="5.12.7">
+      <response>1. TSAP only valid for one connection; some TSAP are well known
+2. identify each connection by SeqNo; Endsystem must store this information
+3. identify each PDU by SeqNo; higher usage of bandwidth and memory</response>
+      <response_feedback>Few advantage and disadvantage are missing.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.12">
+      <response>1. Für jede Verbindung neue Transport Service Access Points. Vorteil: Keine zusätzliche Bandbreite, Nachteil: Nicht immer möglich (z.B. "Well known Ports").
+2. Für jede Verbindung eine eigene Sequenznummer. Vorteil: Mehrere Verbindungen mit gleichen Transport Service Access Points möglich, Nachteil: Setzt verbindunsorientiertes System voraus.
+3. Für jedes Paket eine eigene Sequenznummer. Vorteil: Funktioniert auch bei verbindungslosen Systemen, Nachteil: Mehr Bandbreite benötigt.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.72">
+      <response>Use of temporarily valid TSAPs:
+Pro:  Clear separation of connections, easier to implement because you need basically only focus on the TSAP when doing the separation
+Con: Is not general applicable and you cannot share the port for multiple connections, e.g. so it is not possible to watch a video and listen to music over webplayers (using Port 443) at the same time.
+
+Identify connections individually:
+Pro: Separation of connections and avoiding of duplicates between them and multiple connections for the same TSAP are possible
+Con: Harder to do with connection-less services and Endsystems need to store the information of assigned Sequences Numbers, however they cannot be assumed to be always online and thus cannot store the information reliably
+
+Identify PDUs individually:
+Pro: You have a high probability to avoid duplicates for hundred of years and each PDU can be identified individually until then and you can assume endsystems that go offline meanwhile
+Con: More bandwidth and memory is used</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.73">
+      <response>1. To use temporarily valid TSAPs valid for 1 connection only
+Advantage: Less overhead and easy to implement
+Disadvantage: In general not always applicable e.g some TSAPs always exist as well-known
+2. To identify connections individually. Each individual connection is assigned a new SeqNo and endsystems remember already assigned SeqNo
+Advantage: No clash with well known TSAP
+Disadvantage: Endsystems must be capable of storing this information. More overhead
+3. to identify PDUs individuallySeqNo basically never gets reset
+Advantage: Endsystems must not store extra information such as individual SeqNo, nor does it has problem with TSAP
+Disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.81">
+      <response>1. Giving every PDU a unique sequence number
+easy to use, needs to be evaluated which slows every PDUdown
+
+2. temporarily valid TSAP
+good option for a small number of devices
+needs to be generated for every connection
+
+3. Giving every connection a unique sequence number
+easy to use, endsystems need to store the numbers</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.151">
+      <response>1. Use of temporarily valid TSAPs:
+2. Indentify connections individually
+3. Identify PDUs individually:</response>
+      <response_feedback>Only names mentioned.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.153">
+      <response>1. to use temporarily valid TSAPs:
+- TSAP is valid for one connection only
+- generate always new TSAPs
+- process server addressing method not possible, because server is reached via a designated/known TSAP and some TSAPs always exists as "well-known"
+- in general not always applicable
+2.to identify connections individually
+Each individual connection is assigned a new SeqNo and endsystems remember already assigned SeqNo.
+Endsystems must be capable of storing this information.
+Endsystems, however, will be switched off and it is necessary that the information is reliably available whenever needed.
+3. to identify PDUs individually: individual sequential numbers for each PDU
+SeqNo basically never gets reset.
+Higher usage of bandwidth and memory.
+Sensible choice of the sequential number range depends on 
+- the packet rate 
+- a packet's probable "lifetime" within the network.</response>
+      <response_feedback>The response is correct but we expect answers in own words, not directly pasted from slides.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.160">
+      <response>The first method is using temporarily valid TSAPs where a TSAP is only valid for one connection and new TSAPs always have to be generated. It is a simple approach and therefore it is not always appliccable. The process server addressing method might not be possible, because e.g. the server is reached via a designated or known TSAP.Another method to tackle the problem of duplicates is to identify connections individually, every connections has a Sequence number and the endsystems store those. It is a simple and effective method, but the endsystems have to be capable of storing the necessary information. A connection-oriented system is also required.The last approach is to identify PDUs individually where every PDU has a individual sequential number assigned to it and it will basically neber be reset, making this method convenient, but at the cost of a higher usage of bandwidth and memory. The choice of the best range for the Sequence number has to be made with great care.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.172">
+      <response>1. Temporäre TSAPs
+Es werden für jede Verbindung neue TSAPs generiert. Funktioniert sehr gut für Server und Prozesse die auf Anfrage gestartet/erstellt werden.Nachteil ist, dass dies nicht überall anwendbar ist (Prozess/Server Adressierung über feste und "gut bekannte" TSAPs funktioniert nicht)
+2. Verbindungen individuell identifizieren
+Die SEQ werden individuell jeder Verbindung zugewiesen.Vorteil ist, dass dies nur einmal geschehen muss, da Systeme sich die SEQ pro Verbindung merken.Nachteil ist, dass die Systeme Speicher besitzen müssen, um die SEQ zu speichern.
+3. Individuelle SEQ für jede PDU
+Die SEQ werden individuell jeder PDU zugewiesen und nicht zurückgesetzt.Bietet den Vorteil guter Nutzung der Bandbreite und des Speichers.Die "Lebensdauer" und Paketrate muss bei der Wahl des SEQ-Bereichs beachtet werden, sonst kommt es zu Duplikaten!</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.180">
+      <response>1. Usage of new generated, temporary Transport Service Access Points (TSAPs) for each connection. No duplicates from other connections, but not applicable since there are well-know TSAPs that always exist.
+2. Assign each connection a sequence number. Prevents duplications of older connections, but only works on connection oriented systems that also need to be able to store the connection information.
+3. Assign each packet a sequence number. Duplicate packets can easily be recognized, but increases the bandwidth and memory usage of all involved systems.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.184">
+      <response>One possibilty to adress the problem of duplicate packets is to use temporarily valid TSAPs. These TSAP are valid for one connection only and are unique for this connection. Some ports are relied to as well-known TSAPs, which can cause duplicates again.
+Another possibility is to identify connections individually with a SeqNo. So duplicates are avoided by assigning a SeqNo to every connection. A disadvantage is the need to store this information in the endsystems even if they are switched of.
+Another possibility is to identify the different packets individually. So a sequential number is assigned to each PDU individually. This makes it easy to identify duplicates. A disadvantage is the higher usage of memory and bandwidth.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.189">
+      <response>1) Use temporarily valid TSAPs
+    Advantage: TSAPs are already built, no need to build a new system from scratch
+    Disadvantage: some TSAPs always exist as well-known so not possible to use this method always
+
+2) Identify connections individually
+    Advantage: No extra bandwidth usage like in (3)
+    Disadvantage: Hard to store this information 
+
+3) Identify PDUs individually with sequential numbers
+    Advantage: No need to reiterate seq. numbers for a long time
+    Disadvantage: Higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.190">
+      <response>1. to use temporarily valid TSAPs
+advantage:If the number of the connection is small, this will be useful and can save resource.
+disadvantage:TSAPs should be unique and needs large number of name to be used.
+2. to identify connections individually
+advantage:Only have to remember assigned SeqNo
+disadvantage:It only works with connection and relies on the endsystem's of storing information. And it's more complicated.
+3. to identify PDUs individually
+advantage:higher usage of bandwidth and memory.
+disadvantage:If we don't know how long the message take to get to the other side, we can't use this method.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.192">
+      <response>Temporary TSAP:
++ there is ne additional information that must be stored
+- process server is not addressable
+
+Connections are identified individual:
++ allows public sequence numbers
++ a lower usagae of the bandwidth
+- The endsystem must store this information
+
+Each Physical Data Unit (PDU) gets an individual SegNo:
++ The SeqNumber can last last for a very long time
++ the endsystem does not have to store any additional information
+- high utilization of the bandwidth</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.196">
+      <response>use temporarily valid TSAPs
++ can be generated for each application
+- from limited number of available TSAPs reserving one (i.e. getting a well known number) for a specific purpose is very unlikely
+
+Sequential numbers to individually identify a PDU
++ No Ports need to be assigned- high usage of bandwidth and memory for large sequence numbers
+
+
+identify connections individually
++ endsystems remember assigned sequence numbers whithout a central authority to assign them
+- endsystems need to store this information so connections can be recreated reliably after a shutdown or failure</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.221">
+      <response>1) temporarily valid TSAPs
++ the storage of additional information is not required- not always possible
+ 
+2) identify connections individually with sequence number (SeqNo)
++ lower increase in bandwidth- the endsystem must remember the SeqNo
+
+3) individual sqeuential number for each PDU
++ lager numbers sizes last very long (eg. 48 bit @ 1000 msg/s last 8000 years)- higher bandwidth and memory usage</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.224">
+      <response>For use temporarily valid TSAPs: Advantage: Always new TSAPs are generated. Disadvantage: generally not always applicable
+For identifying connections individually: Advantage: A new Sequence Number is assigned to each individual connection. 
+Disadvantage: end-systems will be switched off. It is important information is reliable when it is needed.
+For the identification of PDUs individually: Advantage: Sequence Number never gets a reset. Disadvantage: higher usage of memory and bandwidth.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.229">
+      <response>The Sequence Number indicates the exact position of the transmitted packet. If packets arrive asynchronously, the router can match packets, preventing retransmission. On the other hand, this field is only 32 bits in size, which limits unique numbers. In order to still be able to send more, a concept called "wrap around" is used, which requires calculation time and thus slows down the transmission. 
+The Packet ID identifies duplicates and drops them but memory is needed to remember packets that already arrived.
+The field Time-To-Live determines the max time a packet can travel. After that time a packet is dropped from the network. If messages have to travel a long distance, they will be dropped and will never be able to arrive.</response>
+      <response_feedback>the problem of duplicate packets on the transport layer in a connection-oriented service needs to be addressed.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.246">
+      <response>Method 1 - to use temporarily valid TSAPs
+ advantage: TSAP is unique, no one else can use it.
+ disadvantage: process server addressing method not possible because server is reached via a designated/ known TSAP and some TSAPs always exist as "well-know"
+
+Method 2 - to identify connections individually
+ advantage: each individual connection is assigned a new SeqNo, so it can avoid duplicates from other applications
+ disadvantage: endsystems must be capable of storing SeqNo information
+
+Method 3 - to identify PDUs individually: individual sequential numbers for each PDU
+
+ advantage: SeqNo basically never gets reset
+ disadvantage: higher usage of bandwidth and money</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.279">
+      <response>There are two separate problems that need to be considered here: Duplicates within a single connection or duplicate connections. As duplicate packets within a connection are easily handled by seqeunce numbers and the focus of the lecture seemed to be on duplicate connection, I will focus on those.
+1. Different port(TSAP) for each connection: Kind of defeats the purpose of ports as multiple ports would be bound to a single thread. Also servers that communicate on a well known port cannot use this methode. Solves the problem of duplicate connections without using additional bandwidth
+2. Count prior connections: Requires endsystems to keep track of this counter. Low effort as this would only be required in the connection establishment stage
+3. Count prior packets: Requires a realtively high bandwidth and memory. Could replace the already used sequence number within the protocol to avoid for example out-of-order packets</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.302">
+      <response>TSAP is fast and simple, but is not always applicable.
+Individual conn identification
+individual PDU identification</response>
+      <response_feedback>Description missing for remaining two.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.305">
+      <response>1. Use temporary valid TSAPs: +TSAP valid for one connection only -not always applicable because of process server addressing method
+2. identify connections individually with unique Sequence Numbers: +unique identification of connections remembered by ESs -ESs must be capable of reliably storing this information
+3. identify PDUs individually with individual sequential numbers for each PDU: +SeqNo basically never gets reset -higher usage of bandwidth and memory
+(f.23, 24)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.320">
+      <response>One can use temporarily available ports, but this isn't generally applicable as there are well-known TSAPs however it is simple.
+One can resolve the problem by identifying individual connections, the upside is that connections can use the same sequence number for the whole lifetie but the downside is that the sequence numbers need to be reliably stored.
+The last method is to individually identify PDUs this allows the rejection of duplicate packets during the transaction but you need longer sequence numbers on fast connections.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.378">
+      <response>M1: temporarily valid TSAPs: -not allways applicable +TSAP only valid for some time
+M2: to identify connections individually: -endsystem have to be capable to save the SeqNo +connection is more save because each connection has a new SeqNo
+M3: to identify PDUs individually: -higher usage of bandwith and memory +connection can always be established</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.386">
+      <response>1. use temporarily valid TSAPs
+Advantage: Simple to implement almost no additional overhead
+Disadvantage: “well-known” TSAP's exist with which the server is addressed, so changing TSAP's is not possible in this situation
+
+2. identify connections individually
+Advantage: Distinction is made at connection level and not at packet level, so less overhead
+Disadvantage: The end system has to reliably keep a record of Connecion-SeqNo pair
+
+3. identify PDUs individually
+Advantage: Able to handle duplicates and ordering of packets 
+Disadvantage: The range of sequence numbers could be insufficient and cause duplicates if the packet rate is very high and/or the "lifetime" of packet is very long.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.416">
+      <response>1. Use temporarily valid TSAP 
++ Easy to implement (just need a new TSAP per connection that can be chosen during handshake)
+- Cant use temporarily valid TSAP because server uses "well-known" TSAPs that cant change
+- only very limited TSAP space 
+
+2. Identify connections individually
++ multiple individual (distinguishable) connections are possible in parallel over the same TSAP 
+- endsystems must store the chosen sequence numbers for each connection for the duration of the whole connection
+- Only for connection-oriented systems
+
+3. Identify PDUsindividually
++ high flexibility, due to fine-grained detection of duplicates independent of a connection or TSAP
+- High SeqNr space needed (Prerequisite: how big should the initial space even be? Is the connection alive for years or just seconds?) -&gt; higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.459">
+      <response>1. to use temporarily valid TSAPs:
+-need large numbers of names because it should be unique -&gt; not usable in reality
++very potent, because TSAP is valid for one connection only
+
+2. to identify connections individually:
+-endsystems must be capable of storing this information
++if there is a duplicate from another connection they don't interact with each other
+
+3. to identify PDUs individually:
+-perfect time has to be known by everybody
++one can reuse the SeqNo after a certain time</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.489">
+      <response>Packet-ids: Duplicates are identified and dropped, but memory is needed to remember packets that already arrived
+Sequencenumbers: The duplicates are identified and dropped, but with increasing numbers the overhead in the packets gets larger.
+Time-to-life: Duplicates are deleted from the network, when traveling to long in it, but the further messages should be able to get, the longer duplicates can stay in the network.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.498">
+      <response>Use temporarily valid TSAPs:Create a temporary TSAP for each connection.Advantage: does not need an extra field in the packet data.Disadvantage: makes it harder to connect to a process since they can no longer use fixed, well known TSAPs.Identify connections individually:Assign sequence number to each connection and specify it in all packets of this connection.Advantage: allows free choice of TSAPs compared to the previous method.Disadvantage: previously used sequence numbers have to be stored.Identify PDUs individually:Assign sequence number to each packet.Advantage: detects duplicates even within the same connection.Disadvantage: sequence numbers consume bandwidth and memory and must support a sufficient value range depending on the maximum lifetime of a packet.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.499">
+      <response>1. Method: Change the port (TSAP) after each transaktion
+Advantage: 
+ incoming duplicates after the end of transaktion would be automatically rejected by network layerDisadvantage:
+computer architecture might not allow thisduplicates get propaged very far up in the stack -&gt; costs compute timepossible collision with already well-know, defined portsduplicates during transaction can not be detected
+2. Method: Assigne and manage sequenze numbers for each connection on host and sender
+Advantage:
+also rejects duplicates while the transaction is still runningDisadvantages:
+both host and sender need to keep track -&gt; computation power neededinformation must be persistent, even if one system is turned ofdoesnt work with connection-less systems3. Method: Assign sequenze number to each package individually 
+Advantage:
+works with connectionlesscan be modified to account for a pacages average lifetime (timeout)Disadvantages:
+most overhead of the threenumbers have to be assigned continously -&gt; upper limit on package count</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.529">
+      <response>1) Use temporarily valid TSAPs:
+This is easy to implement but may nor work for some servers, if they have well known TSAPs that can not be changed or randomly generated.
+2) Identify connections individually with different SeqNo:
+This leads to an exact assignment of SeqNo to Messages and so it is known every time, if a duplicate occurs. But also the endsystems must store these information and stay always online, because their information is needed. 
+3) Identify PDUs indiviually:
+Assign uniqe 48bit number to each PDU. This needs a higher usage of memory and bandwidth but it has a very long time until SeqNo repeat.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.575">
+      <response>Temporarily valid TSAPs
++ No need to keep connection state
+- Huge amount of TSAPs required for them to be unique
+Identify connections individually
++ Well-known TSAPs can be kept
+- Does not work for connection-less systems
+Identify PDUs individually
++ Sufficient sequence numbers available
+- Higher Bandwidth and Memory usage</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.582">
+      <response>Method 1: to use temporarily valid TSAPs
+Generate unique (Transport) Service Access Point (TSAP) for each communication and they are valid for one connection only
+Advantages:
+You can always generate new TSAPs Disadvantages:
+some TSAPs are standardized("well-known ports") and cannot be usedMethod 2: to identify connections individually
+each connection is assigned a new Sequence number and endsystems story assigned Sequence number and remember them
+
+Advantages:
+Duplicates from another connection with a  Sequence number doesn't interact with other connection with a different sequence number.Disadvantages:
+Only works with connection-oriented serviceMethod 3: to identify PDUs individually: individual sequential numbers for each PDU
+
+Advantages:
+better usage of bandwidth and memory because you have individual sequence numbers for each packet and they almost never get resetDisadvantages:
+sequential number range depends on packet rate and packet probable "lifetime"</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.632">
+      <response>1. Use of temporarily valid TSAPs
+
++ simple and efficient
+
+- not always applicable
+
+ 
+
+2. Individual identification of connections
+
++ low usage of bandwidth and memory
+
+- end-systems must store the additional information
+
+ 
+
+3. Individual identification of PDUs
+
++ easier to implement
+
+- higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.704">
+      <response>1. Temporary TSAPs
+- advantage: solves duplicate problem
+- disadvantage: can't adress process servers
+
+2. identify connections individually
+
+- advantage: solves duplicate problem
+- disadvantage: endsystems must be capable of storing this information
+
+3. identify PDUs idividually
+
+- advantage: high reiteration time 
+- disadvantage: higher usage of bandwoth and memory</response>
+      <response_feedback>No duplicate is not an advantage, it is the usage of the method. Apart from this the response is correct.</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.725">
+      <response>The first method is to use temporarily valid TSAPs, which is only valid for only one connection. A disadvantage is that it is in general not always applicable. This means that the process server addressing method not possible because the server is reached via a designated/known TSAP.
+The second method is to identify connections individually. This means that each individual connection is assigned a new Sequence number. One important fact to mention is that the Endsystem renembers already assigned Sequence numbers. A disadvantage is that the endsystems will be switched off and it is necessary that the information is reliably available whenever it is needed.
+The last method is to identify PDUs individually: individual sequential numbers for each PDU. In this method the sequence number nevers gets reset. The disadvantage is that this has a higher usage of bandwidth and memory.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.789">
+      <response>1. temporary valid TSAPs
+For each new connection, a new, unique, temporary valid TSAP only for this connection is created and thrown away at disconnection and never used again.
+Advantage: simple and effective (transport process just can't be reached by delayed duplicates)
+Disadvantage: does not work if the service should be reached via a designated, known TSAP.
+2. identify connections individually
+Each connection is assigned a unique identifier and identifiers that have already been used are remembered by the end systems, so that when the connection is initiated it can be checked whether the identifier has already been assigned before (= duplicate).
+Advantage: designated TSAPs possible (e.g. for well-known services).
+Disadvantage: Storage requirements: end systems must permanently store the necessary information and have it available again, for example after a shutdown or crash.
+3. identify PDUs individually
+Each PDU is assigned an individual sequence number.Advantage: fixed TSAP possible, no persistent backup of information necessary.
+Disadvantage: More complex, lifetime of packet must be estimated well, because too small a value range for identifiers (sequence number) leads to duplicates not being recognized.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.812">
+      <response>1: Use unique and temporary TSAPs for each connection. After each connection a new TSAP will be used. This is a simple solution which does not require additional data to be sent, but it is not always applicable because a client would need to know the TSAP before it can connect, and some TSAPs already exist as "well-known".
+
+2: Use an individual identifier for each connection (a unique sequence number). End Systems need to remember the SeqNo even after reboots, but otherwise it is a relatively simple solution.
+
+3: Each process gets its own SeqNo. This uses more bandwidth because the SeqNo needs to be sent every time, but there is no need to remember the SeqNo after System reboots because each process will be restarted anyways.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.814">
+      <response>1. Using temporarily valid TSAP
+-advantage: generate TSAPs every time
+-disadvantage: it is not always applicable
+
+2. Identifying connections individually
+-advantage: each individual connection has its own number
+-disadvantage: endsystems need proper space for storage 
+
+3. Identifying PDUs individually
+-advantage: high usage of bandwidth and memory
+-disadvantage: the sequential number range depends on packet rate and packet's probable lifetime within the network</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.827">
+      <response>Usage of
+      temporarily valid TSAPs:
+            Using a TSAP only for a single connection removed the possibility
+      of receiving duplicates from older connections completely as the port
+      number changed. This is not possible in reality, because servers are reachable
+      via a known TSAP, that can't be changed for every connection.
+Identification of individual
+      connections:
+            Each Connection is assigned to a SeqNo. Packages from earlier
+      connections can be detected by checking for the current SeqNo. Therefore
+      the end systems have to store the SeqNo for every connection (doesn't
+      work for connection-less data transfer).
+Identification of individual
+      PDUs:
+            Every PDU has a SeqNo that only gets reused after a long enough
+      time (no duplicates possible anymore). The end systems don't have to
+      store a SeqNo for the individual sessions, but there is a network
+      bandwidth overhead for the SeqNo in every PDU.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.841">
+      <response>1. to use temporarily valid TSAPs 
+Advantage: TSAP valid for one connection only 
+Dis advantage: in general not always applicable because some TSAPs always exist as “well-known” 
+2. to identify connections individually 
+Advantage: each individual connection is assigned a new SeqNo and endsystems remember already assigned SeqNo. 
+Dis advantage:  end systems must be capable of storing this information. when end systems be switched off it is necessary  that information is reliably available whenever needed
+3. to identify PDUs individually :
+individual sequential numbers for each PDU
+Advantage: SeqNo basically never gets reset 
+Dis advantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.873">
+      <response>3 solutions for duplicate packets
+1. to use temporarily valid TSAPs (port)
+
+pro: simple (theoretically) effective solutioncons: not possible for implementation due to "well-know" port
+2. to identify connections individually
+
+pros: reliable, more securecons: a lot of overhead, only work with connection oriented.
+
+3. to identify PDUs individually, individual sequential numbers for each PDU
+
+
+pros: higher usage of bandwidth and memorycons: each end system requires a perfect clock, sensible choice of the sequential number</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.875">
+      <response>1. to use temporarily valid TSAPs
+ advantage: generate always new TSAPs,everyone is new one. 
+disadvantage: process server addressing method not possible, because server is reached via a designated/known TSAP, and some TSAPs always exist as “well-known”.So in general not always applicable.
+2.to identify connections  individually
+
+ advantage: don't interactive each other
+disadvantage:endsystems must be capable of storing this information
+3.to identify PDUs individually: individual sequential numbers for each PDU
+
+advantage: SeqNo basically never gets reset, wouldn't duplicate anymore.
+disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.909">
+      <response>1. TSAP valid for one connection only generate always new TSAPs
+
+in general not always applicable: 
+process server addressing method not possible, because server is reached via a designated/known TSAP, some TSAPs always exist as “well-known”2. each individual connection is assigned SeqNo and endsystems remember already assigned SeqNo
+
+endsystems must be capable of storing this information
+prerequisite, connection oriented system endsystems, however, will be switched off and it is necessary that the information is reliably available whenever needed3.SeqNo basically never gets reset
+
+higher usage of bandwidth and memorysensible choice of the sequential number range depends on the packet rate. a packet’s probable “lifetime” within the network</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.915">
+      <response>Throw-away TSAPs:
+Restrict packet life time:
+A Network Monitoring Switch:
+Advantage: Network monitoring switches facilitate centralizing network traffic monitoring in the NOC.
+Disadvantage: Network monitoring switches take a simple concept, the passive network Tap, and make it an expensive, complex device that requires configuration and management.</response>
+      <response_feedback>The problem of duplicate packets on the transport layer in a connection-oriented service need to be resolved.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.999">
+      <response>Method 1: to use temporarily valid T SAPs
+Generate unique (Transport) service Access Point (TSAP) for each communication and they are valid for one connection only
+Advantages:
+- You can always generate new TSAPs
+Disadvantages:
+- Some TSAPs are standardized("well-known ports") and cannot be used
+Method2: to identify connections individually
+each connection is assigned a new Sequence number and end systems story assigned Sequence number and remember them
+
+Advantages:
+- Duplicates from another connection with a Sequence number does not interact with other connection with a different sequence number
+Disadvantages:
+- Only works with connection-orinted service
+
+Method 3: to identify PDUs individually: individual sequential numbers for each PDU</response>
+      <response_feedback>Disadvantage of third method not mentioned.</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1022">
+      <response>Eine seqNo ausgeben, die für jede Operation ausgeben wird, Nachteil: Empfänger muss nummern speichern, Vorteil: nachfolgende Pakete können ingoniert werden
+Eine neue TSAP vergeben, Nachteil: ist nicht immmer möglich, manche TSAPs sind immer möglich, Vorteil: ist nur einmal valide, danach keine Verbindung möglich</response>
+      <response_feedback>Only two methods given.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1088">
+      <response>1. to use temporarily valid TSAPs :+ nobody can use the access point ( generate always new TSAPs therefore unique )- process server addressing method not possible.2. to identify connections individually : +  each individual connection is assigned a new SeqNo and  endsystems remember already assigned SeqNo.- endsystems must be capable of storing this information therefore more complexity.3. to identify PDUs individually :+ individual sequential numbers for each PDU- more complex and expensive.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1093">
+      <response>1, to use temporarily valid TSAPs
++: TSAP valid for one connection only 
+-: process server addressing method not possible
+2, to identify connections individually
++: each individual connection is assigned a new SeqNo
+-: end systems will be switched off and it is necessary that the information is reliably available whenever needed
+3, to identify PDUs individually
++: SeqNo basically never gets reset
+-: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1106">
+      <response>1. Using temporarily valid TSAPs:
+this method uses TSAP that are valid for only one connection which makes it easy to identify duplicates. This method is not always possible, e.g. with process server addressing the server needs a designated/known TSAP
+
+2. Identify connections individually:
+each connection is assigned a new SeqNo and end-systems remember already assigned SeqNo. It does not work with connectionless oriented systems and end-systems have to be capable of storing the already assigned SeqNo. It's easy to implement this method.
+
+3. Individual sequential numbers for each PDU:
+each PDU gets a SeqNo assigned which results in higher usage of bandwidth and memory. They are enough SeqNo so that they basically never get reset.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1122">
+      <response>1. to use temporarily valid TSAPs
+ advantage: generate always new TSAPs,everyone is new one. 
+disadvantage: process server addressing method not possible, because server is reached via a designated/known TSAP, and some TSAPs always exist as “well-known”.So in general not always applicable.
+2.to identify connections  individually
+
+ advantage: don't interactive each other
+disadvantage:endsystems must be capable of storing this information
+3.to identify PDUs individually:
+individual sequential numbers for each PDU
+
+advantage: SeqNo basically never gets reset, wouldn't duplicate anymore.
+disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1139">
+      <response>1) temporary TSAP - for every connection there will be a dedicated port. This solves the issues of packets from different services, but there are only a limited amount of ports and some of them are only address by well known port numbers.
+2) identifying connection with sequence number. sequence numbers can help identify connections, but they require setting up a connection (overhead)
+3)passing a sequence number with the package - solves the problem of duplicate packets but requires more memeory.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1147">
+      <response>Temporary TSAPs:
+The advantage is that duplicate packets can do no harm since they do not find a transport process and additional information does not have to be stored for a "long" time. On the other hand one disadvantage is that it is harder to connect with a process since new trasnport adresses have to be generated each time. In addition to that well-known TSAPs are present which makes this method not suitable.
+
+Identify connections individually:
+The advantage is that when a connection request comes the request can be checked against the conncections which were established before. In comparison to the next method this method has a higher need for memory and the bandwidth is less limited. The biggest diasdvantage is that both sender and receiver have to store this information indefinately. In case of a crash and the identifiers are lost the endsystem will no longer know which identifiers have been used.
+
+Identify PDUs individually:
+One advantage is that the squence numbers last for a long time e.g. 8000 years with 48 bit as 1000 msg/sec. The disadvantage is that a higher usage of memory and bandwidth is needed.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1158">
+      <response>1. to use temporarily valid TSAPs
+advantage: TSAP is valid for only one connection only , which works in a connection-oriented service 
+disadvantage: process server addressing method not possible , beacause some TSAPs always exist as "well-known" or server is reached via a designated/known TSAP
+2. to identify cnnections individually
+
+advantage: connection-oriented service satisfy the prerequisite of this method
+disadvantage: endsystems must be capable of storing this information
+3. to identify PDUs individually
+
+advantage: sensible choice of the sequential number range depends on the packet rate and a packet's proable
+ "lifetime" within the network
+disadvantage: higher usage of bandwith and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1159">
+      <response>One method to avoid duplicate packets is to make the time-out time of the packets larger. The advantage of that is that the sender has enough time to receive the acknowledgment of the packets. The Disadvantage is that if the time-out time is too large and the sender has only a certain window size to send unacknowledged packets, it could results that the sender is sending the data too slow and the receiver has to wait.
+
+Another method is that the receiver can ignore/ discard the same packets by using sequence numbers. The advantage is that the receiver will not be full of duplicate packets and knows via sequence number which packet should arrive next. The disadvantage is that the packets send with sequence numbers are larger.
+
+Another method is to use temporarily valid TSAPs. The advantage is that the TSAP is only valid for one connection only. A disadvantage is that server addressing is not possible because the server is reached via a designated/known TSAP.</response>
+      <response_feedback>The problem of duplicate packets on the transport layer in a connection-oriented service needs to be resolved.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1166">
+      <response>1. use temporarily valid TSAPs
++ easy and quick
+- does not identify the unique packets inside a connection.
+
+Folie 23 / 10 Transport Layer</response>
+      <response_feedback>Only one method mentioned.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1168">
+      <response>1. using temporarily valid TSAPs
+method: the TSAP is only for 1 connection valid and generates new TSAPs for new connections
+disadvantage: it is not always applicable
+the process server addressing method is not possible, because some TSAPs always exist as well-known
+
+2. identifying connections individually
+method: each connection is assigned to a new sequence no. and the end systems remember the assigned seq. no.
+-&gt; the endsystem must be capable of storing this information
+
+3. identifying PDUs individually
+
+method: the sequence no. never gets reset
+disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1213">
+      <response>1:
+TSAP only valid for one connection+: Connection can only be established one time and is afterwards not valid anymore, so no duplicate packets can be send.-: Some TSAPs are fixed/well-known and so the client is able to contact the server multiple times over such a well-known connection.
+
+2:
+Sequential numbers for every connection:+: End system can store the SeqNo and is so able to identify a duplicate connection towards it.-: ES could be turned off or may loose this information otherwise, so the information is not available anymore.
+
+3:
+IDs for every PDU (sequential numbers).+: Every PDU has its own number and a receiver can identify the duplicate package.-: Additional information (IDs) need additional bandwith and memory and the possible range of IDs needs to be choosen carefully depending on the network.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1260">
+      <response>1. Using temporarily valid TSAPs
+advantage: guarantees the connections to be unique
+disadvantage: not always applicable in general
+
+2. Identifying connections individually
+
+advantage: makes sure to not interact with connections with different sequence number
+disadvantage: only works with connection oriented system
+
+
+3. Identifying PDUs individually with individual sequential numbers 
+advantage: provides higher usage of bandwidth and memory
+disadvantage:precise packet rate and packet's lifetime information is required for sequential number range</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1266">
+      <response>1. Use TSAPs (Transport Service Access Point), that are only valid for one connection+ - Not always applicable because the server is reached via a designated/known TSAP.
+
+2. Identify connections individually via Sequence Numbers+ - Endsystem needs to be capable of storing the SeqNo
+
+3. Identify PDUs individually+ - Higher usage of bandwidth and memory.</response>
+      <response_feedback>Advantages are not mentioned. Apart from that, the response is correct.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1267">
+      <response>1) use temporary valid TSAPs
++ solves problem of dups of different/consecutive connections
+- process server has to have a known TSAP
+- some TSAPs are "well-known" therefor not temporary
+2) identify connections individually
++ solves problem of dups of different/consecutive connections
+- works only with connection-oriented connections
+- endsystems need to store used SeqNo of the individual connections 
+3) identify PDUs individually
++ solves problem of duplicates in conscutive as well as withing individual connections
+-  need a sufficient SeqNo range (knowlegde of packet rate and lifetime needed for sensible determination of range)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1291">
+      <response>1. Sequence numbers: + discards duplicates
+2. PAR: + doesn't block at loss of both frames and ACKs; - long wait possible
+3. NAK: + discards bad frame, can reduce additional traffic</response>
+      <response_feedback>the problem of duplicate packets on the transport layer in a connection-oriented service needs to be explained.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1302">
+      <response>1.use temporarily valid TSAPs
+advantage: easy to differentiate duplicate packets
+disadvantage: in general not always applicable
+2.identify connections individually
+advantages: Endsystems, however, will be switched off and it is necessary that the information is reliably available whenever needed
+disadvantage: Endsystems must be capable of storing this information
+3.individual sequential numbers for each PDU
+advantage :  higher usage of bandwidth and memory
+disadvantage: v sensible choice of the sequential number range</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1323">
+      <response>+: advantage-: disadvantage
+
+1. Use temporarily valid TSAPs
+=&gt; method: TSAP valid for one connection only -&gt; always generate new TSAPs 
+Evaluation:
++: each communication/connection has its own unique TSAP, which means nobody else can use it 
+-: large number/names required; in general not always applicable: process server addressing method not possible, because server is reached via a designated/known TSAP, and some TSAPs always exist as “well-known”
+2. Identify connections individually 
+=&gt; method: each individual connection is assigned a new SeqNo and endsystems remember already assigned SeqNo 
+Evaluation:
++: duplicates from one connection won't interfere other connections with different SeqNos. Which means at least no duplicates between different connections 
+-: endsystems must be capable of storing this information 
+3. Individual sequential numbers for each PDU 
+=&gt; method: SeqNo basically never gets reset, e.g. 48 bit at 1000 msg/sec: reiteration after 8000 years
+Evaluation: 
++: packets are identified individually, each packet has its own SeqNo
+-: higher usage of bandwidth and memory, sensible choice of the sequential number range depends on the packet rate and a packet’s probable “lifetime” within the network</response>
+      <response_feedback>The response is correct but we expect answers in own words, not directly pasted from slides.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1421">
+      <response>1. to use temporarily valid TSAPs
+advantage:If the number of the connection is small, this will be useful and can save resource.
+disadvantage:TSAPs should be unique and needs large number of name to be used.
+2. to identify connections individually
+advantage:Only have to remember assigned SeqNo
+disadvantage:It only works with connection and relies on the endsystem's of storing information. And it's more complicated.
+3. to identify PDUs individually
+advantage:higher usage of bandwidth and memory.
+disadvantage:If we don't know how long the message take to get to the other side, we can't use this method.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1455">
+      <response>1) Use temporarily valid TSAPs
+Pro: Only a relatively low amount of data has to be stored -&gt; Not much of an issue if a reboot happens
+Con: Process server addressing not possible because server is reached via known TSAP usually.
+
+2) Identify connections individually
+Pro: Needs less bandwidth and memory than identifying PDUs individually using a sequence number
+Con: Information won't be available after a reboot since it has to be stored
+
+3) Identify PDUs individually using a sequence number.
+Pro: Allows to address the servers processes directly properly as opposed to using temporarily valid TSAP's
+Con: Higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1481">
+      <response>Usage of temporarily valid TSAPs: This method addresses duplicate packages by switching TSAPs (e.g. ports) regularly and thus rejects duplicate packages that reach an outdated TSAP. This approach has the advantage that it handles duplicates very lightweight as the actual transport protocol does not need to care about duplicates when those are handled through binding the service to TSAPs. A disadvantage is that some services are per convention reached on a well-known TSAP (like e.g. a webserver at TCP port 80), where changing TSAPs would complicate finding the correct TSAP to connect to.Individual identification of connections: This method addresses duplicates by assigning each connection a SeqNo meaning a unique identifier that is remembered by the participating endsystems. This has the advantage that services can still be assigned to any well-known TSAP without conflict and this method solves receiving duplicate packages from a connection that has already been closed. A disadvantage is that the endsystems need to remember all previously assigned sequence numbers and those also need to be readily available, which would not be the case when e.g. the system is offline.Individual identification of PDUs: This method addresses duplicates be assigning each single PDU in all connections a unique SeqNo. This has the advantage that it definitely allows for uniquely identifying a package and immediately seeing whether we have seen this exact package before (and e.g. not just a equal package within the same connection). The disadvantage is that we have an increased overhead for duplicate detection as we have to maintain the numbering for each package.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1505">
+      <response>1)Use of temporarily valid TSAPs
+Pro:
+- Duplicates from previous sessions can not be received anymore and won't cause any problems anymore.
+Cons:
+- Useless because new TSAPs are only generated for every new connection, meaning inside one connection-oriented service , duplicates created during the  same session can't be handled.  
+
+2)Individual identification of connections
+
+Pro:
+-Easier to handle than 1) because there arent any server addressing issues. 
+Cons:
+- SeqNo of the last connection have be stored inside the end station (end station have to be capable of storing information).
+
+3)Individual identification of each PDU
+
+Pro:
+-Higher usage of bandwidth and memory.
+
+Cons:
+-Sequential number range depends  on factors such like packets/ sec rate or packet lifetime.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1540">
+      <response>1-to use temporarily valid TSAPs :TSAP valid for one connection only
+Disadvantages
+in general not always applicable: 
+process server addressing method not possible, because server is reached via a designated/known TSAP  some TSAPs always exist as “well-known"
+2-to identify connections individually
+each individual connection is assigned a new SeqNo and
+ endsystems remember already assigned SeqNo
+But:
+endsystems must be capable of storing this information
+3-to identify PDUs individually:
+individual sequential numbers for each PDU
+ SeqNo basically never gets rese
+higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct but we expect answers in own words, not directly pasted from slides.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1578">
+      <response>Method1: To avoid duplicates one can generate TSAPs valid for only one connection, good because there are no duplicates, bad because this is not always applicable in general.
+Method2: Each connection has it's own Sequence number, so endsystems rember already used seqnumbers. Pro: no duplictes. Bad: Endsystems must store every connection, which is infeasible.
+Method3: Identify each PDU individually by never resetting the sequence numbers. Pro: No duplicates. Bad: Higher bandwith usage, since the large number has to be transferred each time.</response>
+      <response_feedback>No duplicate is not an advantage, it is the usage of the method. Overall, the response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1589">
+      <response>1. to use temporarily valid TSAPs
+Advantage: Low usage of memory and bandwidth because of the temporary.
+Disadvantage: Not always applicable.
+
+2. to identify connections individually
+Advantage: Convenient access to history record since the SeqNo will be remembered by endsystems.
+Disadvantage: High requirement of end systems, they must be capable of storing this information.
+3. to identify PDUs individually: individual sequential numbers for each PDU
+Advantage: Convenient access to history record since the SeqNo never get reset.
+Disadvantage: Higher usage of bandwidth and memory.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1605">
+      <response>1. Use temporarly valid TSAPs: unique TSAP for each connection
+advantage: Delayed duplicate packets never find their way to a transport process and can do no damage.
+disadvantage: The connection to a process is made more difficult.
+
+2. Identify connections individually via a unique identifier, i.e. the sequence number
+advantage: connection requests are checked against the table to see if it belongs to the previous released connection
+disadvantage: source and destination have to store the history of information
+3. Identify PDUs individually: using sequence numbers to identify the packets
+advantage: A delayed duplicate of an old packet will no longer be accepted by the destination
+disadvantage: need a way to guarantee that a packet and all acknowledgement to it are dead in order to reassign its sequence number.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1685">
+      <response>One method to resolve the problem of duplicate packets is to use temporarily valid TSAPs for only one connection. On paper, this reduces the problem of duplicates since each TSAP is only used once and therefore reduces the number of duplicates to the ones occuring in that one connection. However, a disadvantage is that some TSAPs always exist and are well-known. Hence, it is not possible to realize this approach and generate temporary TSAPs for each connection. 
+
+Another method would be to make connections unique and identify them individually. An advantage is that duplicates from different connections do not occur anymore since each is unique. However, this is not possible with connection-less systems. Additional knowledge is needed to realize this approach since end systems need to remember the sequence numbers even after being turned off so that they remain unique for each connection. 
+
+The third approach to solve duplicates is to identify each packet individually with unique sequence numbers. An advantage is that it easily allows the receiver to identify and discard duplicate packets since it can just compare sequence numbers to check if it already received a packet with that number. However, this approach requires that the range of sequence numbers are chosen wisely so that they do not repeat before each packet is delivered and processed. Furthermore, this approach requires more bandwidth/memory due to the overhead of the sequence numbers.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1691">
+      <response>1) Temporarily valid TSAPS - for each connection a new, unique Transport Service Access Point (TSAP) is established. A major disadvantage is that large names need to be used for each TSAP, since they are required to be unique. 
+2) Identifying connections individually - This helps to avoid duplicates because different connections dont interact with each other, and the established connections must keep track of their transactions, hence, duplicates can be avoided from being re-transacted. A major disadvantage is that a framework is required to keep track of connections as well as transactions. 
+3) Identifying PDUs individually - By keeping track of individual packets, and assigning them a sequence number, duplicate packets can be identified and ignored. However, it requires higher bandwidth and memory to keep track of the already processed packets. Also, the packet lifetime needs to be shared among all connections, which will have a large overhead as well.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1710">
+      <response>1.  to use temporarily valid TSAPsTo avoid duplicates we could use a unique TSAP for every connection. This is an easy way to distinguish between duplicates. In theory this would solve our problem but in practical real-world scenarios this is not possible because we have designated well-known TSAPs that do not change (e.g. HTTP -&gt; port 80)
+
+2. to identify connections individuallyThis method wants to get rid of duplicates between connections. In this method we assign each individual connection a new sequence number. Again in theory this is a simple solution that should work and we can use the well-known ports. One disadvantage of this is though that the endsystems have to remember the already assigned sequence numbers. So the endsystems have to store more information. Also another issue to mention is that this works only for connection oriented systems, this won't work with connection-less systems. 
+
+3. to identify PDUs individually: individual sequential numbers for each PDUTo go even one step further we could identify the individual packets. So each packet get a unique sequence number. This is a very good way of avoiding duplicates. But for this to work we have to make sure that we chose a sensible sequence number range (depending on the packet rate and lifetime). And of course this method uses more bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1771">
+      <response>Using temporarily valid TSAPs has the advantage of using a TSAP for only one connection and generating a new TSAP for every connection, but it isn't alway applicable because the process server adressing is not possible due to designated/known TSAPs.
+
+By identifying connections individually each individual connection gets a new SeqNo, but the endystem needs to be capable to save this information.
+If each PDU is identifiyed individually by a never changing SeqNo, you are capable to know the history of each client, but you also have a high memory rate to save all the PDU information.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1773">
+      <response>1. to use temporarily valid TSAPs
+advantage：low usage of bandwidth and memorydisadvantage:process server addressing method not possible2. to identify connections individually
+advantage：
+
+disadvantage:endsystems must be capable of storing this information3.to identify PDUs individuallyadvantage:highly applicabledisadvantage:sensible choice of the sequential number range depends on the packet rate</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1794">
+      <response>Individual sequential number for each PDU:
++ Sequential Number can be reused because when packet has reached its lifetime the SeqNo can be assigned again 
+- higher usage of bandwidth because header has to store more information!
+
+Use temporarily valid TSAPs:
++ no extra storage/ higher bandwidth
+- some TSAPs are reserved, Web cannot Revolve it (process Server Adressant method      Not possible)—&gt; Not always applicable
+
+Identify connections individually:
++ endsystems remember assigned seqence number without a central authority to assign them
+- extra storage needed</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1825">
+      <response>1. to use temporarily valid TSAPs
+   + easiest realization
+   - too many TSAPs will quickly use up all the limited port numbers
+2. to identify connections individually
+   + each individual connection has a individual sequence number
+   - assigned sequence number are saved in endsystems. If endsystem switched off, the information disappear
+3. to identify PDUs individually
+   + sequence numbers basically never gets rest
+   - higher usage of bandwidtrh and memory</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1840">
+      <response>1. TSAP only valid for one connection ( + generate always new TSAPs ; - well-known TSAPs)
+2. identify each connection by SeqNo (+ endsystems remember already assigned SeqNo; - endsystems must permanently remember used SeqNo)
+3.identify each PDU by SeqNo (+ SeqNo basically never gets reset;- higher usage of bandwidth and memory )</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1844">
+      <response>1. Use temporarily valid TSAPs (only valid for one connection)
++ also works for connection-less
+- some services may be always reachable via the designated/known/"well known" TSAP =&gt; not applicable
+2. Identify connections individually (via individual sequence numbers per connection)
++ applicable even if server is only reachable via designated TSAP
+- endsystems need to store seq no.
+- only applicable with connection-oriented
+3. Identify PDUs individually (via individual sequence numbers per PDU)
++ we basically never need to reset the seq no.
+- higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1866">
+      <response>1. Use temporary TSAPs that are unique to each connection.
++ no additional information needs to be stored
+- process server addressing method not possible, as the server is reached via a well-known TSAP
+
+2. Identify each connection individually by sequence number 
++ solves the problem 
+- endsystems need to be able to store sequence number
+
+3. Identify each PUDs by not resetting sequence number for a long time.
++ solves the problem
+- higher bandwidth and memory usage</response>
+      <response_feedback>Solves the problem is not an advantage, it is the purpose. Apart from it, the response is correct.</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1880">
+      <response>1. to use temporarily valid TSAPs
+
++ nur bei spezifischen Aufgaben nutzbar
+
+- wenn alle 65,535 ports vergeben/aufgebraucht sind
+
+2. to identify connections individually
+
++ sehr einfach umsetzbar
+
+- höhere Nutzung von Speicher für die Informationen
+
+3. to identify PDUs individually: individual sequential numbers for each PDU
+
++ Wahl von fortlaufenden Nummern kann individuell angepasst werden an die Anwendung
+
+- höhere Nutzung von Bandbreite und Speicher</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1902">
+      <response>Method 1 -  Temporarily valid TSAPs:
+
+Advantage: It solves the problem, because there's a new and unique (temporarily valid) port / TSAP being used, so duplicates won't occur.
+Disadvantage: The process server adressing method isn't possible; the server is reached by a known port and there are some predefined ports (e.g. for https / web / mail) that are always the same.
+
+Method 2 - Identifying connections individually:
+
+Advantage: This method remembers previous connections (-&gt; sequence numbers) and thus can't confuse them with a new connection.
+Disadvantage: It doesnt work with connection-less systems and requires storage to remember previous sequence numbers.
+
+Method 3 - Identifiying PDUs individually: 
+
+Advantage: The sequence number (almost) never gets reset
+Disadvantage: Requires higher usage of bandwith and memory because the numbers aren't reset, and finding a good choice for the range of the sequence numbers is not trivial (package life time? packet rate?).</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1950">
+      <response>To use temporarily valid TSAPs:
+Pro: generate always new TSAPs
+Con: in general not always applicable
+
+To identify connections individually:
+Pro: each individual connection is assigned a new SeqNo
+Con: endsystems will be switched off and it is necessary that the information is
+reliably available whenever needed
+
+To identify PDUs individually:
+Pro: SeqNo basically never gets reset
+Con: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1977">
+      <response>1. to use temporarily valid TSAPs
+ advantage: generate always new TSAPs,everyone is new one. 
+disadvantage: process server addressing method not possible, because server is reached via a designated/known TSAP, and some TSAPs always exist as “well-known”.So in general not always applicable.
+2.to identify connections  individually
+
+ advantage: don't interactive each other
+disadvantage:endsystems must be capable of storing this information
+3.to identify PDUs individually: individual sequential numbers for each PDU
+
+advantage: SeqNo basically never gets reset, wouldn't duplicate anymore.
+disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.1999">
+      <response>1. Use of temporarily valis TSAPs: TSAP is only valid for one connection 
+- advantage: generates always new TSAP, so receiver can distinguish between old duplicates or new correct messages
+- disadvantage: in general not always applicable, because some sever always exist with a well-known TSAP 
+
+2. Each individual connection is assigned a new SeqNo and ensystems remember already assigned SeqNos
+- advantage: based on the SeqNo the endsystem receiver can differentiate between messages and can detect duplicates
+- disadvantage: this is only capable for realizable in connection-oriented systems
+
+3. Each PDU gets an individual SeqNo which never gets resettet 
+- advantage: receiver can distinguish between old and new messages based on the SeqNo so it can detect duplicates
+- disadvantage: higher use of bandwidth</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2001">
+      <response>1. Vergabe einzigartiger, temporärer Portnummern+: Duplikate lassen sich einer konkreten Verbindung zuordnen-: Well Known Ports dürfte man nicht mehr benutzen
+2. einzelne Verbindungen identifizieren durch SeqNo+: Duplikate lassen sich einer konkreten Verbindung zuordnen-: Endsysteme müssen sich zugewiesene SeqNo merken und diese Information muss jederzeit zuverlässig verfügbar sein
+3. einzelne Pakete identifizieren mit SeqNo+: duplizierte Pakete können direkt identifizert werden-: SeqNo-Range muss passend zur Paketrate und der "Lebenszeit" im Netzwerk gewählt werden</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2012">
+      <response>-1- To use temporarily valid TSAPs (unique ports).
+advantage:  it can eliminate the need for duplicate because we use unique port each time.  
+disadvantage: require large number of unique ports (names) for some period of time.
+
+-2- To identify connections individually.
+advantage: git rid of duplicate between different connections by assigning each of them a sequence number.   
+disadvantage: end systems must be capable of storing  sequence numbers (need storage for that ) as well as it is more complicated because if the connection is lost we need to remember what happened in the past (store information)
+
+-3- To identify PDUs individually:
+advantage:  assign a SeqNo for each packet for certain time, after this time I can reuse this SeqNo and drop  any duplicate packets. 
+disadvantage: higher usage of bandwidth and memory</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2062">
+      <response>use temporarily valid TSAPS
+
+identify connections individually
+- disadvantage: only for connection-oriented services
+
+identify PDUs individually
+- disadvantage: higher bandwidth usage</response>
+      <response_feedback>Description and advantages are missing.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2066">
+      <response>There are multiple ways how to detect duplicate packets on the transport layer in a connection-oriented service.
+One method is using only temporarily valid TSAPs, which are only valid for one connection.By using this method, neither the endsystem (ES) nor the sender has to  store additional information over a "long" timeBit since this results in long length port numbers/ TSAPs, with this method results in a higher bandwidth. Additionally,  "well known" TSAPs are present, making this method not suitable.
+Another method is to identify each connection by assigning a sequence number (SeqNo) to each connection individually, while the ES remembers already assigned SeqNo.This allows the use of "well known" TSAPs while allowing detection of delayed duplicate packets. Compared to the text method, this way you have a lower bandwidth need in exchange for a higher memory need, since the ES needs store this information, but this information needs to be available, whenever needed. Additionally, this method does not support connections-less systems.
+The last method is that each Physical Data Unit (PDU) has an individual SeqNo.This way, ES do not need to store additional information for a longer time and "well known" TSAPs can be used.Furthermore, the SeqNo for PDUs would last for a long time, even assuming they aren't reset. This can further improved by limiting reissuing SeqNos and limiting the packet lifetime.However, this results in an higher usage of bandwidth and memory.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2075">
+      <response>First method is to use temporarly valid TSAPs which would show exactly to which connection a packet belongs, so duplicates with an old TSAP can be directly ignored. Problem is the usable amount of TSAPs i.e. by the usage of well-known TSAPs.
+
+Second possibility is to identify the connections themself via an individual (new) SeqNo, in order to identify each connection at first instance . Problem here is, that all these unique SeqNo have to be stored at the sender/receiver even after shutting down the system.
+
+Last option would be to identify the PDU idividually, so the SeqNos are never reset or reset after a long time. Here it would be easy to identify the packets, but the network bandwith and memory usage would be way higher to</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2083">
+      <response>According to the lecture "L4 Transport Layer - Fundaments " on slide 23/24, there are three basic methods of resolution:
+1.  to use temporarily valid TSAPs
+Disadvantage: It is in general not always applicable, because process server addressing method is not possible, because server is reached via a designated/known TSAP and some TSAPs always exist as “well-known”. Furthermore, large numbers/names required, because it should be unique. 
+Advantage: unique TSAP for only one connection
+
+2. to identify connections individually 
+Advantage: endsystems remember already assigned SeqNo, i.e. remembers prevoius connections /  each individual connection is assigned a new SeqNo
+Disadvantage: does not work with connection-less and endsystems must be capable of storing the information about remembering already assigned SeqNo (endsystems, however, will be switched off and it is necessary that the information is reliably available whenever needed)
+
+
+3.  to identify PDUs individually
+Disadvantage: higher usage of bandwidth and memoryAdvantage:  SeqNo basically never gets reset (e.g. 48 bit at 1000 msg/sec: reiteration after 8000 years)</response>
+      <response_feedback>The response is correct but we expect answers in own words, not directly pasted from slides.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2089">
+      <response>Three-way Handshake Protocol
++ ds
+- 
+
+Flow Control on Transport Layer
+
+Credit Mechanism
++ 
+-
+Multiplexing / Demultiplexing
++
+-</response>
+      <response_feedback>The response is incorrect.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.12.2108">
+      <response>1. Temporary TSAPs
+- advantage: solves duplicate problem
+- disadvantage: can't adress process servers
+
+2. identify connections individually
+
+- advantage: solves duplicate problem
+- disadvantage: endsystems must be capable of storing this information
+
+3. identify PDUs idividually
+
+- advantage: high reiteration time 
+- disadvantage: higher usage of bandwoth and memory</response>
+      <response_feedback>Removes duplicate is the purpose behind using the method not the advantage. Apart from that, the response is correct.</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

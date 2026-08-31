@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+.eggs/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Logs
+*.log
+logs/
+.r18-worker.pid
+.r18-api.pid
+.r18-runtime-supervisor.pid
+.r20-worker.pid
+.r20-api.pid
+.r20-runtime-supervisor.pid
+
+# AI workspace artifacts
+.trae/
+.codebuddy/
+SURF-2026-0031-AI-Agent-Marking.md

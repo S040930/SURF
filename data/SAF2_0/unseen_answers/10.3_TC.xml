@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="10.3_TC">
+  <questionText>Transparent bridges manage a bridge table for the forwarding process. Please describe what information the table holds and how it is modified during the backwards learning phase. How is the table used in the forwarding process and what is one benefit of that? Please answer the question in 2-5 sentences. </questionText>
+  <referenceAnswers>
+    <referenceAnswer id="10.3_TC.a1">1.A mapping between destinations/stations (MACs) and outgoing LAN interfaces.
+2.This table is initially empty and received packages are flooded on every line. When a bridge receives a frame (as the bridge runs in promiscuous mode it listens in on all the traffic arriving at its LAN links) with source address Q on LAN L, it adds the timestamped entry “Q can be reached over L” to the table and the next time a packet with destination Q arrives, it is forwarded on link L. The time-stamp is used to update or purge old entries. Therefore, it learns by observing the incoming traffic.
+3.To do selective forwarding instead of flooding. 
+4.i)less duplication/unnecessary flooding is prevented.
+ii)less congestion.
+iii)better bandwidth usage than flooding.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="10.3_TC.69">
+      <response>At the start, the bridges table is empty, it uses flooding for an unknown destination. During the backward learning process, the bridge works in promiscuous mode as it receives any frame on any of its LANs, then the bridge receives frames with sources address Q on LAN L, Q can be reached over L and therefore create table entry accordingly.</response>
+      <response_feedback>The response correctly describes how transparent bridges build their bridge table. However, the response does not provide information on how the table is used during the forwarding process and what benefits this brings.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.96">
+      <response>The bridge table stores the information, which station it can reach over which LAN (output line). The bridge works in the promiscuous mode, which means that it receives every frame of each connected LAN and during the backwards learning phase when the bridge receives frames with a source address S on a LAN L it "learns" that S can be reached over L and creates a table entry accordingly. These entries are associated with timestamps and updated when new frames were received from the source (e.g. S). To forward a frame the bridge will look at the source and destination LANs and drop the frame if they're identical (and therefore prevent unnecessary traffic) but if they are different the bridge can look up in the table to which LAN the frame has to be rerouted. Only if the destination is unknown the network will be flooded with the frame. Because the bridge is not visible as such for the other components of the network, these other components are simplified and they don't have to deal with the forwarding process.</response>
+      <response_feedback>The stated benefit is related to transparent bridges in general, but the question asked for the benefit of using bridge table information during forwarding, which is reducing duplicates. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.110">
+      <response>table holds infromation that a certain address can be reached by a certain LAN. During backwards learning the bridge updates its table by the incoming traffic knowing that the source of the received packet is reachable over the LAN form where the packet came. Look if the address is in the table if yes then send it to the LAN over which it is reachable if not use flooding. No longer need to flood if the path is known. Another one would be that it is a rather simple approach.</response>
+      <response_feedback>The response answers all the four requirements of the question correctly. Also note that if the source and destination LAN is the same, the packet is dropped.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.113">
+      <response>The table holds the routing entries to forward packets to their destination. The table is initially empty and will be filled with the information of routes during the backwards learning phase. The table entries will be scanned and updated when receiving frames, thus it will adapt to changes in topology, which is a benefit.</response>
+      <response_feedback>The response does not state which entries are present that are used for forwarding the packets. The backward learning process does not explain which packet information is inspected and used for building the table. The correct benefit is that there is less traffic because of selective forwarding, not just topological change adaption.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.193">
+      <response>The invisible bridge contains a table which holds information about which address can be reached in which of the connected LANs around it. This table is initially empty, but then filled during the process of backward learning - when the bridge receives a packet from a LAN L with the sender address A, it can be concluded that A is part of the LAN L and therefore routable on this network. As the name clearly states, the bridge in the network is transparent as such, instead it is just addressed with the network receiver address by any senders in one LAN, so that it then can use its table to figure out in which destination-LAN the package should be sent. So one can conclude that the table prevents flooding from the transparent bridge and therefore unnecessary traffic. The other overall feature of the usage of a transparent bridge is the decreased complexity of transmission for all nodes in the combined LANs, because they can just sent packages to all nodes in all connected LANs without having to deal with the routing between the LANs by itselves.</response>
+      <response_feedback>The response does not mention how flooding is done when there is no entry for a packet destination in the table, so flooding can not be prevented completely. Apart from that, the response is correct. It also additionally states the benefit of the transparent bridges in general, which was not required.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.194">
+      <response>All bridges inspect all the traffic and build up tables (bridge tables), these tables hold information to manage the traffic and each entry contains an address and the LAN that leads to that address.
+
+The bridge table is initially empty and uses flooding for an unknown destination. 
+During the backward learning phase (Learning process) the bridge works in promiscuous mode and receives any frame on any of its LANs. If the bridge receives frames with source address Q on LAN L and Q can be reached over L, then it will create table entry accordingly. 
+These tables are adapted to changes in topology. Each entry is associated with a timestamp (frame arrival time), and the timestamp of an entry (Z, LAN, TS) is updated when the frame received from Z. 
+The table scanned periodically and old entries purged if no update for some time, usually several minutes (e.g., because the system moved and reinserted at a different position, or flooding was used if the machine was quiet for some minutes).
+
+The main benefit of bridge tables in the forwarding process is to increase reliability by connecting LANs via VARIOUS bridges in parallel.</response>
+      <response_feedback>The response incorrectly mentions the benefit of using multiple transparent bridges but the question asked for the benefit of using bridging information in forwarding frames. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.323">
+      <response>The bridge table contains mappings of station to the output line that has to be used to reach the station. The bridge uses promiscuous mode to observe the sent frames and if a frame from a specific source station is sent over a connected LAN the bridge knows that this station can be reached over that LAN and the bridge table is updated. In the forwarding process the destination is looked up in the bridge table and the frame is rerouted to the correct output LAN, if it differs from the current LAN. If the station is not found, flooding is used. A benefit of this setup is that the stations can transparently reach other stations in a different network like they were in the same.</response>
+      <response_feedback>The stated benefit is related to transparent bridges in general, but the question asked for the benefit of using bridge table information during forwarding, which is reducing duplicates. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.3_TC.341">
+      <response>This bridge table has MAC addresses and ports of bridge in it. At the very beginning, the table is empty, then for example, bridge sees that a frame on port 1 coming from source address A, it knows that A must be reachable via port 1, then it makes an entry in its table.
+
+Bridge receives a frame, then it looks up the corresponding destination on its table, if the destination is found, and source address and the destination is identical, the frame would be dropped, if not identical, the bridge will forward this frame to its destination. But if the destination is not found, it will flood.
+
+This table increases the reliability.</response>
+      <response_feedback>The response states reliability as the benefit but it is not mentioned how the table usage increases the reliability. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

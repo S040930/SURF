@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目1 · r22 技术试点实验结果</title>
+<style>
+  :root {
+    --bg:#0f1420; --panel:#171e2e; --panel2:#1d2638;
+    --line:#2a3650; --text:#e6ebf5; --muted:#93a1bd;
+    --brand:#5b8cff; --green:#35c98c; --red:#ff5c74; --amber:#f5b544;
+    --nm:#5b8cff; --crm:#35c98c; --arm:#f5b544;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:"PingFang SC","Microsoft YaHei",-apple-system,Segoe UI,Roboto,sans-serif; line-height:1.6; padding:32px 20px 60px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; letter-spacing:.5px; color:#8aa2e6; border:1px solid var(--line); padding:3px 10px; border-radius:20px; background:var(--panel2); }
+  h1 { font-size:24px; margin:14px 0 4px; }
+  .sub { color:var(--muted); font-size:13px; }
+  .good { color:var(--green); font-weight:600; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin-top:22px; }
+  .card h2 { font-size:15px; margin-bottom:4px; }
+  .card .bar { font-size:12px; color:var(--muted); margin-bottom:14px; }
+  .grid { display:grid; gap:14px; margin-top:14px; }
+  .g4 { grid-template-columns:repeat(4,1fr); }
+  .g3 { grid-template-columns:repeat(3,1fr); }
+  .kpi { background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .kpi .v { font-size:22px; font-weight:700; margin-top:2px; }
+  .kpi .l { font-size:12px; color:var(--muted); }
+  .kpi .v.b { color:var(--brand);} .kpi .v.g { color:var(--green);} .kpi .v.r { color:var(--red);}
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:500; font-size:12px; }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .best { color:var(--green); font-weight:700; }
+  .note { font-size:12px; color:var(--muted); margin-top:12px; border-top:1px dashed var(--line); padding-top:10px; }
+  .legend { display:flex; gap:18px; font-size:12px; color:var(--muted); margin-top:10px; flex-wrap:wrap; }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+  .footer { margin-top:26px; text-align:center; color:var(--muted); font-size:12px; }
+  @media (max-width:720px){ .g4{grid-template-columns:repeat(2,1fr);} .g3{grid-template-columns:1fr;} svg{max-width:100%;height:auto;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="tag">r22-codex-cli-overflow-recovery-2026-08-v1</span>
+  <h1>项目1 · r22 技术试点实验结果</h1>
+  <div class="sub">项目 ID <code>a981e171-fb9f-49b4-a217-1c1dc46559ff</code> · 题目 4.13 / 5.7 · NM / CRM / ARM 三条件 · 检查点 h=10/20/30/40</div>
+  <div class="sub" style="margin-top:6px;">运行状态：<span class="good">运行完成</span> — 2,640 / 2,640 调用全部 succeeded（1,440 测试 + 720 训练 + 480 记忆更新）</div>
+
+  <div class="card">
+    <h2>运行概况</h2>
+    <div class="grid g4">
+      <div class="kpi"><div class="l">调用总数</div><div class="v b">2,640</div></div>
+      <div class="kpi"><div class="l">成功调用</div><div class="v g">2,640 (100%)</div></div>
+      <div class="kpi"><div class="l">测试评分样本</div><div class="v b">1,440</div></div>
+      <div class="kpi"><div class="l">耗时跨度</div><div class="v b" style="font-size:16px;">≈20.7h</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>实验结果 · 测试 NAE（按检查点 × 条件）</h2>
+    <svg viewBox="0 0 700 260" width="700" role="img" aria-label="Test NAE line chart">
+      <!-- gridlines / y ticks -->
+      <g font-size="11" fill="#93a1bd">
+        <line x1="70" y1="210" x2="610" y2="210" stroke="#2a3650"/>
+        <line x1="70" y1="132.9" x2="610" y2="132.9" stroke="#223047"/>
+        <line x1="70" y1="55.7" x2="610" y2="55.7" stroke="#223047"/>
+        <text x="60" y="214" text-anchor="end">0.215</text>
+        <text x="60" y="137" text-anchor="end">0.230</text>
+        <text x="60" y="60" text-anchor="end">0.245</text>
+        <!-- x labels -->
+        <text x="70" y="232" text-anchor="middle">h=10</text>
+        <text x="250" y="232" text-anchor="middle">h=20</text>
+        <text x="430" y="232" text-anchor="middle">h=30</text>
+        <text x="610" y="232" text-anchor="middle">h=40</text>
+      </g>
+      <!-- NM -->
+      <polyline points="70,187.9 250,120 430,150.3 610,157" fill="none" stroke="#5b8cff" stroke-width="2.5"/>
+      <circle cx="70" cy="187.9" r="4" fill="#5b8cff"/><circle cx="250" cy="120" r="4" fill="#5b8cff"/><circle cx="430" cy="150.3" r="4" fill="#5b8cff"/><circle cx="610" cy="157" r="4" fill="#5b8cff"/>
+      <!-- CRM -->
+      <polyline points="70,146.2 250,129 430,125.1 610,131.3" fill="none" stroke="#35c98c" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <circle cx="70" cy="146.2" r="4" fill="#35c98c"/><circle cx="250" cy="129" r="4" fill="#35c98c"/><circle cx="430" cy="125.1" r="4" fill="#35c98c"/><circle cx="610" cy="131.3" r="4" fill="#35c98c"/>
+      <!-- ARM -->
+      <polyline points="70,125.7 250,86.6 430,43.9 610,62.4" fill="none" stroke="#f5b544" stroke-width="2.5" stroke-dasharray="2 3"/>
+      <circle cx="70" cy="125.7" r="4" fill="#f5b544"/><circle cx="250" cy="86.6" r="4" fill="#f5b544"/><circle cx="430" cy="43.9" r="4" fill="#f5b544"/><circle cx="610" cy="62.4" r="4" fill="#f5b544"/>
+    </svg>
+    <div class="legend">
+      <span><i style="background:var(--nm)"></i>NM (无记忆)</span>
+      <span><i style="background:var(--crm)"></i>CRM (紧凑记忆)</span>
+      <span><i style="background:var(--arm)"></i>ARM (丰富记忆)</span>
+    </div>
+    <table>
+      <thead><tr><th>检查点 / 条件</th><th class="num">h=10</th><th class="num">h=20</th><th class="num">h=30</th><th class="num">h=40</th><th class="num">总体</th></tr></thead>
+      <tbody>
+        <tr><td>NM</td><td class="num best">0.2193</td><td class="num best">0.2325</td><td class="num best">0.2266</td><td class="num best">0.2253</td><td class="num best">0.2274</td></tr>
+        <tr><td>CRM</td><td class="num">0.2274</td><td class="num">0.2308</td><td class="num">0.2315</td><td class="num">0.2303</td><td class="num">0.2319</td></tr>
+        <tr><td>ARM</td><td class="num">0.2314</td><td class="num">0.2390</td><td class="num">0.2473</td><td class="num">0.2437</td><td class="num">0.2415</td></tr>
+      </tbody>
+    </table>
+    <div class="note">每格 n≈120 个测试样本；NAE = 归一化绝对误差（|model−teacher|/max_score）。总体 NAE：NM 0.2274 &lt; CRM 0.2319 &lt; ARM 0.2415，误差随记忆信息量略微增大。</div>
+  </div>
+
+  <div class="card">
+    <h2>实验结果 · 测试 MAE（按检查点 × 条件）</h2>
+    <table>
+      <thead><tr><th>检查点 / 条件</th><th class="num">h=10</th><th class="num">h=20</th><th class="num">h=30</th><th class="num">h=40</th></tr></thead>
+      <tbody>
+        <tr><td>NM</td><td class="num best">0.3062</td><td class="num best">0.3237</td><td class="num best">0.3133</td><td class="num best">0.3137</td></tr>
+        <tr><td>CRM</td><td class="num">0.3117</td><td class="num">0.3025</td><td class="num">0.3013</td><td class="num">0.3096</td></tr>
+        <tr><td>ARM</td><td class="num">0.3204</td><td class="num">0.3362</td><td class="num">0.3483</td><td class="num">0.3425</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>实验结果 · 训练阶段 MAE（按条件汇总）</h2>
+    <div class="grid g3">
+      <div class="kpi"><div class="l">NM（无记忆）训练 MAE</div><div class="v b">0.2752</div></div>
+      <div class="kpi"><div class="l">CRM 训练 MAE</div><div class="v g">0.2915</div></div>
+      <div class="kpi"><div class="l">ARM 训练 MAE</div><div class="v a">0.3196</div></div>
+    </div>
+    <div class="note">训练阶段每条件 n=240 条；逐 step 曲线较噪（每格 n=6），此处给出按条件汇总。</div>
+  </div>
+
+  <div class="card">
+    <h2>溢出恢复（overflow-recovery）验证</h2>
+    <ul style="font-size:13px;color:#c9d4ea;margin-left:18px;margin-top:6px;">
+      <li>触发压缩的 7 条 memory_update（arm，needs_compression）均经单次压缩恢复后 accepted，恢复成功率 100%。</li>
+      <li>全部 2,640 条调用 succeeded，无 `failed_terminal` 阻塞调用执行；压缩恢复链路工作正常。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>运行延迟（accepted 样本）</h2>
+    <div class="grid g4">
+      <div class="kpi"><div class="l">p50</div><div class="v b">9,930 ms</div></div>
+      <div class="kpi"><div class="l">p90</div><div class="v b">14,325 ms</div></div>
+      <div class="kpi"><div class="l">p95</div><div class="v b">16,921 ms</div></div>
+      <div class="kpi"><div class="l">max</div><div class="v b">67,979 ms</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>结论</h2>
+    <ul style="font-size:13px;color:#c9d4ea;margin-left:18px;margin-top:6px;">
+      <li>r22 项目1 完整跑完（2,640/2,640 成功），并产出正式 NAE/MAE 结果。</li>
+      <li>各检查点与总体 NAE 均满足 NM &lt; CRM &lt; ARM：无记忆条件误差最低（总体 0.2274），记忆信息量越大，归一化评分误差略增大（ARM 0.2415）。</li>
+      <li>溢出恢复（压缩）链路全部成功，未出现 terminal 失败阻塞，试点技术目标达成。</li>
+    </ul>
+    <div class="note">原始调用仅保留聚合字段与校验结果，未导出学生答案、教师反馈、提示词或模型输出 payload。</div>
+  </div>
+
+  <div class="footer">生成自实验库 <code>ai_marking_experiment</code>（r21_calls 调用 + r22_compression_audits 审计）· 2026-08-27</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="2.3_DLL_v1.1">
+  <questionText>What requirement has to be met so that you can use the piggybacking extension to the sliding window protocol?</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="2.3_DLL_v1.1.a1">Piggybacking only makes sense if there is a full-duplex or semi-duplex connection between sender and receiver i.e.  two-way communication or Frames must contain additional field for acknowledgement.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="2.3_DLL_v1.1.12">
+      <response>Both sides must send data to use piggybacking to be able to attach ACKs to data frames otherwise the sender will assume a frame loss.</response>
+      <response_feedback>The response is incorrect as there will not always be data to send, in such cases a dedicated timer timeout is used to signal the absence of sufficient data and trigger the sending of separate acknowledgment.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.106">
+      <response>Need to know the initial sequence number, aswell as the next sequence number and acknowledgement.</response>
+      <response_feedback>The response is incorrect as the above points are not specific to piggybacking but hold for the sliding window protocol in general.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.143">
+      <response>The connection has to be duplex and both sides have to have data to send (Otherwise the frame is 0 characters + the acknowledgement, which would just be a confirmation and no piggybacking).</response>
+      <response_feedback>The response answers the underlying requirement correctly. Instead of sending the whole frame with no data, a separate acknowledgment can also be sent after a timeout.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.153">
+      <response>To use the piggybacking extension to the sliding window protocol, we have to be in a duplex mode.</response>
+      <response_feedback>The response answers the underlying requirement correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.175">
+      <response>A receiver of a data frame has to send data frames the ACKs are piggybacked onto at a rate that is high enough so that the sender doesn't have to wait for too long for the ACKs to arrive. Otherwise a timeout might occur and the sender sends the frame again.</response>
+      <response_feedback>The response states duplex communication indirectly but a dedicated timer timeout can also be on the receiver side to send acknowledgment separately when sufficient data is not present.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.232">
+      <response>The requirement that has to be met that you can use the piggybacking extension to the sliding window protocol is, that we need the ACK field in the frame header that costs only a few bits. A seperate frame would need more costs: ACK, header and a checksum.</response>
+      <response_feedback>The response is correct, a duplex connection is also required.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.293">
+      <response>Piggybacking only makes sense if there is a full-duplex or semi-duplex connection between sender and receiver. Therefore, the ACK for a data frame from a sender is sent in one frame with the next data frame issued by the receiver. Thus, the requirement for piggybacking is a duplex connection (and the need of sending an ACK).</response>
+      <response_feedback>The response identifies the underlying requirement duplex connection correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.354">
+      <response>Requirement: The interval of two adjacent frames, which are sent by sender, is short.
+So that we can use piggybacking to response these two frames with one acknowledgement. 
+The communication has to be duplex (so the protocol must not be "Utopia").
+And the receiving buffer from the Sender must be ,so that it is able to store the ACK plus the additional data!</response>
+      <response_feedback>The response contains a duplex connection as one of the requirements, but having to send two frames within short intervals is incorrect. Also, the same data and acknowledgments are tied together in piggybacking. Therefore, the total buffer space requirement should ideally remain almost the same as when they are sent separately.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="2.3_DLL_v1.1.374">
+      <response>There must also be frames directed towards A (sender) in the transmission, so that B (receiver) sends frames back to A in a reasonable amount of time. In addition to that the amount of frames size of both parties must be similarly big, because the acknowledgement is added to frames directed at A. As a result there must be a certain balance of frames in both directions.</response>
+      <response_feedback>The response correctly implies duplex operation. However, a balanced approach is difficult to achieve in real scenarios, so there are ways to overcome it, like a dedicated timer signaling a timeout in the absence of data to be sent.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

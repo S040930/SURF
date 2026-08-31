@@ -1,0 +1,830 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="4.3">
+  <questionText>Write-down all addresses in Class A networks that are reserved.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="4.3.a1">126 Class A nets can be addressed in classful IP addressing (1.xx.yy.zz - 126.xx.yy.zz) 127.xx.yy.zz is reserved for loopback testing 0.xx.yy.zz can be accepted if stated accordingly (definitions defer whether this is in Class A)</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="4.3.9">
+      <response>10.0.0.0 to 10.255.255.255 are reserved</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.30">
+      <response>The reserved addresses are:
+10.0.0.0 - 10.255.255.255.255 and 127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.39">
+      <response>0.0.0.0/8
+127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.86">
+      <response>10.0.0.0 bis 10.255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.117">
+      <response>0.0.0.0–0.255.255.255
+10.0.0.0–10.255.255.255
+100.64.0.0–100.127.255.255
+127.0.0.0–127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.149">
+      <response>(0 - 127).0.0.0/8 -&gt; reserved for the network
+(0 - 127).255.255.255/8 -&gt; reserved for broadcast</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.171">
+      <response>in the Host block two adresses are reserved:
+- all 1´s as host acts a a broadcast address
+- all 0´s as host acts as the network</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.201">
+      <response>0.0.0.0/8 - start address
+127.0.0.0/8 through 127.255.255.255/8 are reserved for loopback addresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.210">
+      <response>0.0.0.0–0.255.255.255
+127.0.0.0 - 127.255.255.255
+10.0.0.0–10.255.255.255 (Reserved for private Networks, not routed through the Internet)
+100.64.0.0–100.127.255.25 (Reserved for private Networks, not routed through the Internet)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.247">
+      <response>0.0.0.0: dummy address
+10.0.0.0: private network
+127.0.0.0: loopback</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.248">
+      <response>0.0.0.0–0.255.255.255
+10.0.0.0–10.255.255.255
+100.64.0.0–100.127.255.255
+127.0.0.0–127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.294">
+      <response>0xxx xxxx.0000 0000.0000 0000.0000 0000 (network)0xxx xxxx.1111 1111.1111 1111.1111 1111 (broadcast)0111 1111. xxxx xxxx. xxxx xxxx. xxxx xxxx (127.x.x.x , loopback)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.296">
+      <response>0.0.0.0 -&gt; for this host00000000.xxxxxxxx.xxxxxxxx.xxxxxxxx -&gt; A host at this network
+127.255.255.255 -&gt; Broadcast on local network
+0xxxxxxx.11111111.11111111.11111111 -&gt; Broadcast on distant network
+127.x.x.x -&gt; Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.323">
+      <response>0.0.0.0 and 127.x.y.z</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.335">
+      <response>Class A means the following addresses:
+0.0.0.0 - 127.255.255.255
+
+Reserved addresses:
+reserved for host:
+0.0.0.0 - 0.255.255.255
+
+reserved for loopback:
+127.0.0.0 - 127.255.255.255
+
+The first and last address of every network can't be used, because they are for host and broadcast.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.342">
+      <response>from  0.0.0.0 to 0.255.255.255 : the current network
+127.0.0.0 to 127.255.255.255 : loopback addresses ( Broadcast )</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.365">
+      <response>First Address of the subnetwork: Network address
+Last Address of the subnetwork: Broadcast address</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.372">
+      <response>reserved for host
+0.0.0.0/8 - 0.255.255.255/8 
+reserved for loopback addresses/broadcast
+127.0.0.0/8 - 127.255.255.255/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.403">
+      <response>127.0.0.0-127.255.255.255（1—126）.0.0.0
+（1—126）.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.406">
+      <response>Class A:
+0.0.0.0. - 127.255.255.255</response>
+      <response_feedback>Not all addresses are reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.409">
+      <response>10.0.0.255-10.255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.425">
+      <response>Reserved addresses:
+127.0.0.0 – 127.255.255.255 (for Loop-Backs)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.472">
+      <response>0.0.0.0/8 - dummy address
+10.0.0.0/8 - private network
+127.0.0.0/8 - loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.477">
+      <response>0.0.0.0/8
+10.0.0.0/8
+100.64.0.0/10
+127.0.0.0/8
+
+(Source: https://en.wikipedia.org/wiki/Reserved_IP_addresses)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.482">
+      <response>0.x.x.x -&gt; Host or Network address
+127.0.0.1 - 127.255.255.254 -&gt; Loopback  
+x.0.0.0 -&gt; Gateway (in ALL types of networks)
+n.255.255.255 -&gt; Broadcast (in ALL types of networks)here: n is network address
+x means number between 0 and 255.
+For class A networks the First digit Must be zero</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.520">
+      <response>0.0.0.0 - 0.255.255.255
+
+10.0.0.0 - 10.255.2555.255
+
+100.64.0.0 - 100.127.255.255
+127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.535">
+      <response>0.0.0.0
+255.255.255.255</response>
+      <response_feedback>255.255.255.255 not in Class A. -loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.536">
+      <response>0.0.0.0
+127.0.0.0 – 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.543">
+      <response>(0-127).0.0.0
+(0-127).255.255.255</response>
+      <response_feedback>Missing Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.549">
+      <response>0.0.0.0 (network number)
+127.255.255.255 (broadcast)</response>
+      <response_feedback>Missing Loopback. And 126.255.255.255 or 98.255.255.255 is broadcast, too, not only 127.255.255.255</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.591">
+      <response>0.0.0.0~0.255.255.255
+127.0.0.0~127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.593">
+      <response>0.0.0.0 for host
+127.255.255.255 for local network
+127.0.0.0 - 127.255.255.254 reserved for Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.642">
+      <response>0000 0000</response>
+      <response_feedback>What do you mean by this?</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.685">
+      <response>0.0.0.0. und 127.255.255.255</response>
+      <response_feedback>The addresses have ranges: from x.0.0.0 and x.255.255.255 with x between 0 and 127
+Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.719">
+      <response>Network IP adress
+Broadcast adress</response>
+      <response_feedback>What are the addresses?
+Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.757">
+      <response>10.0.0.0  - 10.255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.800">
+      <response>0.0.0.0 to 0.255.255.255 is for current network and 127.0.0.0 to 127.255.255.255 for loop-back addresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.810">
+      <response>1.0.0.0 up to 127.255.255.255</response>
+      <response_feedback>Not all addresses in Class A are reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.821">
+      <response>0.0.0.0 and 127.255.255.255</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255
+Missing Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.832">
+      <response>0.0.0.0/8
+10.0.0.0/8
+127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.856">
+      <response>0.0.0.0 for host
+127.255.255.255 for local network
+127.0.0.0 - 127.255.255.254 reserved for Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.857">
+      <response>1.0.0.0-126.255.255.255</response>
+      <response_feedback>Not every address in Class A is reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.899">
+      <response>0.0.0.0 bis 0.255.255.255 sind Standard-Route (Host)
+127.0.0.0 bis 127.255.255.255 Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.925">
+      <response>10.0.0.0—10.255.255.255 (private use)
+127.x.x.x (loopback test)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.960">
+      <response>127.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.961">
+      <response>Broadcast: x.255.255.255
+Network Identifier: x.0.0.0</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.973">
+      <response>0.0.0.0, 127.255.255.255</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255
+Missing Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.975">
+      <response>0.0.0.0 - 0.255.255.255 reserved for current host or network
+
+10.0.0.0 - 10.255.255.255 reserved for private (sub)net
+
+127.0.0.0 - 127.255.255.255 reserved for localhost (loopback)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.978">
+      <response>0.0.0.0
+127.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1037">
+      <response>0.0.0.0 ~ 0.255.255.255
+10.0.0.0 ~ 10.255.255.255
+127.0.0.0 ~ 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1038">
+      <response>Every addresses between 
+10.0.0.0 - 10.255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1047">
+      <response>0.0.0.0
+127.255.255.255
+First and last address are reserved.</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255
+Missing Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1069">
+      <response>0.0.0.0/8 refers to the current network
+10.0.0.0/8 is a private network range
+127.0.0.0/8 is used for localhost as loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1077">
+      <response>0.0.0.0/8
+10.0.0.0/8
+100.64.0.0/10
+127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1084">
+      <response>0.0.0.0 (Default Route, or this Host)
+127.0.0.0 (Loopback Function)</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1092">
+      <response>0.0.0.0
+10.0.0.0
+127.0.0.0</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1113">
+      <response>0.0.0.0/8 dummy address
+10.0.0.0/8 private network
+127.0.0.0/8 loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1169">
+      <response>For each x ∈ {1,...,127} the network address x.0.0.0 and the broadcast address x.255.255.255 are reserved.
+According to RFC 6890addresses 10.0.0.0-10.255.255.255 are reserved for private-use networks
+addresses 100.64.0.0-100.127.255.255 are reserved for Shared Address Space
+addresses 127.0.0.0-127.255.255.255 are reserved for Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1186">
+      <response>0.0.0.0/8: dummy address,
+10.0.0.0/8: private network
+127.0.0.0/8: loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1205">
+      <response>0.0.0.0
+10.0.0.0</response>
+      <response_feedback>Missing Loopback and ranges</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1242">
+      <response>0.0.0.0/8
+127.0.0.0/8 (Loopback)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1294">
+      <response>0.0.0.0 --&gt; this host
+127.(anything) --&gt; Loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1325">
+      <response>10.0.0.0 to 10.255.255.255 private IP addresses
+
+127.0.0.0 to 127.255.255.255 reserved for loopback</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1330">
+      <response>1.0.0.0-126.255.255.255</response>
+      <response_feedback>Please watch your notation: 1.0.0.0 - 126.255.255.255 does not mean, only addresses with .0.0.0 or .255.255.255, but every address in this range, for example 13.8.205.4, too</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1334">
+      <response>0.0.0.0 - 0.255.255.255
+127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1351">
+      <response>0.0.0.0/8 - Addresses in this block refer to source hosts on "this" network.  (for Software)
+10.0.0.0/8 - This block is set aside for use in private networks.
+4.0.0.0/8 - This block is set aside for assignments to the international system of Public Data Networks.
+24.0.0.0/8 - This block was allocated in early 1996 for use in provisioning IP service over cable television systems. 
+39.0.0.0/8 - This block was used in the "Class A Subnet Experiment" that commenced in May 1995.
+127.0.0.0/8 - This block is assigned for use as the Internet host loopback address.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1381">
+      <response>According to RFC 6890 the following address blocks are reserved (https://datatracker.ietf.org/doc/html/rfc6890#section-2.2.2):
+127.0.0.0/8 with the range 127.0.0.0 - 127.255.255.255 loopback adresses
+100.64.0.0/10 with the range   100.64.0.0–100.127.255.255 if carrier-grade NAT is used this is the shared address space between a service provider and its subscribers
+
+10.0.0.0/8  with the range 10.0.0.0 - 10.255.255.255 private network adresses
+
+0.0.0.0/8 with the range 0.0.0.0 - 0.255.255.255 host adresses at this network with 0.0.0.0 being this host
+
+Additionally these adresses are reserved:
+x.0.0.0 network adresses, where x is 0-127 (excluding 0.0.0.0 and 127.0.0.0 as reserved RFC Addresses)
+x.255.255.255 broadcast adresses, where x is 0-127 (excluding 0.255.255.255 and 127.255.255.255 as reserved RFC Addresses)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1429">
+      <response>x.0.0.0, x.255.255.255, wobei x eine Zahl zwischen 0 und 127 ist.</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1436">
+      <response>The networks
+
+0.0.0.0 - 0.255.255.255and127.0.0.0 - 127.255.255.255
+
+are reserved.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1509">
+      <response>0.0.0.0 
+127.255.255.255
+The first adress and the last adress of each subnet are reserved</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255
+Missing Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1549">
+      <response>0.0.0.0/8
+10.0.0.0/8
+127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1554">
+      <response>0.0.0.0/810.0.0.0/8 100.64.0.0/10127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1560">
+      <response>0.0.0.0 , 127.255.255.255</response>
+      <response_feedback>The addresses have ranges: from x.0.0.0 and x.255.255.255 with x between 0 and 127
+Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1570">
+      <response>10.0.0.0 - 10.255.255.255</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1586">
+      <response>0.0.0.0 Dieser Computer
+127.0.0.0 Loopback
+10.0.0.0 Locale kommunikation in privatem Netzwerk</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1620">
+      <response>Class A:
+0.0.0.0. - 127.255.255.255</response>
+      <response_feedback>Not all addresses in Class A are reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1623">
+      <response>0.0.0.0 for host
+127.255.255.255 for broadcast
+127.0.0.0 to 127.255.255.255 are reserved as loopback addresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1625">
+      <response>(0-127).0.0.0 network
+(0-127).255.255.255 broadcast</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1637">
+      <response>from 0.0.0.0  to 127.0.0.0 are all addresses in class A. except 0 and 127 are reserved for network and broadcast</response>
+      <response_feedback>Network is x.0.0.0 and Broadcast is x.255.255.255, with x between 0 and 127
+Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1644">
+      <response>1.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Not all addresses in Class A are reserved</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1648">
+      <response>0.0.0.0
+127.0.0.0</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1675">
+      <response>127.0.0.0 to 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1690">
+      <response>the host itself:
+0.0.0.0 (00000000.00000000.00000000.00000000)
+
+a host at the same network:
+0.x.x.x (00000000.yyyyyyyy.yyyyyyyy.yyyyyyyy)
+
+broaodcast on another network:
+x.255.255.255 (yyyyyyyy.11111111.11111111.11111111) for x in range [0,127]
+
+loopback:
+127.x.x.x</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1701">
+      <response>10.0.0.0 - 10.255.255.255</response>
+      <response_feedback>Missing Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1725">
+      <response>0.0.0.0 - 0.255.255.255  Current Network
+127.0.0.0 - 127.255.255.255 loopback Addresses</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1742">
+      <response>Broadcast (255.255.255.255), local host address (0.0.0.0) and network host address (0.x.x.x) and loopback</response>
+      <response_feedback>What is the loopback address?</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1755">
+      <response>According to slide 45 of the lecture "Internet Protocol: IP Addressing – Interior and Exterior Gateway Protocols", following adresses are reserved:
+reserved for current network:0.0.0.0 - 0.255.255.255
+reserved for loopback adresses to the local host:127.0.0.0 - 127.255.255.255
+Moreover, the first and last adress of every network can't be used, because they are for network and broadcast: (1-126).0.0.0 and (1-126).255.255.255.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1760">
+      <response>0xxx xxxx.0000 0000. 0000 0000. 0000 0000. 0000 0000 (network)0xxx xxxx.1111 1111. 1111 1111. 1111 1111. 1111 1111 (broadcast)127. x . x . x (loop back)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1777">
+      <response>2,147,483,648</response>
+      <response_feedback>What do you mean?</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1780">
+      <response>0.0.0.0
+127.0.0.0</response>
+      <response_feedback>These addresses have a range: so not only 127.0.0.0, but 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1808">
+      <response>10.255.255.255
+10.0.0.0</response>
+      <response_feedback>Missing: Loopback and ranges</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1813">
+      <response>1.0.0.0 - 126.0.0.0
+1.255.255.255 - 126.255.255.255 (broadcast)
+127.0.0.0 - 127.255.255.255 (loopback)</response>
+      <response_feedback>Please watch your notation: 1.0.0.0 - 126.0.0.0 does not mean, only addresses with .0.0.0, but every address in this range, for example 13.8.255.4, too</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1856">
+      <response>0.*
+127.*</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1894">
+      <response>"This Host": 0.0.0.0
+Hosts/Broadcast at this network: 0.0.0.1 - 0.255.255.254 / 0.255.255.255
+Network Addresses: 1-126.0.0.0
+Broadcast Addresses: 1-126.255.255.255
+Loopback: 127.0.0.0 - 127.255.255.255
+Although definitions vary whether or not 0.X.X.X and 127.X.X.X addresses belong to Class A networks, I listed these for completeness; in my opinion, the definition of class A networks includes these ranges as well and hence, they belong to the reserved addresses.</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1900">
+      <response>0.0.0.0
+
+127.255.255.255</response>
+      <response_feedback>The addresses have a range: 127.0.0.0 - 127.255.255.255
+Missing: Loopback</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1932">
+      <response>reserved for loopback : 127.0.0.0 - 127.255.255.255
+Class A reserved range : 10.0.0.0 to 10.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1954">
+      <response>0.0.0.0/8
+10.0.0.0/8
+127.0.0.0/8</response>
+      <response_feedback>The addresses have ranges: from 127.0.0.0 - 127.255.255.255, the /8 is not a range</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1978">
+      <response>0.0.0.0 - 0.255.255.255
+10.0.0.0 - 10.255.255.255
+100.64.0.0 - 100.127.255.255
+127.0.0.0 - 127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.1992">
+      <response>00000000 (0.0.0.0): Network address
+
+01111111 (127.255.255.255): Broadcast</response>
+      <response_feedback>Missing: Loopback</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2004">
+      <response>0.0.0.0–0.255.255.255
+10.0.0.0–10.255.255.255
+100.64.0.0–100.127.255.255
+127.0.0.0–127.255.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2042">
+      <response>127.X1.X2.X3       X1,X2,X3∈[0,255]</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2045">
+      <response>0.0.0.0
+10.0.0.0
+127.0.0.0</response>
+      <response_feedback>The addresses have ranges: from 127.0.0.0 - 127.255.255.255</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2065">
+      <response>For Software: 0.0.0.0 - 0.255.255.255
+Used for local communications within a private network: 10.0.0.0 - 10.255.255.255 
+
+Used for loopback addresses to the local host: 127.0.0.0 - 127.255.255.255
+
+For international system of public 
+
+Shared address space for communications between a service provider： 100.64.0.0–100.127.255.255</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2096">
+      <response>0.0.0.0/810.0.0.0/8100.64.0.0/10127.0.0.0/8</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="4.3.2097">
+      <response>Class A:
+1.0.0.0 up to 127.255.255.255
+Reserved addresses:
+(1-126).0.0.0
+(1-126).255.255.255
+127.0.0.0 to 127.255.255.255 (loopback adresses)</response>
+      <response_feedback>Correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

@@ -1,0 +1,263 @@
+{
+  "operational": {
+    "project_id": "10805bb1-501c-4596-b655-9919f66bea9e",
+    "project_name": "1",
+    "status": "completed",
+    "completed_at": "2026-08-20T17:07:00.211178",
+    "test_score_rows": 540,
+    "endpoint_cells": 360,
+    "attempts": 1488,
+    "input_tokens": 1708717,
+    "output_tokens": 4304656,
+    "estimated_cost_fen": 1100.96914,
+    "failed_calls": 0,
+    "latency_p50_ms": 14767.5,
+    "latency_p95_ms": 300061.0,
+    "snapshot_count": 480,
+    "max_items": 6,
+    "max_visible_tokens": 263,
+    "constraint_violation_count": 0
+  },
+  "summary": [
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 10,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.5166666666666667,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 10,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.5066666666666666,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 10,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.53,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 20,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.535,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 20,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.5599999999999999,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "4.13",
+      "history": 20,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.5666666666666667,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 10,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.05333333333333334,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 10,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.06666666666666667,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 10,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.08,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 20,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.06000000000000001,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 20,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.09333333333333332,
+      "n": 15
+    },
+    {
+      "model": "deepseek-v4-flash-ga-260731",
+      "model_label": "DeepSeek",
+      "question": "5.7",
+      "history": 20,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.07666666666666667,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 10,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.3433333333333334,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 10,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.5033333333333333,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 10,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.4466666666666666,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 20,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.37,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 20,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.5133333333333333,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "4.13",
+      "history": 20,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.4516666666666666,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 10,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.1,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 10,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.06666666666666667,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 10,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.08666666666666668,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 20,
+      "condition": "nm",
+      "condition_label": "NM",
+      "mean_nae": 0.08333333333333333,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 20,
+      "condition": "crm",
+      "condition_label": "CRM",
+      "mean_nae": 0.05999999999999999,
+      "n": 15
+    },
+    {
+      "model": "doubao-seed-2.0-lite",
+      "model_label": "Doubao",
+      "question": "5.7",
+      "history": 20,
+      "condition": "arm",
+      "condition_label": "ARM",
+      "mean_nae": 0.08,
+      "n": 15
+    }
+  ]
+}

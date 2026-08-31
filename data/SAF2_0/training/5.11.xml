@@ -1,0 +1,583 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="5.11">
+  <questionText>Why can duplicate packets be a problem in a network? Please state your answer in a single sentence.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="5.11.a1">if the receiver is not capable of differentiating between valid and duplicated packets it may act on the same information twice.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="5.11.32">
+      <response>The network can be flooded by unnecessary packets.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.63">
+      <response>Duplicate packets increases the traffic on a network, so for example collisions or congestion can occur.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.91">
+      <response>Firstly, duplicates reduce the data rate, but more importantly, if not detected, duplicate packets can, e.g., trigger re-execution of transactions or actions in general. This can result in faulty behavior or can be used for malicious means.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.93">
+      <response>First, duplicates take up unnecessary space within the whole network and leading to heavier congestion secondly, duplicates require some kind of knowledge (state) at the receiver to determine if it's actually a duplicate (e.g sequence number). Also, the identifier should be unique within multiple sessions to avoid discarding packages (false positives) that are no real duplicates.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.137">
+      <response>They can cause unnecessary traffic and unwanted behavior which might be exploited by adversaries.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.148">
+      <response>Without additional means, the receiver can not differentiate between correct data and duplicate data and would re-execute the transaction, which leads to waste of resources</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.208">
+      <response>A receiver dont knot how to handle duplicates within a connection because he cannot diffentiate between correct data and duplicates.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.218">
+      <response>The duplicated packets reduce effective tool bandwidth, waste tool processing power, and consume tool storage capacity, reducing their effectiveness (The performance goes down ).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.273">
+      <response>Because the receiver can't differentiate between correct and duplicated data and would interact with the data twice for instance transferring money in a bank a second time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.304">
+      <response>Empfänger kann nicht ohne Weiteres zwischen Duplikaten und echten Paketen unterscheiden.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.307">
+      <response>There is a possiblity to get duplicates of a message, which can result in unwanted behavior and higher data rates.</response>
+      <response_feedback>The response is correct. The usage of term "higher data rate" is not clear.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.315">
+      <response>The Receiver cannot differentiate between correct data and arriving duplicated data. Operations might be re-executed. (f.21)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.367">
+      <response>They create more traffic and reduce bandwith as well as available processing power</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.375">
+      <response>Duplicate Packets require Resources without transmitting unique information/data between nodes, which also increases the amount of collisions.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.439">
+      <response>Duplicates may look like two separate commands/messages to the receiver.</response>
+      <response_feedback>The response is correct. The response can also state what will be the consequence in such a scenario.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.457">
+      <response>if the receiver is not capable of differentiating between valid and duplicated packets it may act on the same information twice.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.468">
+      <response>Duplicates might be a problem because the receiver can not differentiate between the correct data and the duplicate without additional means.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.500">
+      <response>A receiver cannot distinguish duplicate data and original data</response>
+      <response_feedback>The response is correct. The response can also state what will be the consequence in such a scenario.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.505">
+      <response>If the receiver cannot differentiate between original and duplicate packages, it might execute instructions sent by the user multiple times.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.507">
+      <response>Duplicates lead to pointless load, which leads to an inefficient network.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.512">
+      <response>Duplicate packages lead to duplication of the intent of the package e.g. a transaction ment to be performed only once.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.522">
+      <response>Duplicates are problematic in a sense that they can re-execute transactions which the client who sent the original data did not intend to do.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.542">
+      <response>If there are many duplicates in the network, the performance may decrease (-&gt; congestion) and problems might occur (bank example from the lecture).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.546">
+      <response>Duplikate sind ein Problem, da der Empfänger diese als neue Daten interpretieren und somit doppelt darauf reagieren könnte. (Beispiel aus der VL, bei dem doppelt Geld von der Bank überwiesen wurde).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.555">
+      <response>Receiver usually cannot differentiate between correct data and duplicates which may cause re-execution of the transaction</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.564">
+      <response>The receiver can't differentiate between the original message and the duplicate. If not handled correctly, it might reply to both the original message and the duplicate.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.571">
+      <response>Duplicate packets require ressources without transmitting new data and can cause more collisions.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.592">
+      <response>If duplicates occur in a network, the receiver of such packets cannot determine whether they are correct or duplicated data, in the worst case leading to multiple executions of actions which only should be executed once.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.626">
+      <response>When the network is full of duplicates, the performance goes down and different malfunction can occur (example with the bank transfer in the lecture, which with many duplicates can then occur correspondingly often).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.631">
+      <response>Duplicate data cannot be differentiated from correct data , and it would re-execute the transaction.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.638">
+      <response>Without additional measures in a network duplicate packets can not be differentiated from the correct packets and therefore a transaction would be re-executed by the duplicates.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.641">
+      <response>it is not clear to the receiver whether the duplicated message is the same message sent twice or just a copy of the first one, and should be ignored.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.647">
+      <response>This can be a problem if the recipient of the duplicates has no way to distinguish between correct and duplicate data, such that late duplicates could be incorrectly considered as new data.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.659">
+      <response>The receiver may not be able to detect duplicates which could cause double execution of actions or transactions leading to lower data rates (because delay non-duplicate packets) and faulty behaviour.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.700">
+      <response>Duplicating in a network could lead to a mismatch transaction between sender and receiver which they can execute the request for many times, E.g. Transfers money for twice even though customer actually sent one request.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.728">
+      <response>The receiver will not be able to differentiate (without additional information) between the correct and the duplicated data.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.746">
+      <response>The network can be congested by large amounts of duplicate packets.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.753">
+      <response>Flooding duplicates can cause a network congestion so that the network is not performant.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.764">
+      <response>If duplicate packets are sent and the receiver cannot recognize that it is a duplicate and thinks it is a single network, the receiver reacts to both packets.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.774">
+      <response>If you have too many duplicates the performance goes down and the network gets overloaded.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.785">
+      <response>Network has varying transit times for packets, certain loss rate and storage capabilities, as well as  packets can be manipulated, duplicated by flooding and resent by the original system after timeout.</response>
+      <response_feedback>The statement is not clear and specific about the problem caused in such scenario.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.792">
+      <response>The receiver cannot differentiate between the real and the duplicated data without additional measures, hence it could for example re-execute the transaction</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.836">
+      <response>There could be a delayed packet received with old content which would lead to misscommunication.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.837">
+      <response>They may cause a receiver to execute a task after it has already been executed.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.840">
+      <response>It cannot be determined why the duplicate occured and thus how to handle / further process it</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.845">
+      <response>A duplicate packet can cause an action to happen more than once, which is an undesirable action.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.863">
+      <response>Firstly, duplicate packets might have a negative impact on handshake phase of some protocol(e.g.,duplicate packet can let server stop to wait reponse from client in 3-way handshake of TCP) .Besides, duplicate packets also cause re-execution.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.890">
+      <response>Receiver might not be able to distinguish between a real and a duplicate packet.</response>
+      <response_feedback>The response is correct. The response can also state what will be the consequence in such a scenario.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.919">
+      <response>without additional means the receiver
+cannot differentiate between correct
+data and duplicated data.</response>
+      <response_feedback>The response is correct. The response can also state what will be the consequence in such a scenario.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1033">
+      <response>They can cause an action to happen twice since the receiver may not be able to distinguish between a packet that was sent twice and one packet that arrives twice.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1046">
+      <response>Because they arrive at the receiver at an undesired time, causing unintended behavior.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1048">
+      <response>Duplicate können zum Problem werden, weil zum Beispiel Befehle mehrmals ankommen und auch mehrmals ausgeführt werden.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1063">
+      <response>Duplicate packets can be a problem because a receiver might process a packet more than once which could cause unwanted effects.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1110">
+      <response>Duplicate packets arriving at receiver may cause a transaction to be completed multiple times.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1112">
+      <response>Duplicate Packets can lead to congestion.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1124">
+      <response>the duplicate packets reduce effective tool bandwidth, waste tool processing power and consume tool storage capacity.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1131">
+      <response>Duplicate packets contain the same infomartion as the "original" packet, therefore the receiver gets the information/instructions within the packet a second time and has to validate if he has already consumed/executed them.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1140">
+      <response>It s difficult for the receiver to differentiate between correct data and duplicated data, so he may threat the duplicated data also as correct data and may act on the same information twice.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1148">
+      <response>Dpulicate packets can lead to congestion.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1248">
+      <response>If the receiver can't detect that a certain packet is a duplicate of one that arrived before, it might be processed independently causing maybe an action to be executed twice (for example a bank transaction).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1256">
+      <response>Duplicates increase the traffic, they slow down the network.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1258">
+      <response>They put additional load on the underlying network and they have to be identified as duplicates to prevent reacting again on the packet, which includes unnecessary processing (worst case: replay attack) or more  packets to be sent again as a reply.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1278">
+      <response>Without additional safeguards duplicate packets could trigger an action (i.e. Bank Transfer) a second time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1293">
+      <response>Duplicate packages can lead to congestion by overflowing buffers of intermediate systems if the amount of duplicates is too high and thus latency increased.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1365">
+      <response>Duplicate packets cause bandwidth waste in a network, and may disrupt the sequence of "normal" packets or even be received as new.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1374">
+      <response>Duplicates cannot be distinguished from real packets at the receiving side and can lead to reexecutions of transactions (e.g. connection establishments, bank transfer).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1375">
+      <response>They steal available bandwith and once the first of the duplicate packets arrives at it's destination all others are obsolete.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1432">
+      <response>Without additional means the receiver cannot differentiate between correct data and duplicated data.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1435">
+      <response>Duplicate packets - when not detected properly - can cause unexpected behaviour in the systems participating in the network like e.g. executing a certain action on a server multiple times although it was only meant to be executed once.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1439">
+      <response>Duplicates can be transmitted at a later, undesirable time to the receiver. E.g. as long as the receiver cannot differentiate between an original and duplicate packet, transactions could be re-executed by receiving a duplicate (e.g. money transfer).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1449">
+      <response>The network protocol needs a method to prevent duplicate packets otherwise a loop could be formed where the duplicate packet is forwarded indefinitely. An IS would need to keep track of all packets it has seen recently which is not feasible.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1458">
+      <response>Because the large number of duplicate packets consume the network bandwidth as well as require more process power.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1503">
+      <response>Duplicated packed lead to more traffic in the network which can end in a congestion.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1532">
+      <response>The duplicate packets reduce effective tool bandwidth, waste tool processing power, and consume tool storage capacity, reducing their effectiveness.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1537">
+      <response>Duplicate packets within a connection can lead to actions being executed twice instead of just once (e.g. money transfer)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1666">
+      <response>Duplicate packets reduce performance of a network, since the receiver cannot tell the difference between the original and duplicate packets, transactions are executed twice.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1668">
+      <response>The duplicate packets reduce effective tool bandwidth, waste tool processing power, and consume tool storage capacity, reducing their effectiveness.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1677">
+      <response>Duplicates can lead to network congestion.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1682">
+      <response>Duplicate packages are handed over to the receiver too late at an undesired time, so that the receiver can't handle it or handles it twice, which for example can result in a loss if for example money is booked twice.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1704">
+      <response>Duplicating packets in a network can waste tool processing power, reduce effective tool bandwidth, consume tool storage capacity, reduce the effectiveness and obviously cause misunderstandings.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1752">
+      <response>Because the receiver cannot differentiate between correct data and duplicated data which results often in unintended packet procession (in addition or instead of the correct data).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1758">
+      <response>They congest the network by creating unnecessary traffic.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1766">
+      <response>Network has varying transit times for packets, certain loss rate and storage capabilities, as well as  packets can be manipulated, duplicated by flooding and resent by the original system after timeout.</response>
+      <response_feedback>The response is not precise about the problem or consequences caused when duplicates are present.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1779">
+      <response>The receiver
+cannot differentiate between correct
+data and duplicated data and one also might be faced with network congestion due to too many duplicate packets.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1792">
+      <response>Too much duplicate pacekets will reduce performance of network such as congestion.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1817">
+      <response>Apart from filling the network with unnecessary data, as it was said in the lecture, they can also cause problems to the applications to which they are going to be sent.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1820">
+      <response>The performance of the network goes down with too many duplicate packets and we need to find ways to differentiate between correct date and duplicate date.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1831">
+      <response>The performance of the network goes down with too many duplicate packets and we need to find ways to differentiate between correct date and duplicate date.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1836">
+      <response>Der Empfänger kann nicht zwischen korrekten und duplizierten Daten unterscheiden.</response>
+      <response_feedback>The response is correct. The response can also state what will be the consequence in such a scenario.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1859">
+      <response>The receiver can not differentiate between correct packets and duplicate ones, which may lead to re-execute the transaction.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1885">
+      <response>The network will be congested by unnecessary traffic resulting in overhead.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1912">
+      <response>The Problem will occur at the receivers end which cannot differentiate between the correct and the duplicated data without given any additional information</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.1980">
+      <response>The performance goes down and without additional means the receiver cannot differentiate between correct data and duplicated data</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.2007">
+      <response>Because they will waste the bandwidth.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.11.2068">
+      <response>because the receiver can not differentiate between correct and duplicate data and would interact with the data twice for instance transferring money in a bank a second time</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

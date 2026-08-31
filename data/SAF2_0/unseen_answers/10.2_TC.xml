@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="10.2_TC">
+  <questionText>In the lecture you have learned about congestion control with TCP. Name the 2 phases of congestion control and explain how the Congestion Window (cwnd) and the Slow Start Threshold (ss_thresh) change in each phase (after initialization, where cwnd = 1 and ss_thresh = advertised window size) in 1-4 sentences .</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="10.2_TC.a1">Slow start (cwnd less than ss_thresh): 
+In the slow start phase, cwnd is incremented by one every time a segment is acknowledged. This results in an exponential growth as cwnd is essentially doubled after each Round Trip Time (RTT). This is done until either a packet is lost or ss_thresh is reached. When cwnd &gt;= ss_thresh, the congestion avoidance phase is entered. 
+After a packet is lost / congestion the following adaption is made in both phases: ss_thresh = cwnd / 2. Then cwnd is reset to 1. 
+
+Congestion Avoidance (cwnd &gt;= ss_thresh):: 
+In the congestion avoidance phase, cwnd is incremented more slowly. There are different incrementation strategies, but they usually grow linearly, e.g. only increment cwnd by 1 after all sent segments have been acknowledged. This is done until a packet is lost. Typically, this means that cwnd less than ss_thresh and the slow start phase is entered again. 
+After a packet is lost / congestion the following adaption is made in both phases: ss_thresh = cwnd / 2. Then cwnd is reset to 1.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="10.2_TC.7">
+      <response>Phase 1: Slow start 
+Phase 2: Congestion avoidance 
+
+In the beginning of Phase 1 the cwnd is increasing exponentially starting at cwnd=1 by doubling cwnd after every transmission until a threshhold ss_thresh is reached. From this point onwards, cwnd is increased linearly until congestion occurs. This initiates Phase 2, in which ss_thresh is set to the half of the value of cwnd at the moment when the congestion occured (ss_thresh_new = cwnd/2). Afterwards cwnd is reset to 1 and Phase 1 starts again with the new value of ss_thresh.</response>
+      <response_feedback>The response is partially correct because the slow start phase's description is missing how ss_thresh changes when a packet is lost. The congestion avoidance phase starts when the cwnd becomes equal to the threshold, not when the congestion starts.</response_feedback>
+      <score>0.625</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.37">
+      <response>Phase 1: Slow Start
+              In this phase, every time the segment is acknowledged, cnwd plus one until it reaches ss_thresh or packet loses, but when cnwd is not smaller than ss_thresh, cnwd will increase much slower.
+
+Phase 2: Congestion Avoidance 
+            In this phase, the new ss_thresh is half of the cnwd, and cnwd will be reset to one, then slow start starts.</response>
+      <response_feedback>The response correctly states the name of the two phases. The Slow start phase's explanation is partially correct because though it mentions that packet loss can occur before ss_thresh is reached, it does not provide details of the changes in the value of ss_thresh and the congestion window. Also, a linear increase of the congestion window happens in phase 2, not 1. The second phase does not state when the threshold and congestion window changes are done.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.104">
+      <response>The two phases of congestion control are called slow start and congestion avoidance. In the first phase grows the cwnd exponentially until it reaches ss_thresh. From this moment, the second phase begins and the cwnd grows only linear. If a timeout happens, cwnd is reset to one and ss_thresh is set to the half of the (former) cwnd. Then the two phases start again.</response>
+      <response_feedback>The Slow start phase's explanation is partially correct as it does not mention what happens when a packet is lost before ss_thresh is reached. Here the slow start threshold also becomes half of the congestion window, and the congestion window becomes 1. The explanation of the congestion avoidance phase is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.154">
+      <response>The two phases are:
+1. slow start
+2. congestion avoidance
+
+After initialization (cwnd = 1, ss_thresh = advertised window size), during the slow start, cwnd is incremented by one each time a segment is acknowledged, so that cwnd grows quickly (cwnd = 1, 2, 4, 8; so in effect, it is doubled every round-trip time).
+In case of packet loss (congestion) ss_thresh is reset to the half of cwnd, cwnd is then reset to 1 and the slow start phase is started from the beginning, otherwise cwnd is incremented as long as the condition cwnd less than ss_thresh holds.
+When ss_thresh is reached, the second phase (congestion avoidance) is entered and cwnd is now increased more slowly (linear versus exponential increase in the first phase: cwnd = 9, 10, 11...; it is increased by one every round-trip time) until a timeout (congestion) occurs.
+In case of timeout (congestion), ss_thresh is reset to the half of cwnd, cwnd is then reset to 1 and the slow start phase is started again.</response>
+      <response_feedback>The response is correct and complete as it provides the phases' names and changes in the value of the congestion window and threshold correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.181">
+      <response>Phase 1 is called Slow Start. In this phase, the congestion window (cwnd) grows exponentially until the slow start threshold (ss_thresh) is reached, and then it grows linearly. Then, everytime congestion occurs, Phase 2 or congestion control starts. In this phase, ss_thresh is set to 50% of the current cwnd value. cwnd is then set to 1 and slow start starts again.</response>
+      <response_feedback>The response is partially correct because the second phase is congestion avoidance and not congestion control. The slow start phase is missing details about how ss_thresh changes when a packet is lost. Also, in the congestion avoidance phase, it's unclear how the cwnd increases, till which condition it's done, and also when the ss_thresh is set to half of the current cwnd.</response_feedback>
+      <score>0.375</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.187">
+      <response>In the first phase, the slow start, cwnd grows exponentially with base 2. 
+When cwnd equals ss_thresh, the second phase, the congestion avoidance, starts, where cwnd now only grows linearly. 
+When congestion occurs, ss_thresh is set to cwnd / 2 and cwnd is reset to 1 and the system is back in phase 1.</response>
+      <response_feedback>The response is correct, except that it is not clear whether the congestion and the corresponding changes occur in phase 2 or both phases.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.217">
+      <response>The two phases of congestion control are a slow start and congestion avoidance. Lets assume the slow start threshold is X. After initialization, the "slow start" begins with checking if one segment arrives at the sender (receiving ACK) and increases the number of segments until the procedure throws an error. The new ss_thresh is half of the last segments that arrived successfully (cwnd/2). Then in phase two, the congestion window is reset to 1, and the process starts with a new ss_thresh (cwnd/2).</response>
+      <response_feedback>The response states the two phases of congestion control correctly. However, it's unclear how cwnd is incremented. The response also lacks details about how and when ss_thresh changes in both phases.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.229">
+      <response>Two phases of congestion control: slow start and congestion avoidance 
+
+Congestion Window (cwnd) and the Slow Start threshold (ss_thresh) changes in: 
+- Slow start: cwnd starts with 1 and then after every successful ACK, 2 packets are sent instead of just one, so that cwnd increases exponentially with the power of two, as doubles after every round-trip time (RTT). When cwnd &gt;= ss_thresh, congestion avoidance phase begins. Otherwise when a timeout (congestion) occurs during the slow start phase, cwnd is reset to 1 again (cwnd = 1) and the ss_thresh is set to half of the cwnd (ss_thresh = cwnd / 2). Then slow start repeats with the new ss_thresh value. 
+- Congestion avoidance: cwnd is not doubled after every RTT anymore, but only incrementally increases until a timeout (congestion) taking place again. Congestion avoidance is terminated and it gets back to slow start phase with the ss_thresh = cwnd / 2 and cwnd is now reset to 1 again.</response>
+      <response_feedback>The response is correct and complete as it provides the phases' names and changes in the value of the congestion window and threshold correctly.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.256">
+      <response>First, in the "slow start" phase, the sender sends one segment, then two, four, eight segments, etc. (always doubling the cwnd), until the ss_thresh is reached. Then, in "congestion avoidance" phase, the sender only increments the cwnd linearly (+1). If a congestion occurs, the ss_thresh is set to 50% of the current size of the cwnd, the cwnd is set to 1, and the sender starts again with slow start.</response>
+      <response_feedback>The response is partially correct because the slow start phase's description is missing how ss_thresh changes when a packet is lost.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.278">
+      <response>1. Slow start: After the initializtion, cwnd is increased by 1 each time when a segment is acknowledged. This continues until cwnd == ss_thresh or a packet gets lost. When cwnd &gt;= ss_trhesh, TCP slows down the increase of cwnd. Especially, slow start increases the rate exponentially if each ACK generates 2 packets. 2. Congestion avoidance: Each time congestion occurs, ss_thresh is set to ss_tresh = cwnd / 2 and cwnd is reset to one s.t. cwnd = 1. After that, slow-start is entered.</response>
+      <response_feedback>The response is partially correct because the slow start phase's description is missing how ss_thresh changes when a packet is lost. In the congestion avoidance phase, the extent of slow down of the congestion window rate is not precisely mentioned.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="10.2_TC.373">
+      <response>The two phases are Slow Start and Congestion Avoidance. At the slow start, the cwnd is initialised with 1 and then ex the slow start treshold (ss-thresh) is set on the advertised window size. While in the slow phase, the cwnd is counted up exponentially, but smaller than the ss_thresh. The congestion avoidance phase is reached, when the cwnd is as big as the ss_thresh. After that, the cwnd is increased linearily. Whenever there is a timeout, then the ss_thresh will be set on half the amount of the cwnd, and cwnd will be reset at 1 again and phase 1 starts again.</response>
+      <response_feedback>The response is partially correct because the slow start phase's description is missing how ss_thresh changes when a packet is lost.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

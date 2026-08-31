@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="12.3_PE">
+  <questionText>To model the packet arrivals as a poisson process, we assumed that the arrivals for each time interval Δt are independent. Does this assumption hold for real INTERNET traffic? Explain your answer in 2-5 sentences. </questionText>
+  <referenceAnswers>
+    <referenceAnswer id="12.3_PE.a1">No. Real internet traffic often comes in bursts. Therefore, arrivals are not independent because the probability of an arrival happening at a node is influenced by previous arrivals at the node. For example, on-demand video streams selectively load the next video segments when needed. This means the actual network utilization depends on the current playback state on the client-side. The packet arrivals are not independent, as it is likely that there is a low utilization directly after the next segments have been loaded.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="12.3_PE.22">
+      <response>It’s not realistic, because in the Real-World the high traffic in the internet depends often on the day and the time of the day. For example, weekend or holiday and morning, afternoon or evening. So, it can be that in the morning there are many zeros in the time slots and the evening there much ones, because for example everyone is watching Netflix in the end of working day or is doing some other internet things. So there can be more than one on’s in time interval delta t.</response>
+      <response_feedback>One can use a function instead of a constant to model the arrival rate to reflect such large-scale behavioral patterns like having more traffic in the evening. The arrivals would not depend on previous arrivals then, only on the time of the day, which is known. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.57">
+      <response>This assumption does not hold in real internet traffic. In case of a video streaming service for example the packages are send in big burst. So the arrival of the first package does indicate the arrival of more packages and the more packages are received in a short time the more likely it gets that no more package will arrive for some time because the buffer for the video stream is full and the streaming service stops sending.</response>
+      <response_feedback>The response is correct as it associates the probability of a packet arrival happening at a node with previous arrivals at the node. The extent of the probability of receiving a packet after receiving several packets depends on many factors and may differ from client to client.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.63">
+      <response>This assumption does not hold true for the internet as when someone uses the internet he will continue using it for a certain time and not just have a single request and then nothing for a while. Also a lot of traffic is in a burst like nature so some requests until a certain buffer is filled and then again when it is somewhat deplenished. So in general the previous state or states can hold information for future states.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of a packet arrival happening at a node with previous arrivals at the node.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.105">
+      <response>This assumption can not hold for real internet traffic because the underlying assumption of independence is false. Over a higher timescale the behavior of the user is undergoing changes. For example a user checks his mails in the morning for which packets arrive but then he goes to work and in that time no packets arrive. Another example disproving the assumption of independence is the on/off bursty traffic while watching videos. For some time packets arrive continuously and then if the buffer is full no packets arrive until the buffer is empty again and needs to be refilled.</response>
+      <response_feedback>The first example in the response is partially correct because the arrival process' parameters can be time-dependent. That can model such intra-day variations like people going to work. Knowing previous arrivals no longer has to capture this information for us, thus making the inter-arrival times independent in this regard. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.118">
+      <response>No, since the real internet traffic is complicated and there are dynamic behaviors of real-world service. For example, real internet TCP traffic has high burstiness and exhibits long range dependence properties at large time-scales. The arrivals for each interval are not independent and there are dependence and correlation of the traffic arrival process in the internet. Meanwhile, the real internet traffic has self-similar characteristics, thus, this assumption cannot hold for real internet traffic.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of a packet arrival happening at a node with previous arrivals at the node. Take note that the burstiness is more a general nature of internet traffic, not just limited to TCP traffic.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.191">
+      <response>Yes the assumption that time between packet arrivals are independent holds true for real internet traffic. Packets transferred between one node to another suffer from various delays such as propagation delay, processing delay, queuing delay, transmission delay etc. Each of these are independent of each other. Hence the arrival interval of packets which is a function of these delays is also independent.</response>
+      <response_feedback>The response is incorrect because the real traffic often comes in bursts. Therefore, arrivals are not independent because the probability of an arrival happening at a node is influenced by previous arrivals.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.207">
+      <response>No, because sometimes many users want to access the server at the same time, while at other times, only few request the server. For example a livestream of a football match: everybody sends requests to the server at kickoff, but only few do after the game (to watch the highlights). That means that the arrivals are not independent. They can depend on other events.</response>
+      <response_feedback>The arrival depends on other events in such cases but the dependency can also be observed in the normal scenario when no such event is happening. Apart from that, the response is correct.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.223">
+      <response>No this assumption does not hold for real internet traffic. Internet traffic is often very bursty, e.g. if we load a website we need to load a lot of resources at once, while we won't load nearly as much if we just look at the website. This means the probability that traffic arrives, if traffic arrived in the previous interval is greater than if there was no traffic in the previous interval.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of a packet arrival happening at a node with previous arrivals at the node.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.246">
+      <response>No, this assumption of the arrivals being “memoryless” does not hold for real internet traffic. 
+If Δt = 1ms, for example, that means every of these time intervals has to be considered independent from each other. So in each of these intervals it is a “coin flip” whether data is sent or not. 
+Obviously this is not true for real internet traffic because while streaming a movie or playing an online game, for example, the arrivals are connected and dependent on each other.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of an arrival happening at a node with previous arrivals at the node.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.274">
+      <response>No, this assumption will most likely not hold true for real internet traffic. This has multiple reasons:
+
+Packets on the internet are grouped into frames for sending, making lone packets being sent separately rather unlikely.  
+The nature of data transfer on the internet also makes lone packets very unlikely. When making a request for data through the internet (for example loading a web page), the response includes a lot of data (markup, text, images) which are all sent in a short amount of time, and after the page has been loaded the user will most likely spend some time browsing the page before making another request.  
+Therefore we cannot treat arriving packets as independent from one another, because there is a very high chance that an arriving packet is related to the previous packet.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of a packet arrival happening at a node with previous arrivals at the node.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.280">
+      <response>No, it is not true for real time internet traffic. The arrivals of packet is not independent on time interval as while loading or streaming something the next video is loaded automatically if the previous video is about to end.eg. youtube,netflix etc.. this proves that it is not independent of the time interval.</response>
+      <response_feedback>The response correctly associates the probability of arrivals at a node with previous arrivals. However, the example given does not illustrate this well because the next video's auto-load can be turned off in the application setting. A better example would be on-demand video streaming in general, as the traffic is bursty depending on the segment loading.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.315">
+      <response>This assumption does not hold for real internet traffic. Real traffic is for example dependent on the daytime. Furthermore the application is relevant. Some might use bursty traffic.</response>
+      <response_feedback>The response is partially correct because the arrival process' parameters can be time-dependent. In this way, the arrival rate wouldn't depend on the previous arrivals, but instead on the time of the day.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.330">
+      <response>This assumption is a simplification, that makes it easier to work and calculate with. In reality, there is seldomly only one packet is send and then nothing happens afterwards, but communication consists of multiple packets. Therefore, if there is one packet, then it is very propable, that there will be a lot following packets. I.E. if someone is streaming in the afternoon and causing a number of packets, the propability of the packets will concentrate on one timeframe. And this (and the behaviour of the other participants) causes the propability for a larger timeframe like the morning to be different then in the evening.</response>
+      <response_feedback>The response is correct as it correctly associates the probability of a packet arrival happening at a node with previous arrivals at the node.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="12.3_PE.338">
+      <response>Yes. Because Internet traffic can be also modeled as a sequence of arrivals of discrete entities, such as packets, cells, etc. Mathematically, this leads to the usage of two equivalent representations: counting processes and interarrival time processes.</response>
+      <response_feedback>The correct answer is "No". In real internet, the arrival of the packet at a node is affected by previous arrivals.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

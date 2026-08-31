@@ -1,0 +1,1099 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="1.2">
+  <questionText>Consider the following scenario: You are browsing the web for a very specific and important piece of information. However, you are not quite sure how to find it and adopt an iterative process of refining your query after every search, depending on the shown results and a skim of the first few websites. Is it better to use a connection-oriented or connectionless service for your communication in this scenario? Explain your answer in 1-4 sentences.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="1.2.a1">Connectionless, because you will communicate with various partners (websites) for short periods of time. If you would initiate a connection with every website you skim, that would incur a lot of overhead in the connecting and disconnecting phase, just to have very short data transfers.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="1.2.0">
+      <response>We want to consider, how our process will be changed, if a result to a query will not be shown to us, because of a connection error. Depending on our strategy, if the piece of information we search for not being shown to us will lead to us refining our query in a way, that we will not be shown the piece of information again, then we should use a connected-oriented service. Otherwise, if us refining the query will not lead to us always missing out on the piece of information we search for, a connectionless service will do as some results not being shown will hinder the iterative process too much.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.1">
+      <response>Considering that you want to submit your queries indepentently as single data requests it would make sense to use a connectionless service. In that sense, no state for a connected session is required.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.2">
+      <response>A connection-oriented service would be a better fit for this scenario since there are multiple refined queries by the user and since the process is assumed to be time intensive the handshake overhead can be expected to be insignificant.
+However, the time delta between queries could vary by quite a bit and hence one could argue, that a connectionless service could be beneficial for the query provider since this could save resources for him and a query does not need to provide such harsh requirements in reliability and time as e.g. a video call.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.3">
+      <response>It is better to use a connectionless service. This is due to the fact that the other party does not have to maintain a connection while you refine your query (which could take a bit of time). Additionally it would be impractical for the search engine provider to maintain a connection with every querying person for a longer period of time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.4">
+      <response>It is better to use a connectionless service. Even though the information is important connection-oriented by itself doesn't imply reliability. Since we are going to be doing a bunch of iterative searches, it is better to jump directly to the data transfer stage to save some time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.5">
+      <response>A connection-oriented service is better for this scenario as the information is very important and thus the data should be reliable.
+Thus, as there is no time restriction the connection oriented may take longer but the information will be reliable.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.6">
+      <response>Since I am looking for a very specific important piece of information, it should be guaranteed that the information I receive at the end is correct. A connection-oriented service is a more reliable connection service because it guarantees data packets transfer from one end to the other end with a connection. Furthermore, it is also beneficial for our multiple searches, because there is no congestion as it provides an end-to-end connection between sender and receiver during transmission of data.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.7">
+      <response>It's better to use a connectionless service. In our case here there is no need of an continuous connection like in a call between two persons, but we want to have a high reliability of receiving the information, so many possible ways to send the data (in a connectionless service) is reducing problems when one router is down.</response>
+      <response_feedback>The type of service selected is correct but the explanation is not complete in the presented scenario as it does not explain why there is not a need for connection-oriented service or what advantage one gets in using connection-less services here. Further, the connection-oriented services guarantee data transfer and have higher reliability.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.8">
+      <response>In this scenario, it's better to use a connectionless service. A request will then be fired as quickly as possible without any connect request/accept response or security protocol negociation and it is assumed to arrive at destination, and so the benefit of this is less time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.9">
+      <response>It is better to use a connection-oriented, because for every request we want the full (loss-less) results back to optimize our query on and to not miss any information.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.10">
+      <response>In this case it is better to use a conncetionless service, because it is not necessary to hold a connection in the time you are reading the first results. So more people can search at the same time.</response>
+      <response_feedback>While the connectionless service is the correct service but the explanation is not complete. The main reason in this scenario is one will communicate with various partners (websites) for short periods of time. If one would initiate a connection with every website you skim, that would incur a lot of overhead in the connecting and disconnecting phase, just to have very short data transfers.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.11">
+      <response>I believe it would be better to use a connection-oriented service, because by iteratively searching and updating your query after every search, a connection-oriented service would maintain the flow of information from the person searching and the web. Especially when searching for something specific from something as large as the web (and it is expected to take a long time), the initial cost of the connection is insignificant. One could also argue for the use of a connectionless service, however, I think the process of refining the search query based on the top search results is indicative of the need for a connection-oriented service.</response>
+      <response_feedback>As stated in the response " when searching for something specific from something as large as the web (and it is expected to take a long time" either way but then we'll connect to each website when we just want to skim them and move on to the next one which will further increase time, so it makes sense to use connectionless to reduce connection setup and teardown overhead.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.12">
+      <response>Da die Suche aus mehreren kurzen Kommunikationen besteht, bietet sich ein Connectionsless-Service an.
+Dabei findet ein direkter Übergang zur Datentransfer-Phase statt und man ist im Vergleich zum Connection-orientierten Verbindung nicht auf den Auf- und Abbau der Verbindung angewiesen. Zudem bietet eine Connectionless-Verbindung auch bei vollem Netz eine Möglichkeit zur Kommunikation.
+Ein Nachteil ist jedoch die Fehlende Flow-Control.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.13">
+      <response>I would choose an connectionless service. This decition is motivated by the fact, that one search query does only consist of a request (by me) and an answer (by the search engine). Considering, that the time of the request is much shorter than the time I am rating the results, my decision avoids an unnecessary requirenment of holding the connection by the service provider. (It has been defined in the lecture, that) The type of the connection does not point out anything about the quality of service and so the connection oriented service would not have any adventage over an connectionless service during the whole process of this "iterative research".</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.14">
+      <response>As a matter of fact, that the required information is very important, it is crucial, that the information is downloaded safely, correctly and completely. So every received part(bit) of the information should be acknowledged.
+If the connectionless service is used, the data might be possibly found faster (if the search and its requests could be done automatically, i.e. via a piece of code), but I cannot assure, that the data was downloaded correctly and completely.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.15">
+      <response>It is better to use a connectionless service, because in comparison to a connection-oriented service, there is no connection establishment phase. With that, the process goes straight to the data transfer phase and also no connection teardown phase is needed. Especially the fact, that we want to see the results as fast as possible and just want to skim the first few websites shows that a connection-oriented service would not be the optimal solution because of its overhead of handshake procedures, which can be contra productive for short communications.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.16">
+      <response>It is better to use a connectionless service, because subsequent telegrams from sender to receiver use different lines. This method can avoid connection failure.</response>
+      <response_feedback>our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather than establishing a time-consuming connection and teardown with each, for this reason, connectionless is a better option for faster access.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.17">
+      <response>Connection-oriented service is better.</response>
+      <response_feedback>The response is incorrect and does not provide an explanation.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.18">
+      <response>A connection-oriented service will be better, because you don't want lose any piece of important information. Furthermore, the iterative precess ensure you can find every resource and with connection-oriented service will ensure you get everything from every search.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.19">
+      <response>Connection-oriented communication is suitable for communication with the search engine, since the search queries are refined and the same server is addressed (the same connection is reused).
+However, since most of the communication occurs when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall, since it does not cause the unnecessary overhead for connection setup. 
+Conclusion: connectionless rather than connection-oriented.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.20">
+      <response>A connection-oriented process should be used. 
+Assuming the search engine also has some kind of internal state, the results it provide could be optimized not only for the current query but also for past similar queries which helps the user narrow down his topic.</response>
+      <response_feedback>The correct answer is connectionless service as we need to consider skimming of websites also to refine our query. Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.21">
+      <response>A connection-oriented process should be used. 
+Assuming the search engine also has some kind of internal state, the results it provide could be optimized not only for the current query but also for past similar queries which helps the user narrow down his topic.</response>
+      <response_feedback>The correct answer is connectionless service as we need to consider skimming of websites also to refine our query. Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.22">
+      <response>Despite the fact, that search engines in browsers use always a connection-oriented communication, in this paricular case, it is not necessary. 
+Every Search consists of me typing a query and the system responding to the query. 
+Based on the output, I will then write a new query. 
+So the system does not need to know what I asked in the last searches for answering to the new query.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.23">
+      <response>I would choose a connection-oriented  service because i would want to ensure that the whole piece of information is transferred because it features no loss, no duplication and no sequencing error. In a connectionless service it wouldn't be reliable enough as there is no inherit sequencing nor loss correction though the latter depends on if its a confirmed connectionless service or unconfirmed.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.24">
+      <response>I would choose a connection-oriented  service because i would want to ensure that the whole piece of information is transferred because it features no loss, no duplication and no sequencing error. In a connectionless service it wouldn't be reliable enough as there is no inherit sequencing nor loss correction though the latter depends on if its a confirmed connectionless service or unconfirmed.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.25">
+      <response>i would use connection oriented service because i am looking for a very specific information. In this case i have to be sure, that every element on the website is loaded completly.
+But both services are receiving all pakages ( conn. less service may not receive the right order), so the layers above can create the website correctly. Is this right?</response>
+      <response_feedback>While the stated points are true and may be good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.26">
+      <response>It is better to use a connectionless service since we use iterative search and have to establish a lot of connections (for each request). Connectionless services can set up a connection faster than connection.oriented services since they do not have to make a handshake each time.</response>
+      <response_feedback>The response is correct. Take note that there is no connection setup in the connectionless service.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.27">
+      <response>It is better to use a connection oriented service since you will be communicating especially with one search engine multiple times, and a loss of the query data is not acceptable.</response>
+      <response_feedback>The provided perspective is correct but it does not answer the part where one needs to actually skim through the first few websites where connection-oriented could be time-consuming.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.28">
+      <response>This scenario is, while in my opinion beeing a strange example, an example of an connectionless Service, when viewing it out of the perspective of me and the search machine. 
+
+When issuing a query the search machine recieves my search string, serves my request and returns a list of links to other websites. From the view of the search machine this transaction is now finished and other users can be served. 
+
+When I then issue a new, refined query to the machine, the previously served requests do not matter for the result, as the search machine should not hold a state. So a connection-less service would be the best approach to model this interaction.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.29">
+      <response>Browsing in Web bedeutet das Anschluss des Users zum bestimmten Network mittels IP-Adresse usw. , d.h. connectionless service. Aber wie im Szenarion beschrieben ist, sucht der User spezifische und wichtige Information, was voraussetzt, dass der User keine Information bei der Übermittlung oder durch Fehler verlieren will. Daher ich denke, dass connection-oriented service passt zu diesem Szenario besser.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.30">
+      <response>It is better to use a connectionless service, because the transfer of isolated unit data is short(due to the user just skimming the first few websites) and because the user doesn't need to establish and maintain connections due to the many unknown amounts of query search. If the user would use a connection-oriented service, he would have to establish and maintain a connection for each query search and this would very inefficient in terms of the time he needs to find the specific important piece of information.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.31">
+      <response>It's better to use a connection-oriented service for communication because the query should be refined after each search, so it's important to have a reliable connection without errors or lost data.</response>
+      <response_feedback>The response is true but it does not take into account the overhead caused in skimming the websites using connection-oriented services.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.32">
+      <response>Für das gestellte Stenario ist Connectionless Service besser. Da durch Skalierbarkeit mehrere Webseiten gleichzeitig aufgeruden und gefunden werden können. Dadurch lässt sich schneller ein Ziel definieren und finden.</response>
+      <response_feedback>The response is correct but the explanation provided is not complete. The main reason here is the iterative search and skimming of websites that don't require a reliable connection.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.33">
+      <response>Da es in unserem Scenario um wichtige und spezifische Informationen geht ist der Connection-oriented Service besser, da dieser zuverlässiger ist und dieser garantiert kein Verlust oder Fehler zu haben. Hingegen beim Connectionless Service kann es zu Fehlern führen.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.34">
+      <response>It is better to use a connectionless service in this scenario. Since you are entering many queries in a short time you would prefer the connectionless service that is faster than the connection-oriented one. By eliminating the need to establish and teardown connections the connectionless service saves time. The possible loss of a few packages should not be a problem, as you only want to get a quick overview and skim for the first few websites.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.35">
+      <response>I would go for a connection-oriented service. Since the information I`m a searching is very specific and important I would want to secure my search results agains corruption and loss to make sure I get the right information which is done by using connection-oriented services.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.36">
+      <response>In this scenario it would be better to use a connection-oriented service, as the overhead of the the connection setup/handshake is negligible in a communication that is longer. The benefit of using a conenction-oriented service is better service.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.37">
+      <response>Connection-oriented service is better due to the importance of the information so in this waz will be losed.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.38">
+      <response>It is better to use connection-oriented service. Since the piece of information is very specific we don't want to miss a good result that is lost because the unreliable connectionless service. With the risk of not retrieving the piece of information in the next iteration anymore. Hence we want a reliable connection. Also we don't need the speed of connectionless service.</response>
+      <response_feedback>By specific and important information, it is meant that one needs to search for it and the possibility is low to find it on the first search, and one needs to refine his query based on received results. While the stated points are true and may be good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.39">
+      <response>I think it is better to use a connection-oriented service. After establishing a connection to the search engine you can send a query and get results without the possibilities of congestion (can result in a long waiting time for query results)  and the loss of packets. The risk of losing query result packages makes it impractical to use a conectionless service.</response>
+      <response_feedback>The response is correct but it does not explain the reasoning in the context of the scenario described in the question i.e. using an iterative approach, skimming initial websites for which there is less overhead when one uses connection less service.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.40">
+      <response>connection less scheme would be better for this issue. because we don't know where the information is found there is a need to contact several servers in an iterative process. Creating a connection between every server to us has a big time overhead, so in order to reduce it we can use connection-less service, and we can save some time this way.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.41">
+      <response>Connection-oriented service
+Because it can offer the no loss, no duplication and no sequencing error service, and provide flow control at the same time. For an iterative process to have results and a skim of the first few websites, connection-oriented service can provide a more successful and precise result with less time and fewer errors compared with connectionless service.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.42">
+      <response>It is better to use a connction-oriented service because it is more reliable. We want to make sure that we get all the very specific and important information in its complete form and we do not want any loss. It will take longer be will be more reliable.</response>
+      <response_feedback>While the stated points are true and may be good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.Further while skimming, the content of the websites is scanned and therefore does not have to be  fully correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.43">
+      <response>I would choose connection-oriented service because is the information is specific and important. With connectionless service results could be lost.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.44">
+      <response>I would prefer a connection-oriented service, since the piece of information we are looking for is important. For that case, we need a reliable protocol, that also ensure that the data delivered is correct. Connectionless does not guarantee reliability.</response>
+      <response_feedback>While the stated points are true and may be good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.45">
+      <response>I would choose a connectionless service, because it is faster and for me it is not so problematic if a paket is faulty. But there is a disadventage: If I send a lot of requests, it may be worthwhile to establish a connection. Then the costs for connection setup, data transmission and connection termination are no longer a factor. So it depends on the situation.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.46">
+      <response>Connection ortiented, since your information comes from the searches from few websites. You need to be connected to them in order to find the information you are looking for.</response>
+      <response_feedback>We only need to skim these first few websites, so connection-oriented service is not a must.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.47">
+      <response>Ein Verbindungsorientierter Service ist dafür am besten geeignet, da ich die Informationen  vollständig und korrekt erhalten möchte. Ein verbindungsloser Service wäre zu unzuverlässig.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.48">
+      <response>Connectionless, because communication with each website is short, so the overhead from handshakes can become a problem.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.49">
+      <response>It is better to use a connection-oriented service for this, which can keep the state of the iterative process.</response>
+      <response_feedback>By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.50">
+      <response>If we need a specific and important piece of information, we need to use connection-oriented communication. Since the connectionless service doesn't guarantee the data can be received in any order by the receiver, so the specific and important piece of data may be lost during this process.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.51">
+      <response>A connectionless service is more suitable for this scenario because it is more performance efficient due to the lack of the connection and disconnection phases compared to connection-oriented services (e.g. building a connection to every web resource in order to look for the specific information is very costly). Since the process of refining the query after every search happens iteratively we don't need to rely on a response from every website which can compensation for the unreliability of connectionless services (e.g. when packet are lost within the network).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.52">
+      <response>If one would use a connection-oriented service in this scenario a new connection would have to be established to each of the visited websites only to transfer a small amount of data. So a connectionless service should be preferred, because otherwise the user might be noticeably slowed down by the handshake overhead.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.53">
+      <response>It does not make a great difference since the order of the packages or the speed in which packages are transmitted doesn't matter in this scenario, because you would only ask for the results of one query a time and then wait for the answer before refining the query and sending the next package.
+But since your next query depends on the results of the previous one, reliability is an priority in this scenario. That's why a connection oriented service is better here.</response>
+      <response_feedback>Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.54">
+      <response>Wenn man im Internet an vielen verschiedenen Stellen sucht und connection-oriented Services benutzt, muss man auch mit vielen verschiedenen Stellen eine Verbindung aufbauen, die Zeit kosten kann. Auf viele Verbindungen ist das möglicherweise eine signifikante Zeit. Connectionless services vermeidet dieses und kann dadurch Zeit sparen. Es kann jedoch sein, dass der betroffene Server nichts von der Anfrage mitbekommt und man somit die Information nicht bekommt. Man sollte also Sicherungen bedenken, wie möglicherweise mehrmals Anfragen ausgeben.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.55">
+      <response>It is better to use the connectionless service because the communication is enabled with a certain error and duplicate rate. By refining the query after every search the communication works with a lot of errors, but gets closer to the goal each iteration. Therefore the high error rate in the connectionless service helps to increase the precision of the search and finally receive the wanted piece of information.</response>
+      <response_feedback>Though it is correct one needs to use connectionless service but the reasoning behind it is that for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather than establishing a time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.56">
+      <response>Connectionless, because we don't need a long stable connection, as I simply skim through the first results and then enter a new query. 
+The overhead for a connection-oriented service might be too high, so connectionless makes more sense for the small queries. 
+Furthermore, if many other users searched for things at the same time (and thus the network is congested), connectionless would still allow me to communicate (albeit slower).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.57">
+      <response>It is better to use a connection-oriented service for this use case. A connection-oriented sevice checks, whether a message is recieved and is more reliable than a connectionless service, and as the information we need is very specific and important, we cannot afford too miss any search result to a faulty connection.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.58">
+      <response>It is better to use a connection-oriented service, because when you do a search query you get a response containing a list of the websites and since you want to skim the websites and want to go back to the results list after opening a website, you need to use a connection-oriented service, because else the information about the results list is lost after opening a website.</response>
+      <response_feedback>In case one is opening a website for skimming that could possibly be done in a new tab, this would be faster as then this could be connectionless.  As we are just skimming it, in case some information from that website is lost, it should not be an issue so connectionless services will be better.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.59">
+      <response>It is better to use a connection-oriented service, because when I get the results for a search, I skim over a few websites by opening them. To get back from these websites to the result list, I need a state.</response>
+      <response_feedback>In case one is opening a website for skimming that could possibly be done in a new tab, this would be faster as then this could be connectionless.  As we are just skimming it, in case some information from that website is lost, it should not be an issue so connectionless services will be better.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.60">
+      <response>In this scenario, it is better to use the connection-oriented service, because of browsing for a specific and important piece of information.
+So it is important, that the information arrives completely at the receiver, although you are skimming the first few websites.  
+And with connection-oriented services like TCP retransmits lost packets/information, which is quite important to find the specific information.
+With connectionless services lost information will not be retransmitted, so it could lead to incomplete information, which in the worst case is exactly that specific information.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access. If in the worst case, the lost information was our desired information, we still have the chance to reframe our query and submit it again.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.61">
+      <response>It would be better to use a connection-oriented service in this case. With a connectionless service, there is no guarantee that all data requested from the different websites will actually arrive. As the important piece of information may be on any of the websites, it cannot be afforded to miss out on a page. In addition, the repeated and iteratively refined searches can take place in the same communication channel once the channel has been established.</response>
+      <response_feedback>Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.62">
+      <response>In this scenario I would prefer to use a connection-oriented service, since it allows the search-engine algorithms to take into account your earlier (and unsuccessful) attempts at finding your information.</response>
+      <response_feedback>The user will refine his query based on previous results, so each query submission will be independent, so connection-oriented service is not necessary.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.63">
+      <response>Since we have an interative process and skim the first few websites we don't need to establish a connection on each step. That's why connectionloess service is better in this case.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.64">
+      <response>It is better to use a connectionless service. Connectionless service is used in the network system to transfer data from one end to another end without creating any connection. 
+
+So it does not require establishing a connection before sending the data from the sender to the receiver. It is not a reliable network service because it does not guarantee the transfer of data packets to the receiver, and data packets can be received in any order to the receiver. Therefore we can say that the data packet does not follow a defined path. 
+
+A connectionless communication has an advantage over a connection-oriented communication, in that it has low overhead. It also allows for Browsing, multicast and broadcast operations in which the same data are transmitted to several recipients in a single transmission.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.65">
+      <response>In my opinion, you could argue for both services, it depends on how you understand the task. 
+The argument in favor of a connection-oriented service is that it provides a better service, but at the expense of the state. When the handshake is done, I can be sure that the connection is established. Since the information is very important and specific, it could be that it is important that the packets arrive exactly in the order in which they were sent. The disadvantage is that there is no connection if the network is overloaded. 
+The advantage of a connectionless service is that there is a communication even if the network is overloaded (but then maybe stalled). Since I have an important piece of information, it can be better in this case that I get the information at all (even if delayed), than not at all. However, the disadvantage is that I cannot be sure that the recipient is ready to receive my request and that the packets are not received in the same order as they were sent or even can get lost. 
+
+All in all, I would therefore suggest a combination of both to use the advantages and compensate the disadvanteges as mentioned on Slide 19 from "Introduction Basics - Concepts" and as Google is doing it by using TCP and UDP. If only one has to be selected, I prefer a connection-oriented service, because the information is important and I definitely need it, i.e. as soon as the handshake is done, I can be sure that the connection is established. Also, since it is very specific information, it is important that all data packets arrive and in the correct order as it was sent off. Thus, the connection-oriented service offers a higher reliability, which is preferable for an important and specific information.</response>
+      <response_feedback>The provided answer is detailed and argues for both but it does not consider that when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall in this regard since it does not cause unnecessary overhead for connection setup.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.66">
+      <response>For the connection to the search engine a connection-oriented approach would work best. A stable connection is required for every search as data needs to reach the search engine, get processed there  and flow back. This is critical as we want to make many searches without waiting inbetween each search for a connection to the engine. 
+For connecting to the websites the connection is not very important as even if the connection fails I would just open the next result.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.67">
+      <response>For the https protocol their is mostly using TCP and that s an connection oriented service protocol.
+But in this scenario I would recommendation connectionless service, because for my iterative process for looking information, i will save overhead (no handshashe). Overhead is significant in short communication and and in this scenario their is no need of build up an connection (connect, transfer, disconnect), because I don't want to have an long communication with my partner. I only get the information and go to the next website.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.68">
+      <response>In this situation, I believe that connection-oriented service is a better option for the communication. First of all, in the scenario, I am browsing very specific and important information. Connection-oriented service is usually used when the trust of data transmission is important. Also, the service's packets are transmitted to the receiver in the same order as the sender has sent.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.69">
+      <response>I would go for the connection-oriented service, because the information I am looking for is very specific and I don't want to risk to receive an invalid piece of information. The latency is not that important and I dont want to have realtime upates, so a connectionless service doesnt make much sense in this case. Its more important to receive the correct data and with an connection oriented service it is easier to ensure that</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.70">
+      <response>Connection-oriented(?)</response>
+      <response_feedback>Incorrect and no explanation provided.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.71">
+      <response>First off: Web browsing uses HTTP, which itself uses TCP, so in the given scenario conection oriented services would be used. This is the correct wayof approaching this problem, because a website is not a single file beeing transmited, but loads of files like images, which makeuse of the fault protection in connection oriented services. If the question is, wether the connection should be kept between serches, then the connection should propably be terminated. This is because the skimming of a website takes a considerable amount of time, in which the network would be unnecessarily used for connection keepalives.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.72">
+      <response>It might be better to use a connection-oriented service, because no important information will be lost. This produces a higher overhead because of the connection handshakes performed for each website one is skimming through, but it might be worth that no information is lost.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.73">
+      <response>it's better to use the connectionless service, since i dont know how to find it therefore the iterative process may take a long time, so it's not efficient to hold the connection status the entire time.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.74">
+      <response>It is better to use a connection-oriented service. The reason is that the information you are searching is important. So the connection-oriented service can provide more reliable transmission to get correct information.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.75">
+      <response>Connectionless service is better, because I need time to check whether the result meets my expectations after each query. So, I don't need to reserve a dedicated line during this check time because I don't receive new data.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.76">
+      <response>Connection-oriented service is better because the piece of information is important, user can't loss it, so a stable and guaranteed connection method is needed. And Connection-oriented service is a more reliable connection method than connectionless service.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.77">
+      <response>It's better to use connectionless service, collenctionless networks  have no connection establishment phase, transfer of isolated unit data,go straight to data transfer phase and no connection teardown phase.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.78">
+      <response>connectionless service is better. 
+As connectionless service can  the request- reply service fulfill this need. In this service the sender transmits a single datagram containing a request; the reply contains the answer. We only skim the first few websites, and refine our query, there is no need to build a connection between us and the service.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.79">
+      <response>A connection oriented service since iterations can be seen as states. First searching for the desired stuff, analyzing and narrowing the search until the information is found (disconnect).</response>
+      <response_feedback>There is no need to maintain a persistent state between subsequent questions. By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.80">
+      <response>Connection-oriented service, since the process is iterative and the next step needs the information from previous step.</response>
+      <response_feedback>By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent, so the need for connection-oriented does not arise.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.81">
+      <response>Connection-oriented service, since the process is iterative and the next step needs the information from previous step.</response>
+      <response_feedback>By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.82">
+      <response>Use a connection-oriented is better. Because connection-orited can create an end to end connection between the sender and the receiver before transmitting the data. It's safer and the data won't lost. But connectionless service can only transfer data from one end to another end without creating any connection. So it is not a reliable network service because it does not guarantee the transfer of data packets to the receiver, and the data may be lost.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.83">
+      <response>It's better to use a connectionless service. Because of the redundant search and the time overhead in the connect and disconnect phase, a connection-oriented service would noticeably slow down the search.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.84">
+      <response>Because we are browsing for a very specific and important piece of information it is better to go with connection-oriented service because it "guarantees" that all data packets are received in the same order as those sent by the sender which isn't necessarily the case with connection less service and therefore wouldn't be reliable</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.85">
+      <response>We'd have use connection-oriented service for the communication, as we're going to adopt an iterative process. So it's important to get the search results and refine it for the next request. With connection-oriented we ensure that we'll know if we have received the result or not, so we can make another request in case connection fails.</response>
+      <response_feedback>By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent. Further, the content of the websites is skimmed and therefore does not have to be fully correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.86">
+      <response>We'd have use connection-oriented service for the communication, as we're going to adopt an iterative process. So it's important to get the search results and refine it for the next request. With connection-oriented we ensure that we'll know if we have received the result or not, so we can make another request in case connection fails.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.87">
+      <response>A connection-oriented service can be used to have access to previous results in a form of a session, especially if the next query n+1 is based on the previous n-k queries. A connection-oriented service provides storage for the previous queries and can provide the possibility to return to prior queries. When using a connection-less service there's only the current response.</response>
+      <response_feedback>The state of the user does not need to be stored as he is doing the search iteratively by himself. By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.88">
+      <response>A connection-oriented service can be used to have access to previous results in a form of a session, especially if the next query n+1 is based on the previous n-k queries. A connection-oriented service provides storage for the previous queries and can provide the possibility to return to prior queries. When using a connection-less service there's only the current response.</response>
+      <response_feedback>The state of the user does not need to be stored as he is doing the search iteratively by himself. By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.89">
+      <response>Connectionless, because connection-oriented is insignificant for long communications and if the network is congested you can not search. Otherwise if you use Connectionless while the network is congested you can communicate, but may be stalled.</response>
+      <response_feedback>The response is correct but it does not explain the reasoning in the context of the scenario described in the question i.e. using an iterative approach, skimming initial websites for which there is less overhead when one uses connection less service.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.90">
+      <response>It would be better to use a connection-oriented service to make sure, that possible errors are corrected by the system. In this case, reliability of connection-oriented service is more important than a fast transmission of data, as offered by connectionless service.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.91">
+      <response>It would be easier to use connectionless service, because we search for a special information via keyword without the need to have a consistent link. If a package won't reach his destination we can always refresh the request, wherefore we don't need a safe connection.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.92">
+      <response>Connectionless service. This service not only supports long communications but will still communicate despite congestion.Thus, despite the number of queries raised communication will still occur, although it may be delayed.</response>
+      <response_feedback>The stated advantages are correct but it does not answer what one should use when we just need to skim the websites, as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.93">
+      <response>I would go for a connectionless service. The advantages that a connection-oriented service offers can not really be used.  There is no real state between the different request, as for each query, the user receives a straight answer. Furthermore, the refining of the query is done user side and a new connection is opened up each request anyways. Therefore the user can save bandwidth by using a connectionless service.</response>
+      <response_feedback>The response is correct</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.94">
+      <response>I think a connection oriented service is better since it guarantees that all parts of the communication is correctly transmitted. When using connectionless it is possible to drop a query or the results.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.95">
+      <response>Since it is an iterative process with many iterations, we need to put many inquiries through the network. By the sheer amount of inquiries, the small overhead of establishig and tearing down connections in connection-oriented communication will add up to a bigger decline of performance as opposed to connection-less. Also it is not important for either side to know the state of the respective other side, so no actual need for connection-oriented.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.96">
+      <response>Conenction-oriented is better solution, because it is more stable, reliable. The results, which are returned from the internet will effect the refining process, therefore we want to receive all information without losing any of them. With a dedicated connection we can control if package is lost, redo an interactive step of the process, which will improve the process.</response>
+      <response_feedback>Since we are looking for specific information, setting a dedicated connection to each website while skimming can be time-consuming. In such cases, 100% correct data is not required.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.97">
+      <response>It is better to use connection-oriented because it will need a two-way synchronization of segment counters.  The paket will be send in several packet and will be pack together after the receive.</response>
+      <response_feedback>The role of segmentation is not clear in this scenario. our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather than establishing a time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.98">
+      <response>Ich würde eine connectionless service bevorzugen, da der Fokus des Suchprozesses auf eine iterative Überfliegung der ersten Webseiten abzielt. Hiermit können performantere Abfragen durch u.a. weniger Handshakezeit durchgeführt werden. Im Gegensatz dazu würde sich eine verbindungsorientierte Suche nicht empfehlen, da die Inhalte der Webseiten überflogen werden und daher nicht 100% korrekt sein müssen.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.99">
+      <response>The advantage of a connectionless service is the qiucker establishment of a connection due to the missing connection establishment and connection teardown phase. Regarding an iterative process which takes a lot of repetitions saving time could be a significant factor. The advantage of connection oriented services on the other hand lies within the connection establishment and connection teardown phase. The handshake enables a reliable communication between client and server, since if connected, both are ready to communicate. This can be of special importance in a giant network like the internet, where data has to travel large distances since servers can be located anywhere. Since a failed connection can probably cost more time than it is saved by avoiding handshakes and teardown phases, it would be better to use a connection oriented service in this scenario.</response>
+      <response_feedback>Since most of the communication occurs when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall since it does not cause unnecessary overhead for connection setup.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.100">
+      <response>The advantage of a connectionless service is the qiucker establishment of a connection due to the missing connection establishment and connection teardown phase. Regarding an iterative process which takes a lot of repetitions saving time could be a significant factor. The advantage of connection oriented services on the other hand lies within the connection establishment and connection teardown phase. The handshake enables a reliable communication between client and server, since if connected, both are ready to communicate. This can be of special importance in a giant network like the internet, where data has to travel large distances since servers can be located anywhere. Since a failed connection can probably cost more time than it is saved by avoiding handshakes and teardown phases, it would be better to use a connection oriented service in this scenario.</response>
+      <response_feedback>Since most of the communication occurs when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall since it does not cause unnecessary overhead for connection setup.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.101">
+      <response>The advantage of a connectionless service is the qiucker establishment of a connection due to the missing connection establishment and connection teardown phase. Regarding an iterative process which takes a lot of repetitions saving time could be a significant factor. The advantage of connection oriented services on the other hand lies within the connection establishment and connection teardown phase. The handshake enables a reliable communication between client and server, since if connected, both are ready to communicate. This can be of special importance in a giant network like the internet, where data has to travel large distances since servers can be located anywhere. Since a failed connection can probably cost more time than it is saved by avoiding handshakes and teardown phases, it would be better to use a connection oriented service in this scenario.</response>
+      <response_feedback>Since most of the communication occurs when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall since it does not cause unnecessary overhead for connection setup.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.102">
+      <response>I think a connectionless service (like Googles QUIC UDP Protocol) would be better for the communication, because it doesn't need a connection establishment phase (handshake) which would cause an overhead for short communications like a search. Also we don't need to maintain a distributed state which a connection-oriented service like TCP needs (this would be not scalable).</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.103">
+      <response>Since i would be more focused on the topic, i would not want to be restricted to any or few servers. In this case of internet surfing, not knowing which website to visit means not knowing which connections would be made. Therefore it is best adviced for me to use connectionless service.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.104">
+      <response>A connection-orientated service would be better because it saves some bandwidth in this specific case (multiple messages being transmitted between the same two parties). 
+With only a single message transmitted, the overhead would be too large. But in this case it seems to be the better approach since only one connection establishment with the search engine is needed.</response>
+      <response_feedback>The provided perspective is correct but it does not answer the part where one needs to actually skim through the first few websites where connection-oriented could be time-consuming.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.105">
+      <response>A connection-oriented service would be better since information could be lost or delayed in a connectionless service. Since you want to refine your search queries it is important that the shown results are in order. The amount of websites you can check after each query is limited and the results should be as precise as possible to have the smallest amount of iterations needed to reach the piece of information you are searching for. In addition to that the assumed process would be time intensive and therefore the time needed for the handshake should be negligible in comparison to a connectionless service.</response>
+      <response_feedback>Since most of the communication occurs when connecting to presumably different web servers and the content is merely skimmed over, connectionless communication is better overall since it does not cause unnecessary overhead for connection setup.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.106">
+      <response>In this case, it is better to use a connection-oriented service since we search a specific and important information and want to refine our query after every search. The connection oriented service is comparable to a telephone and is more reliable than the connectionless service. Because of the fact that we should not lose our search history which is needed to refine our search, a connection oriented service is better.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access. Users can refine their query by themselves like changing the query keywords without the need to maintain any state.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.107">
+      <response>A connectionless service is a better approach because I only need the response for my search query. A connection-oriented service would add unnecessary overhead because I would need to initiate and close the connection for every query.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.108">
+      <response>It is better to use a connection-oriented service because it guarantees that the information cannot be lost or skipped. This is important since the information to be found is very specific and important.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.109">
+      <response>Since the information I am looking for is important, I would want to have it arrive in the correct order, without duplicates and without loss of data. This requires a connection-oriented service. The connection does not need to persist between my different search queries. It is sufficient if I can set up a connection to the search engine, send the query, and get the result back in one connection. After that, the connection could be closed and a new one would be established for my next query.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.110">
+      <response>A connectionless service would be better, because there are small amounts of data needed from different websites, without needing to send information back to theese websites. The connection-less structure would also allow to get information from multiple websites at once, without having too connect to them one be one which would take way longer.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.111">
+      <response>A connectionless service would be better, because there are small amounts of data needed from different websites, without needing to send information back to theese websites. The connection-less structure would also allow to get information from multiple websites at once, without having too connect to them one be one which would take way longer.</response>
+      <response_feedback>The provided answer is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.112">
+      <response>A connectionless service would be better, because there are small amounts of data needed from different websites, without needing to send information back to theese websites. The connection-less structure would also allow to get information from multiple websites at once, without having too connect to them one be one which would take way longer.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.113">
+      <response>It is better to use connectionless communication since i will go through many websites searching for the right information but the only time i need to communicate with the server is when i send it my request. Afterwards i will get send the information and we dont need and established communication. Another reason is that this way the server can handle a lot more users since it does not need to maintain communication with every user.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.114">
+      <response>Better to use a connectionless service</response>
+      <response_feedback>The stated answer is correct but the reasoning or explanation behind the answer is not stated.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.115">
+      <response>Connection-less service should be used. Since we are not looking for any specific website to get that piece of information and the search engine is not building a fix connection (like connection oriented) with websites shown in search results but rather looking for all relevant websites using connection-less service we should use connection-less service.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.116">
+      <response>I would use a connection-oriented service, because I need my data to be sent with the exact order I sent them and with the lowest possible loss. Connection-oriented establishes a connection between the users and makes it easier for this to happen.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.117">
+      <response>Connectionless service is better because you don't need to wait for the other side of the connection to accept the connection. so it doesn't need the connection establishment(three-phase) each time. communication partners can communicate even when the network is congested, however, the connection can be stall.</response>
+      <response_feedback>Correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.118">
+      <response>I think it is better to use a connectionless service because you have no connection establishment phase, so you save time and you do not need it anyways.
+Also if you refining your query after every search you enhance the reliability of your results to a good level.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.119">
+      <response>The connection-oriented protocol includes making and maintaining a connection and checks whether message is received or not, this takes much longer then in the connectionless protocol. This protocol does not guarantee the message delivery but it is possible to communicate faster and with multiple websites at the same time, so it suits better for the described application.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.120">
+      <response>The connection-oriented protocol includes making and maintaining a connection and checks whether message is received or not, this takes much longer then in the connectionless protocol. This protocol does not guarantee the message delivery but it is possible to communicate faster and with multiple websites at the same time, so it suits better for the described application.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.121">
+      <response>The connection-oriented service is the better option. Firstly, the ressources for searching are needed for a long period of time. Secondly, congestions are not common for that service. It is a more reliable connection where less errors occur, good when a piece of important information has to be found.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.122">
+      <response>It is better to use a connectionless service, because I have to visit many websites and it is not really relevant, if the data of one website gets lost.
+Because a connectionless service is stateless, it is faster.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.123">
+      <response>For this specific use-case it is better to use a connection-oriented service. First, the associated state of the connection could be used for the iterative process. Secondly, since the requested information is important we want some kind of reliability which can be provided by connection-oriented transport protocols like TCP. Transmission overhead compared to the connectionless service can be disregarded since it is insignificant in this case of a longer connection/communication.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.124">
+      <response>When refining a search query, this iterative process in each iteration builds upon the results of the preceding steps. A connection-oriented service is able to preserve such kind of results (i.e., the query from the previous iteration) while a connectionless service can't do this. By that, in each iteration, only the latest refinement needs to be transmitted and the previous query does not need to be preserved by the client. In web application this kind of service is often realized through sessions.</response>
+      <response_feedback>The query is readjusted by the user based upon the results obtained in the previous search, for example, the user enters specific words he is searching for which he got from the previous search results so the need for connection-oriented does not arise.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.125">
+      <response>In this case a connectionless service would be better because it may be necessary to connect to a large amount of websites.  In this case the connection-oriented service would be more time costing.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.126">
+      <response>It will be better to use a connectionless service because setting up the connection will increase delay and overhead without any benefits.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.127">
+      <response>As it is highlighted that the data we are searching for is very important and specific, I would suggest a connection-oriented service. Such a service would be more reliable and would avoid data loss. On the other hand, a connectionless service would make rapid re-searching easier, as there is no connection-establishment and -teardown phase. As qualitative, complete information seems more important I would suggest a connection-oriented service.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.128">
+      <response>In this scenario, it is better to use a connectionless service to avoid time required for establishing the connection, since the query needs to be refined quite frequently with an iterative process.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.129">
+      <response>For the fastest way to get the information you need the best matching results of each search, so you know how good qour query was. If now a result ist lost in the communication and you do not get an acknowledgement about it the whole process slows down, because you get misled about your query. So it is better to use connection-oriented communication.</response>
+      <response_feedback>The stated information is correct but it does not answer what one should use when we just need to skim the websites as in such cases connectionless will cause less overhead compared to connection-oriented as we just need very short data transfer.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.130">
+      <response>Es ist besser einen verbindungslosen Service zu Benutzen, da</response>
+      <response_feedback>No explanation for the service type chosen provided.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.131">
+      <response>It would be wise to use a connectionless service, because I don't know the path I have to take to reach the information I am looking for. 
+So I've got a case of dynamic flow, which is served best by connectionless because it's scalable.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.132">
+      <response>Connection-oriented is better to use, because memory is needed to remember information from each search and refine the query after every search. Also, "state" needs to be maintained, because multiple queries are made iteratively and multiple different websites are visited in each iteration.</response>
+      <response_feedback>By iterative approach, it is meant that the user writes a query and based on the results refines the query for which persisting state is not required. Secondly, multiple websites are skimmed, connection-oriented in such cases can cause a lot of overhead.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.133">
+      <response>It is better to use a connection-less service. I search for iteratively more specific information and receive a reply to each question. However the search engine doesn't need to persist state between subsequent questions therefore a connection is unnecessary.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.134">
+      <response>It's better to use a connectionless service, since you need to connect to many nodes and using a connection-oriented coomunication would take a lot of time.
+If you use connection-oriented coomunication, you'd need to establish a 1-to-1 connection with each node, and each time, it'd take time to make sure the connection is working correctly.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.135">
+      <response>Connectionless service would be better because you are only browsing the web and a handshake method is unnecessary.
+connection-oriented service is usually used for long and steady communications while connectionless services are for short and "bursty" communications like browsing the web for a very specific and important piece of information.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.136">
+      <response>Connnectionless would be better.
+* Less overhead, better for an iterative process
+* "browsing" =&gt; HTTP =&gt; connectionless</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.137">
+      <response>Connection oriented service would be more suitable in this scenario
+1) because sometimes data will be redundant so connection oriented would help
+2) it can send the accurate information about already visited site</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.138">
+      <response>A connectionless service is better as the user just queries the web for a specific piece of information, i.e the state of the user does not need to be stored as he is doing the search iteratively by himself. Also the handshake in the connection oriented service can be avoided when using a connectionless service.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.139">
+      <response>I would use a connection-oriented service in this scenario. A connection-oriented service offers the reliability needed to make sure that the important piece of information that we are looking for is actually reaching us. If it would get lost during transmission, the service would repeat to send it until it is acknowledged to have arrived in contrast to a connectionless service, which does not per se offer these guarantees. Also, as our search is an iterative service, we could use the same connection multiple times, and thus the one-time overhead of setting up the connection is amortized over multiple queries.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access. By iterative, it is meant the repetitive process, not the iterative service.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.140">
+      <response>Connection-oriented should be better:
+With connectionless it is in no way guaranteed that you get the data you are asking for. With connection-oriented you are guaranteed that once you find the optimal result on the search page, you always retrieve the information.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.141">
+      <response>A connectionless service is a better fit, because you communicate with many different websites while skimming to find the information. The overhead created by a connection-establishment and connection-teardown on each visit might lower the performance.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.142">
+      <response>In my opinion, a connection-oriented service should be used in this scenario. This would allow for the service to store some information about the user, for instance which website she/he has already visited and therefore not always display the exact same results. In addition, it would allow QoS guarantees for the user to ensure timely results. In general, connection-oriented communication is suitable for longer communication, hence in this case it would make sense to maintain one continuous communication stream throughout the search.</response>
+      <response_feedback>Since we are refining the query, different results will be made available. Further, the scenario stated here points out the possibility of skimming many websites before reaching the required one, in such case use of connection-oriented service will result in a lot of overhead.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.143">
+      <response>Connection-oriented service is not required for this scenario, since the information we are looking for is very specific and we are using a snowball-like system to get closing to the important piece of information, meaning there are probably several ways to reach this information. As long as the information transmitted by the connectionless service includes enough data (content or metadata), so that it can be used for this snowball-like search, connectionless service is generally to be prefered, since it's faster. For this type of search it is not that important to receive 100% of the packets, if we can instead get e.g. higher speed or more connections.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.144">
+      <response>It is better to use a connection-oriented severvice, because the iterative depends on the shown results and a skim of the first websites ,but  connectionless networks have no connection establishment phase.</response>
+      <response_feedback>For skimming the results, one can still make use of connectionless service, further if one would initiate a connection with every website you skim, that would incur a lot of overhead</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.145">
+      <response>A connectionless service is better because of the stateless communication. It provides a faster and more scalable communication system that can speed up the iterative process. Also, there is no need for a "real" channel, as only the website information is requested. Even if the network is busy, communication can take place since the information to be retrieved is not time critical.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.146">
+      <response>A connectionless service is better because of the stateless communication. It provides a faster and more scalable communication system that can speed up the iterative process. Also, there is no need for a "real" channel, as only the website information is requested. Even if the network is busy, communication can take place since the information to be retrieved is not time critical.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.147">
+      <response>connection-oriented
+this service has no loss,  no duplication, and no sequential error, which are what the user need.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.148">
+      <response>If you use an old PC with an old browser you need a connection-oriented service because you need for the old HTTP-versions TCP. With the new HTTP-version you use QUIC which is build up UDP. UDP is an example for connectionless. Another pro argument for a connectionless service is that we have in this exercise a short cummnications so the overhead of the handshake in connection-oriented services would be significant.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.149">
+      <response>I think the connection-oriented service would be better because the search is important and I want to know if my packets will be received. Furthermore I want to receive the right order of the most important websites and the order should be corrected if I receive them in a wrong order or a frame is faulty. Moreover I wanna have the same reply for the same request so that I can refine my search. Another thing is that my connection is more reliable and I don't broadcast my packets.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.150">
+      <response>A connection-oriented service is preferable, because it can provide reliability that prevents loss of results on the way. As the search is done iteratively the overhead of establishing a connection is negligible.</response>
+      <response_feedback>By iterative, it is meant that the user searches for information, based upon the results obtained he/she will input a new query, for example with modified keywords, so this query and the previous query submission will be independent, so the need for connection-oriented does not arise.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.151">
+      <response>Neither type of service is better or worse in this scenario for the user, unless the network itself is overloaded, in which case a connectionless service would be advantageous. For the server providing the search engine on the other hand, a connectionless service is advantageous, since the service must be provided for many users and each user may send multiple, independent queries, resulting in an overhead for connection build-up and tear-down.</response>
+      <response_feedback>The reasoning is not limited to the congestion scenario but since skimming and searching will require data for a short period of time, maybe from different servers, connectionless service is better in this regard.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.152">
+      <response>A connection-oriented service (e.g. TCP) is required, which establishes and maintains the connection to transfer the information which then gets acknowledged and releases the connection once finished. A connectionless service (e.g. UDP) does not require a handshake and sends data without acknowledgements.</response>
+      <response_feedback>The response does not explain the requirement based upon the given scenario.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.153">
+      <response>It is better to use a connectionless service in this scenario.
+During the process of refining the query, the connection would be idle but still blocked for other users.
+Therefor a connectionless service is better here.</response>
+      <response_feedback>The response is true but it does not consider an important aspect of overhead caused in skimming websites using connection-oriented service.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.154">
+      <response>It's better to use a connection-oriented service, because only then can be assured, that all search results are shown to the user. With a connectionless service, there is the chance, that some information is not transmitted and an important search result is missing. The iterative search process will propably fail, if an important  result is missing.</response>
+      <response_feedback>While the stated points are true and may be good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.155">
+      <response>Considering that each iteration of refining my query can be seen as a single process with my changes to the query in between connection-oriented ist not necessary. Therefor connectionless is adequate. Benefits for connection-oriented</response>
+      <response_feedback>The response also needs to explain why connectionless service will be better along with the provided assumption.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.156">
+      <response>I would prefer a connection-oriented approach in this case, but it's possible to make arguments for both systems. The short "bursty" communication is an argument for connectionless, but on the other hand this situation also behaves like a conversation, where you send something and then wait for the answer, what makes a connection-oriented service.
+A reliable connection is also often assumed when talking about connection-oriented, what makes me say that connection-oriented would be better for this communication.</response>
+      <response_feedback>The correct answer is connectionless service as the request-reply process also works here. While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.157">
+      <response>A connectionless service should be fine for a simple question-response scenario. 
+You don't want the overhead of establishing connections to hundreds of websites when the result is always a short response.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.158">
+      <response>It's better to use a connection-oriented service.
+Because i will need to adopt an iterative process of refining my query after every search.
+That means, there will be several package sending between my computer and server to find a very specific and important piece of information.
+So it is better to save the state in both side and build a "tunnel". That will make the service better.</response>
+      <response_feedback>Since query after refining again will be submitted again to the search engine by the user, connectionless service without much overhead still serves one purpose.our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather than establishing a time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.159">
+      <response>I think, it is better to use connection-oriented for my communication in this scenario.  Because the user needs a stable connection for the specific and important piece of inofrmation. Additionally, using a established connection is necessary for the iterative process. Because connectionless service does not maintain connection state.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access. There is no need to maintain a persistent state between subsequent questions.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.160">
+      <response>It is better to use a connectionless service. This is because the connection-oriented service would in this case cause a repeated recreation and deletion of a very similar datapath. Using a connectionless service would be beneficial in this case because it does not require the establishment and connection teardown phase the connection-oriented service would need. Since the iterative process would need several tries, the saved time and energy could play a significant factor. If however, the result is found quickly and a stable connection is a priority, a connection-oriented service might be the better solution.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.161">
+      <response>Connection-oriented service. We need a reliable connection for getting correct information. There are so many data on the web, so flow control or congestion control is also required.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.162">
+      <response>Connection-oriented service is better, cause it has to use this, for an iterative process with very specific and important information.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.163">
+      <response>connection-oriented. Connection-oriented Service gives the guarantee of reliability (important information). In connection-oriented Service, Packets follow the same route, which shows the history of search and let you make new query avoiding repetition.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.164">
+      <response>Connection-oriented service.
+It is mentioned above that the query need to be adjusted by the results of the first few websites.
+However connectionless service has no connection teardown phase, so the adjustment is not possible.</response>
+      <response_feedback>The query is readjusted by the user based upon the results obtained in the previous search, for example, the user enters specific words he is searching for which he got from the previous search results so the need for connection-oriented does not arise.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.165">
+      <response>Connection-oriented service.
+It is mentioned above that the query need to be adjusted by the results of the first few websites.
+However connectionless service has no connection teardown phase, so the adjustment is not possible.</response>
+      <response_feedback>The query is readjusted by the user based upon the results obtained in the previous search, for example, the user enters specific words he is searching for which he got from the previous search results so the need for connection-oriented does not arise.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.166">
+      <response>connection-oriented service is better ,because this process is iterative ,and this iterative need very important imformation.</response>
+      <response_feedback>Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.167">
+      <response>It is better to use a connection-oriented in this scenario. Because in cinnectin-oriented overhead of handshake an be significant in short communications. Connection-oriented an provide better service.</response>
+      <response_feedback>While the stated points are true and maybe good to have once we have reached our desired website but our goal for the current scenario is to skim and reach the desired website first, which should ideally be quick when one is jumping from one website to another rather establishing time-consuming connection and teardown with each, in such case connectionless is a better option for faster access.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.168">
+      <response>The answer is connection-oriented. An iterative search with a response is required. Only connection-oriented can communicate back.</response>
+      <response_feedback>The question states that an iterative process of refining the query based on the results from the previous search so connectionless service will also work fine. Connection-oriented can be used once the desired website is found but during skimming, this will cause an overhead.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.169">
+      <response>The answer is connection-oriented. An iterative search with a response is required. Only connection-oriented can communicate back.</response>
+      <response_feedback>The question states that an iterative process of refining the query based on the results from the previous search so connectionless service will also work fine. Connection-oriented can be used once the desired website is found but during skimming, this will cause an overhead.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.170">
+      <response>Connection-less Communication might be better, because no session needs to be established between sender and receiver. Thus no connection slots need to be brokered and used time to retrieve information can be minimised. Packets can simply be sent and hopefully retrieved. Especially as only a few websites are actually skimmed, it does not matter if packages are lost, if enough hosts are contacted.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="1.2.171">
+      <response>I would say the connection-oriented service is better, because I am browsing for very specific and important information. Though I need the guarantee that my query responds consistent information, so that I do not lose important pages and the pages I receive should always be in the same order for the same query. If not I couldn't refine the query well.</response>
+      <response_feedback>Since it is an iterative process with many iterations searching for specific information, we need to put many inquiries through the network. So it makes sense to use connectionless. Just in the case of losing the specific information, one can reframe the query and submit it again.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

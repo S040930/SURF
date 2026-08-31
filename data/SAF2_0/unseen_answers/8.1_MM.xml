@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="8.1_MM">
+  <questionText>WHAT are the challenges of Mobile Routing compared to routing in fixed and wired networks? Please NAME and DESCRIBE two challenges.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="8.1_MM.a1">Possible Challenges:
+1.Adaptation: The network has to handle the dynamic positioning of the nodes/topology changes. Additionally, nodes can leave or join the network anywhere (within signal range) at any time.
+2.Security: Interception of packets or injection of faulty packages is easily possible in wireless networks. This may necessitate encryption and authentication.
+3.Medium Access Control: Wireless networks feature new possibilities for inference and collisions of the transmitted signals. See the following correct example challenges:
+i)Hidden Terminal: Nodes’ transmissions may collide at other nodes without them noticing, because they are out of detection range of each other (A and C in this example) and therefore sense the medium to be free even though there is an overlap of the transmission ranges. 
+ii)Exposed Terminal: Nodes (C in this example) may not realize they could send collision-free, because a node in their detection range (B) is sending and they, therefore, detect the medium as busy, but the sending node (B) is out of the detection range of the destination node (D) so that no collision would occur.
+iii)Near and Far Terminals: Signal strength decreases proportionally to the square of distance, so closer nodes may drown out the weaker signals of nodes farther away.
+4.Quality of Service (QoS): Due to the rapidly changing network topology, imprecise network information, and resource constraints of participating nodes, it is challenging to provide the desired QoS. Additionally, signal quality may also decline due to noise and occlusion.
+5.Scalability: Since it is not possible to know the number of participating nodes beforehand, it is vital that routing protocols, etc. are capable of dealing with increasing network sizes and workloads. 
+6.Heterogeneity: Nodes may have different capabilities, responsibilities, and constraints, e.g. processing capacity, transmission ranges
+7.Dependability: Providing consistent, performant, and reliable routing behavior that higher-level services can trust is challenging in such a dynamic environment. 
+8.Power Consumption: As most mobile devices are battery-powered, power consumption becomes an important optimization factor in routing, etc.</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="8.1_MM.20">
+      <response>Transport Layer, in which it writes an error detection and correction also increases energy efficiency.  Network Layer, in which it adapts routing protocols and multicast routing.</response>
+      <response_feedback>The response doesn’t answer any challenges of mobile routing.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.31">
+      <response>- Hidden Terminal Problem:
+Assume we have 2 senders s1,s2 and one receiver r build like this:
+
+s1 → r ← s2
+
+The radius of s1 can just sense the receiver and s2 can also just sense the receiver. 
+
+S1 is sending something to r. But since S2 cannot sense s1 it assumes the receiver is free and starts sending to r too. Hence s1 is hidden to c the collison detection fails → Hidden Terminal Problem.
+
+- Exposed Terminal Problem:
+
+Assume we have 2 senders s1,s2 and two receiver r1, r2 build like this:
+
+r1 ← s1 --- s2 → r2
+
+Now s1 sends to r1. s2 wants to send to r2 but it gets the signal from s1 that it is sending data at the moment. Since s1 is sending to r1 and s2 can not sense r1, it assumes r2 is busy, and hence waits unnecessarily.  --&gt; Exposed Terminal Problem</response>
+      <response_feedback>The response related to the hidden terminal is partially correct as s1 assumes the medium instead of the node to be free. The description of the exposed terminal problem is partially correct as well. S2 senses the medium is busy and waits, not because it assumes r2 busy. The wait is unnecessary as S2 wants to send data to R2, and R2 is out of the range of S1.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.64">
+      <response>Hidden Terminals: Two nodes may be out of range for each other, but want to send to a third node that is in range for both of them. The first two nodes don't know when/if the other one is sending, so if both just send whenever they want, there might be a collision at the third node that can't be detected by the first two nodes. Exposed Terminals: When two nodes, that are in range for each other, want to send to nodes that are in range for them, but out of range for the other, they could, in theory, both send at the same time, because each of the receiving nodes will only receive a signal from the corresponding sending node (because the other one is not in range). However, without additional communication, the two sending nodes can not know that they aren't interfering with they other node. That's why one of the nodes will wait for the other to finish → underutilization.</response>
+      <response_feedback>The response correctly states and describes the hidden and exposed terminal problems in wireless networks.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.152">
+      <response>ADAPTATION OF ROUTING PROTOCOLS due to the inherent variability of a mobile network: the packets must be routed despite convergence problems due to frequent changes in topology and environment due to mobile nodes, i.e. frequent routing table updates, unreliable/unavailable links due to receiving/transmitting problems (near and far terminals, energy saving, insufficient transmission power), so THE PATH FROM SOURCE TO DESTINATION IS MUCH MORE SHORT-LIVED OR SUBJECT TO CHANGES MUCH MORE OFTEN THAN IN FIXED NETWORKS. * ADDRESSING (AUTO-CONFIGURATION): the automatic configuration of the end systems IS DIFFICULT DUE TO ROAMING and this obviously also affects routing. When roaming at Layer 2, the IP address can be retained, but the packet must be routed via an appropriate access point: if there is a handover, the old AP would have to forward the packets to the new one; when roaming at Layer 3, a subnet change may result in the assignment of a new IP address.</response>
+      <response_feedback>The response correctly states and describes the challenges faced in wireless network routing.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.164">
+      <response>One issue for mobile networks is the hidden terminal problem: When there are two stations A and C out of reach of each other want to send to a station B in reach of both stations, A and C will not hear the signal of the other sender, assume the medium is free and start sending. However, at station B, both signals will collide. A second issue for mobile networks that cannot occur in wired networks is the exposed terminal problem: Sending from one station A to another station B might be blocked because of A receiving a signal from another sender C in reach of station A, despite the signal of this sender C not reaching the proposed receiver B. This issue can reduce the utilization of a link between two nodes unessessarily.</response>
+      <response_feedback>The response correctly explains the hidden and exposed terminal challenges.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.174">
+      <response>Hidden Terminals is one challenge in Mobile Routing. The problem is that nodes can only comunicate in a certain range and  those ranges overlap with others, leading to nodes receiving data from others, which do not know about one and another. This leads to data coalition. Another Challenge is Exposed Terminals. The problem again lies in the nature of the overlapping data transmission. To solve the previously mentioned problem only one can send at a time in their range, however this can lead to blocking communication to outside nodes which would not be effected by having communication with another one outside of the receivers range.</response>
+      <response_feedback>The response correctly states and describes the hidden and exposed terminal problems in wireless networks.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.199">
+      <response>Hidden Terminals: Two nodes (A and B) that are out of each other's range can not detect transmissions from either node to a third node (C) which is within their ranges. This can cause A and B to simultaneously attempt to transmit to C. Hence, A and C are “hidden” from each other. This leads to more collisions and reduced efficiency. Exposed Terminals: When two nodes are too close to each other it can interfere with their transmissions. When one node is transmitting, it signals to all other nodes in its vicinity that a medium (destination node) is in use and therefore the other nodes should wait before transmitting themselves. This becomes a problem when the other node in its vicinity has to delay its transmission to an entirely different node outside of the transmitting node's range. This leads to an underutilization of the channels.</response>
+      <response_feedback>The response correctly states and describes two challenges of mobile routing.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.242">
+      <response>1- Hidden terminals [Tobagi75]: it occurs when “for example” we have three nodes A, B, C. Nodes A and C cannot hear each other, and the transmissions by nodes A and C can collide at node B. That makes nodes A and C are hidden from each other. And that can cause more collisions, unreliability as a result, and waste of resources.
+
+2- Exposed terminals: it happens when “for example” we have four nodes A, B, C, D. Node B sends to node A, and node C wants to send to another node like D (not A or B), node C has to wait and it is prevented from sending packets to other nodes because of co-channel interference with a neighboring transmitter (medium in use). But node A is outside the radio range of node C, therefore waiting is not necessary, and node C is “exposed” to B. That can cause underutilization of channels and lower effective throughput.</response>
+      <response_feedback>The response correctly states and describes the hidden and exposed terminal problems in wireless network.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.252">
+      <response>1.Hidden Terminals: it is when two stations simultaneously transmit data to one of the stations is unaware that reception is already receiving data from another station and a collision occurs at the receiving station. E.g.  We have three station A,B,C -A sends to B, C cannot receive A   -C senses a “free” medium (carrier sense fails) , C sends to B   -Collision at B, A cannot detect the collision (collision detection fails)  -A is “hidden” for C and vice versa  2.Near and Far Terminals: it's when a weak signal drowns out a strong signal. Terminals A and B send, C receives  -Signal strength decreases proportionally to square of distance  -Stronger signal of B therefore drowns out A’s weaker signal  -C cannot receive A</response>
+      <response_feedback>The response correctly explains the hidden and near and far terminal challenges.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.253">
+      <response>HIDDEN TERMINAL Because there no cable connecting every Terminal together it can happen that two or more station can not reach each other and therefor hidden. This can be a problem if for example a terminal has to be quiet so it doesn’t disturb the communication of a neighbor but it can’t get the communication request signal from the communication partner because it is hidden. This can be solved by using a busy signal or by listening to acknowledgments from the neighbor. NEAR AND FAR TERMINALS A signal from a station gets weaker with distance by the inverse square law. This lead to the situation that nearer stations are overpowering stations which are further away and drowning there signal. As a result stations which would normally be able to communicate with each other can’t do so anymore. This can be a severe problem and can only be handled with precise power control.</response>
+      <response_feedback>The response correctly describes the near and far terminal problem. In the hidden terminal, two stations cannot reach each other because they are out of one other's detection range, not just because they are wireless nodes.</response_feedback>
+      <score>0.875</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.266">
+      <response>1. application layer - the discovery of services - you will need service awareness and need places for the services security
+	 - outside you can always be attacked, or the mobile routing could be disturbed.</response>
+      <response_feedback>The response states application layer related challenges, but there is no clear relation to the wireless network routing challenges. The second point does not specify what is meant by outside. Even the optical fiber lines of wired networks are laid outside, even in seas.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.271">
+      <response>In mobile routing autonomous systems are not stationary or in fixed location unlike fixed and wired networks. Autonomous system is free to come and join one network at one time and later leave and join another network while maintain same communication session between sender and receiver and vice versa. Two challenges: 1. Reconnecting sender and receiver when they try to connect through different intermediary networks while being on motion. 2. At user application level awareness by the sender that receiver has left, so save the user session, so that when receiver reconnects, sender is automatically notified and previous user session is resumed.</response>
+      <response_feedback>Both challenges are correct.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.294">
+      <response>- The network structure is changing fast, so the routing tables must be adapted to these changes. The routing algorithm needs to converge fast.
+	 - Because all nodes share the same communication medium (the ether), the signaling overhead needs to be minimized, to reduce the load in the medium.</response>
+      <response_feedback>In the second challenge, it should be made explicit that the usable frequency is limited.</response_feedback>
+      <score>0.875</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.306">
+      <response>CSMA/CD does not work for wireless transmission. Main issue is the broadcast nature of mobile transmission. * Hidden Terminal Problem: Firstly, carrier sense fails because a station that want to send cannot “see” another station already  sending to its destination as it is not in the transmission range of the other sending station. Secondly, there is no collision detection after the collision arised. This leads to a higher amount of collisions, a wastage of resources and unreliability. For example: * station A sends to station B; station C is not in the range of A, thus, does not receive A’s signal * C performs carrier sensing as it wants to send to B, senses a free medium * C sends to B which causes collision at B; A cannot detect the collision (as it is a wireless scenario) * station A and C are hidden from each other
+	 * Exposed Terminal Problem: The “exposed” station is waiting to transmit a signal, as it hears a signal from another transmitting station. Thus, it tries to prevent a collision which actually will not occur as the receiver of the other sending station is outside of its range. This leads to underutilization of the channel and a decreased effective throughput. For example: * station B sends to station A; station C wants to send to another station outside of B’s transmission range * C performs carrier sensing and senses a busy medium, thus it has to wait * A is outside of C’s transmission range, thus, C actually does not need to wait as it would not cause a collision at A; C is exposed to B</response>
+      <response_feedback>The response correctly states two challenges of mobile routing.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.325">
+      <response>Two of the many challenges of mobile routing compared to fixed / wired networks are Hidden Terminals and security issues. Hidden Terminal can occur, when the nodes are quite far apart, while some nodes are not able to detect nodes anymore, while more centered nodes are able to detect messages from both the distant nodes. Then the distant nodes are not able to detect collisions occuring in the „middle“ of the network at the centered nodes, because the signal is not transmitted over all network nodes. One of the security issues can be, that wifi is set up inside of a building. A normal ethernet network over cable would connect all the nodes inside, and then can be configured to discard all the internal packages at the outgoing router to the internet. A wifi network cannot be configured, to only nodes inside of the building are able to receive the packages. If the network is available outside of the building, then any node outside will be able to detect the network.</response>
+      <response_feedback>Both the stated challenges are correct.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.1_MM.326">
+      <response>(Due to the question in the forum, i will relate to slide 3, not to Challenges in Mobile Communications, which are on slide 10ff).
+
+One basic challenge in Mobile Networking is the Power control: mobile devices have only a limited amount of power which should be used wisely and as little as possible.
+
+In addition, the routing in Mobile Networking has to deal with a high amount of dynamic so it needs to find new routes as nodes move or conditions change.</response>
+      <response_feedback>The response correctly states and describes two challenges of mobile routing.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

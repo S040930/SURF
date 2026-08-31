@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>记忆增强批改实验系统</title>
+    <script>
+      // 防止暗色模式首屏闪烁：在 React 挂载前同步设置 .dark 类
+      // 优先级：localStorage 显式选择 > 系统 prefers-color-scheme
+      (function () {
+        try {
+          var stored = window.localStorage.getItem('app:theme');
+          var isDark =
+            stored === 'dark' ||
+            (stored !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          // ignore storage errors
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

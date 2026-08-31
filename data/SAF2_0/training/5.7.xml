@@ -1,0 +1,1855 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="5.7">
+  <questionText>Consider the following topology from the exercise. This time, node A wants to distribute a packet using Reverse Path Broadcast (RPB). Assume that every IS knows the best path to A and also whether they are the next hop of their neighbors on the unicast path to A.Please list all the packets which are sent together with the information whether they will be forwarded or dropped at the receiving nodes. Use the following notation: (sender, receiver, drop) for dropped and (sender, receiver, forward) for forwarded packets. Please group these tuples according to the number of hops the packets have travelled so far. For dropped packets, please specify the reason why the packet has been dropped in a few words.Example for the notation:Hop 1:(C, A, forward)(C, B, drop) &lt;= describe reason hereHop 2:(A, D, drop) &lt;= describe reason here</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="5.7.a1">Hop 1 :(A, B, forward),(A, C, forward), (A, D, drop) &lt;= reason: remaining neighbors C and F do not use D as the next hop to get to A Hop 2 :(B, E, forward),(C, F, drop), &lt;= reason: remaining neighbors D, E, G do not use F as the next hop to get to A Hop 3 :(E, G, forward)Hop 4 :(G, H, drop) &lt;= reason: H is only connected to G, packet is not forwarded to incoming link</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="5.7.0">
+      <response>Hop 1:
+(A,B, forward)
+(A,C, forward)
+(A,D, forward)
+Hop 2:
+(B,E, forward)
+Hop 3:
+(C,F, forward)
+Hop 4:
+(E,G, forward)
+Hop 5:
+(G,H, forward)</response>
+      <response_feedback>The reasoning behind which packets are dropped is not stated.  Please go through the model solution. Packets will be considered drop if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop). Incorrect number of hops.(-0.25p)</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.3">
+      <response>Hop 1:
+A,B,forward
+A,C,forward
+A,D,forward
+Hop 2:
+B,C,drop &lt;- shortest path is directly to a
+B,E,forward
+C,B,drop &lt;- shortest path is directly to a
+C,D,drop &lt;- shortest path is directly to a
+C,E,drop &lt;- path via B is shorter
+C,F,forward
+D,C,drop &lt;- shortest path is directly to a
+D,F,drop &lt;- path via C is shorter
+
+Hop 3:
+E,C,drop &lt;- C directly to A is shorter
+E,F,drop &lt;- path via C is shorter
+E,G,forward
+F,D,drop &lt;- D directly to A is shorter
+F,E,drop &lt;- path via B is shorter
+F,G,drop -&gt; path via E is shorter
+
+Hop 4:
+G,H, drop &lt;- no further nodes.</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.6">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2:
+(B, E, forward)
+(B, C, drop) &lt;= B is not on optimal route from C to A
+(C, B, drop) &lt;= C is not on optimal route from B to A
+(C, E, drop) &lt;= C is not on optimal route from E to A
+(C, D, drop) &lt;= C is not on optimal route from D to A
+(C, F, forward)
+(D, C, drop) &lt;= D is not on optimal route from C to A
+(D, F, drop) &lt;= D is not on optimal route from f to A
+
+Hop 3:
+(E, C, drop) &lt;= E is not on optimal route from C to A
+(E, F, drop) &lt;= E is not on optimal route from F to A
+(E, G, forward)
+(F, D, drop) &lt;= F is not on optimal route from D to A
+(F, G, drop) &lt;= F is not on optimal route from G to A
+
+Hop 4:
+(G, F, drop) &lt;= G is not on optimal route from F to A
+(G, H, forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.67">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,forward)
+Hop 2:
+(B,E,forward)
+(B,C,drop)&lt;=not at the best route
+(C,B,drop)&lt;=not at the best route
+(C,D,drop)&lt;=not at the best route
+(C,E,drop)&lt;=not at the best route
+(C,F,forward)
+(D,C,drop)&lt;=not at the best route
+(D,F,drop)&lt;=not at the best route
+Hop3:
+(E,G,forward)
+(E,F,drop)&lt;=not at the best route
+(F,G,drop)&lt;=not at the best route
+Hop 4:
+(G,H,forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.76">
+      <response>(sender, receiver, drop) 
+Hop 1:
+(A, B, forward)(A, C, forward) 
+(A, D, forward)
+Hop 2:
+Node B: 
+(B, C, drop) &lt;= C is not on the best path to A
+(B, E, forward)
+Node C:
+(C, B, drop) &lt;= B is not on the best path to A
+(C, D, drop) &lt;= D is not on the best path to A
+(C, E, forward)
+(C, F, forward)
+Node D:
+(D, C, drop) &lt;= C is not on the best path to A
+(D, F, forward)
+Hop 3:
+Node E:
+(E, F, drop) &lt;= F is not on the best path to A
+(E, G, forward)
+Node F:
+(F, E, drop) &lt;= E is not on the best path to A
+(F, G, forward)
+Hop 4:
+(F, H, forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.107">
+      <response>Hop 2: 
+From B: 
+(B, C, drop), (B, E, forward) 
+From C: 
+(C, B, drop), 
+(C, D, drop), 
+(C, E, drop), 
+(C, F, forward) 
+From D: 
+(D, C, drop), 
+(D, F, drop) 
+Hop 3:
+ From E: 
+(E, C, drop), 
+(E, F, drop),
+(E, G, forward) 
+From F:
+(F, D, drop), 
+(F, E, drop), 
+(F, G, drop) 
+Hop 4: 
+From G: 
+(G, F, drop), 
+(G, H, drop) 
+Because vertex H has only one neighbor from which it got the message, vertex H does not forward the message.
+In total 19 messages are sent during the broadcast.</response>
+      <response_feedback>Hop 1 not given and (C, F, drop) occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.122">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) because C is already reached and F will be reached faster via C.
+
+Hop 2:
+(B, E, forward)
+(C, F, drop) because D is already reached and E,G will be reached faster via B.
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop) because no further node could be reached.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.139">
+      <response>Hop 1: 
+(A, B, forward)(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(B, C, drop) &lt;= (A, C) is shorter
+(C, B, drop) &lt;= (A, B) is shorter
+(C, E, drop) &lt;= (A, B, E) is shorter
+(C, F, forward)
+(C, D, drop) &lt;= (A, D) is shorter
+(D, C, drop) &lt;= (A, C) is shorter
+(D, F, drop) &lt;= (A, C, F) is shorter
+Hop 3:
+(E, C, drop) &lt;= (A, C) is shorter
+(E, F, drop) &lt;= (A, C, F) is shorter
+(E, G, forward)
+(F, D, drop) &lt;= (A, D) is shorter
+(F, E, drop) &lt;= (A, B , E) is shorter
+(F, G, drop) &lt;= (A, B, E, G) is shorter
+(G, F, drop) &lt;= (A, C, F) is shorter
+(G, H, forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.154">
+      <response>Hop 1:
+(A, B, forward); (A, C, forward); (A, D, forward).
+Hop 2:
+(B, E, forward);  (B, C, drop) from A to  C ,via B is not the shortest; 
+(C, B, drop),from A to B ,via C is not the shortest; (C, D, drop), from A to D ,via C is not the shortest; (C, E, drop), from A to E ,via C is not the shortest; 
+(C, F,  forward).  
+(D, C, drop) ,from A to C ,via D is not the shortest; (D, F, drop) ,from A to F ,via D is not the shortest.
+Hop 3:
+(E, C, drop), from A to C ,via E is not the shortest; (E, F, drop), from A to F ,via E is not the shortest; (E, G, forward).</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.209">
+      <response>Hop1:(A,B,forward), (A,C,forward), (A,D,forward)
+Hop 2:(B,E,forward), (C,F,forward)
+Hop 3: (E,G,forward), 
+Hop 4: (G,H,forward)
+No packets are dropped because RPB does not send packets that don't follow the best path to the source node</response>
+      <response_feedback>The packets which are not forwarded to other nodes by a node A will be considered dropped by that node in the context of the question. So (A,D, drop) should be shown ideally. As stated in the question, one has  to also provide the  reason when  message is not forwarded or dropped by a node. (A,D, drop) and (C,F,drop) : reason(-0.5p)</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.231">
+      <response>Hop 1:(A, B, forward)(A, C, forward)(A, D, forward)Hop 2:
+(B, C, drop) &lt;= C already has packet from A from Hop #1(B, E, forward)(C, B, drop) &lt;= B already has packet from A from Hop #1(C, D, drop) &lt;= D already has packet from A from Hop #1(C, E, drop) &lt;= E has packet from B with better metric from route ABE (2+1=3) vs. ACE (2+2=4)(C, F, forward)(D, C, drop) &lt;= C already has packet from A from Hop #1(D, F, drop) &lt;= F has packet from C with better metric from route ACF (2+1=3) vs. ADF (2+3=5)Hop 3:
+(E, C, drop) &lt;= C already has packet from A from Hop #1(E, F, drop) &lt;= F already has packet from C from Hop #2(E, G, forward)(F, D, drop) &lt;= D already has packet from A from Hop #1(F, E, drop) &lt;= E already has packet from B from Hop #2(F, G, drop) &lt;= G has packet from E with better metric from route ABEG (2+1+1=4) vs. ACFG (2+1+2=5)Hop 4:
+(G, F, drop) &lt;= F already has packet from C from Hop #2(G, H, drop) &lt;= H has only one neighbor (G) from which it got the message</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.262">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) - there's a better path to F.
+
+Hop 2:
+(B, E, forward)
+(C, F, drop) - there's a better path to G.
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop)</response>
+      <response_feedback>The response is correct , but also need to provide reason for (G, H, drop).</response_feedback>
+      <score>2.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.282">
+      <response>hop 1:
+(A, C, forward)
+(A, B, forward)
+(A, D, forward)
+hop 2:
+(B, A, drop) Already received
+(B, C, drop) Already received
+(B, E, forward)
+(C, B, drop) Already received
+(C, A, drop) Already received
+(C, D, drop) Already received
+(D, A, drop) Already received
+(D, C, drop) Already received
+(D, F, forward)
+hop 3:
+(E, B, drop) Already received
+(E, C, drop) Already received
+(E, F, drop) Already received
+(E, G, drop) Already received
+(F, D, drop) Already received
+(F, C, drop) Already received
+(F, E, drop) Already received
+(F, G, drop) Already received
+hop 4:
+(G, E, drop) Already received
+(G, F, drop) Already received
+(G, H, forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.312">
+      <response>Hop 1: 
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= shortest path to F is via C and C can be reached directly from A
+Hop 2:
+(C, F, drop) &lt;= shortest path to E is via B and to G via E
+(B, E, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= only one neighbor</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.314">
+      <response>Hop 1: 
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2: 
+(B, E, forward)
+(C, F, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) -&gt; Packet drops because it only has one neighbour and node  H does not forward the message.</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.5 for reasoning (A,D, drop), (C, F, drop)</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.321">
+      <response>Hop 1C, A, forward)  (D, A, forward)  (B, A, forward)  (E, B, forward)  (G, E, forward)
+           (H,G,forward)   (F,C,forward)
+           (C, B, drop) C is not located on the unicast path from B to A
+           (C, D, drop) C is not located on the unicast path from D to A
+           (C, E, drop) C is not located on the unicast path from E to A
+           (D, F, drop) D is not located on the unicast path from F to A
+           (F, G, drop) F is not located on the unicast path from G to A
+Hop 2E, A, forward) (F, A, forward)
+Hop 3G, A, forward)     
+Hop 4H, A, forward)</response>
+      <response_feedback>The response is incorrect. Please check the model solution.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.359">
+      <response>hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, F, forward)
+hop 3:
+(E, G, forward)
+(G, H, forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.376">
+      <response>Hop 1: From A: (A,B,forward), (A,C, forward), (A,D, forward)
+
+Hop 2:
+From B: (B, C, drop), because A sends directly to C, (B, E, forward)
+From C: (C, B, drop) because A sends to A, (C, D, drop), because A sends to D (C, E, drop), because B sends to E (C, F, forward)
+From D: (D, C, drop), because A sends to C (D, F, drop) because C sends to E 
+
+Hop 3:
+From E: (E, C, drop), because A sends to C (E, F, drop), because C sends to F (E, G, forward)
+From F: (F, D, drop), because A sends to A (F, E, drop), because B sends to E (F, G, drop) because E sends to G
+
+Hop 4:
+From G: (G, F, drop), because C sends to E (G, H, drop) because H doesn´t have any other destination to forward the message</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.461">
+      <response>Hop1:
+(A, B, forward)
+
+(A, C, forward)
+
+(A, D, forward)
+
+Hop2:
+
+
+(B, E, forward)
+
+(C, F, forward)
+
+Hop3:
+
+(E, G, forward)
+
+Hop4:
+(G, H, drop) -&gt; Packet drops because it only has one neighbour and node H does not forward the message</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.5 for reasoning (A,D, drop), (C, F, drop)  ).</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.483">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= (C to F is shorter than D to F)
+Hop 2:
+(B, E, forward),
+(C, F, drop) &lt;= (E to G is shorter than F to G)
+Hop 3: 
+(E, G, forward)
+Hop 4: 
+(G, H, drop) &lt;= (H is the last node)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.539">
+      <response>Hop 1:From A:(A, B, forward)(A, C, forward)(A, D, drop) // D is not on unicast path from C to A and F to A.
+Hop 2:From B:(B, E, forward)From C:(C, F, drop) // F is not on unicast path from D, E or G to A
+Hop 3:From E:(E, G, forward)
+Hop 4:From G:(G, H, drop) // H is not connected to further nodes (except the receiving node)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.550">
+      <response>Hop 1
+(a, b, forward)(a, c, forward)(a, d, forward)
+
+Hop 2
+(b,c, drop) not shortest route, not minimal spanning tree, previously visited(d,c, drop) not shortest route, not minimal spanning tree, previously visited(c,e, drop) not shortest route, not minimal spanning tree(d,f, drop) not shortest route, not minimal spanning tree(b,e, forward)(c,f, forward)Hop 3
+(e,f, drop) not shortest route, not minimal spanning tree, previously visited(f,e, drop) not shortest route, not minimal spanning tree, previously visited(f,g, drop) not shortest route, not minimal spanning tree(e,g, forward)
+Hop 4
+(g, h, forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.566">
+      <response>Hop 1:
+(B, A, forward)
+(C, A, forward)
+
+Hop 2:
+(E, C, drop) &lt;= Going over C to A is not on the best path from E to A
+
+(F, D, drop) &lt;= Going over D to A is not on the best path from F to A
+(E, B, forward)
+(F, C, forward)
+
+Hop 3:
+
+(G, E, forward)
+(G, F, drop) &lt;= Going over F to A is not on the best path from G to A
+
+
+
+
+Hop 4:
+(H, G, forward)</response>
+      <response_feedback>The notation is (sender, receiver, forward/drop), not (receiver, sender, forward/drop). (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>0.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.588">
+      <response>Hop 1:
+(A, B, forward); (A, C, forward); (A, D, forward).
+Hop 2:
+(B, E, forward);  (B, C, drop) from A to  C ,via B is not the shortest; 
+(C, B, drop),from A to B ,via C is not the shortest; (C, D, drop), from A to D ,via C is not the shortest; (C, E, drop), from A to E ,via C is not the shortest; 
+(C, F,  forward).  
+(D, C, drop) ,from A to C ,via D is not the shortest; (D, F, drop) ,from A to F ,via D is not the shortest.
+Hop 3:
+(E, C, drop), from A to C ,via E is not the shortest; (E, F, drop), from A to F ,via E is not the shortest; (E, G, forward).</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.620">
+      <response>Hop 1: 
+
+(A,B,forward)
+(A,C,forward)
+(A,D, drop) =&gt; Because D won't receive any other packets from other nodes and knows that itself is not included in any other best paths, so D will drop the packet
+Hop 2:
+(B,E,forward)
+(C,F,drop) =&gt; Because F won't receive any other packets from other nodes and knows that itself is not included in any other best paths, so F will drop the packet
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop) =&gt; Because H has only one neighbor from which it got the message, therefore it does not forward the message</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.652">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop) &lt;= D doesn't know any other "BEST" route to send the packet
+
+Hop 2:
+(B,E,forward)
+(C,F,drop) &lt;= F doesn't know any other "BEST" route to send the packet
+
+Hop 3:
+(E,G,forward)
+
+Hop 4:
+(G,H,drop) &lt;= H receives the packet but doesn't need to forward it to anyone else, because it has no other neighbors</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.666">
+      <response>Hop1:
+(A, B, forward)
+(A, C, forward)
+(A,D, drop) &lt;= D is not located at unicast path of F or A
+Hop 2:
+(B, E, forward)
+(C, F, drop) &lt;= F not located at unicast path of G to A
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= no outgoing edges except the incoming one</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.706">
+      <response>Hop 1:
+From A: (A, B, forward) (A, C, forward) (A, D, forward)
+
+Hop 2:
+From B: (B, C, drop)  (B, E, forward) (B, A, drop) 
+From C:   (C, D, drop) (C, F, forward) (C, B, drop) (C, E, drop) 
+From D:   (D, A, drop) (D, C, drop)  (D, F, drop)
+
+Hop 3:
+From E:  E, G, forward) (E, C, drop) (E, B, drop)   (E, F, drop)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.726">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, F, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= H has only one neighbor (G) from which it got the message</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.737">
+      <response>Hop 1:(H,G,forward)
+Hop 2:
+(G,E,forward)
+(G,F,drop)&lt;=not the shortest path
+Hop 3:
+(E,C,forward)
+(E,B,drop)&lt;=it is not located on the unicast path from E to A
+(E,F,drop)&lt;=it is not located on the unicast path from E to A
+HOP 4:
+(C,A,forward)
+(C,B,drop)&lt;=it is not located on the unicast path from C to A
+(C,D,drop)&lt;=it is not located on the unicast path from C to A</response>
+      <response_feedback>The routing starts from the A  as sender and this will result in change in the packets forwarded or dropped.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.748">
+      <response>Hop 1:
+(A, B, forward) (A, C, forward) (A, D, drop) &lt;= no known unicast route from F or C to A
+Hop 2:
+(B, E, forward) (C, F, drop) &lt;= no known unicast route via F to A
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= no neighbors except G from which packet was received</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.770">
+      <response>Hop 1:(A, B, forward)(A, C, forward)(A, D, drop) &lt;= IS D wird die Nachricht nicht mehr weiterleiten, da kein weiterer Node diesen als besten Vorgänger besitzt 
+Hop 2:(B, E, forward)(C, F, drop) &lt;= IS F wird die Nachricht nicht mehr weiterleiten, da kein weiterer Node diesen als besten Vorgänger besitzt
+Hop 3:(E, G, fordward)
+Hop 4:(G, H, drop) &lt;= IS H besitzt nur diesen einen Nachbarn, daher wird die Nachricht nicht mehr weitergeleitet</response>
+      <response_feedback>Die response ist richtig.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.771">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop)&lt;=because F does not forward a broadcast packet from A to D)
+Hop 2:
+(B,E,forward)
+(C,F,drop)&lt;=because G does not forward a broadcast packet from C to F)
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop)&lt;=because there is no more receiver after H</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.778">
+      <response>Hop 1:(A, B, forward)
+(A, C, forward)
+(A, D, forward) 
+Hop 2:
+(B, C, drop) &lt;= because B never got a packet for C in the past (because AC is the best path)
+(B, E, forward)
+(C, B, drop) &lt;= because C never got a packet for B in the past (because AB is the best path)
+(C, D, drop) &lt;= because C never got a packet for D in the past (because AD is the best path)
+(C, F, forward)
+(D, C, drop) &lt;= because D never got a packet for C in the past (because AC is the best path)
+(D, F, drop) &lt;= because D never got a packet for F  in the past (because ACF is the best path)
+Hop 3:
+(E, C, drop) &lt;= because E never got a packet for C in the past (because AC is the best path)
+(E, F, drop) &lt;= because E never got a packet for F in the past (because ACF ist the best path)
+(E, G, forward)
+(F, D, drop) &lt;= because F never got a packet for D in the past (because AD is the best path)
+(F, E, drop) &lt;= because F never got a packet for E in the past (because ABE is the best path)
+(F, G, drop) &lt;= because F never got a packet for G in the past (because ABEG is the best path)
+Hop 4: 
+(G, F, drop) &lt;= because G never got a packet for F in the past (because ACF is the best path)
+(G, H, drop) &lt;= because H has no further links to forward to</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.797">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward)(A, D, forward)
+Hop2:
+(B, E, forward)(C, F, forward)
+Hop3:(E, G, forward)Hop4:
+(G, H, forward)</response>
+      <response_feedback>The reason also needs to be provided when a packet is not forwarded to other nodes i.e. dropped by the receiver as stated in the question "list all the packets which are sent together with the information whether they will be forwarded or dropped at the receiving nodes." Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop) ).</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.838">
+      <response>Hop 1:
+(A, C, forward)
+(A, B,  forward)
+(A, D, drop) =&gt; D cannot forward packets any further as the distance is higher than alternatives
+Hop 2:
+(B, E, forward)
+(C, F, drop) =&gt; cannot forward due to high distance
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) =&gt; cannot forward because last node</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.852">
+      <response>Hop 1:
+(A,B,f)
+(A,C,f)
+(A,D,f)
+
+Hop 2:
+(B,E,f)
+(B,C,d) &lt;- A,C is faster, not minimal spanning tree
+(C,B,d) &lt;- A,B is faster, not minimal spanning tree
+(C,E,d) &lt;- B,E is faster, not minimal spanning tree
+(C,F,f)
+(C,D,d) &lt;- A,D is faster, not minimal spanning tree
+(D,C,d) &lt;- A,C is faster, not minimal spanning tree
+(D,F,d) &lt;- A,C,F is faster, not minimal spanning tree
+
+Hop 3:
+(E,C,d) -&gt; A,C is faster, not minimal spanning tree
+(E,G,f)
+(E,F,d) -&gt; A,C,F is faster, not minimal spanning tree
+(F,E,d) -&gt; A,B,E is faster, not minimal spanning tree
+(F,G,d) -&gt; A,B,E,G is faster, not minimal spanning tree
+(F,D,d) -&gt;A,D,F is faster, not minimal spanning tree
+
+Hop 4:
+(G,F,d) -&gt; A,C,F is faster, not minimal spanning tree
+(G,H,f)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.900">
+      <response>Schnellster Weg von jeder Node zur Quelle:
+
+B -&gt; A
+C -&gt; A
+D -&gt; A
+E -&gt; B -&gt; A
+F -&gt; C -&gt; A
+G -&gt; E -&gt; B -&gt; A
+H -&gt; G -&gt; E -&gt; B -&gt; A
+Hop,Step 1:
+
+(A,B,f )
+(A,C,f )
+(A,D,d) ,weil D es nicht weiterleiten kann. (Endstation)
+Hop,Step 2:
+
+(B,E,f)
+(C,F,d) ,weil F es nicht weiterleiten kann. (Endstation)
+Hop,Step 3: 
+
+(E,G,f)Hop,Step 4:
+
+(G,H,d)  ,weil H es nicht weiterleiten kann. (Endstation)
+ 7 Packete wurden gesendet, davon sind 3 gedropped worden.</response>
+      <response_feedback>The reason need to explain why the packet is dropped or not forwarded further. Example: (A, D, drop) &lt;= reason: remaining neighbors C and F do not use D as the next hop to get to A. Similarly for (C,F,d).</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.954">
+      <response>Hop 1:
+(A, B, forward), (A, C, forward), (A, D, forward)
+
+Hop 2:
+From B: (B, C, drop) visited in Hop 1, (B, E, forward)
+From C: (C, B, drop) visited in Hop 1, (C, D, drop) visited in Hop 1, (C, E, drop) visited in Hop 2, (C, F, forward)
+From D: (D, C, drop) visited in Hop 1, (D, F, drop) visited in Hop 2
+
+Hop 3:
+From E: (E, C, drop) visited in Hop 1, (E, F, drop) visited in Hop 2, (E, G, forward)
+From F: (F, D, drop) visited in Hop 1, (F, E, drop) visited in Hop 2, (F, G, drop) visited in Hop 3
+
+Hop 4:
+From G: (G, F, drop) visited in Hop 2, (G, H, drop) no new neighbors</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.968">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward) (A, D, forward)
+Hop 2:
+(B, E, forward)(C, F, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, forward)</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop) ).</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.980">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop): D knows that F and C don't receive unicast packets via D
+Hop 2:
+(B, E, forward)
+(C, F, drop): F knows that E, G and D don't receive unicast packets via F.
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop): H received the packet from the only link attached to it and can't send it anywhere.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.987">
+      <response>hop 1:(A, C, forward)(A, B, forward)(A, D, forward)hop 2:(B, A, drop) Already received(B, C, drop) Already received(B, E, forward)(C, B, drop) Already received(C, A, drop) Already received(C, D, drop) Already received(D, A, drop) Already received(D, C, drop) Already received(D, F, forward)hop 3:(E, B, drop) Already received(E, C, drop) Already received(E, F, drop) Already received(E, G, drop) Already received(F, D, drop) Already received(F, C, drop) Already received(F, E, drop) Already received(F, G, drop) Already receivedhop 4:(G, E, drop) Already received(G, F, drop) Already received(G, H, forward)</response>
+      <response_feedback>n  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur and reasoning needs to be provided. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1011">
+      <response>Hop 1:
+FROM A:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= Forward over B is not part of unicast A &gt; C and A-&gt; F
+
+Hop 2:
+FROM B:
+(B, E, forward)
+FROM C:
+(C, F, drop) &lt;= Forward over C is not part of unicast A -&gt; D, A-&gt;E and A-&gt; G
+
+Hop 3:
+FROM E:
+(E, G, forward)
+
+Hop 4:
+FROM G:
+(G, H, drop) &lt;= only link is the receiving link</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1012">
+      <response>Hop1:
+(A,B,forward)
+(A,C,forward)
+(A,D,forward)
+Hop2:
+(B,C,drop) &lt;= not located on the unicast path from C to A
+(B,E,forward)
+(C,B,drop) &lt;= not located on the unicast path from B to A
+(C,E,drop) &lt;= not located on the unicast path from E to A
+(C,F,forward)
+(C,D,drop) &lt;= not located on the unicast path from D to A
+(D,C,drop) &lt;= not located on the unicast path from C to A
+(D,F,drop) &lt;= not located on the unicast path from F to A
+Hop3:
+(E,C,drop) &lt;= not located on the unicast path from C to A
+(E,F,drop) &lt;= not located on the unicast path from F to A
+(E,G,forward)
+(F,D,drop) &lt;= not located on the unicast path from D to A
+(F,E,drop) &lt;= not located on the unicast path from E to A
+(F,G,drop) &lt;= not located on the unicast path from G to A
+Hop4:
+(G,F,drop) &lt;= not located on the unicast path from F to A
+(G,H,forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1024">
+      <response>Packages that are not forwarded to the IS they came from are not listed here. (e.g. (E, B, drop))
+
+Hop 1:
+(A,B, forward)
+(A,C, forward)
+
+(A,D, forward)
+Hop 2:
+
+(B,E, forward)
+(B, C, drop) &lt;= B knows that it is not located on the Unicast path to A from C, therefore it does not forward the packet.
+
+
+(C, B, drop) &lt;= C knows that it is not located on the Unicast path to A from B, therefore it does not forwardthe packet.
+
+
+
+(C, D, drop) &lt;= C knows that it is not located on the Unicast path to A from D, therefore it does not forwardthe packet.
+(C, E, drop) &lt;= C knows that it is not located on the Unicast path to A from E, therefore it does not forwardthe packet.
+
+
+
+(C, F, forward)
+(D, C drop) &lt;= D knows that it is not located on the Unicast path to A from C, therefore it does not forward the packet.
+(D, F, drop) &lt;= D knows that it is not located on the Unicast path to A from C, therefore it does not forward packet.
+
+Hop 3:
+(E, G, forward)
+(E, F, drop) &lt;= E knows that it is not located on the Unicast path to A from F, therefore it does not forward packet.
+(E, C, drop) &lt;= E knows that it is not located on the Unicast path to A from C, therefore it does not forward packet.
+
+
+(F, E, drop) &lt;= F knows that it is not located on the Unicast path to A from E, therefore it does not forward packet.
+
+(F, G, drop) &lt;= F knows that it is not located on the Unicast path to A from G, therefore it does not forward packet.
+(F, D, drop) &lt;= F knows that it is not located on the Unicast path to A from D, therefore it does not forward packet.
+
+Hop 4:
+(G, H, forward)
+(G, F, drop) &lt;= G knows that it is not located on the Unicast path to A from F therefore it does not forward packet.</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1039">
+      <response>Hop 1:
+(A,B, forward)(A,C, forward)(A,D, drop) &lt;= D receives the packet, but doesn't forward it to C or F
+
+Hop 2:(B,E, forward)(C,F, drop) &lt;= F  receives the packet, but doesnt forward it
+Hop 3:(E,G, forward)
+Hop 4
+(G,H, drop) &lt;= H  receives the packet, but doesn't forward it, since there is no other neighbor node left (except G, but this he received the packet)</response>
+      <response_feedback>The response needs to state why D or F does not forward the packet, the remaining part is correct.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1057">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2:
+(B, E, forward)
+(B, C, drop) &lt;= A-&gt;C is shorter
+(C, B, drop) &lt;= A-&gt;B is shorter
+(C, E, drop) &lt;= A-&gt;B-&gt;E is shorter
+(C, F, forward)
+(C, D, drop) &lt;= A-&gt;D is shorter
+(D, C, drop) &lt;= A-&gt;C is shorter
+(D, F, drop)  &lt;= A-&gt;C-&gt;F is shorter 
+
+Hop 3: 
+(E, C, drop) &lt;= A-&gt;C shorter
+(E, F, drop) &lt;= A -&gt; C-&gt; F is shorter
+(E, G, forward)
+(F, D, drop) =&gt; A-&gt;D is shorter
+(F, E, drop) =&gt; A -&gt; B-&gt; E is shorter
+(F, G, drop) =&gt; A -&gt; B -&gt; E -&gt; G is shorter
+
+Hop 4:
+(G, F, drop) =&gt; A-&gt;C-&gt;F is shorter
+(G, H, forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1071">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, C, drop) not the shortest path from A-C (not the best route)
+(B, E, forward)
+(C, B, drop) not the shortest path from A-B (not the best route)
+(C, E, drop) not the shortest path from A-E (not the best route)
+(C, F, forward)
+(C, D, drop) not the shortest path from A-D (not the best route)
+(D, C, drop) not the shortest path from A-C (not the best route)
+(D, F, drop) not the shortest path from A-F (not the best route)
+Hop 3:
+(E, C, drop) not the shortest path from A-C (not the best route)
+(E, F, drop) not the shortest path from A-F (not the best route)
+(E, G, forward)
+(F, D, drop) not the shortest path from A-D (not the best route)
+(F, E, drop) not the shortest path from A-E (not the best route)
+(F, G, drop) not the shortest path from A-G (not the best route)
+Hop 4:
+(G, H, forward)</response>
+      <response_feedback>The flow appears more akin to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1078">
+      <response>Hop 1: 
+(A,B,forward)
+(A,C, forward)
+(A,D, forward)
+Hop 2:
+(B, E, forward)
+(B, C, drop) C would not send packet to A via B, it would send directly
+(C, B, drop) same reason as above
+(C, D, drop) D would not send packet to A via B, it would send directly
+(C, F, forward)
+(D, C, drop) C would not send packet to A via D
+(D, F, drop) F would send packet to A via C
+Hop 3:
+(E, C, drop) C would sent packet to A directly
+(E, F, drop) F would sent packet to A via C
+(E,G, forward)
+(F, E, drop) E would sent packet to A via B
+(F, D, drop) D would sent packet to A directly
+(F, G, drop) G would sent packet to A via E
+Hop 4:
+(G, F, drop) F would sent packet to A via C
+(G, H, drop) H only has 1 link which is the incoming link</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1109">
+      <response>Hop 1:(A, B, forward)(A, C, forward)(A, D, forward)Hop 2:(B, E, forward)(C, F, forward)Hop 3:(E, G, forward)Hop 4:(G, H, forward)</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop) ).</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1208">
+      <response>Hop 1:
+(A, B, forward) 
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, F, forward) 
+(C, E, drop) - not the shortest path, as A-&gt;B-&gt;E is 3 long while this is 4 long
+(D, F, drop) - not the shortest path, as A-&gt;C-&gt;F is 3 long while this is 5 long
+(B, C, drop)
+(C, B, drop) 
+(C, D, drop)
+(D, C, drop)  - all not the shortest passes, as they all get their fastest packets directly form A
+Hop 3:
+(E, F, drop)
+(F, E, drop) - both not the shortest path 
+(E, G, forward)
+(F, G, drop) - longer path than E-&gt;GHop 4:
+(G, H, forward) - but no where to forward, but we dont ignore it</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1217">
+      <response>Hop 1:
+(H,G, forward)
+Hop 2:
+(G,F, forward), (G,E, forward)
+Hop 3:
+(E,B, forward), (E,C, forward), (E,F, drop)&lt;=  because of duplicate
+(F,C, drop)&lt;= because of duplicate, (F,D, forward)
+Hop 4:
+(B,C, drop)&lt;= becuase of duplicate, (B,A, forward), (C,A drop)&lt;= becuase of duplicate, (D,A, drop)&lt;= becuase of duplicate</response>
+      <response_feedback>The flow starts from A  as sender not H. Packets are dropped for being not on the best route, not for being duplicate as the sole reason.</response_feedback>
+      <score>0.0</score>
+      <verification_feedback>Incorrect</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1228">
+      <response>Hop 1:
+From A: (A, B, forward) (A, C, forward) (A, D, forward)
+
+Hop 2:
+From B: (B, C, drop) =&gt; (C was already covered) (B, E, forward) (B, A, drop) =&gt; (A was already covered)
+From C: (C, B, drop) =&gt; (already covered from A) (C, E, drop) =&gt; ( E was already covered from B and shorter way) (C, F, forward) (C, D, drop) =&gt; ( already covered from A) (C, A, drop) =&gt; ( A was already covered)
+From D: (D, C, drop) =&gt; (already covered from A) (D, F, drop) =&gt; ( F was covered from C and shorter way) (D, A, drop) =&gt; ( A was covered already)
+
+Hop 3:
+From E: (E, C, drop) =&gt; (already covered from A) (E, F, drop) =&gt; (already covered from C) (E, G, forward) (E, B, drop) =&gt; ( B was already covered)
+From F: (F, G, drop) =&gt; (G was already covered)  (F, E, drop) =&gt; (E was already covered) (F, C, drop) =&gt; (C was already covered) (F, D, drop) =&gt; (D was already covered)
+
+Hop 4:
+From G: (G,F, drop) =&gt; ( F was already covered) (G,E, drop) =&gt; (E was already covered) (G,H,forward)
+
+Hop 5:
+From H: (H, G, drop) (G was already covered)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1239">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= node d doesn't receive Packets to a
+Hop 2:
+(B, E, forward)
+(C, F, drop) &lt;= node f doesn't receive Packets to a
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= no other nodes to send the packet to</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1273">
+      <response>Hop 1:
+(A, B, forward) because A is source and shortest path
+(A, C, forward) because A is source and shortest path
+(A, D, forward) because A is source and shortest path
+Hop 2:
+(B, E, forward) because it is the best path
+(C, F, forward) because it is the best path
+Hop 3:
+(E, G, forward) because it is the best path
+Hop 4:
+(G, H, drop) becauseH has only 1 Link, which is also the incoming Link</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1281">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2:
+From B: 
+(B, E, forward)
+
+From C: 
+(C, E, drop) &lt;= E knows that isnt receiving unicast packets via C , 
+(C, F, forward)
+
+From D: 
+(D, F, drop) &lt;= F knows that isnt receiving unicast packets via D 
+
+Hop 3:
+From E: 
+(E, G, forward)  
+
+From F: 
+(F, G, drop) &lt;= G knows that isnt receiving unicast packets via F
+
+Hop 4:
+From G: 
+(G, H, drop) &lt;=  H knows that isnt receiving unicast packets via G
+
+
+HInt: Packets which aren't considered to be forwarded RPB are left out explicitly.</response>
+      <response_feedback>(A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop).</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1310">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= D has no more connections that have its shortest path through D
+Hop 2:
+(B, E, forward)
+(C, F, drop) &lt;= F has no more connections that have its shortest path through F
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= H has no more connections that have its shortest path through H</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1324">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop): Because D recognize that F and C won't receive packets via D.
+
+Hop 2:
+(B, E, forward)
+(C, F, drop): Because F recognize that E,D and G won't receive packets via F.
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop): Because H can only receive packets via G.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1327">
+      <response>Hop 1:
+From A:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) - The forward over node D is not the ideal unicast path towards nodes C and F.
+
+Hop 2:
+From B:
+(B, E, forward)
+From C:
+(C, F, drop) - The forward over node F is not the ideal unicast path towards nodes D, E and G.
+
+Hop 3:
+From E:
+(E, G, forward)
+
+Hop 4:
+From G:
+(G, H, drop) - Since node H has no links other than to G where it receives its packet from the packet can be dropped</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1347">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, F, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, forward)</response>
+      <response_feedback>The reasoning behind which packets are dropped is not stated.  Please go through the model solution. Packets will be considered drop if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop)</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1368">
+      <response>Hop 1: (A, B, forward) ; (A, C, forward); (A, D, drop).vertex D will not forword package to vertex F(not the shortest), so vertex D will drop.
+Hop 2: (B, E, forward);  (C, F,  drop). vertex F will not forword package to vertex G(not the shortest), so vertex F will drop.
+Hop 3: (E, G, forward).
+Hop 4: (G, H, drop). vertex H has only one neighbor,so vertex H doesn't forword .</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1388">
+      <response>(G, H, drop) : 
+F DOES NOT FORWARD a broadcast packet from G to H
+It is not located on the unicast path from G to H</response>
+      <response_feedback>Incomplete response.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1395">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, E, drop) &lt;= because E never send a packet to A from C
+(C, F, forward)
+(D, F, drop) &lt;= because F never send a packet to A from D
+Hop 3:
+(E, G, forward)
+(E, F, drop) &lt;= because F never send a packet to A from E
+(F, E, drop) &lt;= because E never send a packet to A from F
+(F, G, drop) &lt;= because G never send a packet to A from F
+Hop 4:
+(G, H, drop) &lt;= H is the last node and there is no other link</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1420">
+      <response>Hop 1:
+(A,B, forward), (A,C, forward)(A,D, drop) &lt;= From node D there is no forwarding to node F, because D is not on the unicast path from A to D
+Hop 2:
+(B,E,forward)
+(C,F,drop) &lt;= From node F there is no forwarding to node D E and G, because node D is not on the unicast path from A to D, E or G
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop) &lt;= There is no more forwarding, because there H is the last node on this path</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1498">
+      <response>Hop 1: 
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2:
+(B, E, forward)
+(C, F, forward)
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, forward)</response>
+      <response_feedback>The reasoning behind which packets are dropped is not stated.  Please go through the model solution. Packets will be considered drop if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop)</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1526">
+      <response>HOP 1:
+(A,B,forward)(A,C,forward)
+(A,D,forward)
+HOP 2:
+(B,E,forward)
+(B,C,forward)
+(C,E,forward)
+(C,D,forward)
+(D,F,forward)
+(D,C,DROP) was sent from C
+(C,B,DROP) was sent from B
+HOP 3:
+
+(E,G,forward)
+
+
+(F,G,forward)
+(E,F,forward)(F,E,drop) was sent from E
+
+HOP 4:
+(G,H, forward)</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1533">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+(B, C, drop) &lt;= B knows it is not on C's best path to A
+(B, E, forward)
+(C, B, drop) &lt;= C is not on best path of B
+(C, E, drop) &lt;= C is not on best path of E
+(C, F, forward)
+(C, D, drop) &lt;= C is not on best path of D
+(D, C, drop) &lt;= D is not on best path of C
+(D, F, drop) &lt;= D is not on best path of F
+Hop 3:
+(E, F, drop) &lt;= E is not on best path of F
+(E, C, drop) &lt;= E is not on best path of C
+(E, G, forward)
+(F, E, drop) &lt;= F is not on best path of E
+(F, D, drop) &lt;= F is not on best path of D
+(F, G, drop) &lt;= F is not on best path of G
+Hop 4:
+(G, H, forward)
+(G, F, drop) &lt;= G is not on best path of F</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1559">
+      <response>Hop1:
+(A,C,forward)
+(A,B,forward)
+(A,D,forward)
+Hop2:
+(B,E,forward)
+(C,F,forward)
+(C,D,drop )-&gt; a packet can't be forwarded 
+(D,F,drop)-&gt; a packet can't be forwarded 
+Hop3:
+(E,G,forward)
+(E,F,forward)
+(F,G,drop) -&gt; a packet can't be forwarded 
+Hop4:
+(G,H,drop) -&gt; a packet can't be forwarded 
+
+7packets</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. One need to provide the reason why the packet is not forwarded or dropped.</response_feedback>
+      <score>1.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1577">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+
+Hop 2:
+(B, E, forward)
+(C,F, forward)
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop) &lt;= Because H has only one neighbor from which it got the message, H does not forward the message and drop it.</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.5 for reasoning (A,D, drop), (C, F, drop) ).</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1590">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward)(A, D, forward)
+Hop 2:
+(B, E, forward)(C, F, forward)
+Hop 3:
+(E, G, forward)(G, H, forward)
+
+In RPB, in contrast to RBF, no packets are dropt (optimally), because packets are only sent on the shortest paths to each destination</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop) ). Incorrect hop (-0.25p): Hop 3 (E, G, forward)Hop 4 (G, H, drop)</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1640">
+      <response>Hop 1:
+(A, B, forw.)(A, C, forw.)(A, D, forw.)
+Hop 2:
+(B, E, forw.)(C, F, forw.)
+Hop 3:
+(E, G, forw.)
+Hop 4:
+(G, H, forw.)</response>
+      <response_feedback>Packets will be considered dropped if it is not forwarded further by the receiver node.(-0.75 for reasoning (A,D, drop), (C, F, drop) and (G, H, drop) ).</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1647">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward)(A, D, drop) D is not on unicast path of A-F, and not on the path A-C
+
+Hop 2:
+(B, E, forward)(C, F, drop) F is not on unicast path A-E / A-G
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop) no neighbours available</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1651">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop 2:
+
+(B, E, forward)
+
+B would not forward the packet from S to C because B knows that from C to S the packet would never go through B
+(C, F, forward)
+Similar reason, C would not forward the packet from S to D and S to B
+D would not forward the packet from S to C and S to F
+Hop 3:
+
+(E, G, forward)
+E would not forward the packet from S to C and S to F
+F would not forward the packet from S to C and S to E
+Hop 4:
+(G, H, forward)
+G would not forward the packet from S to F</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1653">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,forward)
+Hop 2:
+(B,C,drop) &lt;= already got packet
+(B,E,forward)
+(C,B,drop) &lt;= already got packet
+(C,E,drop) &lt;= not shortest path
+(C,D,drop) &lt;= already got packet
+(C,F,foward)
+(D,C,drop) &lt;= already got packet
+(D,F,drop) &lt;= not shortest path
+Hop 3:
+(E,B,drop) &lt;= already got packet
+(E,C,drop) &lt;= already got packet
+(E,F,drop) &lt;= already got packet
+(E,G,forward)
+
+(F,D,drop) &lt;= already got packet
+(F,E,drop) &lt;= already got packet
+(F,C,drop) &lt;= already got packet
+(F,G,drop) &lt;= not shortest path
+Hop 4:
+(G,E,drop) &lt;= already got packet
+(G,F,drop) &lt;= already got packet
+(G,H,forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1663">
+      <response>Hop 1:
+
+(A, B, forward)
+
+(A, C, forward)
+
+(A, D, drop) =&gt; D does not forward the package because it is not the next hop on the shortest unicast path to A of any neighbor (packet came from A, C sends directly to A, F sends over C)
+
+ 
+
+Hop 2:
+
+(B, E, forward)
+
+(C, F, drop) =&gt; F does not forward the package because it is not part of the shortest unicast path to A of any neighbor (packet came from C, D sends directly to A, E sends over B, G sends over E)
+
+ 
+
+Hop 3:
+
+(E, G, forward)
+
+ 
+
+Hop 4:
+
+(G, H, drop) =&gt; H's only neighbor is G from which it got the packet</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1706">
+      <response>Hop1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop2:
+(B; C, drop) &lt;= B knows that C does not receive unicast packets via B
+(B, E, forward)
+(C, B, drop)&lt;= C knows that B does not receive unicast packets via C
+(C, D, drop)&lt;= C knows that D  does not receive unicast packets via C
+(C, E, drop)&lt;= C knows that E does not receive unicast packets via C
+(C, F, forward)
+(D, C, drop)&lt;= D knows that C does not receive unicast packets via D
+(D, F, drop)&lt;= D knows that F does not receive unicast packets via D
+Hop3:
+(E, C, drop)&lt;= E knows that C does not receive unicast packets via E
+(E, F, drop)&lt;= E knows that F does not receive unicast packets via E
+(E, G, forward)
+(F, E, drop)&lt;= F knows that E does not receive unicast packets via F
+(F, G, drop)&lt;= F knows that G does not receive unicast packets via F
+(F, D, drop)&lt;= F knows that D does not receive unicast packets via F
+Hop4:
+(G, H, forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1713">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop) F doesn't receive unicast packets by D so D won't forward a message from A to F
+Hop 2:
+(B,E,forward)
+(C,F,drop) G doesn't receive unicast packets by F so F won't forward a message from A to G
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop) H has only one neighbour to get the message</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1722">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, forward)
+Hop2:
+(B, E, forward)
+(B, C, drop) &lt;= C doesn't send any Packets to A, over B
+(C, D, drop) &lt;= D doesn't send any Packets to A, over C
+(C, E, drop) &lt;= E doesn't send any Packets to A, over C
+(C, F, forward)
+(D, C, drop) &lt;= C doesn't send any Packets to A, over D
+(D, F, drop) &lt;= F doesn't send any Packets to A, over D
+
+Hop 3:
+(F, E, forward)
+(F, G, forward)
+(E, F, drop) &lt;= F doesn't send any Packets to A, over E
+(E, G, forward)
+
+Hop 4:
+(G, H, drop) &lt;= H doesn't have any adjacent nodes other than G</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop)  will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1729">
+      <response>For the given scenario there will be no dropped packets, because every IS only forwards to their neighbor if they are on the unicast path from that neighbor to A. In this case this results in a de-facto spanning tree with no loops:
+Hop 1:
+(A, B, forward)(A, C, forward)(A, D, forward)
+Hop 2:
+(B, E, forward)(C, F, forward)
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, forward)</response>
+      <response_feedback>As stated in the question "list all the packets which are sent together with the information whether they will be forwarded or dropped at the receiving nodes. " And if the packets is not forwarded, reasoning needs to be provided for the same. Example (A, D, drop) reason: remaining neighbors C and F do not use D as the next hop to get to A</response_feedback>
+      <score>1.75</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1747">
+      <response>Hop 1:
+(A,B, forward)(A,C, forward)(A,D, forward)
+Hop 2:
+(B,E,forward)(B,C,drop) &lt;= B is not on unicast path from C to A(C,B,drop) &lt;= C is not on unicast path from B to A(C,E,drop) &lt;= C is not on unicast path from E to A(C,F,forward) (C,D,drop) &lt;= C is not on unicast path from D to A(D,C, drop) &lt;= D is not on unicast path from C to A(D,F,drop) &lt;= D is not on unicast path from F to A
+Hop 3:
+(E,F, drop) &lt;= E is not on unicast path from F to A(E,G,forward)(F,E, drop) &lt;= F is not on unicast path from E to A(F,G,drop) &lt;= F is not on unicast path from G to A
+Hop 4:
+(G,H,forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1810">
+      <response>Hop 1:(A, B, forward)(A, C, forward)(A, D, drop) &lt;= D knows that either C nor F are routing to A over DHop 2:(B, E, forward)(C, F, drop) &lt;= F knows that either C nor d or F are routing to A over FHop 3:(E, G, forward)Hop 4:(G, H, drop) &lt;= H has no neigbors except G (no links except the incoming link)</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1823">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop)&lt;=D doesn't foward a message from A to F, because F doesn't receive unicast packets via D.
+Hop 2:
+(B,E,forward)
+(C,F,drop)&lt;=F doesn't foward a message from A to G, because G doesn't receive unicast packets via F.
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop)&lt;=vertex H has only one neighbor from which it got the message, vertex H does not forward the message.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1842">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop) D will not forward the packet, because A is the origin and D is not part of a unicast route a-c or a-f.
+Hop 2:
+(B,E,drop) B is origin, routes g-a, f-a, c-a do not go through E(C,F,forward)
+
+Hop 3:
+(F,G,forward)
+
+Hop 4:
+(G,H,drop) G is origin of the packet, no further neighbors</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1845">
+      <response>Hop1:
+(A,B, forward)(A,C, forward)(A,D, drop) - Dead End. Neither C nor F use D as the unicast path to A.
+Hop 2:
+(B,E, forward)(C,F, drop) - Same as befor. F is not sued by E,G or D.
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G,H,drop) - No outgoing links except incoming edge.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1903">
+      <response>Hop 1:
+(C, A, forward)
+(D, A, forward)
+(B, A, forward)
+
+Hop 2: 
+(B, C, drop) duplicate packet  , (B, E, forward) 
+(C, B, drop) duplicate packet, (C, D, drop) duplicate packet, (C, E, drop) duplicate packet, (C, F, forward) 
+(D, C, drop) duplicate packet, (D, F, drop) duplicate packet
+
+Hop 3: 
+ (E, C, drop) duplicate packet,
+ (E, F, drop) duplicate packet,
+ (E, G, forward),  
+(F, D, drop) duplicate packet, 
+(F, E, drop) duplicate packet,
+ (F, G, drop) duplicate packet
+
+Hop 4:
+(G, F, drop) duplicate packet, 
+(G, H, drop)  vertex H does not forward the message.</response>
+      <response_feedback>(A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop).</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1941">
+      <response>Hop 1:
+(A,B, forward)(A,C, forward)(A,D, drop) =&gt; neither F nor C receive unicast packets via D
+
+Hop 2:
+(B,E, forward)(C,F, drop) =&gt; G does not receive unicast packets via F
+
+Hop 3:
+(E, G, forward)
+
+Hop 4:
+(G, H, drop) =&gt; broadcast is finished</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1943">
+      <response>Hop 1:
+(A,C, forward)
+(A, B, forward)
+(A, D, drop) -&gt; Not shortest path
+Hop 2:
+(B, E, forward) 
+(C,F, drop) -&gt; Not shortest path
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) —&gt;no further nodes 
+Not shortest path implicates that these nodes would never get packets addressed to node A</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1958">
+      <response>Hop 1:
+(A,B, forward)
+(A,C, forward)
+(A,D, drop) D does not forward the packets to F or C since both don't send packets to A via D.
+
+Hop 2:
+(B,E, forward)
+(C,F, drop) F does not forward the received packet to C,D,E or G since none of them send their packages to A via F.
+
+Hop 3:
+(E, G forward)
+
+Hop 4:
+(G,H drop) Since H only has one neighbor, from which it has received the packet, the packet is not forwarded</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1965">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= the packet can't be forwarded to next node
+Hop 2:
+(B, E, forward)
+(C, F, drop) &lt;= the packet can't be forwarded to next node
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= the packet can't be forwarded to next node</response>
+      <response_feedback>The reasoning is not complete as it does not state why the packet is not forwarded.</response_feedback>
+      <score>2.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1968">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward)(A, D, drop) &lt;== D is not on the best path from C or F to A
+Hop 2:
+(B, E, forward)(C, F, drop) &lt;== F is not on the best path from G (or D) to A
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;== H has no other neighbor than G</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1975">
+      <response>Hop 1: (A,B,forward)
+             (A,C,forward)
+             (A,D,drop)-&gt; C directly connected to A, path to F too long
+             
+Hop 2; (B,E,forward)
+             (C,F,drop) -&gt; E and D already received the information, path to G too long
+Hop 3: (E,G,forward)
+Hop 4: (G,H,drop) - last node in the system</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.1986">
+      <response>Hop 1:
+(A, B, forward)
+(A, C, forward)
+(A, D, drop) &lt;= C will forward to F because C has a shorter distance to F than D to F
+Hop 2:
+(B, E, forward)
+(C, F, drop) &lt;= E will forward to G because E has a shorter distance to G than F to G
+Hop 3:
+(E, G, forward)
+Hop 4:
+(G, H, drop) &lt;= H can not forward anywhere</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.2002">
+      <response>Hop 1:
+(A, B, forward)(A, C, forward)(A, D, forward)
+Hop 2:
+(B, E, forward)
+(C, E, drop) not minimal spanning tree(C, F, forward)(D, F, drop) not minimal spanning tree(B, C, drop) not minimal spanning tree(C, B, drop) not minimal spanning tree(C, D, drop) not minimal spanning tree(D, C, drop) not minimal spanning tree
+Hop 3:
+(E, C, drop) not minimal spanning tree(E, F, drop) not minimal spanning tree(E, G, forward)(F, D, drop) not minimal spanning tree(F, G, drop) not minimal spanning tree(F, E, drop) not minimal spanning tree
+Hop 4:
+(G, H, forward)(G, F, drop) not minimal spanning tree</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.2008">
+      <response>Hop 1: From A: (A,B,forward),(A,C,forward ),(A,D,forward)
+
+Hop 2:From B:
+(B, C, drop) &lt;=because B knows that C does not receive unicast packets via C
+(B, E, forward)From C: 
+(C, B, drop) &lt;=because C knows that B does not receive unicast packets via C
+(C, D, drop),  &lt;=because C knows that D does not receive unicast packets via C
+(C, E, drop),  &lt;=because C knows that D does not receive unicast packets via C
+(C, F, forward) 
+From D: 
+(D, C, drop),&lt;=because D knows that C does not receive unicast packets via D
+ (D, F, drop)  &lt;=because D knows that F does not receive unicast packets via D
+Hop 3:From E: 
+(E, C, drop), &lt;=because E knows that C does not receive unicast packets via E
+(E, F, drop),  &lt;=because E knows that F does not receive unicast packets via E
+(E, G, forward) 
+From F: 
+(F, D, drop), &lt;=because F knows that D does not receive unicast packets via F
+ (F, E, drop),  &lt;=because F knows that E does not receive unicast packets via F
+(F, G, drop) &lt;=because F knows that G does not receive unicast packets via F
+Hop 4:From G: 
+(G, F, drop),  &lt;=because G knows that F does not receive unicast packets via G
+(G, H, drop)&lt;=Because H has only one neighbor from which it got the message, H does not forward the message.</response>
+      <response_feedback>In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.2011">
+      <response>Hop 1:
+(A,C,forward)
+(A,B,forward)
+(A,D,forward)
+Hop 2 :
+(B,C,drop) not on unicast path from A to C 
+(B,E,forward)
+(C,B,drop)  not on unicast path from A to B
+(C,D,drop)  not on unicast path from A to D 
+(C,E,drop)  not on unicast path from A to E
+(C,F,forward)
+(D,C,drop) not on unicast path from A to C 
+(D,F,drop) not on unicast path from A to F
+Hop 3:
+(E,C,drop)not on unicast path from A to C 
+(E,F,drop) not on unicast path from A to F
+(E,G,forward)
+(F,D,drop) not on unicast path from A to D
+(F,E,drop) not on unicast path from A to E 
+(F,G,drop) not on unicast path from A to G
+Hop 4:
+(G,F,drop)not on unicast path from A to F
+(G,H,forward)</response>
+      <response_feedback>The provided flow appears more similar to RPF than to RFB.  In  RFB, (A,D, drop) and subsequent flow will change accordingly. Also (C, F, drop) and (G, H, drop) will occur. Please consult the model solution.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="5.7.2076">
+      <response>Hop 1:
+(A,B,forward)
+(A,C,forward)
+(A,D,drop)&lt;=D doesn't foward a message from A to F, because F doesn't receive unicast packets via D.
+Hop 2:
+(B,E,forward)
+(C,F,drop)&lt;=F doesn't foward a message from A to G, because G doesn't receive unicast packets via F.
+Hop 3:
+(E,G,forward)
+Hop 4:
+(G,H,drop)&lt;=vertex H has only one neighbor from which it got the message, vertex H does not forward the message.</response>
+      <response_feedback>The response is correct.</response_feedback>
+      <score>2.5</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

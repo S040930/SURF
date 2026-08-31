@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<question id="8.3_MM">
+  <questionText>WHICH PROPERTY of spanning trees makes them appealing for broad- and multicasting? EXPLAIN how you can modify Link State Routing to construct a spanning tree for multicasting.</questionText>
+  <referenceAnswers>
+    <referenceAnswer id="8.3_MM.a1">Property: There is a single unique path between every pair of nodes in the tree. Alternatively, you can say that spanning trees are subnets of a network that do not contain loops but contain all nodes. This means that no unnecessary duplicates are distributed in the network when forwarding packets using that tree structure.
+
+Spanning Tree with Link State Routing: Each intermediate system knows which multicast groups it belongs to, but initially doesn’t know which other IS belong to the groups. Therefore, you can add multicast group information to the link state packet and each node can construct multicast trees once the full network topology and group information are distributed in the whole network, as each node then has the complete state information stored locally (e.g. with Prim or Kruskal)</referenceAnswer>
+  </referenceAnswers>
+  <studentAnswers>
+    <studentAnswer id="8.3_MM.48">
+      <response>PROPERTY: GLOBAL KNOWLEDGE OF THE MULTICAST GROUP’S SPANNING TREE (MULTICAST TREE)  INITIALLY ONLY LOCAL KNOWLEDGE   ALL IS SEND LINK STATE PACKETS PERIODICALLY  -CONTAINING INFORMATION     DISTANCE TO NEIGHBORS     EXPANDED BY INFORMATION ON MULTICAST GROUPS -BY BROADCAST TO ALL THE OTHERS EACH IS CALCULATES A MULTICAST TREE -FROM THE NOW LOCALLY AVAILABLE AND COMPLETE STATE INFORMATION BASED ON THE INFORMATION ABOUT THE MULTICAST TREE - IS DETERMINES THE OUTGOING LINES - ON WHICH PACKETS HAVE TO BE TRANSMITTED</response>
+      <response_feedback>The response is partially correct because it lacks the attractive property of spanning trees.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.115">
+      <response>A Spanning tree consists of a loop free topology including all nodes with minimum number of possible edges. It finds a minimal subnet and enables the network to minimize duplicates and reduce traffic. Modification of Link State Routing: The link state packet which contains information about the distance to neighbors can be enhanced by adding information on multicast groups. As the link state packets are broadcasted to all other nodes, every node is able to calculate a local multicast tree due to the fact that all nodes have the complete state information locally available.  Based on the multicast tree a node decides on which outgoing links a packet has to be forwarded.</response>
+      <response_feedback>The response correctly identifies the spanning-tree property that makes it appealing for broadcast and multicast and how the link-state algorithm is modified to construct a  multicast spanning tree.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.218">
+      <response>Spanning Tree is known to the IS as, generates a minimum number of packet copies , that IS generates a copy of a packet for each required outgoing line and all spanning tree lines except incoming one have to be defined. It has to know the multicast basic principle, that all IS have to know the multicast tree. So all IS nodes send link state packets periodically.  The IS defines the outgoing lines and which packets have to be transmitted.</response>
+      <response_feedback>While it is correct that a spanning-tree generates minimum copies of the message, it is not clear from the answer what the response meant by "IS generates copy for each outgoing and spanning tree line". The link-state modification for constructing spanning trees does not explain how each node shares its multicast information with others by adding it to the link state packet.  Each node then has the complete information to build a multicast spanning tree.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.255">
+      <response>You use Reverse Path Forwarding with pruning. After the tree is set up the broadcast tree you know who belongs to the multicast. - If all child nodes aren't part of the multicast tree the parent knows it itself isn't part of the multicast tree. (Bottom Up) You can modify Link state routing by not only considering the "distance" between neighbors but also information on multicast groups.</response>
+      <response_feedback>The desirable property is not because it makes Reverse Path forwarding possible. Instead, it is loopless and thereby reduces duplicates when broadcast- and multicasting. We do need to add the information to which group each IS belongs to in the link-state packet but it is not stated how it is propagated and used to construct the multicast spanning tree.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.262">
+      <response>the spanning tree algorithm determines the packets for the broad and multicasting While the link state packets will be sent, the containing information will be expanded by information on multicast groups - every IS calculate now its multicast tree</response>
+      <response_feedback>Though it is correct that a spanning tree determines the path in multi-/broadcast, it does not answer why they are used. The reason is no loops in the spanning tree leading to reduced unnecessary duplicates.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.289">
+      <response>1. There is no loop</response>
+      <response_feedback>The response lacks the explanation of the link state's modification to construct spanning trees. To calculate the spanning trees for multicasting, you also have to know which nodes belong to which groups. The link-state packets have to be expanded with multicast group information so other nodes can construct multicast trees by themselves.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.310">
+      <response>The advantage of using a spanning tree for broad-/multicasting is that no duplicate messages are sent. This reduces network load while providing the exact same performance, only at the cost of lower reliability. If we want to construct a spanning tree using Link State Routing, each node, after having received the link state packets from all other nodes, calculates a spanning tree using the received information. The node will then use the connections from the calculated spanning tree to distribute multicast packets efficiently.</response>
+      <response_feedback>The response correctly answers why a spanning-tree usage is ideal in multicast and broadcast. The explanation for modifying the link-state algorithm to construct a  multicast spanning tree for nodes does not state how a node gets to know about the other members of the multicast group and how this information is propagated to other IS.</response_feedback>
+      <score>0.5</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.311">
+      <response>Spanning trees have the following property, they connect all nodes in a graph with minimum possible edges. Since all nodes in the network are addressed by the source node that builds the spanning tree, an IS has to generate the minimum number of packet copies to broadcast or multicast to this sub-net. Each IS initially knows which multicast group it belongs to. This additional multicast information is added to the link state packets that are periodically sent out by the node. Once the complete state information is obtained, each IS calculates a spanning tree for multicast.</response>
+      <response_feedback>The response correctly states the attractive spanning-tree property and explains how the link-state algorithm is modified to construct a  multicast spanning tree.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.312">
+      <response>Property: -no cycles / minimal path / connect only needed path for the transmitting   All IS send link state packets periodically, containing information about distance to neighbors and expanded by information on multicast groups and by broadcast to all the others. Each IS calculates a multicast tree from the now locally available and complete state information. Based on the information about the multicast tree IS determines the outgoing lines, on which packets have to be transmitted.</response>
+      <response_feedback>The response correctly identifies the spanning-tree property that makes it appealing for broadcast and multicast and how the link-state algorithm is modified to construct a  multicast spanning tree.</response_feedback>
+      <score>1.0</score>
+      <verification_feedback>Correct</verification_feedback>
+    </studentAnswer>
+    <studentAnswer id="8.3_MM.321">
+      <response>Property: subnets of subnets can be displayed and addresses which enables more possibilities for multi-/broadcast for distribution of information
+
+modification of link state routing for spanning tree multicast: 
+
+- all IS have to know the multicast tree. →which group belonging 
+
+- Information distribution via link stated routing.
+
+- all IS send updates (link state packages) periodically
+
+→calculate the own tree
+
+→DETERMINE possibilities for transmission</response>
+      <response_feedback>The desirable property is not correctly stated. Yes, a spanning tree is a subnet of the subnet, but what makes it unique is that it does not contain loops and thereby reduces unnecessary duplicates during multicast and broadcast. Additionally, the link-state packet needs to contain multicast group information so that each node can discover its fellow group member.</response_feedback>
+      <score>0.25</score>
+      <verification_feedback>Partially correct</verification_feedback>
+    </studentAnswer>
+  </studentAnswers>
+</question>

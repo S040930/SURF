@@ -65,7 +65,15 @@ def _safe_error(code: str) -> str:
         "timeout": "Codex 调用超时；未自动重试。",
         "runner_drift": "开始实验时记录的 Codex CLI 指纹发生变化。",
         "runner_unavailable": "Codex Runner 当前不可用。",
-        "invalid_output": "模型输出未通过严格三字段九值 Schema。",
+        # Kept for historical failure-code compatibility. New r23 failures use
+        # the two specific categories below.
+        "invalid_output": (
+            "模型未返回仅含 content、organization、language 三字段的有效 JSON 分数对象"
+        ),
+        "invalid_score_schema": (
+            "模型未返回仅含 content、organization、language 三字段的有效 JSON 分数对象"
+        ),
+        "invalid_score_value": "模型返回的分数必须为 1–5，且间隔为 0.5。",
         "interrupted": "MCP 连接在调用期间中断。",
         "execution_error": "Codex 调用未成功完成。",
         "analysis_error": "统计报告生成失败。",
@@ -215,17 +223,14 @@ class R23Service:
         data_status = self._verified_data_status()
         pilot: R23Project | None = None
         if kind == ProjectKind.FORMAL.value:
-            self._require(
-                bool(pilot_id),
-                "validation",
-                "formal projects require a completed pilot",
-            )
-            pilot = self._project(str(pilot_id))
-            self._require(
-                pilot.kind == ProjectKind.PILOT.value and pilot.status == "completed",
-                "validation",
-                "pilot must be a completed r23 technical pilot",
-            )
+            if pilot_id:
+                pilot = self._project(str(pilot_id))
+                self._require(
+                    pilot.kind == ProjectKind.PILOT.value
+                    and pilot.status == "completed",
+                    "validation",
+                    "pilot must be a completed r23 technical pilot",
+                )
         else:
             self._require(
                 not pilot_id,
@@ -473,8 +478,8 @@ class R23Service:
             "validation",
             "data processing confirmation is missing",
         )
-        if project.kind == "formal":
-            pilot = self._project(project.pilot_project_id or "")
+        if project.kind == "formal" and project.pilot_project_id:
+            pilot = self._project(project.pilot_project_id)
             self._require(
                 pilot.status == "completed",
                 "conflict",
@@ -1139,7 +1144,13 @@ class R23Service:
             "attempt_count": row.attempt_count,
             "latency_ms": row.latency_ms,
             "failure_code": row.failure_code,
-            "failure_summary": row.failure_summary,
+            # Stored summaries are immutable audit data and may predate the
+            # current safe wording. Always render the canonical safe summary.
+            "failure_summary": (
+                _safe_error(row.failure_code)
+                if row.failure_code is not None
+                else row.failure_summary
+            ),
         }
         if not embargoed:
             value["score_x2"] = {

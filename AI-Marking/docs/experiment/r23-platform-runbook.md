@@ -100,7 +100,7 @@ r23 是新增的独立协议；不删除、不迁移、不覆盖 r20–r22 的�
 
 ### 4.5 正式实验
 
-只有完全匹配且已完成的技术试点可被选择。正式项目开始时再次自动记录数据、单个 Runner（包括速度模式）、Rubric、pilot ID 和 Manifest。单配置协议上限是 2,535 个槽；完全相同输入去重后，项目页显示实际逻辑调用数。为缩短时间，可为试点和正式实验统一选择 `fast`；不要把 `standard` 与 `fast` 项目合并为同配置重复测量。
+正式实验可以不绑定技术试点；也可以选择一个完全匹配且已完成的技术试点。若选择试点，平台会校验 Runner、Rubric 和数据哈希完全一致；正式项目开始时再次自动记录这些输入、可选的 pilot ID 和 Manifest。单配置协议上限是 2,535 个槽；完全相同输入去重后，项目页显示实际逻辑调用数。为缩短时间，可为试点和正式实验统一选择 `fast`；不要把 `standard` 与 `fast` 项目合并为同配置重复测量。
 
 正式运行期间：
 
@@ -128,6 +128,8 @@ draft → [开始时自动生成运行快照] → running → analyzing → comp
 ```
 
 - 超时、断线、CLI 漂移、运行错误或非法输出进入 `attention_required`；
+- 分数输出 schema 强制要求仅含 `content`、`organization`、`language` 三个数值字段，且每项只能为 1–5 的 0.5 步长；
+- 非法输出会以脱敏分类显示：`invalid_score_schema` 表示三字段 JSON 结构不符，`invalid_score_value` 表示分值不在半分网格；不保存模型原文或 stderr；
 - timeout 从单篇调用开始计时；调小可更快暴露卡住的调用，但也会提高正常慢调用被中止的概率；
 - 平台没有静默重试；
 - 人工重试保留原 attempt、input SHA-256 和失败分类；
@@ -160,7 +162,7 @@ draft → [开始时自动生成运行快照] → running → analyzing → comp
 - `GET /api/r23/projects/{id}/report`
 - `GET /api/r23/projects/{id}/analysis`
 
-`R23ProjectCreate` 不接收 seed、样本量或临时速度覆盖，只接收一个 Runner ID、一个 Rubric ID、项目类型、正式项目的 pilot ID 和数据处理确认。`R23RunnerCreate` 的 `speed_mode` 只允许 `standard|fast`。
+`R23ProjectCreate` 不接收 seed、样本量或临时速度覆盖，只接收一个 Runner ID、一个 Rubric ID、项目类型、可选的 pilot ID 和数据处理确认。`R23RunnerCreate` 的 `speed_mode` 只允许 `standard|fast`。
 
 ### 导出
 

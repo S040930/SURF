@@ -8,11 +8,11 @@
 | Origin Workflow | `experiment-agent` |
 | Origin Mode | `plan` |
 | Origin Date | 2026-08-30 |
-| Verification Status | **UNVERIFIED**：平台与合成测试已验证，尚未运行真实模型实验 |
-| Version Label | `code_plan_v1` |
+| Verification Status | **EXECUTED**：已完成两个正式实验并锁定报告（gpt-5.6-luna、gpt-5.6-terra）；第三个正式项目 gpt-5.6-sol 因账户额度中断，未纳入结论，详见 §10 Deviations |
+| Version Label | `executed_v1` |
 | Protocol ID | `r23-dress-case-rubric-sensitivity-2026-08-v1` |
 
-本文档是分析前预注册的研究协议。实现通过不代表假设得到支持；只有正式实验完成、报告哈希锁定并检查全部限制后，才能形成论文结论。
+本文档是分析前预注册的研究协议。实现通过不代表假设得到支持；只有正式实验完成、报告哈希锁定并检查全部限制后，才能形成论文结论。本文档 2026-09-03 更新为执行后状态：协议正文保持预注册时的分析前文本不变，执行记录与偏差见 §10。
 
 ## 1. 研究目标与主张边界
 
@@ -125,7 +125,7 @@ DREsS 包含真实课堂、标准化既有数据和 corruption-based augmentatio
 - 每个项目恰好绑定一个 Runner ID；平台不硬编码模型名，可为同一模型创建多个配置。
 - `reasoning_effort` 可选 `low`、`medium` 或 `high`；`speed_mode` 可选 `standard` 或 `fast`；单篇调用 `timeout` 可设为 30–1800 秒，新配置默认 120 秒。三项选择值均进入配置哈希和运行快照，论文方法与结果表按项目披露实际值。
 - `speed_mode=standard` 显式映射为 Codex `service_tier="default"`；`speed_mode=fast` 映射为 `service_tier="fast"` 并启用 CLI `fast_mode`。Fast 是处理速度/额度条件，不是可指定的精确 token/s 或完成秒数。OpenAI 当前说明其可提高受支持模型速度，但消耗更多额度；模型支持范围、额度倍率和可用性以运行时的 [Codex Speed 官方文档](https://learn.chatgpt.com/docs/agent-configuration/speed)为准。
-- 同一配置的再次运行建立独立项目并复用固定样本；不同思考程度或不同速度模式属于不同实验条件，不作为随机复测合并。技术试点与其对应正式实验必须使用完全相同的 Runner 配置，因此速度模式也必须一致。
+- 同一配置的再次运行建立独立项目并复用固定样本；不同思考程度或不同速度模式属于不同实验条件，不作为随机复测合并。如正式实验绑定对应技术试点，必须使用完全相同的 Runner 配置，因此速度模式也必须一致。
 - 当前 `codex exec` 不暴露 temperature；如实披露，并用约 10% 复测估计随机性。
 - 每篇作文运行新的 `codex exec --ephemeral`，只读沙箱、空临时目录、忽略用户配置和规则，严格 output schema。
 - 调用前比较 Codex CLI 路径、可执行文件 SHA-256 和版本；漂移即停止。
@@ -195,10 +195,10 @@ CASE 维度、CASE 标签、源文件名、原始 ID、派生 base ID和 collisi
 1. 流式数据门禁；
 2. 保存一个或多个 Runner 配置，并固定模型、思考程度、速度模式和 timeout；
 3. 保存 Rubric；
-4. 创建技术试点并记录数据处理确认；
+4. 如需技术试点，创建技术试点并记录数据处理确认；也可以直接创建不绑定试点的正式实验；
 5. 点击“开始实验”；平台自动记录数据、Runner、CLI 指纹、Rubric 和环境快照，并物化样本、去重调用、哈希 Manifest；
 6. 串行运行单配置试点；失败进入 `attention_required`，只允许人工重试；
-7. 试点完成后创建完全匹配的正式项目；
+7. 可在试点完成后创建完全匹配的正式项目，也可直接创建不绑定试点的正式项目；如果绑定试点，平台会校验 Runner、Rubric 和数据完全匹配；
 8. 正式运行期间结果 API 保持密封；
 9. 全部调用成功后生成统计报告和 SVG，锁定哈希，才解除正式结果密封。
 
@@ -283,6 +283,35 @@ cluster 数而非作文行数决定有效独立信息；因此使用聚类 boots
 - 报告 JSON 与 SVG 均存 SHA-256；任何再分析必须产生新版本标签和变更说明。
 - 实际偏离本方案时，在论文 deviations 小节逐条说明原因、发生时间、是否在解盲前以及对结论的影响。
 - 平台实施阶段不自动发送真实作文，也不产生模型费用。
+
+## 10. 执行记录与 Deviations（2026-09-03 更新）
+
+本小节记录方案执行过程及与预注册正文的偏离。协议正文与分析前判断保持原样，以下为执行后事实。
+
+### 10.1 已完成的两个正式实验
+
+| 项目 | 模型标识 | reasoning | speed_mode / service tier | timeout | CLI | 状态 | 报告 SHA-256 |
+|---|---|---|---|---|---|---|---|
+| 正式实验1 | `gpt-5.6-luna` | medium | fast / `service_tier="fast"` | 60 s | codex-cli 0.147.0 | completed / locked | `855ad01f9a7a61567be8613a9189a8b0d255ab1eea137f9c5100acb0b44f8ee9` |
+| terra正式 | `gpt-5.6-terra` | medium | standard / `service_tier="default"` | 120 s | codex-cli 0.151.0 | completed / locked | `bf5c01b592303155a06d83a448dbf20f315baaa94595560d0f3aa454352d3664` |
+
+两项目使用同一固定样本：seed `20260830`、相同数据哈希（Content `cb3e0829…`、Organization `005c1ffc…`、Language `5b81050c…`）、相同 2307 主观察槽 + 225 复测槽，去重后 2293 个唯一输入在两模型间一一对应。两项目均绑定 `DREsS r23 literature-aligned rubric v2`，prompt envelope 均为 `r21-codex-exec-v1`，输出 schema 一致（三字段九值，`score_x2` 整数存储）。
+
+### 10.2 Deviations
+
+| # | 偏离 | 原因 | 发生时间 | 解盲前 | 对结论的影响 |
+|---|---|---|---|---|---|
+| D1 | 第三个正式项目 `sol正式`（gpt-5.6-sol）未完成，content 维度进行至 445/540 后因账户额度不足中断，结果仍密封，未纳入任何结论 | 账户额度不足 | 2026-09-01 起 | 是（运行期间即中断，结果从未解锁） | 本研究的"稳定敏感性"与"rubric-selective"结论基于 luna、terra 两个模型，不声称覆盖 gpt-5.6-sol；结论措辞相应限定为"两个预注册模型" |
+| D2 | 两个正式实验 CLI 版本不同（0.147.0 vs 0.151.0），luna 使用 fast、terra 使用 standard | 两实验分别在额度/服务条件变化前后创建，未合并为同一配置的重复测量 | 2026-08-30 / 2026-09-01 | 是 | 速度模式与 CLI 版本只影响服务处理层级与客户端工具版本，不改变模型推理（`--model`、`model_reasoning_effort`、prompt envelope、输出 schema 均一致）。两项目按独立运行条件各自披露，不作跨配置随机复测合并 |
+| D3 | 正式实验直接创建、不绑定技术试点（luna 正式未绑定 pilot） | 平台允许直接创建不绑定试点的正式实验；terra 正式也未绑定试点 | 2026-08-30 / 2026-09-01 | 是 | 不改变抽样（固定 seed 决定样本），不影响结论 |
+
+### 10.3 结论状态（按 §7 判定模板）
+
+- 两模型（luna、terra）在 Content / Organization / Language 三个维度均通过 H1（MPA > 0.5，Holm p < 0.001）与 H2（QWK > 0，Holm p < 0.001）。
+- Organization 两模型均通过 H3（SI > 0，Holm p < 0.001），可称为 rubric-selective。
+- 合并两个单模型锁定报告判断跨模型稳定性：三个维度 H1、H2 在两模型上同时通过，Organization 的 H3 亦在两模型上通过，故表述为"跨两个预注册模型对 CASE 预设等级表现出稳定单调敏感性，且 Organization 维度为 rubric-selective"。
+- 负对照：置换 MPA 落在 0.500 附近、QWK 落在 0 附近，逐作文均值 SI 负对照 = 0.0000。
+- 复测一致性（各 225 对）：luna 三通道完全一致率 39.6%、平均通道绝对差 0.236；terra 33.3%、0.281。
 
 ## 参考文献
 

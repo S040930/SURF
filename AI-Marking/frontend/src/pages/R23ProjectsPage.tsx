@@ -77,8 +77,7 @@ export default function R23ProjectsPage() {
     data.data?.ready &&
     selectedRunner &&
     selectedRubric &&
-    confirmed &&
-    (kind === 'pilot_run' || pilotId),
+    confirmed,
   );
   const calls =
     kind === 'pilot_run' ? '约 175 个评估槽位' : '最多 2,535 个评估槽位';
@@ -259,10 +258,10 @@ export default function R23ProjectsPage() {
               </label>
               {kind === 'formal' && (
                 <label className="space-y-2 text-sm font-medium md:col-span-2">
-                  匹配的已完成技术试点
+                  匹配的已完成技术试点（可选）
                   <Select value={pilotId} onValueChange={setPilotId}>
                     <SelectTrigger>
-                      <SelectValue placeholder="正式实验必须绑定试点" />
+                      <SelectValue placeholder="可不绑定技术试点" />
                     </SelectTrigger>
                     <SelectContent>
                       {completedPilots.map((item) => (
@@ -272,6 +271,10 @@ export default function R23ProjectsPage() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <p className="text-xs font-normal text-muted-foreground">
+                    如绑定试点，Runner、Rubric
+                    和数据必须与试点完全匹配；也可以直接创建正式实验。
+                  </p>
                 </label>
               )}
               {selectedRubric && (
@@ -385,7 +388,9 @@ export default function R23ProjectsPage() {
                     kind,
                     runner_config_id: selectedRunner.id,
                     rubric_id: rubricId,
-                    ...(kind === 'formal' ? { pilot_project_id: pilotId } : {}),
+                    ...(kind === 'formal' && pilotId
+                      ? { pilot_project_id: pilotId }
+                      : {}),
                     data_processing_confirmed: true,
                   },
                   {

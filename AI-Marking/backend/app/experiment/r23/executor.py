@@ -40,11 +40,16 @@ def _failure_code(exc: Exception) -> str:
     if isinstance(exc, RunnerUnavailableError):
         return "runner_unavailable"
     if isinstance(exc, RunnerExecutionError):
-        message = str(exc).casefold()
-        if "timed out" in message:
+        message = str(exc)
+        if message == "codex exec timed out":
             return "timeout"
-        if "validation" in message or "structured result" in message:
-            return "invalid_output"
+        if message == "r23 score value validation failed":
+            return "invalid_score_value"
+        if message in {
+            "codex exec did not write a structured result",
+            "codex structured result exceeded size limit",
+        } or message.startswith("codex structured result failed validation:"):
+            return "invalid_score_schema"
         return "execution_error"
     return "execution_error"
 
@@ -55,7 +60,15 @@ def _safe_summary(code: str) -> str:
         "runner_drift": "run-snapshot Codex CLI fingerprint changed",
         "runner_unavailable": "Codex CLI is unavailable",
         "timeout": "Codex call exceeded the configured timeout",
-        "invalid_output": "strict three-field score schema validation failed",
+        # Historical records can retain this legacy code, but new failures use
+        # the two categories below. Never expose the old generic English text.
+        "invalid_output": (
+            "模型未返回仅含 content、organization、language 三字段的有效 JSON 分数对象"
+        ),
+        "invalid_score_schema": (
+            "模型未返回仅含 content、organization、language 三字段的有效 JSON 分数对象"
+        ),
+        "invalid_score_value": "模型返回的分数必须为 1–5，且间隔为 0.5",
         "execution_error": "Codex call did not complete successfully",
     }[code]
 
@@ -118,9 +131,7 @@ def run_one(
         try:
             score = R23Score.model_validate(result.value)
         except Exception as exc:
-            raise RunnerExecutionError(
-                "codex structured result failed validation"
-            ) from exc
+            raise RunnerExecutionError("r23 score value validation failed") from exc
         score_x2 = score.as_x2()
         evaluation = db.get(R23UniqueEvaluation, evaluation.id)
         assert evaluation is not None

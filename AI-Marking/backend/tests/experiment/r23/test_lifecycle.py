@@ -141,8 +141,8 @@ def test_call_list_keeps_older_attention_required_call_ahead_of_limit(db_session
         status="attention_required",
         prompt_text="prompt",
         essay_text="failed",
-        failure_code="timeout",
-        failure_summary="timed out",
+        failure_code="invalid_output",
+        failure_summary="strict three-field score schema validation failed",
     )
     db_session.add(failed)
     db_session.flush()
@@ -163,6 +163,11 @@ def test_call_list_keeps_older_attention_required_call_ahead_of_limit(db_session
 
     assert [item["id"] for item in items] == [failed.id]
     assert items[0]["status"] == "attention_required"
+    assert items[0]["failure_code"] == "invalid_output"
+    assert (
+        items[0]["failure_summary"]
+        == "模型未返回仅含 content、organization、language 三字段的有效 JSON 分数对象"
+    )
 
 
 def _audit():
@@ -200,6 +205,51 @@ def _observations():
                 )
             )
     return values
+
+
+def test_formal_project_can_be_created_and_started_without_pilot(
+    db_session, monkeypatch
+):
+    monkeypatch.setattr("app.services.r23.audit_data_root", lambda root: _audit())
+    monkeypatch.setattr(
+        "app.services.r23.materialize_sample", lambda root, kind: _observations()
+    )
+    service = R23Service(
+        db_session, runner_factory=FakeRunner, data_root=Path("/restricted")
+    )
+    runner = service.create_runner_config(
+        {
+            "name": "formal runner",
+            "model": "model-a",
+            "reasoning_effort": "high",
+            "speed_mode": "fast",
+            "timeout_seconds": 90,
+        }
+    )
+    rubric = service.create_rubric(
+        {
+            "name": "formal rubric",
+            "rubric": (
+                "Content assesses relevance and development. Organization assesses "
+                "logical progression and cohesion. Language assesses grammar and wording. "
+                "Each dimension uses scores 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, and 5."
+            ),
+        }
+    )
+
+    project = service.create_project(
+        {
+            "name": "formal-without-pilot",
+            "kind": "formal",
+            "runner_config_id": runner["id"],
+            "rubric_id": rubric["id"],
+            "data_processing_confirmed": True,
+        }
+    )
+
+    assert project["pilot_project_id"] is None
+    started = service.start_project(project["id"])
+    assert started["status"] == "running"
 
 
 def test_single_model_pilot_dedupes_calls_can_repeat_and_never_releases_scores(
@@ -280,6 +330,18 @@ def test_single_model_pilot_dedupes_calls_can_repeat_and_never_releases_scores(
     assert {
         attempt.speed_mode for attempt in db_session.query(R23CallAttempt).all()
     } == {"fast"}
+
+    formal = service.create_project(
+        {
+            "name": "synthetic-formal-with-pilot",
+            "kind": "formal",
+            "runner_config_id": runner["id"],
+            "rubric_id": rubric["id"],
+            "pilot_project_id": project["id"],
+            "data_processing_confirmed": True,
+        }
+    )
+    assert formal["pilot_project_id"] == project["id"]
 
     repeated = service.repeat_project(project["id"])
     assert repeated["status"] == "draft"

@@ -10,4 +10,4 @@ class Base(DeclarativeBase):
 
 
 # 导入模型确保元数据注册（避免循环导入，必须放在 Base 定义之后）。
-from app.models import r20, r21, r22, r23  # noqa: E402, F401
+from app.models import experiments, r20, r21, r22, r23  # noqa: E402, F401

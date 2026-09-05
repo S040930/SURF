@@ -38,6 +38,9 @@ class Settings(BaseSettings):
     R20_SAF_SPLIT_MAP_PATH: str = str(SURF_ROOT / "data" / "saf_hf_split_map.csv")
     # r23 accepts no arbitrary path from the API; only this local restricted root.
     R23_DRESS_ROOT: str = str(SURF_ROOT / "DREsS")
+    # Unified experiment core: the registered restricted dataset root. The API
+    # never accepts arbitrary paths; adapters resolve dataset keys under it.
+    EXP_DATASETS_ROOT: str = str(SURF_ROOT / "DREsS")
     # Legacy r20 archival modules retain this setting for import compatibility;
     # r21 does not start or use the r20 worker.
     R20_AUTO_RETRY_SECONDS: int = 60

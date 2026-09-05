@@ -18,6 +18,7 @@ from fastapi.encoders import jsonable_encoder
 from mcp.server import MCPServer
 
 from app.db.session import SessionLocal
+from app.experiment.core.executor import run_one as exp_run_one
 from app.experiment.r21 import PROTOCOL_ID
 from app.experiment.r21.codex_runner import CodexExecRunner
 from app.experiment.r21.executor import run_one
@@ -106,36 +107,29 @@ async def _runner_host(stop: asyncio.Event, runner: CodexExecRunner) -> None:
             _heartbeat(stop, lost, runner, worker_id), name="r21-mcp-heartbeat"
         )
         try:
-            prefer_r23 = True
+            claim_sources: list[Any] = [exp_run_one, r23_run_one, run_one]
+            rotation = 0
             while not stop.is_set() and not lost.is_set():
-                try:
-                    with SessionLocal() as db:
-                        first, second = (
-                            (r23_run_one, run_one)
-                            if prefer_r23
-                            else (run_one, r23_run_one)
-                        )
-                        ran = await asyncio.to_thread(
-                            first,
-                            db,
-                            worker_id=worker_id,
-                            runner_factory=lambda: runner,
-                        )
-                    if not ran:
+                ran = False
+                for offset in range(len(claim_sources)):
+                    claim = claim_sources[(rotation + offset) % len(claim_sources)]
+                    try:
                         with SessionLocal() as db:
                             ran = await asyncio.to_thread(
-                                second,
+                                claim,
                                 db,
                                 worker_id=worker_id,
                                 runner_factory=lambda: runner,
                             )
+                    except Exception:
+                        logger.exception("MCP worker iteration failed")
+                        ran = False
                     if ran:
-                        # One Codex subprocess at a time, alternating protocol priority.
-                        prefer_r23 = not prefer_r23
-                except Exception:
-                    logger.exception("r21 MCP worker iteration failed")
-                    ran = False
-                if not ran:
+                        break
+                if ran:
+                    # One Codex subprocess at a time, rotating claim priority.
+                    rotation = (rotation + 1) % len(claim_sources)
+                else:
                     await _wait_or_timeout(stop, 5.0)
         finally:
             lost.set()

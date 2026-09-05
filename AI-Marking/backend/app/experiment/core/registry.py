@@ -89,10 +89,30 @@ class GroupSpec:
 
 @dataclass(frozen=True, slots=True)
 class SamplingPlan:
-    """A template's complete, rebuildable sampling decision for one project."""
+    """A template's complete, rebuildable sampling decision for one project.
+
+    ``slots`` is empty for evaluation-level templates (one analysis row per
+    call).  Observation-slot templates (whose unit of analysis is the dataset
+    observation, with a many-to-one observation→evaluation mapping) supply one
+    :class:`SlotSpec` per observation; ``retest_keys`` must then contain every
+    input key that owns at least one rerun slot.
+    """
 
     selections: tuple[Selection, ...]
     retest_keys: frozenset[str] = frozenset()
+    slots: tuple["SlotSpec", ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class SlotSpec:
+    """One dataset observation slot attached to an input."""
+
+    input_key: str
+    slot_key: str
+    channel: str
+    label_x2: int
+    rerun: bool = False
+    provenance: dict[str, Any] = field(default_factory=dict)
 
 
 @runtime_checkable
@@ -105,6 +125,9 @@ class ResearchTemplate(Protocol):
     runner_count: int
     require_runner_alignment: bool
     seed: str
+    # Observation-slot templates analyse dataset observations (many slots can
+    # share one evaluation); evaluation-level templates analyse calls directly.
+    uses_observation_slots: bool
 
     def sampling_plan(
         self,
@@ -193,6 +216,7 @@ __all__ = [
     "RegistryError",
     "ResearchTemplate",
     "SamplingPlan",
+    "SlotSpec",
     "get_dataset",
     "get_template",
     "list_datasets",

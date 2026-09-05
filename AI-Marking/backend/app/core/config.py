@@ -41,6 +41,9 @@ class Settings(BaseSettings):
     # Unified experiment core: the registered restricted dataset root. The API
     # never accepts arbitrary paths; adapters resolve dataset keys under it.
     EXP_DATASETS_ROOT: str = str(SURF_ROOT / "DREsS")
+    # The r23 CASE stack is frozen history after the legacy import; mutations
+    # are refused at the API boundary (new studies run on /api/experiments).
+    R23_READ_ONLY: bool = True
     # Legacy r20 archival modules retain this setting for import compatibility;
     # r21 does not start or use the r20 worker.
     R20_AUTO_RETRY_SECONDS: int = 60

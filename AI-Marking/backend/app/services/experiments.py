@@ -44,10 +44,12 @@ from app.models.experiments import (
     ExpCallScore,
     ExpDataset,
     ExpDatasetRevision,
+    ExpEvaluationSlot,
     ExpEvent,
     ExpInput,
     ExpInputLabel,
     ExpLockedReport,
+    ExpObservationSlot,
     ExpProject,
     ExpProjectRunner,
     ExpRubricVersion,
@@ -622,7 +624,7 @@ class ExperimentService:
             "conflict",
             "run group specs must have unique run indexes",
         )
-        groups: dict[tuple[str, int], ExpRunGroup] = {}
+        groups: dict[tuple[str, int, str], ExpRunGroup] = {}
         order = 0
         for spec in specs:
             for binding in bindings:
@@ -638,15 +640,25 @@ class ExperimentService:
                     completed_calls=0,
                 )
                 self.db.add(group)
-                groups[(binding.id, spec.run_index)] = group
+                groups[(binding.id, spec.run_index, spec.group_key)] = group
         self.db.flush()
 
+        def _group_for(binding_id: str, run_index: int, selection_group: str) -> ExpRunGroup:
+            key = selection_group or next(
+                spec.group_key for spec in specs if spec.run_index == run_index
+            )
+            return groups[(binding_id, run_index, key)]
+
+        selection_by_key = {selection.key: selection for selection in plan.selections}
         evaluations: list[ExpUniqueEvaluation] = []
+        evaluation_lookup: dict[tuple[str, str, int], ExpUniqueEvaluation] = {}
         for binding in bindings:
             for key, input_row in input_rows.items():
                 run_indexes = (0, 1) if key in plan.retest_keys else (0,)
                 for run_index in run_indexes:
-                    group = groups[(binding.id, run_index)]
+                    group = _group_for(
+                        binding.id, run_index, selection_by_key[key].group_key
+                    )
                     evaluation = ExpUniqueEvaluation(
                         project_id=project.id,
                         binding_id=binding.id,
@@ -658,7 +670,43 @@ class ExperimentService:
                     )
                     evaluations.append(evaluation)
                     self.db.add(evaluation)
+                    evaluation_lookup[(binding.id, key, run_index)] = evaluation
                     group.expected_calls += 1
+        self.db.flush()
+
+        for slot_spec in plan.slots:
+            self.db.add(
+                ExpObservationSlot(
+                    project_id=project.id,
+                    input_id=input_rows[slot_spec.input_key].id,
+                    slot_key=slot_spec.slot_key,
+                    channel=slot_spec.channel,
+                    label_x2=slot_spec.label_x2,
+                    provenance_json=slot_spec.provenance,
+                )
+            )
+        self.db.flush()
+        if plan.slots:
+            slot_rows = {
+                row.slot_key: row
+                for row in self.db.scalars(
+                    select(ExpObservationSlot).where(
+                        ExpObservationSlot.project_id == project.id
+                    )
+                ).all()
+            }
+            for slot_spec in plan.slots:
+                slot_row = slot_rows[slot_spec.slot_key]
+                for run_index in (0, 1) if slot_spec.rerun else (0,):
+                    for binding in bindings:
+                        evaluation = evaluation_lookup[
+                            (binding.id, slot_spec.input_key, run_index)
+                        ]
+                        self.db.add(
+                            ExpEvaluationSlot(
+                                evaluation_id=evaluation.id, slot_id=slot_row.id
+                            )
+                        )
         self.db.flush()
 
         manifest: dict[str, Any] = {
@@ -694,6 +742,7 @@ class ExperimentService:
             "input_count": len(input_rows),
             "forced_input_count": sum(1 for row in input_rows.values() if row.forced),
             "retest_input_count": len(plan.retest_keys),
+            "observation_slot_count": len(plan.slots),
             "logical_calls_per_binding": len(evaluations) // max(len(bindings), 1),
             "actual_unique_logical_calls": len(evaluations),
             "groups": [
@@ -955,32 +1004,37 @@ class ExperimentService:
         )
         contract = self._project_contract(project)
         channels = [channel.key for channel in contract.channels]
+        records = self._analysis_records(project.id, run_index=None)
+        uses_slots = any(record.slot_key is not None for record in records)
         output = io.StringIO(newline="")
         writer = csv.writer(output)
-        writer.writerow(
-            ["template_id", "binding_position", "model", "group_key", "run_index"]
-            + ["input_sha256", "stratum", "forced", "inclusion_probability", "weight"]
-            + [f"label_{channel}" for channel in channels]
-            + [f"prediction_{channel}" for channel in channels]
-        )
-        records = self._analysis_records(project.id, run_index=None)
+        header = ["template_id", "binding_position", "model", "group_key", "run_index"]
+        if uses_slots:
+            header += ["slot_key", "channel"]
+        header += ["input_sha256", "stratum", "forced", "inclusion_probability", "weight"]
+        header += [f"label_{channel}" for channel in channels]
+        header += [f"prediction_{channel}" for channel in channels]
+        writer.writerow(header)
         for record in records:
-            writer.writerow(
-                [
-                    project.template_id,
-                    record.position,
-                    record.model,
-                    record.group_key,
-                    record.run_index,
-                    record.input_sha256,
-                    record.stratum,
-                    record.forced,
-                    record.inclusion_probability,
-                    record.design_weight,
-                ]
-                + [record.labels.get(channel) for channel in channels]
-                + [record.predictions.get(channel) for channel in channels]
-            )
+            row = [
+                project.template_id,
+                record.position,
+                record.model,
+                record.group_key,
+                record.run_index,
+            ]
+            if uses_slots:
+                row += [record.slot_key, record.channel or ""]
+            row += [
+                record.input_sha256,
+                record.stratum,
+                record.forced,
+                record.inclusion_probability,
+                record.design_weight,
+            ]
+            row += [record.labels.get(channel) for channel in channels]
+            row += [record.predictions.get(channel) for channel in channels]
+            writer.writerow(row)
         payload = output.getvalue()
         return payload, hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -1141,6 +1195,11 @@ class ExperimentService:
                     "weight": record.design_weight,
                     "labels_x2": record.labels,
                     "predictions_x2": record.predictions,
+                    "slot_key": record.slot_key,
+                    "channel": record.channel,
+                    "label_x2": record.label_x2,
+                    "cluster_id": record.cluster_id,
+                    "provenance": record.provenance,
                 }
             )
         return rows
@@ -1148,10 +1207,18 @@ class ExperimentService:
     def _analysis_records(
         self, project_id: str, *, run_index: int | None
     ) -> list[Any]:
-        """Joined, hash-only records for exports and analysis (no text)."""
+        """Joined, hash-only records for exports and analysis (no text).
+
+        For observation-slot templates one record exists per (evaluation,
+        observation slot); otherwise one record per evaluation.
+        """
 
         class _Record:
             pass
+
+        project = self._project(project_id)
+        template = get_template(project.template_id)
+        use_slots = bool(getattr(template, "uses_observation_slots", False))
 
         query = (
             select(
@@ -1174,6 +1241,14 @@ class ExperimentService:
         )
         if run_index is not None:
             query = query.where(ExpUniqueEvaluation.run_index == run_index)
+        if use_slots:
+            query = query.add_columns(ExpObservationSlot).join(
+                ExpEvaluationSlot,
+                ExpEvaluationSlot.evaluation_id == ExpUniqueEvaluation.id,
+            ).join(
+                ExpObservationSlot,
+                ExpObservationSlot.id == ExpEvaluationSlot.slot_id,
+            ).order_by(ExpUniqueEvaluation.id, ExpObservationSlot.id)
 
         labels_by_input: dict[int, dict[str, int]] = {}
         label_rows = self.db.execute(
@@ -1203,7 +1278,13 @@ class ExperimentService:
             predictions_by_evaluation.setdefault(evaluation_id, {})[channel] = score_x2
 
         records: list[Any] = []
-        for evaluation, input_row, binding, group_key in self.db.execute(query).all():
+        result_rows = self.db.execute(query).all()
+        for row in result_rows:
+            if use_slots:
+                evaluation, input_row, binding, group_key, slot = row
+            else:
+                evaluation, input_row, binding, group_key = row
+                slot = None
             record = _Record()
             record.binding_id = evaluation.binding_id
             record.position = binding.position
@@ -1217,7 +1298,19 @@ class ExperimentService:
             record.forced = input_row.forced
             record.inclusion_probability = input_row.inclusion_probability
             record.design_weight = input_row.design_weight
-            record.labels = dict(labels_by_input.get(input_row.id, {}))
+            record.provenance = input_row.provenance_json
+            if slot is not None:
+                record.slot_key = slot.slot_key
+                record.channel = slot.channel
+                record.label_x2 = slot.label_x2
+                record.cluster_id = slot.provenance_json.get("cluster_id")
+                record.labels = {slot.channel: slot.label_x2}
+            else:
+                record.slot_key = None
+                record.channel = None
+                record.label_x2 = None
+                record.cluster_id = None
+                record.labels = dict(labels_by_input.get(input_row.id, {}))
             record.predictions = dict(predictions_by_evaluation.get(evaluation.id, {}))
             records.append(record)
         return records
@@ -1310,6 +1403,7 @@ class ExperimentService:
                         binding.frozen_runtime_json.get("speed_mode")
                         or self._runner(binding.runner_config_id).speed_mode
                     ),
+                    "service_tier": binding.frozen_runtime_json.get("service_tier"),
                     "timeout_seconds": (
                         binding.frozen_runtime_json.get("timeout_seconds")
                         or self._runner(binding.runner_config_id).timeout_seconds

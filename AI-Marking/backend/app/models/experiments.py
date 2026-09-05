@@ -291,6 +291,47 @@ class ExpUniqueEvaluation(Base):
     completed_at: Mapped[datetime | None] = mapped_column(DateTime)
 
 
+class ExpObservationSlot(Base):
+    """One dataset observation owned by an input (observation-slot templates).
+
+    Many slots can share one evaluation: the unit of analysis is the dataset
+    observation, while the unit of execution is the deduplicated logical call.
+    """
+
+    __tablename__ = "exp_observation_slots"
+    __table_args__ = (
+        UniqueConstraint("project_id", "slot_key", name="uq_exp_slot_key"),
+        Index("ix_exp_slot_channel", "project_id", "channel"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[str] = mapped_column(
+        ForeignKey("exp_projects.id", ondelete="CASCADE"), nullable=False
+    )
+    input_id: Mapped[int] = mapped_column(
+        ForeignKey("exp_inputs.id", ondelete="RESTRICT"), nullable=False
+    )
+    slot_key: Mapped[str] = mapped_column(String(96), nullable=False)
+    channel: Mapped[str] = mapped_column(String(48), nullable=False)
+    label_x2: Mapped[int] = mapped_column(Integer, nullable=False)
+    provenance_json: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+
+
+class ExpEvaluationSlot(Base):
+    __tablename__ = "exp_evaluation_slots"
+    __table_args__ = (
+        UniqueConstraint("evaluation_id", "slot_id", name="uq_exp_evaluation_slot"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    evaluation_id: Mapped[int] = mapped_column(
+        ForeignKey("exp_unique_evaluations.id", ondelete="CASCADE"), nullable=False
+    )
+    slot_id: Mapped[int] = mapped_column(
+        ForeignKey("exp_observation_slots.id", ondelete="CASCADE"), nullable=False
+    )
+
+
 class ExpCallScore(Base):
     """One channel score per row; the contract defines the legal channel set."""
 

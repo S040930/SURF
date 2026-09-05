@@ -120,6 +120,7 @@ class SyntheticTemplate:
     runner_count = 2
     require_runner_alignment = True
     seed = "core-test-seed"
+    uses_observation_slots = False
 
     def sampling_plan(self, *, kind, audit, excluded_keys=()):
         items = []
@@ -211,12 +212,17 @@ class FakeRunner:
 
     def run(self, *, messages, schema, runtime):
         match = re.search(r"essay text (\d+)", messages[1]["content"])
-        assert match, "prompt envelope must contain the essay"
-        index = int(match.group(1))
-        answer = {
-            "trait_a": 2 + (index % 9),
-            "trait_b": 2 + ((index * 3) % 9),
-        }
+        if match:
+            index = int(match.group(1))
+            answer = {
+                "trait_a": 2 + (index % 9),
+                "trait_b": 2 + ((index * 3) % 9),
+            }
+        else:
+            slot_match = re.search(r"essay slot-(\d+)", messages[1]["content"])
+            assert slot_match, "prompt envelope must contain the essay"
+            slot_index = int(slot_match.group(1))
+            answer = {"trait_a": min(10, 4 + slot_index)}
         if runtime["model"] == "model-b":
             answer = {key: max(2, value - 2) for key, value in answer.items()}
         return CodexResult(
@@ -512,3 +518,203 @@ def hashlib_sha(payload: str) -> str:
 
 def hashlib_sha_payload(payload: str) -> str:
     return hashlib_sha(payload)
+
+
+# ----- observation-slot lifecycle (synthetic) -----
+
+from app.experiment.core.registry import (
+    SamplingPlan as _SamplingPlan,
+    Selection,
+    SlotSpec,
+    register_dataset as _register_dataset,
+    register_template as _register_template,
+)
+from app.models.experiments import (
+    ExpEvaluationSlot as _ExpEvaluationSlot,
+    ExpObservationSlot as _ExpObservationSlot,
+)
+
+SLOT_DATASET_KEY = "core-slot-dataset"
+SLOT_TEMPLATE_ID = "core-slot-template"
+
+
+class _SlotAdapter:
+    key = SLOT_DATASET_KEY
+    name = "Synthetic Slot Dataset"
+    access_level = "restricted"
+    license_note = "synthetic test fixture"
+
+    def audit(self, root):
+        from app.experiment.core.registry import DatasetAudit
+
+        items = []
+        for index, key in enumerate(("shared", "shared", "solo")):
+            items.append(
+                AuditItem(
+                    key=key + "0" * 58,
+                    prompt_sha256="p" * 64,
+                    prompt_norm="prompt",
+                    labels_x2={"trait_a": 4 + index},
+                    word_count=100,
+                    provenance={
+                        "kind": "formal",
+                        "slot": {
+                            "input_key": key + "0" * 58,
+                            "slot_key": f"slot-{index}",
+                            "channel": "trait_a",
+                            "label_x2": 4 + index,
+                            "rerun": index == 2,
+                            "provenance": {},
+                        },
+                    },
+                )
+            )
+        report = {
+            "dataset_key": SLOT_DATASET_KEY,
+            "datasets": [{"file": "s.tsv", "sha256": "e" * 64, "rows": 3}],
+        }
+        return DatasetAudit(dataset_key=SLOT_DATASET_KEY, report=report, items=tuple(items))
+
+    def materialize(self, root, audit, keys):
+        from app.experiment.core.registry import MaterializedInput
+
+        wanted = set(keys)
+        materialized = {
+            item.key: MaterializedInput(
+                key=item.key,
+                prompt="prompt",
+                essay=f"essay {item.provenance['slot']['slot_key']}",
+                labels_x2={},
+                word_count=item.word_count,
+                provenance={},
+            )
+            for item in audit.items
+            if item.key in wanted
+        }
+        return [materialized[key] for key in sorted(materialized)]
+
+    def contract(self):
+        return ScoringContract(
+            channels=(Channel(key="trait_a", label="Trait A"),),
+            grid_min_x2=2,
+            grid_max_x2=10,
+        )
+
+
+class _SlotTemplate:
+    template_id = SLOT_TEMPLATE_ID
+    name = "Core Slot Test Template"
+    dataset_key = SLOT_DATASET_KEY
+    runner_count = 1
+    require_runner_alignment = False
+    seed = "slot-seed"
+    uses_observation_slots = True
+
+    def sampling_plan(self, *, kind, audit, excluded_keys=()):
+        slots = tuple(
+            SlotSpec(
+                input_key=item.key,
+                slot_key=item.provenance["slot"]["slot_key"],
+                channel=item.provenance["slot"]["channel"],
+                label_x2=item.provenance["slot"]["label_x2"],
+                rerun=item.provenance["slot"]["rerun"],
+                provenance={},
+            )
+            for item in audit.items
+        )
+        keys = list(dict.fromkeys(slot.input_key for slot in slots))
+        selections = tuple(
+            Selection(
+                key=key,
+                stratum=0,
+                cell_key="",
+                inclusion_probability=1.0,
+                design_weight=1.0,
+                forced=False,
+                group_key="trait_a",
+            )
+            for key in keys
+        )
+        return _SamplingPlan(
+            selections=selections,
+            retest_keys=frozenset(slot.input_key for slot in slots if slot.rerun),
+            slots=slots,
+        )
+
+    def run_group_specs(self, *, kind):
+        return [
+            GroupSpec(group_key="trait_a", run_index=0),
+            GroupSpec(group_key="trait_a", run_index=1),
+        ]
+
+    def build_report(self, *, project, rows, retest_rows, attempts):
+        assert all(row["channel"] == "trait_a" for row in rows)
+        assert all(row["label_x2"] is not None for row in rows)
+        return (
+            {
+                "template_id": project["template_id"],
+                "slot_rows": len(rows),
+                "retest_slot_rows": len(retest_rows),
+            },
+            [{"name": "slot_figure", "svg": "<svg/>"}],
+        )
+
+
+try:
+    _register_dataset(_SlotAdapter())
+    _register_template(_SlotTemplate())
+except RegistryError:
+    pass
+
+
+def test_observation_slot_lifecycle_end_to_end(db_session):
+    service = ExperimentService(
+        db_session, runner_factory=FakeRunner, datasets_root=Path("/restricted")
+    )
+    runner = service.create_runner_config(
+        {
+            "name": "slot-runner",
+            "model": "model-a",
+            "reasoning_effort": "medium",
+            "speed_mode": "standard",
+            "timeout_seconds": 120,
+        }
+    )
+    rubric = service.create_rubric(
+        {
+            "template_id": SLOT_TEMPLATE_ID,
+            "name": "slot rubric",
+            "rubric": "trait_a assesses the synthetic dimension with fixed levels. " * 2,
+        }
+    )
+    _, revision, _ = service.ensure_dataset_revision(SLOT_DATASET_KEY)
+    project = service.create_project(
+        {
+            "name": "slot-formal",
+            "kind": "formal",
+            "template_id": SLOT_TEMPLATE_ID,
+            "dataset_revision_id": revision.id,
+            "rubric_id": rubric["id"],
+            "runner_config_ids": [runner["id"]],
+            "data_processing_confirmed": True,
+        }
+    )
+    started = service.start_project(project["id"])
+    # Two shared slots collapse into one evaluation; solo gets primary+retest.
+    assert started["progress"]["total"] == 3
+    assert started["manifest_summary"]["observation_slot_count"] == 3
+
+    slots = db_session.query(_ExpObservationSlot).all()
+    assert len(slots) == 3
+    joins = db_session.query(_ExpEvaluationSlot).all()
+    assert len(joins) == 4  # shared: 1 eval x2 slots; solo: run0 + run1 x1
+
+    while run_one(db_session, worker_id="test", runner_factory=FakeRunner):
+        pass
+    project = service.get_project(project["id"])
+    assert project["status"] == "completed"
+    report = service.get_report(project["id"])
+    assert report["report"]["slot_rows"] == 3
+    assert report["report"]["retest_slot_rows"] == 1
+    csv_payload, _ = service.export_results_csv(project["id"])
+    assert "slot_key" in csv_payload and "channel" in csv_payload

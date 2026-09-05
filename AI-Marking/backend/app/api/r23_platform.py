@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.db.session import get_db
 from app.experiment.r23.protocol import (
     DEFAULT_TIMEOUT_SECONDS,
@@ -57,6 +58,20 @@ class R23ProjectCreate(BaseModel):
 
 def service(db: Session = Depends(get_db)) -> R23Service:
     return R23Service(db)
+
+
+def _require_writable() -> None:
+    """The r23 CASE stack is frozen history: new studies run on /api/experiments."""
+    if settings.R23_READ_ONLY:
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "code": "read_only",
+                "message": (
+                    "r23 栈已转为只读历史；新实验请在统一平台 /api/experiments 创建。"
+                ),
+            },
+        )
 
 
 def _call(fn):
@@ -109,7 +124,9 @@ def runner_config(config_id: str, svc: R23Service = Depends(service)):
 
 
 @router.post("/runner-configs", status_code=201)
-def create_runner(payload: R23RunnerCreate, svc: R23Service = Depends(service)):
+def create_runner(payload: R23RunnerCreate, svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
+):
     return _call(lambda: svc.create_runner_config(payload.model_dump()))
 
 
@@ -118,6 +135,7 @@ def delete_runner(
     config_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     _call(lambda: svc.delete_runner_config(config_id))
@@ -134,7 +152,9 @@ def rubric(rubric_id: str, svc: R23Service = Depends(service)):
 
 
 @router.post("/rubrics", status_code=201)
-def create_rubric(payload: R23RubricCreate, svc: R23Service = Depends(service)):
+def create_rubric(payload: R23RubricCreate, svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
+):
     return _call(lambda: svc.create_rubric(payload.model_dump()))
 
 
@@ -143,6 +163,7 @@ def delete_rubric(
     rubric_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     _call(lambda: svc.delete_rubric(rubric_id))
@@ -159,7 +180,9 @@ def project(project_id: str, svc: R23Service = Depends(service)):
 
 
 @router.post("/projects", status_code=201)
-def create_project(payload: R23ProjectCreate, svc: R23Service = Depends(service)):
+def create_project(payload: R23ProjectCreate, svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
+):
     return _call(lambda: svc.create_project(payload.model_dump()))
 
 
@@ -168,6 +191,7 @@ def start_project(
     project_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     return _call(lambda: svc.start_project(project_id))
@@ -178,18 +202,23 @@ def repeat_project(
     project_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     return _call(lambda: svc.repeat_project(project_id))
 
 
 @router.post("/projects/{project_id}/pause")
-def pause_project(project_id: str, svc: R23Service = Depends(service)):
+def pause_project(project_id: str, svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
+):
     return _call(lambda: svc.pause_project(project_id))
 
 
 @router.post("/projects/{project_id}/resume")
-def resume_project(project_id: str, svc: R23Service = Depends(service)):
+def resume_project(project_id: str, svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
+):
     return _call(lambda: svc.resume_project(project_id))
 
 
@@ -198,6 +227,7 @@ def terminate_project(
     project_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     return _call(lambda: svc.terminate_project(project_id))
@@ -208,6 +238,7 @@ def delete_project(
     project_id: str,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     _call(lambda: svc.delete_project(project_id))
@@ -233,6 +264,7 @@ def retry_call(
     call_id: int,
     confirm: bool = Query(False),
     svc: R23Service = Depends(service),
+    _writable: None = Depends(_require_writable),
 ):
     _confirm(confirm)
     return _call(lambda: svc.retry_call(project_id, call_id))

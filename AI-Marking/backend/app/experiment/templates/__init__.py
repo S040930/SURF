@@ -5,6 +5,7 @@ kernel never imports a concrete template, so adding one is a purely additive
 change here.
 """
 
+from app.experiment.templates import dress_case  # noqa: F401
 from app.experiment.templates import dress_new  # noqa: F401
 
 __all__: list[str] = []

@@ -415,6 +415,7 @@ class DressNewHumanAgreementTemplate:
     runner_count = 2
     require_runner_alignment = True
     seed = "20260905"
+    uses_observation_slots = False
 
     def sampling_plan(self, *, kind, audit, excluded_keys=()):
         excluded = set(excluded_keys)

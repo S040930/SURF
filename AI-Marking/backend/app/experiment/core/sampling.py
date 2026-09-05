@@ -75,7 +75,11 @@ class SampleItem:
 
 @dataclass(frozen=True, slots=True)
 class Selection:
-    """A selected input with its design-weight record."""
+    """A selected input with its design-weight record.
+
+    ``group_key`` optionally pins the input to a template-defined run group
+    (e.g. a CASE dimension); empty means the group is derived from run_index.
+    """
 
     key: str
     stratum: int
@@ -83,6 +87,7 @@ class Selection:
     inclusion_probability: float
     design_weight: float
     forced: bool
+    group_key: str = ""
 
 
 def stratified_select(

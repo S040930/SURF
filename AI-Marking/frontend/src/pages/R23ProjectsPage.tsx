@@ -107,7 +107,9 @@ export default function R23ProjectsPage() {
           </p>
           <h1 className="mt-2 text-3xl font-bold">创建 DREsS r23 实验</h1>
           <p className="mt-2 text-muted-foreground">
-            不需要冻结。创建项目后，点击“开始实验”即可；平台会在开始时自动保存完整运行快照。
+            本页为只读历史（legacy r23 CASE 栈）：已有项目与报告保持可查，新建与运行请在
+            <a className="text-primary underline" href="/experiments">统一实验平台</a>
+            进行。
           </p>
         </div>
         <McpConnectionStatus

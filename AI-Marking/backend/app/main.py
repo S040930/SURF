@@ -10,6 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.errors import register_exception_handlers
+from app.api.experiments import router as experiments_router
 from app.api.health import router as health_router
 from app.api.r20_archive import router as r20_archive_router
 from app.api.r21_platform import router as r21_platform_router
@@ -48,6 +49,7 @@ def create_app() -> FastAPI:
     register_exception_handlers(app)
 
     app.include_router(health_router, prefix="/api", tags=["health"])
+    app.include_router(experiments_router, prefix="/api/experiments", tags=["experiments"])
     app.include_router(r20_archive_router, prefix="/api/r20", tags=["r20-archive"])
     app.include_router(r21_platform_router, prefix="/api/r21", tags=["r21-platform"])
     app.include_router(r22_platform_router, prefix="/api/r22", tags=["r22-platform"])

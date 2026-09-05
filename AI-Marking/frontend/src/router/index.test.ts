@@ -22,8 +22,9 @@ describe('router surface', () => {
     });
   });
 
-  it('uses r23 as the default research surface while keeping r22 routes', () => {
+  it('leads with the unified platform while keeping the r23 legacy surface', () => {
     expect(navItems.map((item) => item.path)).toEqual([
+      '/experiments',
       '/dress',
       '/dress/rubric',
       '/dress/runners',
@@ -31,6 +32,7 @@ describe('router surface', () => {
     ]);
     const childPaths =
       router.routes[0]?.children?.map((route) => route.path ?? '') ?? [];
+    expect(childPaths).toContain('experiments/projects/:projectId');
     expect(childPaths).toContain('dress/:projectId');
     expect(childPaths).toContain('research/:projectId');
   });

@@ -156,11 +156,6 @@ export default function MainLayout() {
             })}
           </nav>
           <div className="border-t p-3">
-            {!collapsed && (
-              <Button asChild variant="ghost" size="sm" className="mb-2 w-full justify-start text-xs text-muted-foreground">
-                <Link to="/research">r22 历史入口</Link>
-              </Button>
-            )}
             <Button
               type="button"
               variant="ghost"

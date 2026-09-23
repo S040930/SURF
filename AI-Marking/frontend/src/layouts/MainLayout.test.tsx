@@ -8,8 +8,8 @@ import type { AppRouteHandle } from '@/router';
 afterEach(cleanup);
 
 const detailHandle = {
-  label: '项目详情',
-  parent: { label: '研究项目', to: '/research' },
+  label: '记忆研究运行台',
+  parent: { label: 'SAF 记忆研究', to: '/memory-study' },
 } satisfies AppRouteHandle;
 
 function renderDetail(
@@ -19,17 +19,20 @@ function renderDetail(
   const router = createMemoryRouter(
     [
       {
-        path: '/research',
-        element: <div>项目列表目标页</div>,
-        handle: { label: '研究项目' },
+        path: '/memory-study',
+        element: <div>记忆研究首页</div>,
+        handle: { label: 'SAF 记忆研究' },
       },
       {
-        path: '/prompts',
-        element: <div>提示词页面</div>,
-        handle: { label: '提示词配置' },
+        path: '/memory-study/config',
+        element: <div>模型配置页</div>,
+        handle: {
+          label: '模型配置',
+          parent: { label: 'SAF 记忆研究', to: '/memory-study' },
+        },
       },
       {
-        path: '/research/:projectId',
+        path: '/memory-study/:studyId',
         element: <Breadcrumbs />,
         handle: detailHandle,
       },
@@ -40,21 +43,50 @@ function renderDetail(
   render(<RouterProvider router={router} />);
 }
 
-describe('project detail hierarchy navigation', () => {
+describe('study detail hierarchy navigation', () => {
   it.each([
-    ['从项目列表进入', ['/research', '/research/project-1']],
-    ['直接打开详情', ['/research/project-1']],
-    ['上一页来自其他模块', ['/prompts', '/research/project-1']],
-  ])('%s 时都固定返回项目列表', (_label, entries) => {
+    ['从研究首页进入', ['/memory-study', '/memory-study/study-1']],
+    ['直接打开详情', ['/memory-study/study-1']],
+    ['上一页来自其他模块', ['/memory-study/config', '/memory-study/study-1']],
+  ])('%s 时都固定返回研究首页', (_label, entries) => {
     renderDetail(entries);
 
-    expect(screen.getByText('项目详情')).toHaveAttribute(
+    expect(screen.getByText('记忆研究运行台')).toHaveAttribute(
       'aria-current',
       'page',
     );
-    expect(screen.getByRole('link', { name: '返回研究项目' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: '返回SAF 记忆研究' })).toHaveAttribute(
       'href',
-      '/research',
+      '/memory-study',
+    );
+  });
+});
+
+describe('model config breadcrumb', () => {
+  it('shows a label with a parent link back to the SAF memory study', () => {
+    const router = createMemoryRouter(
+      [
+        {
+          path: '/memory-study/config',
+          element: <Breadcrumbs />,
+          handle: {
+            label: '模型配置',
+            parent: { label: 'SAF 记忆研究', to: '/memory-study' },
+          },
+        },
+      ],
+      { initialEntries: ['/memory-study/config'], initialIndex: 0 },
+    );
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.getByText('模型配置')).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+    expect(screen.getByRole('link', { name: '返回SAF 记忆研究' })).toHaveAttribute(
+      'href',
+      '/memory-study',
     );
   });
 });

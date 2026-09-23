@@ -1,7 +1,9 @@
 """Development supervisor for the local API only.
 
-r21 model work is hosted exclusively by the stdio MCP server; a web startup
-must never start an account-backed Codex worker.
+Experiment execution runs as an in-process worker thread inside the API
+process; the browser never starts a local Codex process directly.  A source
+change restarts the API (and therefore the worker); the worker reclaims any
+expired call leases on the next start.
 """
 
 from __future__ import annotations
@@ -63,7 +65,7 @@ def start_generation(
     *,
     popen: Callable[..., subprocess.Popen] = subprocess.Popen,
 ) -> Generation:
-    """Start the management API; MCP owns experiment execution separately."""
+    """Start the management API (which hosts the in-process worker)."""
     api = _spawn(_api_command(), popen=popen)
     generation = Generation(api=api)
     logger.info("API generation started: api_pid=%s", api.pid)
@@ -83,9 +85,9 @@ def _stop_process(process: subprocess.Popen, label: str) -> None:
 
 
 def stop_generation(generation: Generation) -> None:
-    """Stop API; MCP worker has its own connection lifecycle."""
+    """Stop the API process and its worker threads."""
     _stop_process(generation.api, "API")
-    logger.info("r20 generation stopped")
+    logger.info("API generation stopped")
 
 
 def _watch_changes(stop_event: threading.Event, changes: queue.Queue) -> None:
@@ -131,7 +133,7 @@ def run_supervisor() -> None:
     watcher = threading.Thread(
         target=_watch_changes,
         args=(stop_event, changes),
-        name="r20-source-watcher",
+        name="api-source-watcher",
         daemon=True,
     )
     watcher.start()

@@ -10,30 +10,47 @@ describe('router surface', () => {
     expect(childPaths.some((path) => path.includes('history'))).toBe(false);
   });
 
-  it('declares a fixed parent destination for project details', () => {
+  it('keeps only the SAF memory study and model config surfaces', () => {
+    expect(navItems.map((item) => item.path)).toEqual([
+      '/memory-study',
+      '/memory-study/config',
+    ]);
+    const childPaths =
+      router.routes[0]?.children?.map((route) => route.path ?? '') ?? [];
+    expect(childPaths).toContain('memory-study/:studyId');
+    expect(childPaths).toContain('memory-study/config');
+    expect(childPaths).not.toContain('models');
+    expect(childPaths).not.toContain('research/:projectId');
+    expect(childPaths).not.toContain('dress/:projectId');
+    expect(
+      childPaths.some((path) => path.includes('experiments')),
+    ).toBe(false);
+    expect(
+      childPaths.some((path) => path.includes('research') || path.includes('dress') || path.includes('prompts')),
+    ).toBe(false);
+  });
+
+  it('declares a fixed parent destination for study detail', () => {
     const detailRoute = router.routes[0]?.children?.find(
-      (route) => route.path === 'research/:projectId',
+      (route) => route.path === 'memory-study/:studyId',
     );
     const handle = detailRoute?.handle as AppRouteHandle | undefined;
 
     expect(handle).toEqual({
-      label: '项目详情',
-      parent: { label: '研究项目', to: '/research' },
+      label: '记忆研究运行台',
+      parent: { label: 'SAF 记忆研究', to: '/memory-study' },
     });
   });
 
-  it('leads with the unified platform while keeping the r23 legacy surface', () => {
-    expect(navItems.map((item) => item.path)).toEqual([
-      '/experiments',
-      '/dress',
-      '/dress/rubric',
-      '/dress/runners',
-      '/dress/data',
-    ]);
-    const childPaths =
-      router.routes[0]?.children?.map((route) => route.path ?? '') ?? [];
-    expect(childPaths).toContain('experiments/projects/:projectId');
-    expect(childPaths).toContain('dress/:projectId');
-    expect(childPaths).toContain('research/:projectId');
+  it('declares the model config under the SAF memory study hierarchy', () => {
+    const configRoute = router.routes[0]?.children?.find(
+      (route) => route.path === 'memory-study/config',
+    );
+    const handle = configRoute?.handle as AppRouteHandle | undefined;
+
+    expect(handle).toEqual({
+      label: '模型配置',
+      parent: { label: 'SAF 记忆研究', to: '/memory-study' },
+    });
   });
 });

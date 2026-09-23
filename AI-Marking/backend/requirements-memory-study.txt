@@ -1,0 +1,14 @@
+# SAF memory-study optional runtime.  The two VCS pins are part of the frozen
+# protocol; do not replace them with a moving branch or a PyPI release.
+mem0ai @ git+https://github.com/mem0ai/mem0.git@c7ee362aff94a369af70f13f2b4f853f6793ff4c
+agentic-memory @ git+https://github.com/WujiangXu/A-mem-sys.git@f303dfc71e07bdc787f4bc135d4cea328ae30e99
+
+# Exact versions used by the local MiniLM/Chroma/A-MEM stack.
+sentence-transformers==3.4.1
+chromadb==0.5.23
+scikit-learn==1.5.2
+rank-bm25==0.2.2
+nltk==3.9.1
+transformers==4.47.1
+litellm==1.55.8
+openai==1.59.9

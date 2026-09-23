@@ -12,10 +12,9 @@ else
   PYTHON_BIN="${PYTHON_BIN:-python}"
 fi
 SUPERVISOR_PID=""
-SUPERVISOR_PID_FILE="$BACKEND_DIR/.r20-runtime-supervisor.pid"
+SUPERVISOR_PID_FILE="$BACKEND_DIR/.api-supervisor.pid"
 FRONTEND_PID=""
-WORKER_PID_FILE="$BACKEND_DIR/.r20-worker.pid"
-BACKEND_PID_FILE="$BACKEND_DIR/.r20-api.pid"
+BACKEND_PID_FILE="$BACKEND_DIR/.api.pid"
 STOPPED=0
 
 info() {
@@ -50,15 +49,12 @@ stop_previous_pid() {
 }
 
 stop_previous_runtime() {
-  stop_previous_pid "$SUPERVISOR_PID_FILE" "r20 运行监督器"
-}
-
-stop_previous_worker() {
-  stop_previous_pid "$WORKER_PID_FILE" "r20 Worker"
+  stop_previous_pid "$SUPERVISOR_PID_FILE" "API 监督器"
+  stop_previous_pid "$BACKEND_DIR/.executor-supervisor.pid" "执行器监督循环"
 }
 
 stop_previous_backend() {
-  stop_previous_pid "$BACKEND_PID_FILE" "r20 API"
+  stop_previous_pid "$BACKEND_PID_FILE" "API"
 }
 
 cleanup() {
@@ -69,17 +65,21 @@ cleanup() {
   info "正在关闭前后端..."
   [ -n "$FRONTEND_PID" ] && kill "$FRONTEND_PID" 2>/dev/null || true
   [ -n "$SUPERVISOR_PID" ] && kill "$SUPERVISOR_PID" 2>/dev/null || true
+  [ -n "$EXECUTOR_SUPERVISOR_PID" ] && kill "$EXECUTOR_SUPERVISOR_PID" 2>/dev/null || true
   [ -n "$FRONTEND_PID" ] && wait "$FRONTEND_PID" 2>/dev/null || true
   [ -n "$SUPERVISOR_PID" ] && wait "$SUPERVISOR_PID" 2>/dev/null || true
+  [ -n "$EXECUTOR_SUPERVISOR_PID" ] && wait "$EXECUTOR_SUPERVISOR_PID" 2>/dev/null || true
   if [ -n "$SUPERVISOR_PID" ] && [ -f "$SUPERVISOR_PID_FILE" ] && [ "$(<"$SUPERVISOR_PID_FILE")" = "$SUPERVISOR_PID" ]; then
     rm -f "$SUPERVISOR_PID_FILE"
+  fi
+  if [ -n "$EXECUTOR_SUPERVISOR_PID" ] && [ -f "$BACKEND_DIR/.executor-supervisor.pid" ] && [ "$(<"$BACKEND_DIR/.executor-supervisor.pid")" = "$EXECUTOR_SUPERVISOR_PID" ]; then
+    rm -f "$BACKEND_DIR/.executor-supervisor.pid"
   fi
 }
 
 trap cleanup EXIT INT TERM
 
 stop_previous_runtime
-stop_previous_worker
 stop_previous_backend
 
 command -v "$PYTHON_BIN" >/dev/null 2>&1 || {
@@ -104,7 +104,7 @@ fi
 
 if ! (
   cd "$BACKEND_DIR"
-  "$PYTHON_BIN" -c 'import app, mcp'
+  "$PYTHON_BIN" -c 'import app'
 ) >/dev/null 2>&1; then
   info "正在安装后端依赖..."
   (
@@ -130,13 +130,33 @@ if ! (
   exit 1
 fi
 
-info "正在启动 r21/r22 管理 API（实验执行需要独立连接 MCP host）：http://127.0.0.1:8000"
+info "正在启动记忆研究 API 与执行器：http://127.0.0.1:8000"
 (
   cd "$BACKEND_DIR"
   exec "$PYTHON_BIN" -m app.dev_supervisor
 ) &
 SUPERVISOR_PID=$!
 printf '%s\n' "$SUPERVISOR_PID" > "$SUPERVISOR_PID_FILE"
+
+# 独立执行器监督循环：实验不再依赖 API 进程存活。--study-id auto 认领所有
+# 处于 running 且没有活租约的研究；执行进程意外退出后 5 秒内自动重启，由
+# 数据库租约回收机制保证从断点接续。
+# caffeinate 防止系统空闲休眠：本机 pmset sleep=1，只靠"显示器亮着"的断言
+# 撑着；人离开后整机休眠会掐断所有 codex 连接并冻结 worker 心跳。显示器仍
+# 可正常关闭。
+info "正在启动独立执行器监督循环（自动认领运行中的研究）"
+(
+  cd "$BACKEND_DIR"
+  exec caffeinate -is env PYTHON_BIN="$PYTHON_BIN" bash -c '
+    while true; do
+      "$PYTHON_BIN" scripts/run_memory_study.py --study-id auto \
+        --auto-rescan-seconds 30 || true
+      sleep 5
+    done
+  '
+) &
+EXECUTOR_SUPERVISOR_PID=$!
+printf '%s\n' "$EXECUTOR_SUPERVISOR_PID" > "$BACKEND_DIR/.executor-supervisor.pid"
 
 info "正在启动实验前端：http://127.0.0.1:5173"
 (
@@ -148,9 +168,10 @@ FRONTEND_PID=$!
 printf '\n\033[1;32m记忆增强批改实验系统已启动，按 Ctrl+C 同时关闭。\033[0m\n\n'
 
 while kill -0 "$SUPERVISOR_PID" 2>/dev/null \
+  && kill -0 "$EXECUTOR_SUPERVISOR_PID" 2>/dev/null \
   && kill -0 "$FRONTEND_PID" 2>/dev/null; do
   sleep 1
 done
 
-error "前端或后端进程已退出。"
+error "前端、后端或执行器监督进程已退出。"
 exit 1

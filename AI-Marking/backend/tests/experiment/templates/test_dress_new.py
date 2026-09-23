@@ -11,19 +11,18 @@ from pathlib import Path
 import pytest
 
 from app.experiment.core.registry import get_dataset, get_template
-from app.experiment.core.sampling import stable_key, stratified_select
+from app.experiment.core.sampling import stable_key
 from app.experiment.templates.dress_new import (
     DATASET_KEY,
     EXPECTED_LOW_TAIL,
     EXPECTED_STRATA_SIZES,
     EXPECTED_UNIQUE_INPUTS,
-    PILOT_QUOTA_PER_STRATUM,
     RETEST_QUOTA,
     STRATUM_QUOTAS,
-    stratum_of,
     TEMPLATE_ID,
     DressNewAdapter,
     DressNewHumanAgreementTemplate,
+    stratum_of,
 )
 
 DRESS_ROOT = Path("/Users/mac/Desktop/SURF/DREsS")
@@ -237,7 +236,13 @@ def test_report_is_deterministic_on_synthetic_predictions(audit, monkeypatch):
     again_report, again_figures = template.build_report(
         project=project, rows=rows, retest_rows=retest_rows, attempts=attempts
     )
-    from app.services.experiments import canonical_sha256
+    import hashlib
+    import json
+
+    def canonical_sha256(value):
+        return hashlib.sha256(
+            json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
 
     assert canonical_sha256(report) == canonical_sha256(again_report)
     assert figures == again_figures

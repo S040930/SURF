@@ -12,8 +12,6 @@ from collections.abc import Sequence
 
 import numpy as np
 
-from app.experiment.core.sampling import stable_rank
-
 
 def baseline_predictions(
     *,
@@ -35,10 +33,6 @@ def baseline_predictions(
         raise ValueError("baseline inputs must be equal-length sequences")
     if len(keys) < n_folds:
         raise ValueError("baseline needs at least one input per fold")
-    order = np.argsort(
-        np.asarray([stable_rank(seed, "fold", key) for key in keys], dtype="U64"),
-        kind="stable",
-    )
     word_count_arr = np.asarray(word_counts, dtype=float)
     label_arr = np.asarray(labels_x2, dtype=float)
     prompt_arr = np.asarray(prompts)

@@ -24,14 +24,13 @@ dependencies = [
     "statsmodels==0.14.6",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "ruff==0.15.20",
     "black==26.5.1",
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
     "pytest-cov==7.1.0",
-    "pip-tools==7.5.2",
     "httpx==0.28.1",
 ]
 

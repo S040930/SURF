@@ -30,24 +30,20 @@ class Settings(BaseSettings):
     )
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
 
-    # 网页实验中心固定读取的正式研究数据。API 不接受任意服务器文件路径。
-    EXPERIMENT_DATASET_PATH: str = str(
-        SURF_ROOT / "data" / "processed" / "jorgpt_experiment.csv"
-    )
-    R20_SAF_ARCHIVE_PATH: str = str(SURF_ROOT / "data" / "SAF2_0.zip")
-    R20_SAF_SPLIT_MAP_PATH: str = str(SURF_ROOT / "data" / "saf_hf_split_map.csv")
-    # r23 accepts no arbitrary path from the API; only this local restricted root.
-    R23_DRESS_ROOT: str = str(SURF_ROOT / "DREsS")
-    # Unified experiment core: the registered restricted dataset root. The API
-    # never accepts arbitrary paths; adapters resolve dataset keys under it.
-    EXP_DATASETS_ROOT: str = str(SURF_ROOT / "DREsS")
-    # The r23 CASE stack is frozen history after the legacy import; mutations
-    # are refused at the API boundary (new studies run on /api/experiments).
-    R23_READ_ONLY: bool = True
-    # Legacy r20 archival modules retain this setting for import compatibility;
-    # r21 does not start or use the r20 worker.
-    R20_AUTO_RETRY_SECONDS: int = 60
-    R20_TIMEOUT_SECONDS: float | None = None
+    # Independent SAF 2.0 memory-framework study.  The API resolves this
+    # fixed archive only; callers cannot provide arbitrary server paths.
+    MEMORY_STUDY_ARCHIVE_PATH: str = str(SURF_ROOT / "data" / "SAF2_0.zip")
+    MEMORY_STUDY_ARTIFACT_ROOT: str = str(SURF_ROOT / "outputs" / "saf_memory_study")
+    MEMORY_STUDY_EMBEDDING_MODEL: str = "doubao-embedding-vision"
+    # A real run must set this to an immutable provider model revision.  The
+    # default intentionally fails the run gate instead of silently using main.
+    MEMORY_STUDY_EMBEDDING_REVISION: str = "unresolved"
+    # Every study retriever uses one OpenAI-compatible /v1/embeddings endpoint.
+    # The key here is only a fallback; the site-config row wins once saved.
+    MEMORY_STUDY_EMBEDDING_BACKEND: str = "openai"
+    MEMORY_STUDY_EMBEDDING_API_BASE: str = ""
+    MEMORY_STUDY_EMBEDDING_API_KEY: str = ""
+    MEMORY_STUDY_EMBEDDING_DIMS: int | None = None
 
     @field_validator("DATABASE_URL")
     @classmethod

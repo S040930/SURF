@@ -47,6 +47,12 @@ logs/
 .coverage
 htmlcov/
 
+# Restricted, one-off model-call diagnostics. These artifacts may contain essays.
+/outputs/exp_dress_new_example_diagnostic_0913/
+
+# Database backups (r20-r23/exp archives). May contain restricted scoring data.
+/backups/
+
 # Build
 dist/
 build/

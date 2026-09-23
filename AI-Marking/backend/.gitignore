@@ -7,3 +7,4 @@ uploads/
 .ruff_cache/
 .coverage
 htmlcov/
+outputs/memory-study-exports/

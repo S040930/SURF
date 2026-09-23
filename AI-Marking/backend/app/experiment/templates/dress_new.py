@@ -19,6 +19,17 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from app.experiment.core.analysis import (
+    baseline_predictions,
+    calibration_curve,
+    exact_agreement_rate,
+    paired_bootstrap_diff,
+    quadratic_weighted_kappa,
+    spearman_correlation,
+    transition_matrix,
+    weighted_mae,
+    within_agreement_rate,
+)
 from app.experiment.core.contracts import Channel, ScoringContract
 from app.experiment.core.registry import (
     AuditItem,
@@ -33,19 +44,7 @@ from app.experiment.core.sampling import (
     SampleItem,
     normalized_prompt,
     select_retest,
-    stable_key,
     stratified_select,
-)
-from app.experiment.core.analysis import (
-    baseline_predictions,
-    calibration_curve,
-    exact_agreement_rate,
-    paired_bootstrap_diff,
-    quadratic_weighted_kappa,
-    spearman_correlation,
-    transition_matrix,
-    weighted_mae,
-    within_agreement_rate,
 )
 
 DATASET_KEY = "dress_new"
@@ -54,9 +53,7 @@ TEMPLATE_NAME = "DREsS_New 人工评分一致性验证"
 BOOTSTRAP_REPLICATES = 5_000
 
 FILE_NAME = "DREsS_New.tsv"
-EXPECTED_SHA256 = (
-    "901c4b505cfd57b3ff4dace2926c0a02423a692cac335475311487162509d140"
-)
+EXPECTED_SHA256 = "901c4b505cfd57b3ff4dace2926c0a02423a692cac335475311487162509d140"
 EXPECTED_COLUMNS = (
     "id",
     "prompt",
@@ -192,7 +189,10 @@ class DressNewAdapter:
             total_mismatch = False
             try:
                 scores = [float(row[channel]) for channel in CHANNEL_KEYS]
-                labels = {channel: int(round(score * 2)) for channel, score in zip(CHANNEL_KEYS, scores)}
+                labels = {
+                    channel: int(round(score * 2))
+                    for channel, score in zip(CHANNEL_KEYS, scores)
+                }
                 file_total = float(row["total"])
                 recomputed = sum(scores)
                 if abs(file_total - recomputed) > 1e-6:
@@ -207,7 +207,11 @@ class DressNewAdapter:
                             "source_id": row["id"],
                             "in_pool": False,
                             "file_total": row["total"],
-                            "recomputed_total": None if labels is None else round(sum(labels[c] for c in CHANNEL_KEYS) / 2, 2),
+                            "recomputed_total": (
+                                None
+                                if labels is None
+                                else round(sum(labels[c] for c in CHANNEL_KEYS) / 2, 2)
+                            ),
                         }
                     )
                 continue
@@ -359,7 +363,9 @@ class DressNewAdapter:
             dataset_key=DATASET_KEY, report=report, items=tuple(ordered_items)
         )
 
-    def materialize(self, root: Path, audit: DatasetAudit, keys) -> list[MaterializedInput]:
+    def materialize(
+        self, root: Path, audit: DatasetAudit, keys
+    ) -> list[MaterializedInput]:
         wanted = set(keys)
         found: dict[str, MaterializedInput] = {}
         seen_per_key: dict[str, int] = defaultdict(int)
@@ -373,7 +379,9 @@ class DressNewAdapter:
             seen_per_key[key] += 1
             if key in found:
                 continue
-            labels = {channel: int(round(float(row[channel]) * 2)) for channel in CHANNEL_KEYS}
+            labels = {
+                channel: int(round(float(row[channel]) * 2)) for channel in CHANNEL_KEYS
+            }
             found[key] = MaterializedInput(
                 key=key,
                 prompt=row["prompt"].strip(),
@@ -490,7 +498,9 @@ class DressNewHumanAgreementTemplate:
                     ),
                 }
 
-        baseline_rows = [row for row in rows if row["model"] == models[0]] if models else []
+        baseline_rows = (
+            [row for row in rows if row["model"] == models[0]] if models else []
+        )
         baseline = {
             "description": "log(word_count) + prompt 固定效应的确定性 10 折交叉验证基线",
             "disclosure": (
@@ -498,7 +508,10 @@ class DressNewHumanAgreementTemplate:
             ),
             "channels": {
                 channel: self._baseline_metrics(
-                    baseline_rows, channel, grid_min_x2=grid_min_x2, grid_max_x2=grid_max_x2
+                    baseline_rows,
+                    channel,
+                    grid_min_x2=grid_min_x2,
+                    grid_max_x2=grid_max_x2,
                 )
                 for channel in channels
             },
@@ -506,27 +519,94 @@ class DressNewHumanAgreementTemplate:
 
         retest: dict[str, Any] = {}
         for model in models:
-            model_retest = [row for row in retest_rows if row["model"] == model]
+            # A retest measures the stability of the *model scores*, not their
+            # agreement with the archived teacher label a second time.  The
+            # original implementation accidentally compared the retest score
+            # to labels here, duplicating criterion agreement.  Keep the join
+            # explicit and hash-keyed so differing primary/retest predictions
+            # cannot silently pass as a valid reliability analysis.
+            primary_by_key = {
+                row["input_sha256"]: row for row in rows if row["model"] == model
+            }
+            model_retest = [
+                row
+                for row in retest_rows
+                if row["model"] == model and row["input_sha256"] in primary_by_key
+            ]
             retest[model] = {
                 "count": len(model_retest),
                 "channels": {
                     channel: {
                         "exact_rate": round(
                             exact_agreement_rate(
-                                [row["labels_x2"][channel] for row in model_retest],
-                                [row["predictions_x2"][channel] for row in model_retest],
+                                [
+                                    primary_by_key[row["input_sha256"]][
+                                        "predictions_x2"
+                                    ][channel]
+                                    for row in model_retest
+                                ],
+                                [
+                                    row["predictions_x2"][channel]
+                                    for row in model_retest
+                                ],
+                            ),
+                            4,
+                        ),
+                        "qwk": round(
+                            quadratic_weighted_kappa(
+                                [
+                                    primary_by_key[row["input_sha256"]][
+                                        "predictions_x2"
+                                    ][channel]
+                                    for row in model_retest
+                                ],
+                                [
+                                    row["predictions_x2"][channel]
+                                    for row in model_retest
+                                ],
+                                min_x2=grid_min_x2,
+                                max_x2=grid_max_x2,
+                            ),
+                            4,
+                        ),
+                        "within_half_point_rate": round(
+                            within_agreement_rate(
+                                [
+                                    primary_by_key[row["input_sha256"]][
+                                        "predictions_x2"
+                                    ][channel]
+                                    for row in model_retest
+                                ],
+                                [
+                                    row["predictions_x2"][channel]
+                                    for row in model_retest
+                                ],
+                                tolerance_x2=1,
                             ),
                             4,
                         ),
                         "mae": round(
                             weighted_mae(
-                                [row["labels_x2"][channel] for row in model_retest],
-                                [row["predictions_x2"][channel] for row in model_retest],
+                                [
+                                    primary_by_key[row["input_sha256"]][
+                                        "predictions_x2"
+                                    ][channel]
+                                    for row in model_retest
+                                ],
+                                [
+                                    row["predictions_x2"][channel]
+                                    for row in model_retest
+                                ],
                             ),
                             4,
                         ),
                         "transition_matrix": transition_matrix(
-                            [row["labels_x2"][channel] for row in model_retest],
+                            [
+                                primary_by_key[row["input_sha256"]]["predictions_x2"][
+                                    channel
+                                ]
+                                for row in model_retest
+                            ],
                             [row["predictions_x2"][channel] for row in model_retest],
                             min_x2=grid_min_x2,
                             max_x2=grid_max_x2,
@@ -540,15 +620,23 @@ class DressNewHumanAgreementTemplate:
         latencies = sorted(
             item["latency_ms"] for item in attempts if item["status"] == "succeeded"
         )
-        weights = [row["weight"] for row in rows if row["model"] == models[0]] if models else []
+        weights = (
+            [row["weight"] for row in rows if row["model"] == models[0]]
+            if models
+            else []
+        )
 
         report: dict[str, Any] = {
             "template_id": TEMPLATE_ID,
             "report_type": "human_agreement",
             "design": {
                 "sampling_seed": self.seed,
-                "formal_quotas": {str(key): value for key, value in sorted(STRATUM_QUOTAS.items())},
-                "retest_quota": {str(key): value for key, value in sorted(RETEST_QUOTA.items())},
+                "formal_quotas": {
+                    str(key): value for key, value in sorted(STRATUM_QUOTAS.items())
+                },
+                "retest_quota": {
+                    str(key): value for key, value in sorted(RETEST_QUOTA.items())
+                },
                 "bootstrap_replicates": BOOTSTRAP_REPLICATES,
                 "design_weights": (
                     "总体指标使用设计权重 1/π；强制纳入尾部 π=1。"
@@ -597,10 +685,14 @@ class DressNewHumanAgreementTemplate:
                 ),
                 4,
             ),
-            "weighted_mae": round(weighted_mae(labels, predictions, weights=weights), 4),
+            "weighted_mae": round(
+                weighted_mae(labels, predictions, weights=weights), 4
+            ),
             "unweighted_mae": round(weighted_mae(labels, predictions), 4),
             "spearman": round(spearman_correlation(labels, predictions), 4),
-            "exact_rate": round(exact_agreement_rate(labels, predictions, weights=weights), 4),
+            "exact_rate": round(
+                exact_agreement_rate(labels, predictions, weights=weights), 4
+            ),
             "within_half_point_rate": round(
                 within_agreement_rate(
                     labels, predictions, tolerance_x2=1, weights=weights
@@ -622,8 +714,11 @@ class DressNewHumanAgreementTemplate:
             ),
         }
 
-    def _paired_diff(self, left_rows, right_rows, channel, metric, grid_min_x2, grid_max_x2):
+    def _paired_diff(
+        self, left_rows, right_rows, channel, metric, grid_min_x2, grid_max_x2
+    ):
         if metric == "qwk":
+
             def metric_fn(labels, scores, weights):
                 return quadratic_weighted_kappa(
                     labels,
@@ -632,6 +727,7 @@ class DressNewHumanAgreementTemplate:
                     max_x2=grid_max_x2,
                     weights=weights,
                 )
+
         else:
 
             def metric_fn(labels, scores, weights):
@@ -680,14 +776,22 @@ class DressNewHumanAgreementTemplate:
                 ),
                 4,
             ),
-            "weighted_mae": round(weighted_mae(labels, predictions, weights=weights), 4),
-            "exact_rate": round(exact_agreement_rate(labels, predictions, weights=weights), 4),
+            "weighted_mae": round(
+                weighted_mae(labels, predictions, weights=weights), 4
+            ),
+            "exact_rate": round(
+                exact_agreement_rate(labels, predictions, weights=weights), 4
+            ),
             "within_half_point_rate": round(
-                within_agreement_rate(labels, predictions, tolerance_x2=1, weights=weights),
+                within_agreement_rate(
+                    labels, predictions, tolerance_x2=1, weights=weights
+                ),
                 4,
             ),
             "within_one_point_rate": round(
-                within_agreement_rate(labels, predictions, tolerance_x2=2, weights=weights),
+                within_agreement_rate(
+                    labels, predictions, tolerance_x2=2, weights=weights
+                ),
                 4,
             ),
         }

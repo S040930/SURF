@@ -1,8 +1,4 @@
-[mcp_servers.ai_marking_r21]
-command = "./start.mcp.sh"
-required = true
-startup_timeout_sec = 60
-tool_timeout_sec = 1800
-
-[mcp_servers.ai_marking_r21.tool_approval]
-default_tools_approval_mode = "writes"
+# The r21 MCP server (start.mcp.sh) was removed when the experiment stack
+# migrated to the memory-study worker architecture.  Keeping it registered
+# here made every Codex session fail at bootstrap with
+# "No such file or directory (os error 2)".

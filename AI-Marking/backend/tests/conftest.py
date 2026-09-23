@@ -31,6 +31,14 @@ def db_session():
         engine.dispose()
 
 
+@pytest.fixture
+def db_session_factory(db_session):
+    """与 db_session 同引擎的 sessionmaker，供后台线程类代码（worker）使用。"""
+    return sessionmaker(
+        bind=db_session.get_bind(), expire_on_commit=False
+    )
+
+
 @pytest_asyncio.fixture
 async def client(db_session: Session):
     app = create_app()
